@@ -1,6 +1,9 @@
 // TODO: Add env variables
 export const baseSocketUrl = 'http://localhost:3001';
 
+// Is it necessary to include # in the url?
+export const baseApiUrl = 'http://localhost:8080';
+
 export const SocketOuputMessageLiteral = {
   MESSAGE: 'message',
 };
