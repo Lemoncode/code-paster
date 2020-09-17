@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { baseApiUrl } from 'core/const';
 import * as classes from './trainer.styles';
+import { useParams } from 'react-router';
 
 // Material UI ~ components
 import TextField from '@material-ui/core/TextField';
@@ -8,13 +9,17 @@ import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
-interface Props {
-  currentTrainerUrl: string;
-  currentStudentUrl: string;
+interface Props {}
+
+interface Params {
+  token: string;
+  room: string;
 }
 
 export const TrainerComponent: React.FC<Props> = props => {
-  const { currentStudentUrl, currentTrainerUrl } = props;
+  const { token, room } = useParams<Params>();
+  const currentTrainerUrl = `${baseApiUrl}/#/trainer/${room}/${token}`;
+  const currentStudentUrl = `${baseApiUrl}/#/student/${room}`;
 
   const {
     mainContainer,
@@ -26,6 +31,9 @@ export const TrainerComponent: React.FC<Props> = props => {
     copyIcon,
     editTextArea,
     sendBtn,
+    newTextContainer,
+    studentBoard,
+    labelTextarea,
   } = classes;
 
   return (
@@ -42,10 +50,13 @@ export const TrainerComponent: React.FC<Props> = props => {
                 variant="outlined"
                 size="small"
                 className={textArea}
-                value={`${baseApiUrl}/#${currentTrainerUrl}`}
+                value={currentTrainerUrl}
                 disabled
               />
-              <FileCopyOutlinedIcon className={copyIcon} />
+              <FileCopyOutlinedIcon
+                className={copyIcon}
+                onClick={() => navigator.clipboard.writeText(currentTrainerUrl)}
+              />
             </div>
           </div>
           <div className={inputField}>
@@ -58,15 +69,22 @@ export const TrainerComponent: React.FC<Props> = props => {
                 variant="outlined"
                 size="small"
                 className={textArea}
-                value={`${baseApiUrl}/#${currentStudentUrl}`}
+                value={currentStudentUrl}
                 disabled
               />
-              <FileCopyOutlinedIcon className={copyIcon} />
+              <FileCopyOutlinedIcon
+                className={copyIcon}
+                onClick={() => navigator.clipboard.writeText(currentStudentUrl)}
+              />
             </div>
           </div>
         </div>
-        <div className="newTextContainer">
+        <div className={newTextContainer}>
+          <label className={labelTextarea} htmlFor="new-text">
+            New text
+          </label>
           <TextareaAutosize
+            id="new-text"
             rowsMax={10}
             rowsMin={10}
             className={editTextArea}
@@ -74,6 +92,17 @@ export const TrainerComponent: React.FC<Props> = props => {
           <Button variant="contained" color="primary" className={sendBtn}>
             Send
           </Button>
+        </div>
+        <div>
+          <label className={labelTextarea} htmlFor="session">
+            Session
+          </label>
+          <TextareaAutosize
+            id="session"
+            rowsMax={20}
+            rowsMin={20}
+            className={studentBoard}
+          />
         </div>
       </main>
       {/* <h1>Trainer Component</h1>

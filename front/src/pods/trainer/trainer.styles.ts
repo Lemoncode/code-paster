@@ -34,12 +34,19 @@ export const textArea = css`
 
 export const copyIcon = css`
   font-size: 30px;
+  &:hover {
+    color: #ccc;
+  }
+  &:active {
+    color: red;
+  }
 `;
 
 export const editTextArea = css`
   box-sizing: border-box;
   width: 100%;
   margin-bottom: 10px;
+  margin-top: 10px;
   padding: 5px;
   font-family: 'Roboto', sans-serif;
   resize: none;
@@ -47,4 +54,22 @@ export const editTextArea = css`
 
 export const sendBtn = css`
   width: 100%;
+`;
+
+export const newTextContainer = css`
+  width: 100%;
+  margin-bottom: 40px;
+`;
+
+export const studentBoard = css`
+  box-sizing: border-box;
+  width: 100%;
+  margin-top: 10px;
+  padding: 5px;
+  font-family: 'Roboto', sans-serif;
+  resize: none;
+`;
+
+export const labelTextarea = css`
+  font-family: 'Roboto', sans-serif;
 `;
