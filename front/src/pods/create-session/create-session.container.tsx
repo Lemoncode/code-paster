@@ -1,14 +1,24 @@
 import React from 'react';
-import { baseApiUrl } from 'core';
+import { useHistory } from 'react-router-dom';
+import {
+  baseApiUrl,
+  createSocket,
+  SocketOuputMessageLiteral,
+  SocketEmitMessageTypes,
+  SocketReceiveMessageTypes,
+} from 'core';
 import { routes } from 'core/router';
 import { CreateSessionComponent } from './create-session.component';
+import { createRoom } from './components/test-runner-trainer.api';
 
 export const CreateSessionContainer: React.FunctionComponent = () => {
-  const handleCreateSession = (): void => {
-    // Crear contraseñas de las sesiones para trainer y student
-    // Navegar hasta la url del trainer
-    const trainerUrl = `${baseApiUrl}/#${routes.trainer('token1', 'token2')}`;
-    const studentUrl = `${baseApiUrl}/#${routes.student('token1')}`;
+  const history = useHistory();
+
+  const handleCreateSession = async (): Promise<void> => {
+    const response = await createRoom();
+    const trainerUrl = routes.trainer(response.room, response.trainerToken);
+    const studentUrl = `${baseApiUrl}/#${routes.student(response.room)}`;
+    history.push(trainerUrl);
     console.log(studentUrl);
   };
 
