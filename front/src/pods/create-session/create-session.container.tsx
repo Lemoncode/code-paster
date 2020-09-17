@@ -1,12 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import {
-  baseApiUrl,
-  createSocket,
-  SocketOuputMessageLiteral,
-  SocketEmitMessageTypes,
-  SocketReceiveMessageTypes,
-} from 'core';
+import { baseApiUrl } from 'core';
 import { routes } from 'core/router';
 import { CreateSessionComponent } from './create-session.component';
 import { createRoom } from './components/test-runner-trainer.api';
