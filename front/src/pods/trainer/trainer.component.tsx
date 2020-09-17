@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { baseApiUrl } from 'core/const';
-import * as classes from './trainer.styles';
 import { useParams } from 'react-router';
+import { baseApiUrl } from 'core/const';
+import { routes } from 'core/router/routes';
+import * as classes from './trainer.styles';
 import { HeaderComponent } from './components/header.component';
 import { NewTextComponent } from './components/new-text.component';
 import { SessionComponent } from './components/session.component';
@@ -13,8 +14,8 @@ interface Params {
 
 export const TrainerComponent: React.FC = props => {
   const { token, room } = useParams<Params>();
-  const currentTrainerUrl = `${baseApiUrl}/#/trainer/${room}/${token}`;
-  const currentStudentUrl = `${baseApiUrl}/#/student/${room}`;
+  const currentTrainerUrl = `${baseApiUrl}/#${routes.trainer(room, token)}`;
+  const currentStudentUrl = `${baseApiUrl}/#${routes.student(room)}`;
 
   const { mainContainer } = classes;
 
