@@ -7,12 +7,20 @@ import { TestRunnerStudentComponent } from './components/test-runner-student.com
 // Material UI ~ components
 import Button from '@material-ui/core/Button';
 
-interface Props {}
+interface Props {
+  handleCreateSession: () => void;
+}
 
 export const CreateSessionComponent: React.FunctionComponent<Props> = props => {
+  const { handleCreateSession } = props;
+
   return (
     <>
-      <Button variant="contained" color="primary">
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => handleCreateSession()}
+      >
         Create Session
       </Button>
       <h1>Create Session component</h1>

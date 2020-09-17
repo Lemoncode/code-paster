@@ -3,9 +3,13 @@ import { CreateSessionComponent } from './create-session.component';
 import { useHistory } from 'react-router-dom';
 
 export const CreateSessionContainer: React.FunctionComponent = () => {
+  const handleCreateSession = (): void => {
+    console.log('handle working');
+  };
+
   return (
     <>
-      <CreateSessionComponent/>
+      <CreateSessionComponent handleCreateSession={handleCreateSession} />
     </>
   );
 };
