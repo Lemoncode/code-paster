@@ -1,8 +1,14 @@
 import * as React from 'react';
-import {TrainerComponent} from './trainer.component';
+import { useContext } from 'core/context';
+import { TrainerComponent } from './trainer.component';
+
 export const TrainerContainer = () => {
+  const { currentStudentUrl, currentTrainerUrl } = useContext();
 
   return (
-    <TrainerComponent/>
+    <TrainerComponent
+      currentStudentUrl={currentStudentUrl}
+      currentTrainerUrl={currentTrainerUrl}
+    />
   );
 };

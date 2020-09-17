@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
 import { StylesProvider } from '@material-ui/styles';
+import { AppContextProvider } from 'core/context';
+import App from './app';
 
 ReactDOM.render(
   <>
     <StylesProvider injectFirst>
-      <App />
+      <AppContextProvider>
+        <App />
+      </AppContextProvider>
     </StylesProvider>
   </>,
   document.getElementById('root')

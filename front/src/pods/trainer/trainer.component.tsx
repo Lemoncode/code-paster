@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { routes } from 'core/router';
+import { baseApiUrl } from 'core/const';
 import * as classes from './trainer.styles';
 
 // Material UI ~ components
@@ -9,9 +8,14 @@ import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
-interface Props {}
+interface Props {
+  currentTrainerUrl: string;
+  currentStudentUrl: string;
+}
 
 export const TrainerComponent: React.FC<Props> = props => {
+  const { currentStudentUrl, currentTrainerUrl } = props;
+
   const {
     mainContainer,
     headerContainer,
@@ -38,7 +42,7 @@ export const TrainerComponent: React.FC<Props> = props => {
                 variant="outlined"
                 size="small"
                 className={textArea}
-                value="http://…"
+                value={`${baseApiUrl}/#${currentTrainerUrl}`}
                 disabled
               />
               <FileCopyOutlinedIcon className={copyIcon} />
@@ -54,7 +58,7 @@ export const TrainerComponent: React.FC<Props> = props => {
                 variant="outlined"
                 size="small"
                 className={textArea}
-                value="http://…"
+                value={`${baseApiUrl}/#${currentStudentUrl}`}
                 disabled
               />
               <FileCopyOutlinedIcon className={copyIcon} />
