@@ -1,6 +1,5 @@
 import React from 'react';
 import * as classes from './student.styles';
-
 // Material UI ~ components
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Typography from '@material-ui/core/Typography';
