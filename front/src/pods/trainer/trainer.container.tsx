@@ -21,8 +21,8 @@ export const TrainerContainer = () => {
   const { log, appendToLog } = useLog();
   const [trainerText, setTrainerText] = React.useState<string>('');
   const [socket, setSocket] = React.useState<SocketIO.Socket>(null);
-  const currentTrainerUrl = `${baseApiUrl}/#${routes.trainer(room, token)}`;
-  const currentStudentUrl = `${baseApiUrl}/#${routes.student(room)}`;
+  const [currentTrainerUrl, setCurrentTrainerUrl] = React.useState<string>('');
+  const [currentStudentUrl, setCurrentStudentUrl] = React.useState<string>('');
 
   const handleConnection = () => {
     // Connect to socket
@@ -49,6 +49,8 @@ export const TrainerContainer = () => {
   };
 
   React.useEffect(() => {
+    setCurrentTrainerUrl(`${baseApiUrl}/#${routes.trainer(room, token)}`);
+    setCurrentStudentUrl(`${baseApiUrl}/#${routes.student(room)}`);
     handleConnection();
   }, []);
 
