@@ -6,24 +6,12 @@ import {
   SocketEmitMessageTypes,
   SocketReceiveMessageTypes,
 } from 'core';
+import { useLog } from 'core';
 import { StudentComponent } from './student.component';
 
 interface Params {
   room: string;
 }
-
-const useLog = () => {
-  const [log, internalSetLog] = React.useState('');
-  const logRef = React.useRef('');
-
-  const appendToLog = (value: string) => {
-    const newText = `${logRef.current}\n${value} `;
-    internalSetLog(newText);
-    logRef.current = newText;
-  };
-
-  return { log, appendToLog, logRef };
-};
 
 export const PlayerContainer = () => {
   const { room } = useParams<Params>();

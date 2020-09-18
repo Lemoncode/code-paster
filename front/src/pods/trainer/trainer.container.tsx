@@ -8,25 +8,13 @@ import {
   SocketEmitMessageTypes,
   SocketReceiveMessageTypes,
 } from 'core';
+import { useLog } from 'core';
 import { TrainerComponent } from './trainer.component';
 
 interface Params {
   token: string;
   room: string;
 }
-
-const useLog = () => {
-  const [log, internalSetLog] = React.useState('');
-  const logRef = React.useRef('');
-
-  const appendToLog = (value: string) => {
-    const newText = `${logRef.current}\n${value} `;
-    internalSetLog(newText);
-    logRef.current = newText;
-  };
-
-  return { log, appendToLog, logRef };
-};
 
 export const TrainerContainer = () => {
   const { token, room } = useParams<Params>();
