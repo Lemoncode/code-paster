@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import * as classes from './trainer.styles';
 import { HeaderComponent } from './components/header.component';
 import { NewTextComponent } from './components/new-text.component';
@@ -40,10 +39,6 @@ export const TrainerComponent: React.FC<Props> = props => {
         />
         <SessionComponent log={log} />
       </main>
-      {/* <h1>Trainer Component</h1>
-      <Link to={routes.student('myroom')}>
-        Create Session - Navigate to student page
-      </Link> */}
     </>
   );
 };
