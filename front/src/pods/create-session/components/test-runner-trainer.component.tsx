@@ -56,7 +56,6 @@ export const TestRunnerTrainerComponent = () => {
 
   const fireTestRunner = () => {
     handleConnection();
-    console.log(log);
   };
 
   const handleAppendRandomText = () => {
