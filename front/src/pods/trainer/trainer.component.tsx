@@ -1,21 +1,28 @@
 import * as React from 'react';
-import { useParams } from 'react-router';
-import { baseApiUrl } from 'core/const';
-import { routes } from 'core/router/routes';
+
 import * as classes from './trainer.styles';
 import { HeaderComponent } from './components/header.component';
 import { NewTextComponent } from './components/new-text.component';
 import { SessionComponent } from './components/session.component';
 
-interface Params {
-  token: string;
-  room: string;
+interface Props {
+  trainerText: string;
+  setTrainerText: (text: string) => void;
+  handleAppendTrainerText: () => void;
+  currentTrainerUrl: string;
+  currentStudentUrl: string;
+  log: string;
 }
 
-export const TrainerComponent: React.FC = props => {
-  const { token, room } = useParams<Params>();
-  const currentTrainerUrl = `${baseApiUrl}/#${routes.trainer(room, token)}`;
-  const currentStudentUrl = `${baseApiUrl}/#${routes.student(room)}`;
+export const TrainerComponent: React.FC<Props> = props => {
+  const {
+    setTrainerText,
+    trainerText,
+    handleAppendTrainerText,
+    currentTrainerUrl,
+    currentStudentUrl,
+    log,
+  } = props;
 
   const { mainContainer } = classes;
 
@@ -26,8 +33,12 @@ export const TrainerComponent: React.FC = props => {
           currentTrainerUrl={currentTrainerUrl}
           currentStudentUrl={currentStudentUrl}
         />
-        <NewTextComponent />
-        <SessionComponent />
+        <NewTextComponent
+          setTrainerText={setTrainerText}
+          trainerText={trainerText}
+          handleAppendTrainerText={handleAppendTrainerText}
+        />
+        <SessionComponent log={log} />
       </main>
       {/* <h1>Trainer Component</h1>
       <Link to={routes.student('myroom')}>

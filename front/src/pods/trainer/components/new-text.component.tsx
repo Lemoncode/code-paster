@@ -4,7 +4,14 @@ import * as classes from './new-text.styles';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
-export const NewTextComponent: React.FC = () => {
+interface Props {
+  trainerText: string;
+  setTrainerText: (text: string) => void;
+  handleAppendTrainerText: () => void;
+}
+
+export const NewTextComponent: React.FC<Props> = props => {
+  const { setTrainerText, trainerText, handleAppendTrainerText } = props;
   const { newTextContainer, labelTextarea, editTextArea, sendBtn } = classes;
 
   return (
@@ -17,8 +24,14 @@ export const NewTextComponent: React.FC = () => {
         rowsMax={10}
         rowsMin={10}
         className={editTextArea}
+        onBlur={e => setTrainerText(e.target.value)}
       />
-      <Button variant="contained" color="primary" className={sendBtn}>
+      <Button
+        variant="contained"
+        color="primary"
+        className={sendBtn}
+        onClick={() => handleAppendTrainerText()}
+      >
         Send
       </Button>
     </div>

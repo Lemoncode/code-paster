@@ -3,7 +3,12 @@ import * as classes from './session.styles';
 // Material UI ~ components
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
-export const SessionComponent: React.FC = () => {
+interface Props {
+  log: string;
+}
+
+export const SessionComponent: React.FC<Props> = props => {
+  const { log } = props;
   const { labelTextarea, studentBoard } = classes;
 
   return (
@@ -16,6 +21,7 @@ export const SessionComponent: React.FC = () => {
         rowsMax={20}
         rowsMin={20}
         className={studentBoard}
+        value={log}
       />
     </div>
   );
