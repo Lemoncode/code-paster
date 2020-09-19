@@ -1,16 +1,44 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import { routes } from 'core/router';
+import * as classes from './trainer.styles';
+import { HeaderComponent } from './components/header.component';
+import { NewTextComponent } from './components/new-text.component';
+import { SessionComponent } from './components/session.component';
 
-interface Props {}
+interface Props {
+  trainerText: string;
+  setTrainerText: (text: string) => void;
+  handleAppendTrainerText: () => void;
+  currentTrainerUrl: string;
+  currentStudentUrl: string;
+  log: string;
+}
 
 export const TrainerComponent: React.FC<Props> = props => {
+  const {
+    setTrainerText,
+    trainerText,
+    handleAppendTrainerText,
+    currentTrainerUrl,
+    currentStudentUrl,
+    log,
+  } = props;
+
+  const { mainContainer } = classes;
+
   return (
     <>
-      <h1>Trainer Component</h1>
-      <Link to={routes.student('myroom')}>
-        Create Session - Navigate to student page
-      </Link>
+      <main className={mainContainer}>
+        <HeaderComponent
+          currentTrainerUrl={currentTrainerUrl}
+          currentStudentUrl={currentStudentUrl}
+        />
+        <NewTextComponent
+          setTrainerText={setTrainerText}
+          trainerText={trainerText}
+          handleAppendTrainerText={handleAppendTrainerText}
+        />
+        <SessionComponent log={log} />
+      </main>
     </>
   );
 };
