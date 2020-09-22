@@ -8,10 +8,18 @@ interface Props {
   trainerText: string;
   setTrainerText: (text: string) => void;
   handleAppendTrainerText: () => void;
+  newTextValue: string;
+  setNewTextValue: (text: string) => void;
 }
 
 export const NewTextComponent: React.FC<Props> = props => {
-  const { setTrainerText, trainerText, handleAppendTrainerText } = props;
+  const {
+    setTrainerText,
+    trainerText,
+    handleAppendTrainerText,
+    newTextValue,
+    setNewTextValue,
+  } = props;
   const { newTextContainer, labelTextarea, editTextArea, sendBtn } = classes;
 
   return (
@@ -25,6 +33,8 @@ export const NewTextComponent: React.FC<Props> = props => {
         rowsMin={10}
         className={editTextArea}
         onBlur={e => setTrainerText(e.target.value)}
+        onChange={e => setNewTextValue(e.target.value)}
+        value={newTextValue}
       />
       <Button
         variant="contained"

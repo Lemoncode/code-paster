@@ -23,6 +23,7 @@ export const TrainerContainer = () => {
   const [socket, setSocket] = React.useState<SocketIO.Socket>(null);
   const [currentTrainerUrl, setCurrentTrainerUrl] = React.useState<string>('');
   const [currentStudentUrl, setCurrentStudentUrl] = React.useState<string>('');
+  const [newTextValue, setNewTextValue] = React.useState<string>('');
 
   const handleConnection = () => {
     // Connect to socket
@@ -59,6 +60,8 @@ export const TrainerContainer = () => {
       type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
       payload: trainerText,
     });
+    setNewTextValue('');
+    setTrainerText('');
   };
 
   return (
@@ -69,6 +72,8 @@ export const TrainerContainer = () => {
       currentTrainerUrl={currentTrainerUrl}
       currentStudentUrl={currentStudentUrl}
       log={log}
+      newTextValue={newTextValue}
+      setNewTextValue={setNewTextValue}
     />
   );
 };

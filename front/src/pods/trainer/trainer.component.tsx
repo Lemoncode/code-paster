@@ -11,6 +11,8 @@ interface Props {
   currentTrainerUrl: string;
   currentStudentUrl: string;
   log: string;
+  newTextValue: string;
+  setNewTextValue: (text: string) => void;
 }
 
 export const TrainerComponent: React.FC<Props> = props => {
@@ -21,6 +23,8 @@ export const TrainerComponent: React.FC<Props> = props => {
     currentTrainerUrl,
     currentStudentUrl,
     log,
+    newTextValue,
+    setNewTextValue,
   } = props;
 
   const { mainContainer } = classes;
@@ -36,6 +40,8 @@ export const TrainerComponent: React.FC<Props> = props => {
           setTrainerText={setTrainerText}
           trainerText={trainerText}
           handleAppendTrainerText={handleAppendTrainerText}
+          newTextValue={newTextValue}
+          setNewTextValue={setNewTextValue}
         />
         <SessionComponent log={log} />
       </main>
