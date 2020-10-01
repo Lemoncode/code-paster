@@ -35,6 +35,7 @@ export const NewTextComponent: React.FC<Props> = props => {
         color="primary"
         className={sendBtn}
         onClick={() => handleAppendTrainerTextInternal()}
+        disabled={!trainerText}
       >
         Send
       </Button>
