@@ -19,11 +19,9 @@ interface Params {
 export const TrainerContainer = () => {
   const { token, room } = useParams<Params>();
   const { log, appendToLog } = useLog();
-  const [trainerText, setTrainerText] = React.useState<string>('');
   const [socket, setSocket] = React.useState<SocketIO.Socket>(null);
   const [currentTrainerUrl, setCurrentTrainerUrl] = React.useState<string>('');
   const [currentStudentUrl, setCurrentStudentUrl] = React.useState<string>('');
-  const [newTextValue, setNewTextValue] = React.useState<string>('');
 
   const handleConnection = () => {
     // Connect to socket
@@ -55,25 +53,19 @@ export const TrainerContainer = () => {
     handleConnection();
   }, []);
 
-  const handleAppendTrainerText = (): void => {
+  const handleAppendTrainerText = (trainerText: string): void => {
     socket.emit(SocketOuputMessageLiteral.MESSAGE, {
       type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
       payload: trainerText,
     });
-    setNewTextValue('');
-    setTrainerText('');
   };
 
   return (
     <TrainerComponent
-      trainerText={trainerText}
-      setTrainerText={setTrainerText}
       handleAppendTrainerText={handleAppendTrainerText}
       currentTrainerUrl={currentTrainerUrl}
       currentStudentUrl={currentStudentUrl}
       log={log}
-      newTextValue={newTextValue}
-      setNewTextValue={setNewTextValue}
     />
   );
 };
