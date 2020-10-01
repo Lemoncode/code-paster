@@ -18,6 +18,16 @@ export const NewTextComponent: React.FC<Props> = props => {
     setTrainerText('');
   };
 
+  const sendWithCtrlAndEnterKeys = (e: KeyboardEvent) => {
+    if (e.key === 'Enter' && e.ctrlKey) {
+      console.log('funciona');
+    }
+  };
+
+  React.useEffect(() => {
+    window.addEventListener('keydown', sendWithCtrlAndEnterKeys);
+  }, []);
+
   return (
     <div className={newTextContainer}>
       <label className={labelTextarea} htmlFor="new-text">
