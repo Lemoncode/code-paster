@@ -18,16 +18,15 @@ export const NewTextComponent: React.FC<Props> = props => {
     setTrainerText('');
   };
 
-  const sendWithEnterAndCtrlKeys = () => {
-    console.log(trainerText);
-  };
-
   React.useEffect(() => {
-    window.addEventListener('keydown', e => {
+    const listener = (e: KeyboardEvent) => {
       if (e.key === 'Enter' && e.ctrlKey) {
-        sendWithEnterAndCtrlKeys();
+        console.log('It works!');
+        console.log(trainerText);
       }
-    });
+    };
+    window.addEventListener('keydown', listener);
+    return () => window.removeEventListener('keydown', listener);
   }, []);
 
   return (
