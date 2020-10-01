@@ -5,14 +5,18 @@ import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 interface Props {
-  trainerText: string;
-  setTrainerText: (text: string) => void;
-  handleAppendTrainerText: () => void;
+  handleAppendTrainerText: (trainerText: string) => void;
 }
 
 export const NewTextComponent: React.FC<Props> = props => {
-  const { setTrainerText, trainerText, handleAppendTrainerText } = props;
+  const { handleAppendTrainerText } = props;
+  const [trainerText, setTrainerText] = React.useState<string>('');
   const { newTextContainer, labelTextarea, editTextArea, sendBtn } = classes;
+
+  const handleAppendTrainerTextInternal = (): void => {
+    handleAppendTrainerText(trainerText);
+    setTrainerText('');
+  };
 
   return (
     <div className={newTextContainer}>
@@ -20,17 +24,17 @@ export const NewTextComponent: React.FC<Props> = props => {
         New text
       </label>
       <TextareaAutosize
-        id="new-text"
         rowsMax={10}
         rowsMin={10}
         className={editTextArea}
-        onBlur={e => setTrainerText(e.target.value)}
+        onChange={e => setTrainerText(e.target.value)}
+        value={trainerText}
       />
       <Button
         variant="contained"
         color="primary"
         className={sendBtn}
-        onClick={() => handleAppendTrainerText()}
+        onClick={() => handleAppendTrainerTextInternal()}
       >
         Send
       </Button>
