@@ -16,8 +16,7 @@ export const NewTextComponent: React.FC<Props> = props => {
   const trainerTextRef = React.useRef<string>(trainerText);
 
   const handleAppendTrainerTextInternal = (): void => {
-    console.log(trainerTextRef.current);
-    // handleAppendTrainerText(trainerText);
+    handleAppendTrainerText(trainerTextRef.current);
     setTrainerText('');
     trainerTextRef.current = '';
   };
@@ -29,7 +28,6 @@ export const NewTextComponent: React.FC<Props> = props => {
 
   React.useEffect(() => {
     const listener = (e: KeyboardEvent) => {
-      // Filter by Enter and Ctrl keys and trainerText -> working
       if (e.key === 'Enter' && e.ctrlKey && Boolean(trainerTextRef.current))
         handleAppendTrainerTextInternal();
     };
