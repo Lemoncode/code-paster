@@ -233,16 +233,25 @@ h1 {
   .coming-soon-img {
     bottom: -7rem;
   }
+  .presents-text {
+    font-size: 2.8rem;
+  }
 }
 
 @media only screen and (min-width: 1700px) {
   .coming-soon-img {
     bottom: -8rem;
   }
+  .presents-text {
+    font-size: 2.9rem;
+  }
 }
 
 @media only screen and (min-width: 1900px) {
   .coming-soon-img {
     bottom: -9rem;
+  }
+  .presents-text {
+    font-size: 3rem;
   }
 }
