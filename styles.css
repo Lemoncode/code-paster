@@ -1,0 +1,257 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.4%;
+  font-family: "Merriweather", serif;
+  background-color: #fef9ee;
+}
+
+body {
+  margin: 1rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+  height: calc(100vh - 2rem);
+  background-color: lightblue;
+  color: #181818;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1 {
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: 300;
+  text-align: center;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+}
+
+.container-1 {
+  background-color: #fffea6;
+}
+
+.container-2 {
+  background-color: #242417;
+}
+
+.container-3 {
+  background-color: #fef9ee;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 2rem 4rem 2rem;
+}
+
+.img-container {
+  width: 70%;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: white;
+  -webkit-box-shadow: 6px 6px 15px -4px rgba(41, 41, 41, 0.6);
+  -moz-box-shadow: 6px 6px 15px -4px rgba(41, 41, 41, 0.6);
+  box-shadow: 6px 6px 15px -4px rgba(41, 41, 41, 0.6);
+}
+
+.lemon-img-container {
+  padding: 1rem;
+}
+
+.code-img-container {
+  position: relative;
+}
+
+.presents-text {
+  font-size: 2rem;
+  letter-spacing: 1px;
+  font-style: italic;
+  font-weight: 400;
+  color: #242417;
+}
+
+.coming-soon-img {
+  position: absolute;
+  width: 80%;
+  bottom: -2rem;
+  right: -3.3rem;
+}
+
+@media only screen and (min-width: 350px) {
+  .coming-soon-img {
+    bottom: -2.5rem;
+  }
+}
+
+@media only screen and (min-width: 370px) {
+  .coming-soon-img {
+    bottom: -3rem;
+  }
+}
+
+@media only screen and (min-width: 410px) {
+  .flex-container {
+    padding: 2rem 2rem 5rem 2rem;
+  }
+  .coming-soon-img {
+    bottom: -3.5rem;
+  }
+}
+
+@media only screen and (min-width: 440px) {
+  .coming-soon-img {
+    bottom: -4rem;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .flex-container {
+    padding: 2rem 2rem 6rem 2rem;
+  }
+  .coming-soon-img {
+    bottom: -4.5rem;
+  }
+}
+
+@media only screen and (min-width: 520px) {
+  .img-container {
+    padding: 2rem;
+    width: 60%;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .img-container {
+    width: 55%;
+  }
+}
+
+@media only screen and (min-width: 720px) {
+  .img-container {
+    width: 50%;
+  }
+}
+
+@media only screen and (min-width: 800px) {
+  .img-container {
+    width: 45%;
+  }
+}
+
+@media only screen and (min-width: 870px) {
+  .img-container {
+    width: 40%;
+  }
+}
+
+@media only screen and (min-width: 930px) {
+  body {
+    margin: 2rem;
+    padding: 2rem;
+    height: calc(100vh - 4rem);
+  }
+  .container {
+    padding: 2rem;
+  }
+  .flex-container {
+    flex-direction: row;
+    padding: 4rem;
+  }
+  .img-container {
+    padding: 2rem;
+    width: 33.3%;
+  }
+  .lemon-img-container {
+    padding: 1rem 2rem;
+  }
+  .presents-text {
+    font-size: 2.6rem;
+  }
+  .coming-soon-img {
+    bottom: -3.5rem;
+    right: -2rem;
+  }
+}
+
+@media only screen and (min-width: 1030px) {
+  .coming-soon-img {
+    bottom: -4rem;
+  }
+}
+
+@media only screen and (min-width: 1090px) {
+  .coming-soon-img {
+    bottom: -4.5rem;
+  }
+}
+
+@media only screen and (min-width: 1180px) {
+  .coming-soon-img {
+    bottom: -5rem;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  .coming-soon-img {
+    bottom: -5.5rem;
+    right: -2.5rem;
+  }
+  .flex-container {
+    flex-direction: row;
+    padding: 5rem;
+  }
+}
+
+@media only screen and (min-width: 1340px) {
+  .coming-soon-img {
+    bottom: -6rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .coming-soon-img {
+    bottom: -6.5rem;
+  }
+}
+
+@media only screen and (min-width: 1550px) {
+  .coming-soon-img {
+    bottom: -7rem;
+  }
+  .presents-text {
+    font-size: 2.8rem;
+  }
+}
+
+@media only screen and (min-width: 1700px) {
+  .coming-soon-img {
+    bottom: -8rem;
+  }
+  .presents-text {
+    font-size: 2.9rem;
+  }
+}
+
+@media only screen and (min-width: 1900px) {
+  .coming-soon-img {
+    bottom: -9rem;
+  }
+  .presents-text {
+    font-size: 3rem;
+  }
+}
