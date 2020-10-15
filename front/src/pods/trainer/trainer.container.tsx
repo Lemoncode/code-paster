@@ -32,7 +32,7 @@ export const TrainerContainer = () => {
 
     setSocket(localSocket);
 
-    localSocket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
+    localSocket.on(SocketOuputMessageLiteral.MESSAGE, (msg) => {
       console.log(msg);
 
       if (msg.type) {
@@ -54,9 +54,11 @@ export const TrainerContainer = () => {
   }, []);
 
   const handleAppendTrainerText = (trainerText: string): void => {
+    const separation = '\n\n*********************************\n';
+
     socket.emit(SocketOuputMessageLiteral.MESSAGE, {
       type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
-      payload: trainerText,
+      payload: trainerText + separation,
     });
   };
 
