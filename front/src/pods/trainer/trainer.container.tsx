@@ -54,7 +54,7 @@ export const TrainerContainer = () => {
   }, []);
 
   const handleAppendTrainerText = (trainerText: string): void => {
-    console.log(socket);
+    console.log(`Socket = ${socket}`);
     socket.emit(SocketOuputMessageLiteral.MESSAGE, {
       type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
       payload: trainerText,
