@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router';
-import { baseApiUrl } from 'core/const';
+import { baseApiUrl, lineSeparator } from 'core/const';
 import { routes } from 'core/router/routes';
 import {
   createSocket,
@@ -32,7 +32,7 @@ export const TrainerContainer = () => {
 
     setSocket(localSocket);
 
-    localSocket.on(SocketOuputMessageLiteral.MESSAGE, (msg) => {
+    localSocket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
       console.log(msg);
 
       if (msg.type) {
@@ -53,13 +53,19 @@ export const TrainerContainer = () => {
     handleConnection();
   }, []);
 
-  const handleAppendTrainerText = (trainerText: string): void => {
-    const separation = '\n\n*********************************\n';
+  const appendLineSeparator = (text: string): string =>
+    `${text}${lineSeparator}`;
 
+  const sendTrainerTextToServer = (text: string): void => {
     socket.emit(SocketOuputMessageLiteral.MESSAGE, {
       type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
-      payload: trainerText + separation,
+      payload: text,
     });
+  };
+
+  const handleAppendTrainerText = (trainerText: string): void => {
+    const finalText = appendLineSeparator(trainerText);
+    sendTrainerTextToServer(finalText);
   };
 
   return (
