@@ -1,8 +1,6 @@
 import Axios from 'axios';
 
-const baseApiUrl = 'http://localhost:8081';
-
-const getRoomUrl = `${baseApiUrl}/api/create-room`;
+const getRoomUrl = `${process.env.API_URL}/api/create-room`;
 
 interface SessionInfo {
   room: string;

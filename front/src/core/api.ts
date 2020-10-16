@@ -1,5 +1,4 @@
 import * as ioClient from 'socket.io-client';
-import { baseSocketUrl } from './const';
 import SocketIOClient, { Socket } from 'socket.io';
 
 export interface ConnectionSetup {
@@ -10,7 +9,7 @@ export interface ConnectionSetup {
 export const createSocket = (connectionSetup: ConnectionSetup): Socket => {
   const { room, trainertoken } = connectionSetup;
   const socketParams = {
-    url: baseSocketUrl,
+    url: process.env.BASE_SOCKET_URL,
     options: {
       query: { room, trainertoken },
       timeout: 60000,
@@ -18,5 +17,5 @@ export const createSocket = (connectionSetup: ConnectionSetup): Socket => {
   };
 
   // TODO Add channel (room)
-  return ioClient(baseSocketUrl, socketParams.options);
+  return ioClient(process.env.BASE_SOCKET_URL, socketParams.options);
 };
