@@ -21,10 +21,13 @@ export const NewTextComponent: React.FC<Props> = props => {
     trainerTextRef.current = '';
   };
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    trainerTextRef.current = e.target.value;
-    setTrainerText(e.target.value);
-  };
+  const handleOnChange = React.useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+      trainerTextRef.current = e.target.value;
+      setTrainerText(e.target.value);
+    },
+    [trainerTextRef.current]
+  );
 
   React.useEffect(() => {
     const listener = (e: KeyboardEvent) => {
