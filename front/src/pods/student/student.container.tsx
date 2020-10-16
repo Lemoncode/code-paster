@@ -5,6 +5,7 @@ import {
   SocketOuputMessageLiteral,
   SocketEmitMessageTypes,
   SocketReceiveMessageTypes,
+  getStorage,
 } from 'core';
 import { useLog } from 'core';
 import { StudentComponent } from './student.component';
@@ -17,6 +18,12 @@ export const PlayerContainer = () => {
   const { room } = useParams<Params>();
   const { log, appendToLog } = useLog();
   const [socket, setSocket] = React.useState<SocketIO.Socket>(null);
+
+  const initializeLog = () => {
+    const previousLog = getStorage();
+
+    if (previousLog) appendToLog(getStorage());
+  };
 
   const handleConnection = () => {
     // Connect to socket
@@ -44,6 +51,7 @@ export const PlayerContainer = () => {
 
   React.useEffect(() => {
     handleConnection();
+    initializeLog();
   }, []);
 
   return (

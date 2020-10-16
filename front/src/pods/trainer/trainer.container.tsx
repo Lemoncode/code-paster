@@ -32,7 +32,7 @@ export const TrainerContainer = () => {
 
     setSocket(localSocket);
 
-    localSocket.on(SocketOuputMessageLiteral.MESSAGE, (msg) => {
+    localSocket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
       console.log(msg);
 
       if (msg.type) {
