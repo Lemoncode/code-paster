@@ -37,8 +37,19 @@ export const processOuputMessage = (socketInfo: SocketInfo, action: Action) => {
       handleAppendText(socketInfo, action.payload);
     case OutputMessageTypes.REPLACE_FULL_TEXT:
       handleReplaceFullText(socketInfo, action.payload);
+    // SEND_FULL_CONTENT
+    // handlSendFullContent(socketInfo)
   }
 };
+
+// handleSendFullContent
+// const room = getRoomFromConnectionId(socketInfo.connectionId);
+// From Storage retrieve the room content getRoomContent
+// Create a message
+// socketInfo.socket.emit(SocketOuputMessageLiteral.MESSAGE, {
+//   type: responseType.SEND_FULL_TEXT,
+//   payload: GetRoomcontent,
+//});
 
 const handleReplaceFullText = (socketInfo: SocketInfo, text: string) => {
   const room = getRoomFromConnectionId(socketInfo.connectionId);

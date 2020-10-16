@@ -47,10 +47,18 @@ export const processInputMessage = (
         action.payload
       );
       break;
+    // TODO add this message here
+    //  REQUEST_ROOM_FULL_CONTENT
+    // handleRequestRoomFullContent({ type: OutputMessageTypes.SEND_FULL_CONTENT })
   }
 
   return outputActionCollection;
 };
+
+// TODO: implement
+// const handleRequestRoomFullContent = () => {
+//   return [{}]
+//}
 
 const handleSetTrainerFullText = (socketInfo: SocketInfo, text: string) => {
   if (!isTrainerUser(socketInfo.connectionId)) {

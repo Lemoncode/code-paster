@@ -27,6 +27,14 @@ export const PlayerContainer = () => {
 
     setSocket(localSocket);
 
+    // TODO:
+    //localSocket.on('connect', () => {
+    //  socket.emit(SocketOuputMessageLiteral.MESSAGE, {
+    //  type: SocketOuputMessageLiteral.REQUEST_FULL_CONTENT,
+    //}); );
+    //
+    //});
+
     localSocket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
       console.log(msg);
 
@@ -37,6 +45,9 @@ export const PlayerContainer = () => {
           case SocketReceiveMessageTypes.APPEND_TEXT:
             appendToLog(payload);
             break;
+
+          // TODO Wait for SEND_FULL_CONTENT Message
+          // setLog(payload);
         }
       }
     });

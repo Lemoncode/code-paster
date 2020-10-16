@@ -54,10 +54,10 @@ export const TrainerContainer = () => {
   }, []);
 
   const handleAppendTrainerText = (trainerText: string): void => {
-    socket.emit(SocketOuputMessageLiteral.MESSAGE, {
+    socket.emit(SocketOuputMessageLiteral.MESSAGE,{
       type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
       payload: trainerText,
-    });
+    }); 
   };
 
   return (

@@ -3,6 +3,8 @@ export const InputMessageTypes = {
   ESTABLISH_CONNECTION_STUDENT: 'ESTABLISH_CONNECTION_STUDENT',
   TRAINER_APPEND_TEXT: 'TRAINER_APPEND_TEXT',
   TRAINER_SET_FULL_TEXT: 'TRAINER_SET_FULL_TEXT'
+  //TODO: Add a message to let a given user request the current room content
+  // REQUEST_ROOM_FULL_CONTENT
 };
 
 export const OutputMessageTypes = {
@@ -12,6 +14,7 @@ export const OutputMessageTypes = {
     'ERROR_MULTI_TRAINER_NOT_IMPLEMENTED_YET',
   APPEND_TEXT: 'APPEND_TEXT',
   REPLACE_FULL_TEXT: 'REPLACE_FULL_TEXT'
+  // SEND_FULL_CONTENT
 };
 
 export const SocketMessageTypes = {};
