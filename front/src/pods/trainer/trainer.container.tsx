@@ -10,6 +10,7 @@ import {
 } from 'core';
 import { useLog } from 'core';
 import { TrainerComponent } from './trainer.component';
+import { useWithRef } from 'common';
 
 interface Params {
   token: string;
@@ -19,7 +20,8 @@ interface Params {
 export const TrainerContainer = () => {
   const { token, room } = useParams<Params>();
   const { log, appendToLog } = useLog();
-  const [socket, setSocket] = React.useState<SocketIO.Socket>(null);
+  const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(null);
+
   const [currentTrainerUrl, setCurrentTrainerUrl] = React.useState<string>('');
   const [currentStudentUrl, setCurrentStudentUrl] = React.useState<string>('');
 
@@ -33,8 +35,6 @@ export const TrainerContainer = () => {
     setSocket(localSocket);
 
     localSocket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
-      console.log(msg);
-
       if (msg.type) {
         const { type, payload } = msg;
 
@@ -57,7 +57,7 @@ export const TrainerContainer = () => {
     `${text}${lineSeparator}`;
 
   const sendTrainerTextToServer = (text: string): void => {
-    socket.emit(SocketOuputMessageLiteral.MESSAGE, {
+    socketRef.current.emit(SocketOuputMessageLiteral.MESSAGE, {
       type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
       payload: text,
     });
