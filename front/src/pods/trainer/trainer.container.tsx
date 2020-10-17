@@ -35,8 +35,6 @@ export const TrainerContainer = () => {
     setSocket(localSocket);
 
     localSocket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
-      console.log(msg);
-
       if (msg.type) {
         const { type, payload } = msg;
 
@@ -56,7 +54,6 @@ export const TrainerContainer = () => {
   }, []);
 
   const handleAppendTrainerText = (trainerText: string): void => {
-    console.log(`Socket = ${socket}`);
     socketRef.current.emit(SocketOuputMessageLiteral.MESSAGE, {
       type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
       payload: trainerText,

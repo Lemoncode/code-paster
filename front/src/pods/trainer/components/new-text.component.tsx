@@ -28,9 +28,7 @@ export const NewTextComponent: React.FC<Props> = props => {
 
   React.useEffect(() => {
     const listener = (e: KeyboardEvent) => {
-      console.log(`TrainerText = ${trainerTextRef.current}`);
       if (e.key === 'Enter' && e.ctrlKey && Boolean(trainerTextRef.current)) {
-        console.log('Buttons working!!!');
         handleAppendTrainerTextInternal();
       }
     };
