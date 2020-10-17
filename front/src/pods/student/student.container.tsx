@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import {
   createSocket,
   SocketOuputMessageLiteral,
-  SocketEmitMessageTypes,
   SocketReceiveMessageTypes,
 } from 'core';
 import { useLog } from 'core';

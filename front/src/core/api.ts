@@ -1,6 +1,6 @@
 import * as ioClient from 'socket.io-client';
 import { baseSocketUrl } from './const';
-import SocketIOClient, { Socket } from 'socket.io';
+import { Socket } from 'socket.io';
 
 export interface ConnectionSetup {
   room: string;

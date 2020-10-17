@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { routes } from 'core/router';
 import { CreateSessionComponent } from './create-session.component';
-import { createRoom } from './components/test-runner-trainer.api';
+import { createRoom } from './api/create-session.api';
 
 export const CreateSessionContainer: React.FunctionComponent = () => {
   const history = useHistory();
