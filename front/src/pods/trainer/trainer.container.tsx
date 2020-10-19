@@ -10,7 +10,7 @@ import {
 } from 'core';
 import { useLog } from 'core';
 import { TrainerComponent } from './trainer.component';
-import { useWithRef } from 'common';
+import { useWithRef, getHostBaseUrl } from 'common';
 
 interface Params {
   token: string;
@@ -48,10 +48,8 @@ export const TrainerContainer = () => {
   };
 
   React.useEffect(() => {
-    setCurrentTrainerUrl(
-      `${process.env.API_URL}/#${routes.trainer(room, token)}`
-    );
-    setCurrentStudentUrl(`${process.env.API_URL}/#${routes.student(room)}`);
+    setCurrentTrainerUrl(`${getHostBaseUrl()}/#${routes.trainer(room, token)}`);
+    setCurrentStudentUrl(`${getHostBaseUrl()}/#${routes.student(room)}`);
     handleConnection();
   }, []);
 
