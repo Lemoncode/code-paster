@@ -9,12 +9,15 @@ export const SocketOuputMessageLiteral = {
 
 export const SocketEmitMessageTypes = {
   TRAINER_APPEND_TEXT: 'TRAINER_APPEND_TEXT', // Master creates a user story
+  TRAINER_SAVE_CONTENT: 'TRAINER_SAVE_CONTENT', // Master saves current content
+  STUDENT_GET_CONTENT: 'STUDENT_GET_CONTENT', // Student checks if there's previous content when first connecting
 };
 
 export const SocketReceiveMessageTypes = {
   CONNECTION_ACK: 'CONNECTION_ACK',
   APPEND_TEXT: 'APPEND_TEXT',
   REPLACE_FULL_TEXT: 'REPLACE_FULL_TEXT',
+  STUDENT_GET_CONTENT: 'STUDENT_GET_CONTENT',
 };
 
 export const lineSeparator = '\n\n*********************************\n';

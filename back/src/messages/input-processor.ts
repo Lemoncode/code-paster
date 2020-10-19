@@ -7,7 +7,7 @@ import {
 } from './model';
 import {
   isTrainerUser,
-  getRoomFromConnectionId,
+  saveRoomInfo,
   isExistingConnection,
   isRoomAvailable,
   addNewUser,
@@ -47,9 +47,28 @@ export const processInputMessage = (
         action.payload
       );
       break;
+    case InputMessageTypes.TRAINER_SAVE_CONTENT:
+      handleSaveTrainerContent(socketInfo, action.payload);
+      break;
+    case InputMessageTypes.STUDENT_GET_CONTENT:
+      outputActionCollection = handleGetStudentContent(
+        socketInfo,
+        action.payload
+      );
+      break;
   }
 
   return outputActionCollection;
+};
+
+const handleGetStudentContent = (socketInfo: SocketInfo, room: string) => {
+  return [{ type: OutputMessageTypes.STUDENT_SEND_CONTENT, payload: room }];
+};
+
+const handleSaveTrainerContent = (socketInfo: SocketInfo, roomInfo) => {
+  if (isTrainerUser(socketInfo.connectionId)) {
+    saveRoomInfo(roomInfo);
+  }
 };
 
 const handleSetTrainerFullText = (socketInfo: SocketInfo, text: string) => {
