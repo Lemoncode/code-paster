@@ -13,6 +13,10 @@ jobs:
           cd front
           npm install
       - name: Build
-        run: npm run build
+        run: |
+          cd front
+          npm run build
       - name: Tests
-        run: npm test
+        run: |
+          cd front
+          npm test
