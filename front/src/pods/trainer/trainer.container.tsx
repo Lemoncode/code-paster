@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router';
-import { baseApiUrl, lineSeparator } from 'core/const';
+import { lineSeparator } from 'core/const';
 import { routes } from 'core/router/routes';
 import {
   createSocket,
@@ -10,7 +10,7 @@ import {
 } from 'core';
 import { useLog } from 'core';
 import { TrainerComponent } from './trainer.component';
-import { useWithRef } from 'common';
+import { useWithRef, getHostBaseUrl } from 'common';
 
 interface Params {
   token: string;
@@ -48,8 +48,8 @@ export const TrainerContainer = () => {
   };
 
   React.useEffect(() => {
-    setCurrentTrainerUrl(`${baseApiUrl}/#${routes.trainer(room, token)}`);
-    setCurrentStudentUrl(`${baseApiUrl}/#${routes.student(room)}`);
+    setCurrentTrainerUrl(`${getHostBaseUrl()}/#${routes.trainer(room, token)}`);
+    setCurrentStudentUrl(`${getHostBaseUrl()}/#${routes.student(room)}`);
     handleConnection();
   }, []);
 
