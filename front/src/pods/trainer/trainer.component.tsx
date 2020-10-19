@@ -5,9 +5,7 @@ import { NewTextComponent } from './components/new-text.component';
 import { SessionComponent } from './components/session.component';
 
 interface Props {
-  trainerText: string;
-  setTrainerText: (text: string) => void;
-  handleAppendTrainerText: () => void;
+  handleAppendTrainerText: (trainerText: string) => void;
   currentTrainerUrl: string;
   currentStudentUrl: string;
   log: string;
@@ -15,8 +13,6 @@ interface Props {
 
 export const TrainerComponent: React.FC<Props> = props => {
   const {
-    setTrainerText,
-    trainerText,
     handleAppendTrainerText,
     currentTrainerUrl,
     currentStudentUrl,
@@ -32,11 +28,7 @@ export const TrainerComponent: React.FC<Props> = props => {
           currentTrainerUrl={currentTrainerUrl}
           currentStudentUrl={currentStudentUrl}
         />
-        <NewTextComponent
-          setTrainerText={setTrainerText}
-          trainerText={trainerText}
-          handleAppendTrainerText={handleAppendTrainerText}
-        />
+        <NewTextComponent handleAppendTrainerText={handleAppendTrainerText} />
         <SessionComponent log={log} />
       </main>
     </>

@@ -11,3 +11,5 @@ export const SocketReceiveMessageTypes = {
   APPEND_TEXT: 'APPEND_TEXT',
   REPLACE_FULL_TEXT: 'REPLACE_FULL_TEXT',
 };
+
+export const lineSeparator = '\n\n*********************************\n';

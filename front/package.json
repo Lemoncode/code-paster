@@ -1,5 +1,5 @@
 {
-  "name": "planning-poker",
+  "name": "code-paster",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
     "test": "jest -c ./config/test/jest.js --verbose",
-    "test:watch": "npm run test -- --watchAll -i",
+    "test:watch": "npm run test -- --watchAll -i --no-cache",
     "clean": "rimraf dist",
     "prettier": "prettier {config,src}/**/*{.js,.jsx,.ts,.tsx}",
     "prettier:fix": "npm run prettier -- --fix"
@@ -47,6 +47,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/react-hooks": "^3.2.1",
+    "@testing-library/user-event": "^12.1.6",
     "@types/jest": "^24.0.23",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",

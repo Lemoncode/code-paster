@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useParams } from 'react-router';
+import { lineSeparator } from 'core/const';
 import { routes } from 'core/router/routes';
 import {
   createSocket,
@@ -9,6 +10,7 @@ import {
 } from 'core';
 import { useLog } from 'core';
 import { TrainerComponent } from './trainer.component';
+import { useWithRef } from 'common';
 
 interface Params {
   token: string;
@@ -18,8 +20,8 @@ interface Params {
 export const TrainerContainer = () => {
   const { token, room } = useParams<Params>();
   const { log, appendToLog } = useLog();
-  const [trainerText, setTrainerText] = React.useState<string>('');
-  const [socket, setSocket] = React.useState<SocketIO.Socket>(null);
+  const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(null);
+
   const [currentTrainerUrl, setCurrentTrainerUrl] = React.useState<string>('');
   const [currentStudentUrl, setCurrentStudentUrl] = React.useState<string>('');
 
@@ -33,8 +35,6 @@ export const TrainerContainer = () => {
     setSocket(localSocket);
 
     localSocket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
-      console.log(msg);
-
       if (msg.type) {
         const { type, payload } = msg;
 
@@ -55,17 +55,23 @@ export const TrainerContainer = () => {
     handleConnection();
   }, []);
 
-  const handleAppendTrainerText = (): void => {
-    socket.emit(SocketOuputMessageLiteral.MESSAGE, {
+  const appendLineSeparator = (text: string): string =>
+    `${text}${lineSeparator}`;
+
+  const sendTrainerTextToServer = (text: string): void => {
+    socketRef.current.emit(SocketOuputMessageLiteral.MESSAGE, {
       type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
-      payload: trainerText,
+      payload: text,
     });
+  };
+
+  const handleAppendTrainerText = (trainerText: string): void => {
+    const finalText = appendLineSeparator(trainerText);
+    sendTrainerTextToServer(finalText);
   };
 
   return (
     <TrainerComponent
-      trainerText={trainerText}
-      setTrainerText={setTrainerText}
       handleAppendTrainerText={handleAppendTrainerText}
       currentTrainerUrl={currentTrainerUrl}
       currentStudentUrl={currentStudentUrl}

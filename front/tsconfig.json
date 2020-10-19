@@ -18,6 +18,7 @@
       "core": ["core"],
       "scenes": ["scenes"],
       "pods": ["pods"],
+      "common": ["common"],
       "common-app": ["common-app"]
     }
   },
