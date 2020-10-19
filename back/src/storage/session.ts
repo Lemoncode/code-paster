@@ -1,6 +1,6 @@
 // This is just a demo approach, storing in memory session Info
 // Another way to identify users: https://stackoverflow.com/questions/6979992/how-to-get-session-id-of-socket-io-client-in-client
-
+//to do test
 interface ConnectSessionInfo {
   room: string;
   trainerToken: string;
