@@ -49,7 +49,7 @@ export const processOuputMessage = (socketInfo: SocketInfo, action: Action) => {
 const handleStudentSendContent = (socketInfo: SocketInfo, room: string) => {
   const content = getRoomContent(room);
 
-  socketInfo.io.in(room).emit(SocketOuputMessageLiteral.MESSAGE, {
+  socketInfo.socket.emit(SocketOuputMessageLiteral.MESSAGE, {
     type: responseType.STUDENT_GET_CONTENT,
     payload: content,
   });

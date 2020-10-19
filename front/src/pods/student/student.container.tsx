@@ -37,7 +37,7 @@ export const PlayerContainer = () => {
             appendToLog(payload);
             break;
           case SocketReceiveMessageTypes.STUDENT_GET_CONTENT:
-            if (logRef.current === '') appendToLog(payload);
+            appendToLog(payload);
             break;
         }
       }
