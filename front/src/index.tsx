@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { StylesProvider } from '@material-ui/styles';
+import { ThemeProviderComponent } from 'core/theme';
+
 import App from './app';
 
 ReactDOM.render(
   <>
-    <StylesProvider injectFirst>
+    <ThemeProviderComponent>
       <App />
-    </StylesProvider>
+    </ThemeProviderComponent>
   </>,
   document.getElementById('root')
 );
