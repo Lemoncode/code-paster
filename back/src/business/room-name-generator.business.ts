@@ -1,38 +1,5 @@
-const baseNames = [
-  'FISTRO',
-  'PECADOR',
-  'PRADERA',
-  'NOPUEDOR',
-  'JARL',
-  'REACT',
-  'CURRY',
-  'HOOKS',
-  'KETCHUP',
-  'TURING',
-  'ALAN',
-  'CHUCK',
-  'NORRIS',
-  'DELAWARE',
-  'MALAGA',
-  'PALO',
-  'VALLEY',
-  'LEMON',
-];
-
-const baseTrainerTokens = [
-  'son_goku',
-  'vegeta',
-  'bardock',
-  'king_vegeta',
-  'nappa',
-  'toma',
-  'selypar',
-  'gine',
-  'bulma',
-  'piccolo',
-  'krilin',
-  'freezer',
-];
+import { baseNames } from './baseNames';
+import { baseTrainerTokens } from './baseTrainerTokens';
 
 const generateRandomNumberRange = (min: number, max: number) => {
   return Math.floor(Math.random() * max) + min;
