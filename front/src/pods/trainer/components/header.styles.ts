@@ -4,7 +4,7 @@ const { palette, typography, spacing } = theme;
 
 export const headerContainer = css`
   width: 100%;
-  margin-bottom: 60px;
+  margin-bottom: ${spacing(60)};
 `;
 
 export const inputField = css`
