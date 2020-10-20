@@ -1,19 +1,21 @@
 import { css } from 'emotion';
+import { theme } from 'core/theme';
+const { palette, typography, spacing } = theme;
 
 export const headerContainer = css`
   width: 100%;
-  margin-bottom: 60px;
+  margin-bottom: ${spacing(60)};
 `;
 
 export const inputField = css`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: ${spacing(20)};
 `;
 
 export const label = css`
-  font-family: 'Roboto', sans-serif;
+  font-family: ${typography.fontFamily};
 `;
 
 export const inputIconContainer = css`
@@ -30,9 +32,9 @@ export const textArea = css`
 export const copyIcon = css`
   font-size: 30px;
   &:hover {
-    color: #ccc;
+    color: ${palette.primary.dark};
   }
   &:active {
-    color: red;
+    color: ${palette.secondary.main};
   }
 `;
