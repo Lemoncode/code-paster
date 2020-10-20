@@ -11,6 +11,7 @@ import {
   isExistingConnection,
   isRoomAvailable,
   addNewUser,
+  getRoomFromConnectionId,
 } from '../storage';
 import { processOuputMessage } from './output-processor';
 
@@ -47,10 +48,7 @@ export const processInputMessage = (
         action.payload
       );
       break;
-    case InputMessageTypes.TRAINER_SAVE_CONTENT:
-      handleSaveTrainerContent(socketInfo, action.payload);
-      break;
-    case InputMessageTypes.STUDENT_GET_CONTENT:
+    case InputMessageTypes.STUDENT_REQUEST_FULL_CONTENT:
       outputActionCollection = handleGetStudentContent(
         socketInfo,
         action.payload
@@ -62,13 +60,9 @@ export const processInputMessage = (
 };
 
 const handleGetStudentContent = (socketInfo: SocketInfo, room: string) => {
-  return [{ type: OutputMessageTypes.STUDENT_SEND_CONTENT, payload: room }];
-};
-
-const handleSaveTrainerContent = (socketInfo: SocketInfo, roomInfo) => {
-  if (isTrainerUser(socketInfo.connectionId)) {
-    saveRoomInfo(roomInfo);
-  }
+  return [
+    { type: OutputMessageTypes.STUDENT_SEND_FULL_CONTENT, payload: room },
+  ];
 };
 
 const handleSetTrainerFullText = (socketInfo: SocketInfo, text: string) => {
@@ -83,6 +77,10 @@ const handleTrainerAppendText = (socketInfo: SocketInfo, text: string) => {
   if (!isTrainerUser(socketInfo.connectionId)) {
     return [];
   }
+
+  const room = getRoomFromConnectionId(socketInfo.connectionId);
+  const roomInfo = { room, content: text };
+  saveRoomInfo(roomInfo);
 
   return [{ type: OutputMessageTypes.APPEND_TEXT, payload: text }];
 };

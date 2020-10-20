@@ -41,7 +41,6 @@ export const TrainerContainer = () => {
         switch (type) {
           case SocketReceiveMessageTypes.APPEND_TEXT:
             appendToLog(payload);
-            sendTrainerContentToServer();
             break;
         }
       }
@@ -67,16 +66,6 @@ export const TrainerContainer = () => {
   const handleAppendTrainerText = (trainerText: string): void => {
     const finalText = appendLineSeparator(trainerText);
     sendTrainerTextToServer(finalText);
-  };
-
-  const sendTrainerContentToServer = () => {
-    const currentLog = logRef.current;
-    const roomInfo = { room, content: currentLog };
-
-    socketRef.current.emit(SocketOuputMessageLiteral.MESSAGE, {
-      type: SocketEmitMessageTypes.TRAINER_SAVE_CONTENT,
-      payload: roomInfo,
-    });
   };
 
   return (

@@ -47,7 +47,7 @@ export const saveRoomInfo = (newRoomInfo: RoomInfo) => {
     const nextRoomCollectionSession = produce(
       roomCollectionSession,
       (draftState: RoomInfo[]) => {
-        draftState[roomIndex] = newRoomInfo;
+        draftState[roomIndex].content += '\n' + newRoomInfo.content;
       }
     );
     roomCollectionSession = nextRoomCollectionSession;
@@ -60,6 +60,8 @@ export const saveRoomInfo = (newRoomInfo: RoomInfo) => {
     );
     roomCollectionSession = nextRoomCollectionSession;
   }
+
+  console.log('roomcollectionsession', roomCollectionSession);
 };
 
 export const getRoomContent = (room: string) => {

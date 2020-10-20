@@ -36,7 +36,7 @@ export const PlayerContainer = () => {
           case SocketReceiveMessageTypes.APPEND_TEXT:
             appendToLog(payload);
             break;
-          case SocketReceiveMessageTypes.STUDENT_GET_CONTENT:
+          case SocketReceiveMessageTypes.STUDENT_GET_FULL_CONTENT:
             appendToLog(payload);
             break;
         }
@@ -46,7 +46,7 @@ export const PlayerContainer = () => {
 
   const getPreviousSessionContent = () => {
     socketRef.current.emit(SocketOuputMessageLiteral.MESSAGE, {
-      type: SocketEmitMessageTypes.STUDENT_GET_CONTENT,
+      type: SocketEmitMessageTypes.STUDENT_REQUEST_FULL_CONTENT,
       payload: room,
     });
   };

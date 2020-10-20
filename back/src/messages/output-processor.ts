@@ -41,7 +41,7 @@ export const processOuputMessage = (socketInfo: SocketInfo, action: Action) => {
       handleAppendText(socketInfo, action.payload);
     case OutputMessageTypes.REPLACE_FULL_TEXT:
       handleReplaceFullText(socketInfo, action.payload);
-    case OutputMessageTypes.STUDENT_SEND_CONTENT:
+    case OutputMessageTypes.STUDENT_SEND_FULL_CONTENT:
       handleStudentSendContent(socketInfo, action.payload);
   }
 };
@@ -50,7 +50,7 @@ const handleStudentSendContent = (socketInfo: SocketInfo, room: string) => {
   const content = getRoomContent(room);
 
   socketInfo.socket.emit(SocketOuputMessageLiteral.MESSAGE, {
-    type: responseType.STUDENT_GET_CONTENT,
+    type: responseType.STUDENT_GET_FULL_CONTENT,
     payload: content,
   });
 };
