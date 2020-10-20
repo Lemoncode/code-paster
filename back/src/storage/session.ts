@@ -39,29 +39,13 @@ export const addNewUser = (
 };
 
 export const saveRoomInfo = (newRoomInfo: RoomInfo) => {
-  const roomIndex = roomCollectionSession.findIndex(
-    (roomInfo: RoomInfo) => roomInfo.room === newRoomInfo.room
-  );
+  const roomIndex: number = getRoomIndexByName(newRoomInfo);
+  const content: string = newRoomInfo.content;
 
-  if (roomIndex !== -1) {
-    const nextRoomCollectionSession = produce(
-      roomCollectionSession,
-      (draftState: RoomInfo[]) => {
-        draftState[roomIndex].content += '\n' + newRoomInfo.content;
-      }
-    );
-    roomCollectionSession = nextRoomCollectionSession;
-  } else {
-    const nextRoomCollectionSession = produce(
-      roomCollectionSession,
-      (draftState: RoomInfo[]) => {
-        draftState.push(newRoomInfo);
-      }
-    );
-    roomCollectionSession = nextRoomCollectionSession;
-  }
-
-  console.log('roomcollectionsession', roomCollectionSession);
+  roomCollectionSession =
+    roomIndex === -1
+      ? insertRoom(newRoomInfo)
+      : updateRoomContent(roomIndex, content);
 };
 
 export const getRoomContent = (room: string) => {
@@ -89,4 +73,22 @@ export const getRoomFromConnectionId = (connectionId: string) => {
     (session) => session.connectionId === connectionId
   );
   return session ? session.room : '';
+};
+
+export const getRoomIndexByName = (newRoomInfo: RoomInfo): number => {
+  return roomCollectionSession.findIndex(
+    (roomInfo: RoomInfo) => roomInfo.room === newRoomInfo.room
+  );
+};
+
+export const updateRoomContent = (index: number, content: string) => {
+  return produce(roomCollectionSession, (draftState: RoomInfo[]) => {
+    draftState[index].content += '\n' + content;
+  });
+};
+
+export const insertRoom = (newRoomInfo: RoomInfo) => {
+  return produce(roomCollectionSession, (draftState: RoomInfo[]) => {
+    draftState.push(newRoomInfo);
+  });
 };

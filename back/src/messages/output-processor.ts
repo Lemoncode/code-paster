@@ -42,11 +42,12 @@ export const processOuputMessage = (socketInfo: SocketInfo, action: Action) => {
     case OutputMessageTypes.REPLACE_FULL_TEXT:
       handleReplaceFullText(socketInfo, action.payload);
     case OutputMessageTypes.STUDENT_SEND_FULL_CONTENT:
-      handleStudentSendContent(socketInfo, action.payload);
+      handleStudentSendContent(socketInfo);
   }
 };
 
-const handleStudentSendContent = (socketInfo: SocketInfo, room: string) => {
+const handleStudentSendContent = (socketInfo: SocketInfo) => {
+  const room = getRoomFromConnectionId(socketInfo.connectionId);
   const content = getRoomContent(room);
 
   socketInfo.socket.emit(SocketOuputMessageLiteral.MESSAGE, {

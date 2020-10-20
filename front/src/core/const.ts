@@ -9,8 +9,7 @@ export const SocketOuputMessageLiteral = {
 
 export const SocketEmitMessageTypes = {
   TRAINER_APPEND_TEXT: 'TRAINER_APPEND_TEXT', // Master creates a user story
-  TRAINER_SAVE_CONTENT: 'TRAINER_SAVE_CONTENT', // Master saves current content
-  STUDENT_REQUEST_FULL_CONTENT: 'STUDENT_REQUEST_FULL_CONTENT', // Student checks if there's previous content when first connecting
+  STUDENT_REQUEST_FULL_CONTENT: 'STUDENT_REQUEST_FULL_CONTENT', // Student checks if there's previous content when connecting
 };
 
 export const SocketReceiveMessageTypes = {

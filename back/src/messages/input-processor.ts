@@ -49,20 +49,15 @@ export const processInputMessage = (
       );
       break;
     case InputMessageTypes.STUDENT_REQUEST_FULL_CONTENT:
-      outputActionCollection = handleGetStudentContent(
-        socketInfo,
-        action.payload
-      );
+      outputActionCollection = handleRequestGetStudentContent(socketInfo);
       break;
   }
 
   return outputActionCollection;
 };
 
-const handleGetStudentContent = (socketInfo: SocketInfo, room: string) => {
-  return [
-    { type: OutputMessageTypes.STUDENT_SEND_FULL_CONTENT, payload: room },
-  ];
+const handleRequestGetStudentContent = (socketInfo: SocketInfo) => {
+  return [{ type: OutputMessageTypes.STUDENT_SEND_FULL_CONTENT }];
 };
 
 const handleSetTrainerFullText = (socketInfo: SocketInfo, text: string) => {

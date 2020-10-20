@@ -16,7 +16,7 @@ interface Params {
 
 export const PlayerContainer = () => {
   const { room } = useParams<Params>();
-  const { log, appendToLog, logRef } = useLog();
+  const { log, appendToLog, setLog } = useLog();
   const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(null);
 
   const handleConnection = () => {
@@ -37,7 +37,7 @@ export const PlayerContainer = () => {
             appendToLog(payload);
             break;
           case SocketReceiveMessageTypes.STUDENT_GET_FULL_CONTENT:
-            appendToLog(payload);
+            setLog(payload);
             break;
         }
       }
@@ -47,7 +47,6 @@ export const PlayerContainer = () => {
   const getPreviousSessionContent = () => {
     socketRef.current.emit(SocketOuputMessageLiteral.MESSAGE, {
       type: SocketEmitMessageTypes.STUDENT_REQUEST_FULL_CONTENT,
-      payload: room,
     });
   };
 
