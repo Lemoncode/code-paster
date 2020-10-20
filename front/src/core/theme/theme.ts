@@ -1,6 +1,6 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme, Theme } from '@material-ui/core/styles';
 
-export const theme = createMuiTheme({
+export const theme: Theme = createMuiTheme({
   palette: {
     primary: {
       main: '#625261',
@@ -13,13 +13,10 @@ export const theme = createMuiTheme({
       primary: '#2E2800',
       secondary: '#323300',
     },
-    divider: '#D9D900',
     background: {
       paper: '#ffffff',
       default: '#ffffff',
     },
   },
-  spacing: (n: number): string => {
-    return `${n / 16}rem`;
-  },
+  spacing: (pixel: number): string => `${pixel / 16}rem`,
 });
