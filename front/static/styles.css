@@ -1,0 +1,354 @@
+/* - - - basic - - - */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  /* custom properties */
+  --font-default: 'Roboto', sans-serif;
+  --color-bg: #ffffff;
+  --color-light: #ffffff;
+  --color-dark: #2e2800;
+  --color-primary-light: #a791a5;
+  --color-primary-main: #625261;
+  --color-primary-dark: #423842;
+  --color-secondary-light: #b8e4da;
+  --color-secondary-main: #89beb3;
+  --color-secondary-dark: #658d85;
+
+  box-sizing: border-box;
+  font-size: 62.4%;
+  font-family: var(--font-default);
+}
+
+body {
+  font-size: 1.6rem;
+  background-color: var(--color-bg);
+  color: var(--color-dark);
+  min-height: 100vh;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+/* - - - navbar - - - */
+.navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: var(--color-secondary-main);
+}
+
+.navbar--logo {
+  height: 5rem;
+  margin-right: auto;
+  fill: var(--color-primary-dark);
+}
+
+.navbar--list {
+  display: flex;
+  justify-content: space-between;
+}
+.navbar--list--item {
+  margin-right: 2rem;
+  padding: 0;
+}
+
+.navbar--list--item a {
+  padding: 0.8rem 2rem;
+  border-radius: 0.6rem;
+  background-color: var(--color-secondary-light);
+  transition: all 0.1s ease-in-out;
+  color: var(--color-primary-dark);
+  transition: all 0.1s ease-in-out;
+}
+
+.navbar--list--item:hover a {
+  background-color: var(--color-secondary-dark);
+  cursor: pointer;
+  color: var(--color-light);
+}
+
+.navbar--list--item:last-of-type a {
+  margin-right: 0;
+}
+
+/* - - - header - - - */
+.header {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+  color: var(--color-dark);
+  text-transform: uppercase;
+}
+
+.header h1 {
+  font-weight: 200;
+  width: max-content;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-secondary-main);
+}
+
+/* - - - instructions - - - */
+
+.top-container {
+  width: 70%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  margin-bottom: 10rem;
+}
+
+@media only screen and (max-width: 1150px) {
+  .top-container {
+    width: 50%;
+    flex-direction: column-reverse;
+  }
+  .instructions {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 8rem;
+  }
+}
+.instructions {
+  width: 70%;
+  margin-right: auto;
+  padding: 3rem;
+  border: 1px solid var(--color-secondary-main);
+  border-radius: 0.6rem;
+}
+@media only screen and (max-width: 1150px) {
+  .instructions {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+.instructions--title {
+  color: var(--color-primary-dark);
+}
+
+.instructions--subtitle {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--color-secondary-main);
+}
+
+.instructions--text {
+  margin-bottom: 1rem;
+}
+
+.instructions--list {
+  padding-left: 2rem;
+}
+
+/* - - - button - - - */
+.btn-container {
+  align-self: center;
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  padding: 2rem 2.5rem;
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  color: var(--color-light);
+  letter-spacing: 1px;
+  background-image: linear-gradient(
+    60deg,
+    var(--color-secondary-main),
+    var(--color-primary-main) 40%
+  );
+  background-size: 300% auto;
+  border-radius: 0.6rem;
+  border: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+  cursor: pointer;
+  background-image: linear-gradient(
+    60deg,
+    var(--color-primary-main),
+    var(--color-secondary-main) 60%
+  );
+  background-size: 200% auto;
+}
+
+/* - - - about - - - */
+.container {
+  width: 50%;
+  padding: 2rem;
+  margin: 0 auto 8rem auto;
+  background-color: #eee;
+  border-radius: 1rem;
+}
+
+.container:last-of-type {
+  margin-bottom: 8rem;
+}
+
+.container--title {
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-primary-main);
+  font-weight: 200;
+  margin-bottom: 4rem;
+}
+
+.container p,
+h3 {
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.card:last-of-type {
+  margin-bottom: 0;
+}
+
+.card--img {
+  content: '';
+  width: 10rem;
+  height: 10rem;
+  background-color: var(--color-secondary-dark);
+  border-radius: 50%;
+}
+
+.card--text {
+  width: 80%;
+}
+
+.divider {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--color-primary-dark);
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.input-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field label {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.input-field input {
+  padding: 1rem;
+  outline: none;
+  border: none;
+  margin-bottom: 3rem;
+  font-family: var(--font-default);
+}
+
+form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  margin-bottom: 3rem;
+  font-family: var(--font-default);
+  resize: none;
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: var(--color-secondary-dark);
+  outline: none;
+  border: none;
+  color: var(--color-light);
+  text-transform: uppercase;
+  padding: 1rem 0;
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+}
+
+.btn-submit:hover {
+  cursor: pointer;
+  background-color: var(--color-secondary-main);
+}
+
+/* - - - footer - - - */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 4rem 10rem;
+  background-color: var(--color-primary-main);
+}
+
+.footer--list {
+  border-left: 1px solid var(--color-light);
+  display: flex;
+  width: 13.4rem;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.footer--list--item a {
+  padding: 0.8rem 2rem;
+  border-radius: 0.6rem;
+  color: var(--color-light);
+}
+
+.footer--list--item a:hover {
+  color: var(--color-secondary-main);
+}
+
+.footer--logo-lemon-container {
+  position: relative;
+  width: 13.4rem;
+  height: 12rem;
+  border: 1px solid var(--color-light);
+  border-radius: 1rem;
+}
+
+.footer--logo-lemon-container:hover {
+  border: 1px solid var(--color-secondary-main);
+  cursor: pointer;
+}
+
+.footer--copyright {
+  align-self: flex-end;
+  color: var(--color-light);
+}
+
+.footer--logo-lemon-container:hover .footer--logo-lemon {
+  fill: var(--color-secondary-main);
+}
+
+.footer--logo-lemon {
+  position: absolute;
+  top: 0.8rem;
+  right: 1.6rem;
+  fill: var(--color-light);
+  height: 10rem;
+  width: 10rem;
+}
