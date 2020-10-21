@@ -42,11 +42,11 @@ export const processOuputMessage = (socketInfo: SocketInfo, action: Action) => {
     case OutputMessageTypes.REPLACE_FULL_TEXT:
       handleReplaceFullText(socketInfo, action.payload);
     case OutputMessageTypes.STUDENT_SEND_FULL_CONTENT:
-      handleStudentSendContent(socketInfo);
+      handleSingleStudentSendFullContent(socketInfo);
   }
 };
 
-const handleStudentSendContent = (socketInfo: SocketInfo) => {
+const handleSingleStudentSendFullContent = (socketInfo: SocketInfo) => {
   const room = getRoomFromConnectionId(socketInfo.connectionId);
   const content = getRoomContent(room);
 
@@ -56,10 +56,14 @@ const handleStudentSendContent = (socketInfo: SocketInfo) => {
   });
 };
 
+// TODO: replace with handleSingleStudentSendFullContent code
+// but instead of using socketInfo.socket.emit use
+// socketInfo.io.in(room)
 const handleReplaceFullText = (socketInfo: SocketInfo, text: string) => {
   const room = getRoomFromConnectionId(socketInfo.connectionId);
   socketInfo.io.in(room).emit(SocketOuputMessageLiteral.MESSAGE, {
-    type: responseType.REPLACE_FULL_TEXT,
+    // TODO: remove from const list REPLACE_FULL_TEXT
+    type: responseType.REPLACE_FULL_TEXT, //STUDENT_GET_FULL_CONTENT
     payload: text,
   });
 };

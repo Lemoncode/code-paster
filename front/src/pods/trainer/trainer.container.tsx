@@ -68,6 +68,18 @@ export const TrainerContainer = () => {
     sendTrainerTextToServer(finalText);
   };
 
+  // TODO:
+  // 1. Make the trainer full texta area editable
+  // 2. Add a send full text button at the bottom
+  // 3. Connect that button with this handler
+  const handleSendFullContentLog = (fullContent: string): void => {
+    // sendFullTextToServer
+    // socketRef.current.emit(SocketOutputMessageLiteral.MESSAGE, {
+    //   type: socketEmitMessageTypes.SEND_FULL_CONTENT
+    //   payload: fullContent
+    //})
+  };
+
   return (
     <TrainerComponent
       handleAppendTrainerText={handleAppendTrainerText}
