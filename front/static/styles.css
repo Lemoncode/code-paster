@@ -9,7 +9,7 @@
 
 html {
   /* custom properties */
-  --font-roboto: 'Roboto', sans-serif;
+  --font-default: 'Roboto', sans-serif;
   --color-bg: #ffffff;
   --color-light: #ffffff;
   --color-dark: #2e2800;
@@ -22,7 +22,7 @@ html {
 
   box-sizing: border-box;
   font-size: 62.4%;
-  font-family: var(--font-roboto);
+  font-family: var(--font-default);
 }
 
 body {
@@ -183,7 +183,7 @@ ul {
   text-transform: uppercase;
   color: var(--color-primary-main);
   font-weight: 200;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .container p,
@@ -193,15 +193,80 @@ h3 {
 
 .card {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.card:last-of-type {
+  margin-bottom: 0;
 }
 
 .card--img {
-  width: 8rem;
-
-  background-color: red;
-  margin-right: 2rem;
+  content: '';
+  width: 10rem;
+  height: 10rem;
+  background-color: var(--color-secondary-dark);
   border-radius: 50%;
+}
+
+.card--text {
+  width: 80%;
+}
+
+.divider {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid var(--color-primary-dark);
+  margin-bottom: 2rem;
+  padding: 0;
+}
+
+.input-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field label {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.input-field input {
+  padding: 1rem;
+  outline: none;
+  border: none;
+  margin-bottom: 3rem;
+  font-family: var(--font-default);
+}
+
+form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  outline: none;
+  margin-bottom: 3rem;
+  font-family: var(--font-default);
+  resize: none;
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: var(--color-secondary-dark);
+  outline: none;
+  border: none;
+  color: var(--color-light);
+  text-transform: uppercase;
+  padding: 1rem 0;
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+}
+
+.btn-submit:hover {
+  cursor: pointer;
+  background-color: var(--color-secondary-main);
 }
 
 /* - - - footer - - - */

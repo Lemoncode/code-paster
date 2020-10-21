@@ -175,10 +175,67 @@
             </p>
           </div>
         </div>
+        <hr class="divider" />
+        <div class="card">
+          <div class="card--img"></div>
+          <div class="card--text">
+            <h3 class="card--text--name">Jane Smith</h3>
+            <p class="card--text--description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum,
+              amet. Quisquam numquam laudantium, unde optio libero eaque
+              perspiciatis minus doloribus asperiores et consectetur inventore
+              quos cumque, reiciendis officia esse a?
+            </p>
+          </div>
+        </div>
+        <hr class="divider" />
+        <div class="card">
+          <div class="card--img"></div>
+          <div class="card--text">
+            <h3 class="card--text--name">Paul William</h3>
+            <p class="card--text--description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum,
+              amet. Quisquam numquam laudantium, unde optio libero eaque
+              perspiciatis minus doloribus asperiores et consectetur inventore
+              quos cumque, reiciendis officia esse a?
+            </p>
+          </div>
+        </div>
+        <hr class="divider" />
+        <div class="card">
+          <div class="card--img"></div>
+          <div class="card--text">
+            <h3 class="card--text--name">Alice Hook</h3>
+            <p class="card--text--description">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum,
+              amet. Quisquam numquam laudantium, unde optio libero eaque
+              perspiciatis minus doloribus asperiores et consectetur inventore
+              quos cumque, reiciendis officia esse a?
+            </p>
+          </div>
+        </div>
       </article>
 
       <article class="container" id="contact">
         <h2 class="container--title">Contact</h2>
+        <form onsubmit="event.preventDefault()">
+          <div class="input-field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Write your name" />
+          </div>
+          <div class="input-field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="Write your email" />
+          </div>
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="10"
+            placeholder="Write your message"
+          ></textarea>
+          <input type="submit" class="btn-submit" />
+        </form>
       </article>
 
       <article class="container" id="license">
@@ -300,12 +357,12 @@
     </main>
     <footer class="footer">
       <ul class="footer--list">
-        <li class="footer--list--item"><a href="about.html">About</a></li>
+        <li class="footer--list--item"><a href="#credits">Credits</a></li>
         <li class="footer--list--item">
-          <a href="about.html#contact">Contact</a>
+          <a href="#contact">Contact</a>
         </li>
         <li class="footer--list--item">
-          <a href="about.html#license">License</a>
+          <a href="#license">License</a>
         </li>
       </ul>
       <span class="footer--copyright">Created by LEMONCODE © 2020</span>
