@@ -52,7 +52,6 @@ module.exports = merge(
       new CopyPlugin({
         patterns: [
           { from: '../static/index.html', to: 'index.html' },
-          { from: '../static/about.html', to: 'about.html' },
           { from: '../static/styles.css', to: 'styles.css' },
         ],
       }),

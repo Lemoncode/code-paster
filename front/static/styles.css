@@ -9,7 +9,7 @@
 
 html {
   /* custom properties */
-  --font-roboto: "Roboto", sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
   --color-bg: #ffffff;
   --color-light: #ffffff;
   --color-dark: #2e2800;
@@ -61,10 +61,14 @@ ul {
 
 .navbar--list {
   display: flex;
+  justify-content: space-between;
+}
+.navbar--list--item {
+  margin-right: 2rem;
+  padding: 0;
 }
 
 .navbar--list--item a {
-  margin-right: 2rem;
   padding: 0.8rem 2rem;
   border-radius: 0.6rem;
   background-color: var(--color-secondary-light);
@@ -159,6 +163,45 @@ ul {
     var(--color-secondary-main) 60%
   );
   background-size: 200% auto;
+}
+
+/* - - - about - - - */
+.container {
+  width: 50%;
+  padding: 2rem;
+  margin: 0 auto 4rem auto;
+  background-color: #eee;
+  border-radius: 1rem;
+}
+
+.container:last-of-type {
+  margin-bottom: 8rem;
+}
+
+.container--title {
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--color-primary-main);
+  font-weight: 200;
+  margin-bottom: 2rem;
+}
+
+.container p,
+h3 {
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card--img {
+  width: 8rem;
+
+  background-color: red;
+  margin-right: 2rem;
+  border-radius: 50%;
 }
 
 /* - - - footer - - - */
