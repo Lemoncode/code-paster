@@ -17,5 +17,5 @@ export const createSocket = (connectionSetup: ConnectionSetup): Socket => {
   };
 
   // TODO Add channel (room)
-  return ioClient(process.env.BASE_SOCKET_URL, socketParams.options);
+  return ioClient(socketParams.url, socketParams.options);
 };
