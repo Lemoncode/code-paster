@@ -5,7 +5,11 @@ import {
   SocketOuputMessageLiteral,
 } from './consts';
 import { Action, SocketInfo } from './model';
-import { isTrainerUser, getRoomFromConnectionId } from '../storage';
+import {
+  isTrainerUser,
+  getRoomFromConnectionId,
+  getRoomContent,
+} from '../storage';
 import * as SocketIOClient from 'socket.io';
 import { ResponseBase, responseType } from './response';
 
@@ -37,7 +41,19 @@ export const processOuputMessage = (socketInfo: SocketInfo, action: Action) => {
       handleAppendText(socketInfo, action.payload);
     case OutputMessageTypes.REPLACE_FULL_TEXT:
       handleReplaceFullText(socketInfo, action.payload);
+    case OutputMessageTypes.STUDENT_SEND_FULL_CONTENT:
+      handleStudentSendContent(socketInfo);
   }
+};
+
+const handleStudentSendContent = (socketInfo: SocketInfo) => {
+  const room = getRoomFromConnectionId(socketInfo.connectionId);
+  const content = getRoomContent(room);
+
+  socketInfo.socket.emit(SocketOuputMessageLiteral.MESSAGE, {
+    type: responseType.STUDENT_GET_FULL_CONTENT,
+    payload: content,
+  });
 };
 
 const handleReplaceFullText = (socketInfo: SocketInfo, text: string) => {
@@ -65,12 +81,13 @@ const handleNotifyConnectionEstablishedTrainer = (
   socketInfo.socket.in(room).emit(SocketOuputMessageLiteral.MESSAGE, response);
 };
 
-// Right now same as trainer, this could change in the future
 const handleNotifyConnectionEstablishedStudent = (
   socketInfo: SocketInfo,
   connectionId: string
 ) => {
   const room = getRoomFromConnectionId(socketInfo.connectionId);
-  const response: ResponseBase = { type: responseType.CONNECTION_ACK };
+  const response: ResponseBase = {
+    type: responseType.CONNECTION_ACK,
+  };
   socketInfo.socket.in(room).emit(SocketOuputMessageLiteral.MESSAGE, response);
 };

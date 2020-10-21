@@ -19,7 +19,7 @@ interface Params {
 
 export const TrainerContainer = () => {
   const { token, room } = useParams<Params>();
-  const { log, appendToLog } = useLog();
+  const { log, appendToLog, logRef } = useLog();
   const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(null);
 
   const [currentTrainerUrl, setCurrentTrainerUrl] = React.useState<string>('');

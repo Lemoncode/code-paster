@@ -7,10 +7,11 @@ import {
 } from './model';
 import {
   isTrainerUser,
-  getRoomFromConnectionId,
+  saveRoomInfo,
   isExistingConnection,
   isRoomAvailable,
   addNewUser,
+  getRoomFromConnectionId,
 } from '../storage';
 import { processOuputMessage } from './output-processor';
 
@@ -47,9 +48,16 @@ export const processInputMessage = (
         action.payload
       );
       break;
+    case InputMessageTypes.STUDENT_REQUEST_FULL_CONTENT:
+      outputActionCollection = handleRequestGetStudentContent(socketInfo);
+      break;
   }
 
   return outputActionCollection;
+};
+
+const handleRequestGetStudentContent = (socketInfo: SocketInfo) => {
+  return [{ type: OutputMessageTypes.STUDENT_SEND_FULL_CONTENT }];
 };
 
 const handleSetTrainerFullText = (socketInfo: SocketInfo, text: string) => {
@@ -64,6 +72,10 @@ const handleTrainerAppendText = (socketInfo: SocketInfo, text: string) => {
   if (!isTrainerUser(socketInfo.connectionId)) {
     return [];
   }
+
+  const room = getRoomFromConnectionId(socketInfo.connectionId);
+  const roomInfo = { room, content: text };
+  saveRoomInfo(roomInfo);
 
   return [{ type: OutputMessageTypes.APPEND_TEXT, payload: text }];
 };

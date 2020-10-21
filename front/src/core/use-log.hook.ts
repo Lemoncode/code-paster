@@ -10,5 +10,10 @@ export const useLog = () => {
     logRef.current = newText;
   };
 
-  return { log, appendToLog, logRef };
+  const setLog = (content: string) => {
+    internalSetLog(content);
+    logRef.current = content;
+  };
+
+  return { log, appendToLog, logRef, setLog };
 };
