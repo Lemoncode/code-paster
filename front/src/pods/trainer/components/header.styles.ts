@@ -38,3 +38,13 @@ export const copyIcon = css`
     color: ${palette.secondary.main};
   }
 `;
+
+export const copyBtn = css`
+  background-color: ${palette.background.default};
+  border: none;
+  outline: none;
+  &:focus {
+    border: 1px solid ${palette.secondary.main};
+    border-radius: 0.2rem;
+  }
+`;

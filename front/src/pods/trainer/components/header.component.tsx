@@ -39,7 +39,14 @@ interface CopyFieldProps {
 
 export const CopyFieldComponent: React.FC<CopyFieldProps> = props => {
   const { labelName, inputId, urlLink } = props;
-  const { inputField, label, inputIconContainer, textArea, copyIcon } = classes;
+  const {
+    inputField,
+    label,
+    inputIconContainer,
+    textArea,
+    copyIcon,
+    copyBtn,
+  } = classes;
   return (
     <div className={inputField}>
       <label className={label} htmlFor={inputId}>
@@ -52,12 +59,16 @@ export const CopyFieldComponent: React.FC<CopyFieldProps> = props => {
           size="small"
           className={textArea}
           value={urlLink}
-          disabled
+          read-only
+          aria-readonly
         />
-        <FileCopyOutlinedIcon
-          className={copyIcon}
+        <button
+          aria-label={`copy ${labelName}`}
+          className={copyBtn}
           onClick={() => navigator.clipboard.writeText(urlLink)}
-        />
+        >
+          <FileCopyOutlinedIcon className={copyIcon} />
+        </button>
       </div>
     </div>
   );
