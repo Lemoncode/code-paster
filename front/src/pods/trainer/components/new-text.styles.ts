@@ -30,3 +30,22 @@ export const editTextArea = css`
 export const sendBtn = css`
   width: 100%;
 `;
+
+export const sendBtnDisabled = css`
+  color: ${palette.grey[700]};
+  background-color: ${palette.grey[300]};
+  cursor: default;
+  width: 100%;
+  opacity: 0.5;
+  box-shadow: none;
+  &:hover {
+    color: ${palette.grey[700]};
+    background-color: ${palette.grey[300]};
+    box-shadow: none;
+  }
+  &:active {
+    color: ${palette.grey[700]};
+    background-color: ${palette.grey[300]};
+    box-shadow: none;
+  }
+`;
