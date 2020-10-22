@@ -11,7 +11,13 @@ interface Props {
 export const NewTextComponent: React.FC<Props> = props => {
   const { handleAppendTrainerText } = props;
   const [trainerText, setTrainerText] = React.useState<string>('');
-  const { newTextContainer, labelTextarea, editTextArea, sendBtn } = classes;
+  const {
+    newTextContainer,
+    labelTextarea,
+    editTextArea,
+    sendBtn,
+    sendBtnDisabled,
+  } = classes;
 
   const trainerTextRef = React.useRef<string>(trainerText);
 
@@ -51,9 +57,10 @@ export const NewTextComponent: React.FC<Props> = props => {
       <Button
         variant="contained"
         color="primary"
-        className={sendBtn}
-        onClick={() => handleAppendTrainerTextInternal()}
-        disabled={!trainerText}
+        className={trainerText ? sendBtn : sendBtnDisabled}
+        onClick={() => trainerText && handleAppendTrainerTextInternal()}
+        aria-disabled={!trainerText}
+        disableRipple={!trainerText}
       >
         Send
       </Button>

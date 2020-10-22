@@ -48,8 +48,8 @@ export const TrainerContainer = () => {
   };
 
   React.useEffect(() => {
-    setCurrentTrainerUrl(`${getHostBaseUrl()}/#${routes.trainer(room, token)}`);
-    setCurrentStudentUrl(`${getHostBaseUrl()}/#${routes.student(room)}`);
+    setCurrentTrainerUrl(`${getHostBaseUrl()}#${routes.trainer(room, token)}`);
+    setCurrentStudentUrl(`${getHostBaseUrl()}#${routes.student(room)}`);
     handleConnection();
   }, []);
 
