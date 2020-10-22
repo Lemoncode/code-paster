@@ -21,3 +21,12 @@ export const studentBoard = css`
 export const labelTextarea = css`
   font-family: ${typography.fontFamily};
 `;
+
+export const sendBtn = css`
+  width: 50%;
+`;
+
+export const undoBtn = css`
+  width: 50%;
+  color: red;
+`;
