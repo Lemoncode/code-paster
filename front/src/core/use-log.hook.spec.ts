@@ -35,7 +35,7 @@ describe('use-log hook spec', () => {
 
   it('"log" & "logRef.current" should return new content when calling "setLog"', () => {
     // Arrange
-    const testResult: string = 'new-value';
+    const expectedResult: string = 'new-value';
 
     // Act
     const { result } = renderHook(() => useLog());
@@ -44,13 +44,13 @@ describe('use-log hook spec', () => {
     });
 
     // Assert
-    expect(result.current.log).toEqual<string>(testResult);
-    expect(result.current.logRef.current).toEqual<string>(testResult);
+    expect(result.current.log).toEqual<string>(expectedResult);
+    expect(result.current.logRef.current).toEqual<string>(expectedResult);
   });
 
   it('"log" & "logRef.current" should return old value when feed "setLog" with "undefined" parameter', () => {
     // Arrange
-    const testResult: string = 'old-value';
+    const expectedResult: string = 'old-value';
 
     // Act
     const { result } = renderHook(() => useLog());
@@ -64,13 +64,13 @@ describe('use-log hook spec', () => {
     });
 
     // Assert
-    expect(result.current.log).toEqual<string>(testResult);
-    expect(result.current.logRef.current).toEqual<string>(testResult);
+    expect(result.current.log).toEqual<string>(expectedResult);
+    expect(result.current.logRef.current).toEqual<string>(expectedResult);
   });
 
   it('"log" & "logRef.current" should return old value when feed "setLog" with "null" parameter', () => {
     // Arrange
-    const testResult: string = 'old-value';
+    const expectedResult: string = 'old-value';
 
     // Act
     const { result } = renderHook(() => useLog());
@@ -84,22 +84,43 @@ describe('use-log hook spec', () => {
     });
 
     // Assert
-    expect(result.current.log).toEqual<string>(testResult);
-    expect(result.current.logRef.current).toEqual<string>(testResult);
+    expect(result.current.log).toEqual<string>(expectedResult);
+    expect(result.current.logRef.current).toEqual<string>(expectedResult);
   });
 
-  xit('"log" & "logRef.current" should return old value and new value after a new line when calling "appendToLog"', () => {
+  it('"log" & "logRef.current" should return new value with one space when calling "appendToLog" for the first time', () => {
     // Arrange
-    const testResult = `New-value `;
+    const expectedResult: string = `new-value `;
 
     // Act
     const { result } = renderHook(() => useLog());
+
     act(() => {
-      result.current.appendToLog('New-value');
+      result.current.appendToLog('new-value');
     });
 
     // Assert
-    expect(result.current.log).toEqual(testResult);
-    expect(result.current.logRef.current).toEqual(testResult);
+    expect(result.current.log).toEqual<string>(expectedResult);
+    expect(result.current.logRef.current).toEqual<string>(expectedResult);
+  });
+
+  it('"log" & "logRef.current" should return log value with one space and new value with one space in a new line when calling "appendToLog" after first time', () => {
+    // Arrange
+    const expectedResult: string = `old-value \nnew-value `;
+
+    // Act
+    const { result } = renderHook(() => useLog());
+
+    act(() => {
+      result.current.appendToLog('old-value');
+    });
+
+    act(() => {
+      result.current.appendToLog('new-value');
+    });
+
+    // Assert
+    expect(result.current.log).toEqual<string>(expectedResult);
+    expect(result.current.logRef.current).toEqual<string>(expectedResult);
   });
 });
