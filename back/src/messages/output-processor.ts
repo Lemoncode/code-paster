@@ -39,19 +39,34 @@ export const processOuputMessage = (socketInfo: SocketInfo, action: Action) => {
       break;
     case OutputMessageTypes.APPEND_TEXT:
       handleAppendText(socketInfo, action.payload);
+      break;
     case OutputMessageTypes.REPLACE_FULL_TEXT:
       handleReplaceFullText(socketInfo, action.payload);
+      break;
     case OutputMessageTypes.STUDENT_SEND_FULL_CONTENT:
       handleSingleStudentSendFullContent(socketInfo);
+      break;
+    case OutputMessageTypes.TRAINER_SEND_FULL_CONTENT:
+      handleTrainerSendFullContent(socketInfo);
+      break;
+    default:
+      break;
   }
 };
 
 const handleSingleStudentSendFullContent = (socketInfo: SocketInfo) => {
+  handleSendFullContent(socketInfo, responseType.STUDENT_GET_FULL_CONTENT);
+}
+
+const handleTrainerSendFullContent = (socketInfo: SocketInfo) => {
+  handleSendFullContent(socketInfo, responseType.TRAINER_GET_FULL_CONTENT);
+}
+
+const handleSendFullContent = (socketInfo: SocketInfo, responseType: string) => {
   const room = getRoomFromConnectionId(socketInfo.connectionId);
   const content = getRoomContent(room);
-
   socketInfo.socket.emit(SocketOuputMessageLiteral.MESSAGE, {
-    type: responseType.STUDENT_GET_FULL_CONTENT,
+    type: responseType,
     payload: content,
   });
 };

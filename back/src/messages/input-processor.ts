@@ -51,6 +51,11 @@ export const processInputMessage = (
     case InputMessageTypes.STUDENT_REQUEST_FULL_CONTENT:
       outputActionCollection = handleRequestGetStudentContent(socketInfo);
       break;
+    case InputMessageTypes.TRAINER_REQUEST_FULL_CONTENT:
+      outputActionCollection = handleRequestGetTrainerContent(socketInfo);
+      break;
+    default:
+      break;
   }
 
   return outputActionCollection;
@@ -58,6 +63,10 @@ export const processInputMessage = (
 
 const handleRequestGetStudentContent = (socketInfo: SocketInfo) => {
   return [{ type: OutputMessageTypes.STUDENT_SEND_FULL_CONTENT }];
+};
+
+const handleRequestGetTrainerContent = (socketInfo: SocketInfo) => {
+  return [{ type: OutputMessageTypes.TRAINER_SEND_FULL_CONTENT }];
 };
 
 const handleSetTrainerFullText = (socketInfo: SocketInfo, text: string) => {
