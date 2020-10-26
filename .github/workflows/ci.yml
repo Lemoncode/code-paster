@@ -8,9 +8,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Install
+      - name: Install front
         run: |
           cd front
+          npm install
+      - name: Install back
+        run: |
+          cd back
           npm install
       - name: Build
         run: |
