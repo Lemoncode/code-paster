@@ -20,7 +20,7 @@ interface Params {
 
 export const TrainerContainer = () => {
   const { token, room } = useParams<Params>();
-  const { log, appendToLog, logRef } = useLog();
+  const { log, appendToLog, setLog } = useLog();
   const socketDetails = { room: room, trainertoken: token };
   const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(createSocket(socketDetails));
 
@@ -37,7 +37,7 @@ export const TrainerContainer = () => {
             appendToLog(payload);
             break;
           case SocketReceiveMessageTypes.TRAINER_GET_FULL_CONTENT:
-            appendToLog(payload);
+            setLog(payload);
             break;
           default:
             break;
