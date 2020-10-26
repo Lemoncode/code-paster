@@ -16,7 +16,11 @@ jobs:
         run: |
           cd front
           npm run build
-      - name: Tests
+      - name: Tests front
         run: |
           cd front
+          npm test
+      - name: Tests back
+        run: |
+          cd back
           npm test
