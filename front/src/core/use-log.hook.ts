@@ -6,8 +6,7 @@ export const useLog = () => {
 
   const appendToLog = (value: string) => {
     const newText = `${logRef.current}\n${value} `;
-    internalSetLog(newText);
-    logRef.current = newText;
+    setLog(newText);
   };
 
   const setLog = (content: string) => {
