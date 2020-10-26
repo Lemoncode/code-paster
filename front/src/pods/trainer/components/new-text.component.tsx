@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 interface Props {
-  handleAppendTrainerText: (trainerText: string) => void;
+  handleAppendTrainerText: (trainerText: string,) => void;
 }
 
 export const NewTextComponent: React.FC<Props> = props => {

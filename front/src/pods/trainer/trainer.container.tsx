@@ -20,7 +20,7 @@ interface Params {
 
 export const TrainerContainer = () => {
   const { token, room } = useParams<Params>();
-  const { log, appendToLog, logRef } = useLog();
+  const { log, appendToLog, setLog } = useLog();
   const socketDetails = { room: room, trainertoken: token };
   const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(createSocket(socketDetails));
 
@@ -37,7 +37,8 @@ export const TrainerContainer = () => {
             appendToLog(payload);
             break;
           case SocketReceiveMessageTypes.TRAINER_GET_FULL_CONTENT:
-            appendToLog(payload);
+          case SocketReceiveMessageTypes.UPDATE_FULL_CONTENT:
+            setLog(payload);
             break;
           default:
             break;
@@ -56,33 +57,26 @@ export const TrainerContainer = () => {
   const appendLineSeparator = (text: string): string =>
     `${text}${lineSeparator}`;
 
-  const sendTrainerTextToServer = (text: string): void => {
+  const sendTrainerTextToServer = (text: string, action:string): void => {
     socketRef.current.emit(SocketOuputMessageLiteral.MESSAGE, {
-      type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
+      type: action,
       payload: text,
     });
   };
 
   const handleAppendTrainerText = (trainerText: string): void => {
     const finalText = appendLineSeparator(trainerText);
-    sendTrainerTextToServer(finalText);
+    sendTrainerTextToServer(finalText, SocketEmitMessageTypes.TRAINER_APPEND_TEXT);
   };
 
-  // TODO:
-  // 1. Make the trainer full texta area editable
-  // 2. Add a send full text button at the bottom
-  // 3. Connect that button with this handler
   const handleSendFullContentLog = (fullContent: string): void => {
-    // sendFullTextToServer
-    // socketRef.current.emit(SocketOutputMessageLiteral.MESSAGE, {
-    //   type: socketEmitMessageTypes.SEND_FULL_CONTENT
-    //   payload: fullContent
-    //})
+    fullContent && sendTrainerTextToServer(fullContent, SocketEmitMessageTypes.TRAINER_SET_FULL_TEXT);
   };
 
   return (
     <TrainerComponent
       handleAppendTrainerText={handleAppendTrainerText}
+      handleSendFullContentLog={handleSendFullContentLog}
       currentTrainerUrl={currentTrainerUrl}
       currentStudentUrl={currentStudentUrl}
       log={log}

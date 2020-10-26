@@ -6,15 +6,23 @@ import Button from '@material-ui/core/Button';
 
 interface Props {
   log: string;
+  handleSendFullContentLog: (fullContent: string) => void;
 }
 
+const getTextArea= (elementId: string): HTMLInputElement => document.getElementById("session") as HTMLInputElement;
+
 const handleSetSessionContent = (sessionContent: string) => {
-  const sessionTextArea: HTMLInputElement = document.getElementById("session") as HTMLInputElement;
+  const sessionTextArea: HTMLInputElement = getTextArea("session");
   sessionTextArea ? sessionTextArea.value=sessionContent : undefined;
 }
 
+const getFullContent = (currenSessionContent: string) => {
+  const sessionTextArea: HTMLInputElement = getTextArea("session");
+  return (sessionTextArea && (sessionTextArea.value!=currenSessionContent)) ? sessionTextArea.value : undefined;
+}
+
 export const SessionComponent: React.FC<Props> = props => {
-  const { log } = props;
+  const { log, handleSendFullContentLog } = props;
   const { labelTextarea, studentBoard, sendBtn, undoBtn } = classes;
   
   React.useEffect(()=>{
@@ -47,10 +55,10 @@ export const SessionComponent: React.FC<Props> = props => {
         variant="contained"
         color="primary"
         className={sendBtn}
-        // onClick={() => handleAppendTrainerTextInternal()}
+        onClick={() => handleSendFullContentLog(getFullContent(log))}
         // disabled={!trainerText}
       >
-        Send
+        Send Full Content
       </Button>
     </div>
   );
