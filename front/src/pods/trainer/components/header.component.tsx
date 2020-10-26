@@ -59,7 +59,7 @@ export const CopyFieldComponent: React.FC<CopyFieldProps> = props => {
           size="small"
           className={textArea}
           value={urlLink}
-          read-only
+          read-only="true"
           aria-readonly
         />
         <button
