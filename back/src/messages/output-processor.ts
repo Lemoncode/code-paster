@@ -39,27 +39,48 @@ export const processOuputMessage = (socketInfo: SocketInfo, action: Action) => {
       break;
     case OutputMessageTypes.APPEND_TEXT:
       handleAppendText(socketInfo, action.payload);
+      break;
     case OutputMessageTypes.REPLACE_FULL_TEXT:
       handleReplaceFullText(socketInfo, action.payload);
+      break;
     case OutputMessageTypes.STUDENT_SEND_FULL_CONTENT:
-      handleStudentSendContent(socketInfo);
+      handleSingleStudentSendFullContent(socketInfo);
+      break;
+    case OutputMessageTypes.TRAINER_SEND_FULL_CONTENT:
+      handleTrainerSendFullContent(socketInfo);
+      break;
+    default:
+      break;
   }
 };
 
-const handleStudentSendContent = (socketInfo: SocketInfo) => {
+const handleSingleStudentSendFullContent = (socketInfo: SocketInfo) => {
+  handleSendFullContent(socketInfo, responseType.STUDENT_GET_FULL_CONTENT);
+}
+
+const handleTrainerSendFullContent = (socketInfo: SocketInfo) => {
+  handleSendFullContent(socketInfo, responseType.TRAINER_GET_FULL_CONTENT);
+}
+
+const handleSendFullContent = (socketInfo: SocketInfo, responseType: string) => {
   const room = getRoomFromConnectionId(socketInfo.connectionId);
   const content = getRoomContent(room);
-
   socketInfo.socket.emit(SocketOuputMessageLiteral.MESSAGE, {
-    type: responseType.STUDENT_GET_FULL_CONTENT,
+    type: responseType,
     payload: content,
   });
 };
 
+
+
+// TODO: replace with handleSingleStudentSendFullContent code
+// but instead of using socketInfo.socket.emit use
+// socketInfo.io.in(room)
 const handleReplaceFullText = (socketInfo: SocketInfo, text: string) => {
   const room = getRoomFromConnectionId(socketInfo.connectionId);
   socketInfo.io.in(room).emit(SocketOuputMessageLiteral.MESSAGE, {
-    type: responseType.REPLACE_FULL_TEXT,
+    // TODO: remove from const list REPLACE_FULL_TEXT
+    type: responseType.REPLACE_FULL_TEXT, //STUDENT_GET_FULL_CONTENT
     payload: text,
   });
 };

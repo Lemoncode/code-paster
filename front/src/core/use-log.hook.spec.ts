@@ -123,4 +123,30 @@ describe('use-log hook spec', () => {
     expect(result.current.log).toEqual<string>(expectedResult);
     expect(result.current.logRef.current).toEqual<string>(expectedResult);
   });
+
+  it('"log" & "logRef.current" should return the same text after calling "setLog" with that text', () => {
+    // Arrange
+    const sessionLog: string = `first line
+
+    *********************************
+     
+    second line
+    
+    *********************************
+     
+    third line
+    
+    *********************************`;
+
+    // Act
+    const { result } = renderHook(() => useLog());
+
+    act(() => {
+      result.current.setLog(sessionLog);
+    });
+
+    // Assert
+    expect(result.current.log).toEqual<string>(sessionLog);
+    expect(result.current.logRef.current).toEqual<string>(sessionLog);
+  });
 });

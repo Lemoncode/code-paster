@@ -11,6 +11,7 @@ import {
 import { useLog } from 'core';
 import { TrainerComponent } from './trainer.component';
 import { useWithRef, getHostBaseUrl } from 'common';
+import { getPreviousSessionContent } from 'common-app';
 
 interface Params {
   token: string;
@@ -19,28 +20,26 @@ interface Params {
 
 export const TrainerContainer = () => {
   const { token, room } = useParams<Params>();
-  const { log, appendToLog, logRef } = useLog();
-  const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(null);
+  const { log, appendToLog, setLog } = useLog();
+  const socketDetails = { room: room, trainertoken: token };
+  const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(createSocket(socketDetails));
 
   const [currentTrainerUrl, setCurrentTrainerUrl] = React.useState<string>('');
   const [currentStudentUrl, setCurrentStudentUrl] = React.useState<string>('');
 
   const handleConnection = () => {
-    // Connect to socket
-    const localSocket = createSocket({
-      room: room,
-      trainertoken: token,
-    });
-
-    setSocket(localSocket);
-
-    localSocket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
+    socket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
       if (msg.type) {
         const { type, payload } = msg;
 
         switch (type) {
           case SocketReceiveMessageTypes.APPEND_TEXT:
             appendToLog(payload);
+            break;
+          case SocketReceiveMessageTypes.TRAINER_GET_FULL_CONTENT:
+            setLog(payload);
+            break;
+          default:
             break;
         }
       }
@@ -51,6 +50,7 @@ export const TrainerContainer = () => {
     setCurrentTrainerUrl(`${getHostBaseUrl()}#${routes.trainer(room, token)}`);
     setCurrentStudentUrl(`${getHostBaseUrl()}#${routes.student(room)}`);
     handleConnection();
+    getPreviousSessionContent(socketRef, SocketEmitMessageTypes.TRAINER_REQUEST_FULL_CONTENT);
   }, []);
 
   const appendLineSeparator = (text: string): string =>

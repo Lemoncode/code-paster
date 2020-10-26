@@ -8,8 +8,7 @@ export const useLog = () => {
     const newText = logRef.current
       ? `${logRef.current}\n${value} `
       : `${value} `;
-    internalSetLog(newText);
-    logRef.current = newText;
+    setLog(newText);
   };
 
   const setLog = (content: string) => {

@@ -9,6 +9,7 @@ import {
 import { useLog } from 'core';
 import { StudentComponent } from './student.component';
 import { useWithRef } from 'common';
+import { getPreviousSessionContent } from 'common-app';
 
 interface Params {
   room: string;
@@ -44,15 +45,9 @@ export const PlayerContainer = () => {
     });
   };
 
-  const getPreviousSessionContent = () => {
-    socketRef.current.emit(SocketOuputMessageLiteral.MESSAGE, {
-      type: SocketEmitMessageTypes.STUDENT_REQUEST_FULL_CONTENT,
-    });
-  };
-
   React.useEffect(() => {
     handleConnection();
-    getPreviousSessionContent();
+    getPreviousSessionContent(socketRef, SocketEmitMessageTypes.STUDENT_REQUEST_FULL_CONTENT);
   }, []);
 
   return (
