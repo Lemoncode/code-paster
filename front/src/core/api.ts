@@ -1,5 +1,6 @@
 import * as ioClient from 'socket.io-client';
 import { Socket } from 'socket.io';
+import { baseSocketUrl } from './const';
 
 export interface ConnectionSetup {
   room: string;
@@ -9,7 +10,7 @@ export interface ConnectionSetup {
 export const createSocket = (connectionSetup: ConnectionSetup): Socket => {
   const { room, trainertoken } = connectionSetup;
   const socketParams = {
-    url: process.env.BASE_SOCKET_URL,
+    url: baseSocketUrl,
     options: {
       query: { room, trainertoken },
       timeout: 60000,

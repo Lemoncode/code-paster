@@ -1,3 +1,6 @@
+export const baseApiUrl = process.env.BASE_API_URL;
+export const baseSocketUrl = process.env.BASE_SOCKET_URL;
+
 export const SocketOuputMessageLiteral = {
   MESSAGE: 'message',
 };
