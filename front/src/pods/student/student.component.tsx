@@ -11,21 +11,10 @@ interface Props {
 
 export const StudentComponent: React.FC<Props> = props => {
   const { room, log } = props;
-  const {
-    mainContainer,
-    title,
-    sessionName,
-    studentBoard,
-    labelTextarea,
-  } = classes;
+  const { mainContainer, sessionName, studentBoard, labelTextarea } = classes;
 
   return (
     <>
-      <header>
-        <Typography className={title} variant="h1">
-          Student page
-        </Typography>
-      </header>
       <main className={mainContainer}>
         <Typography className={sessionName} variant="body1">
           Session name: {room}

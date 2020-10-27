@@ -20,15 +20,10 @@ export const TrainerComponent: React.FC<Props> = props => {
     log,
   } = props;
 
-  const { mainContainer, title } = classes;
+  const { mainContainer } = classes;
 
   return (
     <>
-      <header>
-        <Typography className={title} variant="h1">
-          Trainer page
-        </Typography>
-      </header>
       <main className={mainContainer}>
         <HeaderComponent
           currentTrainerUrl={currentTrainerUrl}
