@@ -3,6 +3,7 @@ import * as classes from './trainer.styles';
 import { HeaderComponent } from './components/header.component';
 import { NewTextComponent } from './components/new-text.component';
 import { SessionComponent } from './components/session.component';
+import Typography from '@material-ui/core/Typography';
 
 interface Props {
   handleAppendTrainerText: (trainerText: string) => void;
@@ -19,15 +20,21 @@ export const TrainerComponent: React.FC<Props> = props => {
     log,
   } = props;
 
-  const { mainContainer } = classes;
+  const { mainContainer, title } = classes;
 
   return (
     <>
+      <header>
+        <Typography className={title} variant="h1">
+          Trainer page
+        </Typography>
+      </header>
       <main className={mainContainer}>
         <HeaderComponent
           currentTrainerUrl={currentTrainerUrl}
           currentStudentUrl={currentStudentUrl}
         />
+
         <NewTextComponent handleAppendTrainerText={handleAppendTrainerText} />
         <SessionComponent log={log} />
       </main>

@@ -7,6 +7,13 @@ export const mainContainer = css`
   margin: ${spacing(40)} auto 0 auto;
 `;
 
+export const title = css`
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+`;
+
 export const studentBoard = css`
   box-sizing: border-box;
   width: 100%;
