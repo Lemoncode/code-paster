@@ -22,6 +22,8 @@ export const SessionComponent: React.FC<Props> = props => {
         rowsMin={20}
         className={studentBoard}
         value={log}
+        read-only="true"
+        aria-readonly
       />
     </div>
   );

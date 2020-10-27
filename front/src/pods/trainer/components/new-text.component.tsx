@@ -44,26 +44,28 @@ export const NewTextComponent: React.FC<Props> = props => {
 
   return (
     <div className={newTextContainer}>
-      <label className={labelTextarea} htmlFor="new-text">
-        New text
-      </label>
-      <TextareaAutosize
-        rowsMax={10}
-        rowsMin={10}
-        className={editTextArea}
-        onChange={e => handleOnChange(e)}
-        value={trainerText}
-      />
-      <Button
-        variant="contained"
-        color="primary"
-        className={trainerText ? sendBtn : sendBtnDisabled}
-        onClick={() => trainerText && handleAppendTrainerTextInternal()}
-        aria-disabled={!trainerText}
-        disableRipple={!trainerText}
-      >
-        Send
-      </Button>
+      <form>
+        <label className={labelTextarea} htmlFor="new-text">
+          New text
+        </label>
+        <TextareaAutosize
+          rowsMax={10}
+          rowsMin={10}
+          className={editTextArea}
+          onChange={e => handleOnChange(e)}
+          value={trainerText}
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          className={trainerText ? sendBtn : sendBtnDisabled}
+          onClick={() => trainerText && handleAppendTrainerTextInternal()}
+          aria-disabled={!trainerText}
+          disableRipple={!trainerText}
+        >
+          Send
+        </Button>
+      </form>
     </div>
   );
 };
