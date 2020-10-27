@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { AppLayout } from 'layout';
 import { PlayerContainer } from 'pods/student';
 
 export const StudentScene = () => {
@@ -6,5 +7,9 @@ export const StudentScene = () => {
     document.title = `Student - Code Paster`;
   }, []);
 
-  return <PlayerContainer />;
+  return (
+    <AppLayout>
+      <PlayerContainer />
+    </AppLayout>
+  );
 };
