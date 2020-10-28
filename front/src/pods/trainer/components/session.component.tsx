@@ -9,23 +9,26 @@ interface Props {
   handleSendFullContentLog: (fullContent: string) => void;
 }
 
-const getTextArea= (elementId: string): HTMLInputElement => document.getElementById("session") as HTMLInputElement;
+const getTextArea = (elementId: string): HTMLInputElement =>
+  document.getElementById('session') as HTMLInputElement;
 
 const handleSetSessionContent = (sessionContent: string) => {
-  const sessionTextArea: HTMLInputElement = getTextArea("session");
-  sessionTextArea ? sessionTextArea.value=sessionContent : undefined;
-}
+  const sessionTextArea: HTMLInputElement = getTextArea('session');
+  sessionTextArea ? (sessionTextArea.value = sessionContent) : undefined;
+};
 
 const getFullContent = (currenSessionContent: string) => {
-  const sessionTextArea: HTMLInputElement = getTextArea("session");
-  return (sessionTextArea && (sessionTextArea.value!=currenSessionContent)) ? sessionTextArea.value : undefined;
-}
+  const sessionTextArea: HTMLInputElement = getTextArea('session');
+  return sessionTextArea && sessionTextArea.value != currenSessionContent
+    ? sessionTextArea.value
+    : undefined;
+};
 
 export const SessionComponent: React.FC<Props> = props => {
   const { log, handleSendFullContentLog } = props;
   const { labelTextarea, studentBoard, sendBtn, undoBtn } = classes;
-  
-  React.useEffect(()=>{
+
+  React.useEffect(() => {
     handleSetSessionContent(log);
   }, [log]);
 
@@ -39,7 +42,6 @@ export const SessionComponent: React.FC<Props> = props => {
         rowsMax={20}
         rowsMin={20}
         className={studentBoard}
-        disabled={false}
       />
       <Button
         variant="contained"

@@ -14,20 +14,22 @@ export const StudentComponent: React.FC<Props> = props => {
   const { mainContainer, sessionName, studentBoard, labelTextarea } = classes;
 
   return (
-    <div className={mainContainer}>
-      <Typography className={sessionName} variant="body1">
-        Session name: {room}
-      </Typography>
-      <label className={labelTextarea} htmlFor="session">
-        Content
-      </label>
-      <TextareaAutosize
-        id="session"
-        rowsMax={40}
-        rowsMin={40}
-        className={studentBoard}
-        value={log}
-      />
-    </div>
+    <>
+      <main className={mainContainer}>
+        <Typography className={sessionName} variant="body1">
+          Session name: {room}
+        </Typography>
+        <label className={labelTextarea} htmlFor="session">
+          Content
+        </label>
+        <TextareaAutosize
+          id="session"
+          rowsMax={40}
+          rowsMin={40}
+          className={studentBoard}
+          value={log}
+        />
+      </main>
+    </>
   );
 };

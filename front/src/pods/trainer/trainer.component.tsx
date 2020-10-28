@@ -30,6 +30,7 @@ export const TrainerComponent: React.FC<Props> = props => {
           currentTrainerUrl={currentTrainerUrl}
           currentStudentUrl={currentStudentUrl}
         />
+
         <NewTextComponent handleAppendTrainerText={handleAppendTrainerText} />
         <SessionComponent log={log} handleSendFullContentLog={handleSendFullContentLog}/>
       </main>
