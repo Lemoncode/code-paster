@@ -29,6 +29,7 @@ export const AppbarComponent: React.FC = () => {
   );
 };
 
+// TODO refactor logo svg
 export const Logo: React.FC = () => {
   const { logo } = classes;
   return (

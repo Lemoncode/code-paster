@@ -71,7 +71,7 @@ export const FooterComponent: React.FC = () => {
   );
 };
 
-// Github logo svg - - - - -
+// TODO refactor Github logo svg
 interface Props {
   className: string;
 }
@@ -83,7 +83,7 @@ export const GithubIcon: React.FC<Props> = ({ className }) => {
   );
 };
 
-// Lemoncode logo svg - - - - -
+// TODO refactor Lemoncode logo svg
 export const LemoncodeIcon: React.FC<Props> = ({ className }) => {
   return (
     <svg
