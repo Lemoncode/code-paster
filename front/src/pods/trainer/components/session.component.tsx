@@ -40,14 +40,12 @@ export const SessionComponent: React.FC<Props> = props => {
         rowsMin={20}
         className={studentBoard}
         disabled={false}
-        // onChange={(e)=>modifyLog="adiso"}
       />
       <Button
         variant="contained"
         color="secondary"
         className={undoBtn}
         onClick={() => handleSetSessionContent(log)}
-        // disabled={!trainerText}
       >
         Undo
       </Button>
@@ -56,7 +54,6 @@ export const SessionComponent: React.FC<Props> = props => {
         color="primary"
         className={sendBtn}
         onClick={() => handleSendFullContentLog(getFullContent(log))}
-        // disabled={!trainerText}
       >
         Send Full Content
       </Button>
