@@ -37,6 +37,7 @@ export const TrainerContainer = () => {
             appendToLog(payload);
             break;
           case SocketReceiveMessageTypes.TRAINER_GET_FULL_CONTENT:
+          case SocketReceiveMessageTypes.UPDATE_FULL_CONTENT:
             setLog(payload);
             break;
           default:
@@ -56,21 +57,26 @@ export const TrainerContainer = () => {
   const appendLineSeparator = (text: string): string =>
     `${text}${lineSeparator}`;
 
-  const sendTrainerTextToServer = (text: string): void => {
+  const sendTrainerTextToServer = (text: string, action:string): void => {
     socketRef.current.emit(SocketOuputMessageLiteral.MESSAGE, {
-      type: SocketEmitMessageTypes.TRAINER_APPEND_TEXT,
+      type: action,
       payload: text,
     });
   };
 
   const handleAppendTrainerText = (trainerText: string): void => {
     const finalText = appendLineSeparator(trainerText);
-    sendTrainerTextToServer(finalText);
+    sendTrainerTextToServer(finalText, SocketEmitMessageTypes.TRAINER_APPEND_TEXT);
+  };
+
+  const handleSendFullContentLog = (fullContent: string): void => {
+    fullContent && sendTrainerTextToServer(fullContent, SocketEmitMessageTypes.TRAINER_SET_FULL_TEXT);
   };
 
   return (
     <TrainerComponent
       handleAppendTrainerText={handleAppendTrainerText}
+      handleSendFullContentLog={handleSendFullContentLog}
       currentTrainerUrl={currentTrainerUrl}
       currentStudentUrl={currentStudentUrl}
       log={log}

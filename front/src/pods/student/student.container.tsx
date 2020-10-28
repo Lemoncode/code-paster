@@ -38,7 +38,10 @@ export const PlayerContainer = () => {
             appendToLog(payload);
             break;
           case SocketReceiveMessageTypes.STUDENT_GET_FULL_CONTENT:
+          case SocketReceiveMessageTypes.UPDATE_FULL_CONTENT:
             setLog(payload);
+            break;
+          default:
             break;
         }
       }

@@ -1,6 +1,7 @@
 // This is just a demo approach, storing in memory session Info
 // Another way to identify users: https://stackoverflow.com/questions/6979992/how-to-get-session-id-of-socket-io-client-in-client
 import produce from 'immer';
+import { InputMessageTypes } from '../messages';
 
 interface ConnectSessionInfo {
   room: string;
@@ -38,14 +39,13 @@ export const addNewUser = (
   ];
 };
 
-export const saveRoomInfo = (newRoomInfo: RoomInfo) => {
+export const saveRoomInfo = (newRoomInfo: RoomInfo, action: string) => {
   const roomIndex: number = getRoomIndexByName(newRoomInfo);
   const content: string = newRoomInfo.content;
-
   roomCollectionSession =
     roomIndex === -1
       ? insertRoom(newRoomInfo)
-      : updateRoomContent(roomIndex, content);
+      : updateRoomContent(roomIndex, content, action);
 };
 
 export const getRoomContent = (room: string) => {
@@ -81,9 +81,16 @@ export const getRoomIndexByName = (newRoomInfo: RoomInfo): number => {
   );
 };
 
-export const updateRoomContent = (index: number, content: string) => {
+export const updateRoomContent = (index: number, content: string, action:string) => {
   return produce(roomCollectionSession, (draftState: RoomInfo[]) => {
-    draftState[index].content += '\n' + content;
+    switch (action) {
+      case InputMessageTypes.TRAINER_APPEND_TEXT:
+        draftState[index].content += '\n' + content;
+        break;
+      case InputMessageTypes.TRAINER_SET_FULL_TEXT:
+        draftState[index].content = content;
+        break;
+    };
   });
 };
 

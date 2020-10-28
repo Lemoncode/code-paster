@@ -15,10 +15,7 @@ import {
 } from '../storage';
 import { processOuputMessage } from './output-processor';
 
-export const processInputMessage = (
-  socketInfo: SocketInfo,
-  action: Action
-): Action[] => {
+export const processInputMessage = (socketInfo: SocketInfo, action: Action): Action[] => {
   let outputActionCollection: Action[] = [];
   switch (action.type) {
     case InputMessageTypes.ESTABLISH_CONNECTION_TRAINER:
@@ -37,15 +34,17 @@ export const processInputMessage = (
       );
       break;
     case InputMessageTypes.TRAINER_APPEND_TEXT:
-      outputActionCollection = handleTrainerAppendText(
+      outputActionCollection = handleTrainerSendText(
         socketInfo,
-        action.payload
+        action.payload,
+        InputMessageTypes.TRAINER_APPEND_TEXT
       );
       break;
     case InputMessageTypes.TRAINER_SET_FULL_TEXT:
-      outputActionCollection = handleSetTrainerFullText(
+      outputActionCollection = handleTrainerSendText(
         socketInfo,
-        action.payload
+        action.payload,
+        InputMessageTypes.TRAINER_SET_FULL_TEXT
       );
       break;
     case InputMessageTypes.STUDENT_REQUEST_FULL_CONTENT:
@@ -69,24 +68,21 @@ const handleRequestGetTrainerContent = (socketInfo: SocketInfo) => {
   return [{ type: OutputMessageTypes.TRAINER_SEND_FULL_CONTENT }];
 };
 
-const handleSetTrainerFullText = (socketInfo: SocketInfo, text: string) => {
+const handleTrainerSendText = (socketInfo: SocketInfo, text: string, action: string) => {
   if (!isTrainerUser(socketInfo.connectionId)) {
     return [];
   }
-
-  return [{ type: OutputMessageTypes.REPLACE_FULL_TEXT, payload: text }];
-};
-
-const handleTrainerAppendText = (socketInfo: SocketInfo, text: string) => {
-  if (!isTrainerUser(socketInfo.connectionId)) {
-    return [];
-  }
-
   const room = getRoomFromConnectionId(socketInfo.connectionId);
   const roomInfo = { room, content: text };
-  saveRoomInfo(roomInfo);
-
-  return [{ type: OutputMessageTypes.APPEND_TEXT, payload: text }];
+  saveRoomInfo(roomInfo, action);
+  switch(action){
+    case InputMessageTypes.TRAINER_APPEND_TEXT:
+      return [{ type: OutputMessageTypes.APPEND_TEXT, payload: text }];
+    case InputMessageTypes.TRAINER_SET_FULL_TEXT:
+      return [{ type: OutputMessageTypes.UPDATE_FULL_CONTENT}];
+    default:
+      return [];
+  };
 };
 
 const handleEstablishConnectionStudent = (
