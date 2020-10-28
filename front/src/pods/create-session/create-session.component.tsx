@@ -1,7 +1,6 @@
 import React from 'react';
 import * as classes from './create-session.styles';
 // Material UI ~ components
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
 
@@ -24,7 +23,7 @@ export const CreateSessionComponent: React.FunctionComponent<Props> = props => {
       <main className={mainContainer}>
         <div className={buttonContainer}>
           <Typography variant="body1" className={descriptionText}>
-            The best tool for sharing code with anyone!
+            The best tool for sharing code with your students!
           </Typography>
           <button
             onClick={() => handleCreateSession()}

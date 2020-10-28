@@ -3,7 +3,6 @@ import { theme } from 'core/theme';
 const { spacing } = theme;
 
 export const mainContainer = css`
-  background-color: white;
   position: relative;
   margin: 0;
   padding: 0;
@@ -31,18 +30,18 @@ export const descriptionText = css`
 export const createSessionBtn = css`
   display: flex;
   align-items: center;
-  color: #2098d1;
+  color: rgb(255, 87, 51);
   padding: ${spacing(20)} ${spacing(30)};
   text-transform: capitalize;
   margin-top: 2rem;
   font-size: 1.4rem;
   font-weight: 400;
-  background: linear-gradient(to right, #2098d1, #2098d1);
+  background: linear-gradient(to right, rgb(255, 87, 51), rgb(255, 87, 51));
   background-repeat: no-repeat;
   background-size: 0 100%;
   transition: all 0.4s 0s;
-  border: 2px solid #2098d1;
-  border-radius: 1rem;
+  border: 2px solid rgb(255, 87, 51);
+
   &:hover {
     cursor: pointer;
     background-size: 100% 100%;
