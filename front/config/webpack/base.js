@@ -10,6 +10,7 @@ module.exports = merge(
     resolve: {
       alias: {
         layout: helpers.resolveFromRootPath('src/layout'),
+        assets: helpers.resolveFromRootPath('src/assets'),
         core: helpers.resolveFromRootPath('src/core'),
         scenes: helpers.resolveFromRootPath('src/scenes'),
         pods: helpers.resolveFromRootPath('src/pods'),

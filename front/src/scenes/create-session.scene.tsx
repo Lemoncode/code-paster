@@ -1,4 +1,5 @@
 import React from 'react';
+import { AppLayout } from 'layout';
 import { CreateSessionContainer } from 'pods/create-session';
 
 export const CreateSessionScene: React.FC = () => {
@@ -6,5 +7,9 @@ export const CreateSessionScene: React.FC = () => {
     document.title = `Create New Session - Code Paster`;
   }, []);
 
-  return <CreateSessionContainer />;
+  return (
+    <AppLayout>
+      <CreateSessionContainer />
+    </AppLayout>
+  );
 };

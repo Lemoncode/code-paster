@@ -1,11 +1,15 @@
 import React from 'react';
-import { CreateSessionContainer } from 'pods/create-session';
 import { TrainerContainer } from 'pods/trainer';
+import { AppLayout } from 'layout';
 
 export const TrainerScene: React.FC = () => {
   React.useEffect(() => {
     document.title = `Trainer - Code Paster`;
   }, []);
 
-  return <TrainerContainer />;
+  return (
+    <AppLayout>
+      <TrainerContainer />
+    </AppLayout>
+  );
 };
