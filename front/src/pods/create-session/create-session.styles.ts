@@ -1,28 +1,34 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
 import background from 'assets/bg-create-session.png';
-const { spacing } = theme;
+const { spacing, breakpoints } = theme;
 
 export const mainContainer = css`
   position: relative;
   background-image: url(${background});
   background-repeat: no-repeat;
   background-position: right bottom;
+  display: flex;
+  align-items: center;
   margin: 0;
   padding: 0;
   width: 100%;
   height: calc(100vh - ${spacing(80)});
+  @media screen and (max-width: ${breakpoints.values.md}px) {
+    background-image: none;
+  }
 `;
 
 export const buttonContainer = css`
   width: 25rem;
-  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-left: 15%;
-  top: 50%;
-  transform: translateY(-50%);
+  @media screen and (max-width: ${breakpoints.values.md}px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const descriptionText = css`
