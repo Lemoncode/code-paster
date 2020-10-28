@@ -91,7 +91,7 @@ export const LemoncodeIcon: React.FC<Props> = ({ className }) => {
       x="0px"
       y="0px"
       viewBox="0 0 354 323"
-      enable-background="new 0 0 354 323"
+      enableBackground="new 0 0 354 323"
     >
       <g>
         <g>
@@ -110,30 +110,30 @@ export const LemoncodeIcon: React.FC<Props> = ({ className }) => {
         </g>
         <g>
           <polygon
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             fill="#D9D900"
             points="10.45,164.31 0,164.31 0,234.69 44.34,234.69 
                       44.34,224.08 10.45,224.08 		"
           />
           <polygon
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             fill="#D9D900"
             points="71.22,204.1 103.86,204.1 103.86,193.88 71.22,193.88 
                       71.22,174.18 104.58,174.18 104.58,163.63 60.72,163.63 60.72,234.69 104.68,234.69 104.68,224.08 71.22,224.08 		"
           />
           <polygon
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             fill="#D9D900"
             points="133.98,184.71 153.13,211.64 159.11,211.64 
                       177.97,184.71 177.97,233.53 188.27,233.53 188.27,164.1 180.03,164.1 156.17,197.88 132.02,164.1 123.53,164.1 123.53,233.53 
                       133.98,233.53 		"
           />
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             fill="#D9D900"
             d="M206.79,199.3c0,10.26,4.22,19.49,10.71,26.24
                       c6.56,6.88,15.74,11.05,25.73,11.05c10.14,0,19.31-4.17,26-11.05c6.48-6.75,10.7-15.98,10.7-26.24c0-10.26-4.22-19.49-10.7-26.25
@@ -143,8 +143,8 @@ export const LemoncodeIcon: React.FC<Props> = ({ className }) => {
                       C266.45,185.3,269.43,191.84,269.43,199.3z"
           />
           <polygon
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             fill="#D9D900"
             points="310.97,233.63 310.97,185.27 345.76,233.63 354,233.63 
                       354,164.31 343.71,164.31 343.71,213.16 308.6,164.31 300.57,164.21 300.57,233.63 		"
@@ -152,8 +152,8 @@ export const LemoncodeIcon: React.FC<Props> = ({ className }) => {
         </g>
         <g>
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M22.99,285.66c0,10.12,4.12,19.3,10.3,25.98
                       c6.28,6.67,15.13,10.84,24.91,10.84c16.78,0,29.96-11.26,34.08-27.84H82.09c-3.71,11.05-12.98,17.42-23.89,17.42
                       c-6.9,0-13.18-3.03-17.71-7.83c-4.52-4.8-7.41-11.26-7.41-18.57c0-7.51,2.89-13.97,7.41-18.77c4.53-4.8,10.81-7.83,17.71-7.83
@@ -161,8 +161,8 @@ export const LemoncodeIcon: React.FC<Props> = ({ className }) => {
                       C27.11,266.16,22.99,275.34,22.99,285.66z"
           />
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M112.6,285.71c0,10.26,4.22,19.49,10.71,26.24
                       c6.56,6.88,15.73,11.05,25.73,11.05c10.14,0,19.31-4.17,26-11.05c6.48-6.75,10.7-15.98,10.7-26.24c0-10.26-4.22-19.49-10.7-26.25
                       c-6.69-6.78-15.86-11.01-26-11.01c-10,0-19.17,4.23-25.73,11.01C116.82,266.22,112.6,275.45,112.6,285.71z M175.24,285.71
@@ -171,22 +171,22 @@ export const LemoncodeIcon: React.FC<Props> = ({ className }) => {
                       z"
           />
           <path
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             d="M208.34,250.04v71.72h25.22c23.24,0,35.08-17.74,35.08-35.59
                       s-11.84-36.13-35.08-36.13H208.34z M218.74,311.46v-50.87h14.82c16.34,0,24.78,12.93,24.78,25.58c0,12.64-8.44,25.29-24.78,25.29
                       H218.74z"
           />
           <polygon
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            fillRule="evenodd"
+            clipRule="evenodd"
             points="300.26,290.51 332.9,290.51 332.9,280.29 300.26,280.29 
                       300.26,260.59 333.62,260.59 333.62,250.04 289.76,250.04 289.76,321.1 333.72,321.1 333.72,310.49 300.26,310.49 		"
           />
         </g>
         <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
+          fillRule="evenodd"
+          clipRule="evenodd"
           fill="#D9D900"
           d="M202.21,78.18c-5.66-1.54-11.83-2.57-17.5-4.11
                   c-0.51,0.51-0.51-0.52-0.51,1.03c0,1.02,16.98,22.11,25.73,32.4c0.52,1.03,2.06,1.54,3.09,1.54c4.12,0,15.96-15.94,15.96-19.03

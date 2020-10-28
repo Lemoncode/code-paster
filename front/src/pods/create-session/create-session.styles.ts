@@ -1,9 +1,13 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
+import background from 'assets/bg-create-session.png';
 const { spacing } = theme;
 
 export const mainContainer = css`
   position: relative;
+  background-image: url(${background});
+  background-repeat: no-repeat;
+  background-position: right bottom;
   margin: 0;
   padding: 0;
   width: 100%;
