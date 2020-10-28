@@ -12,6 +12,7 @@ export const footerContainer = css`
 `;
 
 export const topContainer = css`
+  padding: 0 1rem;
   display: flex;
   justify-content: space-between;
   height: ${spacing(195)};
