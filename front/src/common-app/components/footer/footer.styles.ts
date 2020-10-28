@@ -25,10 +25,6 @@ export const linkList = css`
   list-style: none;
 `;
 
-export const linkListItem = css`
-  margin-bottom: 1rem;
-`;
-
 export const link = css`
   font-size: 1.1rem;
   color: #eee;

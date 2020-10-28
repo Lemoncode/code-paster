@@ -9,7 +9,6 @@ export const FooterComponent: React.FC = () => {
     footerContainer,
     topContainer,
     linkList,
-    linkListItem,
     link,
     lemoncodeIcon,
     bottomContainer,
