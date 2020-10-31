@@ -43,7 +43,6 @@ export const bottomContainer = css`
 
 export const lemoncodeIcon = css`
   height: 100px;
-  fill: #eee;
 `;
 
 export const iconContainer = css`

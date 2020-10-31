@@ -29,6 +29,10 @@ module.exports = merge(
           exclude: /node_modules/,
           loader: 'babel-loader',
         },
+        {
+          test: /\.svg$/,
+          use: ['@svgr/webpack'],
+        },
       ],
     },
     optimization: {
