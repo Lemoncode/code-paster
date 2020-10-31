@@ -17,7 +17,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Lemoncode/code-paster">
-    <img src="images/logo.png" alt="Logo" width="800" height="330">
+    <img src="images/logo.png" alt="Logo" width="800" height="304">
   </a>
   <p align="center">
     Code Paster is a Teacher-to-Student communication tool for online programming lessons. Create a new session and easily share your code with all students connected so they can follow along with your examples.
