@@ -11,9 +11,10 @@ export const studentBoard = css`
   box-sizing: border-box;
   width: 100%;
   margin-top: ${spacing(10)};
+  margin-bottom: ${spacing(10)};
   padding: ${spacing(10)};
-  font-family: ${typography.fontFamily};
-  background-color: ${palette.background.paper};
+  //font-family: ${typography.fontFamily};
+  //background-color: ${palette.background.paper};
   resize: none;
   border-radius: ${spacing(4)};
   border: 1px solid ${palette.primary.main};
