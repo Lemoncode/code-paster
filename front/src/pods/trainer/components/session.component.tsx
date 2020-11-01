@@ -3,6 +3,10 @@ import * as classes from './session.styles';
 // Material UI ~ components
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Button from '@material-ui/core/Button';
+// Code Editor
+import AceEditor from 'react-ace';
+import 'ace-builds/src-noconflict/mode-typescript';
+import 'ace-builds/src-noconflict/theme-monokai';
 
 interface Props {
   log: string;
@@ -37,11 +41,30 @@ export const SessionComponent: React.FC<Props> = props => {
       <label className={labelTextarea} htmlFor="session">
         Session
       </label>
-      <TextareaAutosize
-        id="session"
-        rowsMax={20}
-        rowsMin={20}
+      <AceEditor
+        //id="session"
+        placeholder=""
+        mode="typescript"
+        theme="monokai"
+        name="blah2"
+        //onChange={(value, e) => handleOnChange(value, e)}
+        fontSize={14}
+        showPrintMargin={true}
+        showGutter={true}
+        highlightActiveLine={true}
+        setOptions={{
+          enableBasicAutocompletion: false,
+          enableLiveAutocompletion: true,
+          enableSnippets: false,
+          showLineNumbers: true,
+          tabSize: 2,
+          showPrintMargin: false,
+          wrap: true,
+        }}
         className={studentBoard}
+        width="auto"
+        value={log}
+        readOnly={true}
       />
       <Button
         variant="contained"

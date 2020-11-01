@@ -3,9 +3,13 @@ import * as classes from './new-text.styles';
 // Material UI ~ components
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+// Code Editor
+import AceEditor from 'react-ace';
+import 'ace-builds/src-noconflict/mode-typescript';
+import 'ace-builds/src-noconflict/theme-monokai';
 
 interface Props {
-  handleAppendTrainerText: (trainerText: string,) => void;
+  handleAppendTrainerText: (trainerText: string) => void;
 }
 
 export const NewTextComponent: React.FC<Props> = props => {
@@ -27,9 +31,12 @@ export const NewTextComponent: React.FC<Props> = props => {
     trainerTextRef.current = '';
   };
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    trainerTextRef.current = e.target.value;
-    setTrainerText(e.target.value);
+  const handleOnChange = (
+    value: string,
+    e: React.ChangeEvent<HTMLTextAreaElement>
+  ): void => {
+    trainerTextRef.current = value;
+    setTrainerText(value);
   };
 
   React.useEffect(() => {
@@ -48,13 +55,29 @@ export const NewTextComponent: React.FC<Props> = props => {
         <label className={labelTextarea} htmlFor="new-text">
           New text
         </label>
-        <TextareaAutosize
-          rowsMax={10}
-          rowsMin={10}
-          className={editTextArea}
-          onChange={e => handleOnChange(e)}
+        <AceEditor
+          placeholder=""
+          mode="typescript"
+          theme="monokai"
+          name="blah2"
+          onChange={(value, e) => handleOnChange(value, e)}
+          fontSize={14}
+          showPrintMargin={true}
+          showGutter={true}
+          highlightActiveLine={true}
           value={trainerText}
+          setOptions={{
+            enableBasicAutocompletion: false,
+            enableLiveAutocompletion: true,
+            enableSnippets: false,
+            showLineNumbers: true,
+            tabSize: 2,
+            showPrintMargin: false,
+          }}
+          className={editTextArea}
+          width="auto"
         />
+
         <Button
           variant="contained"
           color="primary"
