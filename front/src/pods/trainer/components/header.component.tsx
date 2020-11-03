@@ -53,13 +53,12 @@ export const CopyFieldComponent: React.FC<CopyFieldProps> = props => {
         {labelName}
       </label>
       <div className={inputIconContainer}>
-        <TextField
+        <input
           id={inputId}
-          variant="outlined"
-          size="small"
+          type="text"
           className={textArea}
           value={urlLink}
-          read-only="true"
+          readOnly
           aria-readonly
         />
         <button

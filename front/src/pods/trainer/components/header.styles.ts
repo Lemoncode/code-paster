@@ -4,47 +4,71 @@ const { palette, typography, spacing } = theme;
 
 export const headerContainer = css`
   width: 100%;
-  margin-bottom: ${spacing(60)};
+  margin-bottom: ${spacing(80)};
+  margin-top: ${spacing(60)};
 `;
 
 export const inputField = css`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: ${spacing(20)};
+  margin-bottom: ${spacing(30)};
+  &:last-of-type {
+    margin-bottom: ${spacing(0)};
+  }
 `;
 
 export const label = css`
+  color: ${palette.text.primary};
+  font-size: 18px;
   font-family: ${typography.fontFamily};
 `;
 
 export const inputIconContainer = css`
+  margin-top: 10px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 80%;
+  width: 100%;
 `;
 
 export const textArea = css`
-  width: 90%;
+  font-family: ${typography.fontFamily};
+  color: ${palette.text.primary};
+  border: 2px solid #ccc;
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
+  font-size: 16px;
+  padding: 18px;
+  flex: 1;
+  &:hover,
+  &:active,
+  &:focus {
+    border: 2px solid #ccc;
+    outline: none;
+  }
+  &::selection {
+    background: #ccc;
+  }
+  margin-right: 0%;
 `;
 
 export const copyIcon = css`
   font-size: 30px;
-  &:hover {
-    color: ${palette.primary.dark};
-  }
-  &:active {
-    color: ${palette.secondary.main};
-  }
 `;
 
 export const copyBtn = css`
   background-color: ${palette.background.default};
-  border: none;
+  border-right: 2px solid #ccc;
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+  border-left: none;
   outline: none;
-  &:focus {
-    border: 1px solid ${palette.secondary.main};
-    border-radius: 0.2rem;
+  height: 59px;
+  width: 59px;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  &:hover {
+    cursor: pointer;
+    background-color: #ccc;
+  }
+  &:active {
+    background-color: #fff;
   }
 `;

@@ -4,28 +4,35 @@ const { typography, spacing, palette } = theme;
 
 export const mainContainer = css`
   width: 60%;
-  margin: ${spacing(40)} auto 0 auto;
+  margin: ${spacing(80)} auto;
 `;
 
 export const studentBoard = css`
   box-sizing: border-box;
+  font-size: 16px;
   width: 100%;
+  margin-bottom: ${spacing(10)};
   margin-top: ${spacing(10)};
-  padding: ${spacing(10)};
+  padding: ${spacing(16)};
   font-family: ${typography.fontFamily};
   background-color: ${palette.background.paper};
   resize: none;
-  border-radius: ${spacing(4)};
-  border: 1px solid ${palette.primary.main};
+  border: 2px solid ${palette.text.primary};
   &:focus {
-    outline-color: ${palette.secondary.main};
+    outline: none;
   }
 `;
 
 export const labelTextarea = css`
+  display: block;
+  font-size: 18px;
   font-family: ${typography.fontFamily};
 `;
 
 export const sessionName = css`
-  margin-bottom: ${spacing(20)};
+  font-size: 18px;
+  margin-bottom: ${spacing(40)};
+  padding-bottom: 5px;
+  border-bottom: 2px solid #d9d900;
+  display: inline-block;
 `;
