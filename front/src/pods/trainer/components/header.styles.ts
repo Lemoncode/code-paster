@@ -4,61 +4,75 @@ const { palette, typography, spacing } = theme;
 
 export const headerContainer = css`
   width: 100%;
+  padding-bottom: ${spacing(100)};
   margin-bottom: ${spacing(100)};
   margin-top: ${spacing(100)};
+  border-bottom: 2px solid #d9d900;
 `;
 
 export const inputField = css`
   margin-bottom: ${spacing(30)};
+  &:last-of-type {
+    margin-bottom: ${spacing(0)};
+  }
 `;
 
 export const label = css`
-  color: red;
-  font-size: 16px;
-  margin-bottom: 100px;
+  color: ${palette.text.primary};
+  font-size: 18px;
   font-family: ${typography.fontFamily};
 `;
 
 export const inputIconContainer = css`
+  margin-top: 10px;
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   width: 100%;
 `;
 
 export const textArea = css`
   font-family: ${typography.fontFamily};
-  border: 2px solid #999;
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
+  color: ${palette.text.primary};
+  border: 2px solid #ccc;
+  border-top-left-radius: 0.4rem;
+  border-bottom-left-radius: 0.4rem;
   font-size: 16px;
   padding: 18px;
   flex: 1;
+  &:hover,
+  &:active,
+  &:focus {
+    border: 2px solid #d9d900;
+    border: 2px solid #ccc;
+    outline: none;
+  }
+  &::selection {
+    background: #999;
+    color: white;
+  }
 `;
 
 export const copyIcon = css`
   font-size: 30px;
-  &:hover {
-    color: ${palette.primary.dark};
-  }
-  &:active {
-    color: ${palette.secondary.main};
-  }
 `;
 
 export const copyBtn = css`
   background-color: ${palette.background.default};
-  border-right: 2px solid #999;
-  border-top: 2px solid #999;
-  border-bottom: 2px solid #999;
+  border-right: 2px solid #ccc;
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
   border-left: none;
   outline: none;
   height: 59px;
   width: 59px;
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
-  &:focus {
-    border: 1px solid ${palette.secondary.main};
-    border-radius: 0.2rem;
+  border-top-right-radius: 0.4rem;
+  border-bottom-right-radius: 0.4rem;
+  &:hover {
+    cursor: pointer;
+    background-color: #ccc;
+  }
+  &:active {
+    color: rgb(255, 87, 51);
+    background-color: #fff;
   }
 `;
