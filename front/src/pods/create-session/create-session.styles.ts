@@ -13,7 +13,7 @@ export const mainContainer = css`
   margin: 0;
   padding: 0;
   width: 100%;
-  height: calc(100vh - ${spacing(80)});
+  height: calc(100vh - ${spacing(86)});
   @media screen and (max-width: ${breakpoints.values.md}px) {
     background-image: none;
   }

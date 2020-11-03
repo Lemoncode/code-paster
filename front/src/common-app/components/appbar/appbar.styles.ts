@@ -6,14 +6,14 @@ export const appbarContainer = css`
   width: 100%;
   display: flex;
   align-items: center;
-  height: ${spacing(80)};
+  height: ${spacing(86)};
   background-image: linear-gradient(
     60deg,
-    rgb(255, 87, 51) 250px,
+    white 250px,
     #d9d900 250px,
     white 90%
   );
-  border-bottom: 2px solid rgb(255, 87, 51);
+  border-bottom: 2px solid ${palette.text.primary};
 `;
 
 export const logo = css`
