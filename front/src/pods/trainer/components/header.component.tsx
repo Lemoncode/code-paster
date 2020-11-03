@@ -58,7 +58,7 @@ export const CopyFieldComponent: React.FC<CopyFieldProps> = props => {
           type="text"
           className={textArea}
           value={urlLink}
-          read-only="true"
+          readOnly
           aria-readonly
         />
         <button

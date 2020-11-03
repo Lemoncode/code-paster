@@ -4,10 +4,8 @@ const { palette, typography, spacing } = theme;
 
 export const headerContainer = css`
   width: 100%;
-  padding-bottom: ${spacing(100)};
   margin-bottom: ${spacing(100)};
-  margin-top: ${spacing(100)};
-  border-bottom: 2px solid #d9d900;
+  margin-top: ${spacing(80)};
 `;
 
 export const inputField = css`
@@ -42,13 +40,11 @@ export const textArea = css`
   &:hover,
   &:active,
   &:focus {
-    border: 2px solid #d9d900;
     border: 2px solid #ccc;
     outline: none;
   }
   &::selection {
-    background: #999;
-    color: white;
+    background: #ccc;
   }
 `;
 
@@ -72,7 +68,6 @@ export const copyBtn = css`
     background-color: #ccc;
   }
   &:active {
-    color: rgb(255, 87, 51);
     background-color: #fff;
   }
 `;

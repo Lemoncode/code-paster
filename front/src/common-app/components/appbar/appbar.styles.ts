@@ -52,7 +52,6 @@ export const link = css`
   &:hover {
     padding-bottom: 3px;
     border-bottom: 2px solid rgb(255, 87, 51);
-
     color: rgb(255, 87, 51);
   }
 `;

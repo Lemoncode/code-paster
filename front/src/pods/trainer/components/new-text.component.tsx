@@ -1,11 +1,12 @@
 import React from 'react';
 import * as classes from './new-text.styles';
 // Material UI ~ components
+import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 
 interface Props {
-  handleAppendTrainerText: (trainerText: string,) => void;
+  handleAppendTrainerText: (trainerText: string) => void;
 }
 
 export const NewTextComponent: React.FC<Props> = props => {
@@ -17,6 +18,7 @@ export const NewTextComponent: React.FC<Props> = props => {
     editTextArea,
     sendBtn,
     sendBtnDisabled,
+    sendIcon,
   } = classes;
 
   const trainerTextRef = React.useRef<string>(trainerText);
@@ -62,8 +64,10 @@ export const NewTextComponent: React.FC<Props> = props => {
           onClick={() => trainerText && handleAppendTrainerTextInternal()}
           aria-disabled={!trainerText}
           disableRipple={!trainerText}
+          disableElevation
         >
           Send
+          <ArrowForwardRoundedIcon className={sendIcon} />
         </Button>
       </form>
     </div>
