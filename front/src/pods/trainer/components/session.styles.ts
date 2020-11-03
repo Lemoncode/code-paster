@@ -3,6 +3,7 @@ import { theme } from 'core/theme';
 const { palette, spacing, typography } = theme;
 
 export const sessionContainer = css`
+  padding-top: ${spacing(60)};
   padding-bottom: ${spacing(100)};
 `;
 

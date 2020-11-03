@@ -21,12 +21,12 @@ export const TrainerComponent: React.FC<Props> = props => {
     log,
   } = props;
 
-  const { mainContainer, content, headerContainer } = classes;
+  const { mainContainer, content, backgroundContainer } = classes;
 
   return (
     <>
       <main className={mainContainer}>
-        <div className={headerContainer}>
+        <div className={backgroundContainer}>
           <div className={content}>
             <HeaderComponent
               currentTrainerUrl={currentTrainerUrl}
@@ -34,8 +34,14 @@ export const TrainerComponent: React.FC<Props> = props => {
             />
           </div>
         </div>
+        <div className={backgroundContainer}>
+          <div className={content}>
+            <NewTextComponent
+              handleAppendTrainerText={handleAppendTrainerText}
+            />
+          </div>
+        </div>
         <div className={content}>
-          <NewTextComponent handleAppendTrainerText={handleAppendTrainerText} />
           <SessionComponent
             log={log}
             handleSendFullContentLog={handleSendFullContentLog}

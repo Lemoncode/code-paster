@@ -6,9 +6,7 @@ export const newTextContainer = css`
   width: 100%;
   margin-top: ${spacing(80)};
   margin-bottom: 40px;
-  padding-bottom: ${spacing(80)};
-  border-bottom: 1px solid #ccc;
-  margin-bottom: ${spacing(60)};
+  margin-bottom: ${spacing(80)};
 `;
 
 export const labelTextarea = css`
