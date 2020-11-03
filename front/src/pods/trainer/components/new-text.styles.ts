@@ -4,7 +4,7 @@ const { palette, typography, spacing } = theme;
 
 export const newTextContainer = css`
   width: 100%;
-  margin-top: ${spacing(80)};
+  margin-top: ${spacing(60)};
   margin-bottom: 40px;
   margin-bottom: ${spacing(80)};
 `;

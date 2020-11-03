@@ -24,8 +24,8 @@ export const StudentComponent: React.FC<Props> = props => {
         </label>
         <TextareaAutosize
           id="session"
-          rowsMax={40}
-          rowsMin={40}
+          rowsMax={30}
+          rowsMin={30}
           className={studentBoard}
           value={log}
         />
