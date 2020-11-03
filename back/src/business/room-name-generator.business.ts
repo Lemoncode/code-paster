@@ -15,7 +15,7 @@ const chooseRandomStringFromArray = (valueCollection: string[]) => {
 };
 
 const generateRandomRoomSuffix = (): string => {
-  const randomNumber = generateRandomNumberRange(0, 9999);
+  const randomNumber = generateRandomNumberRange(0, 99999);
 
   return randomNumber.toString();
 };
