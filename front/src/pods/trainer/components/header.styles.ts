@@ -46,6 +46,7 @@ export const textArea = css`
   &::selection {
     background: #ccc;
   }
+  margin-right: 0%;
 `;
 
 export const copyIcon = css`
