@@ -2,6 +2,9 @@ import React from 'react';
 import * as classes from './session.styles';
 // Material UI ~ components
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
+
+import UndoIcon from '@material-ui/icons/Undo';
 import Button from '@material-ui/core/Button';
 
 interface Props {
@@ -26,39 +29,55 @@ const getFullContent = (currenSessionContent: string) => {
 
 export const SessionComponent: React.FC<Props> = props => {
   const { log, handleSendFullContentLog } = props;
-  const { labelTextarea, studentBoard, sendBtn, undoBtn } = classes;
+  const {
+    sessionContainer,
+    btnContainer,
+    sendIcon,
+    undoIcon,
+    labelTextarea,
+    studentBoard,
+    sendBtn,
+    undoBtn,
+  } = classes;
 
   React.useEffect(() => {
     handleSetSessionContent(log);
   }, [log]);
 
   return (
-    <div>
+    <div className={sessionContainer}>
       <label className={labelTextarea} htmlFor="session">
         Session
       </label>
+
       <TextareaAutosize
         id="session"
         rowsMax={20}
         rowsMin={20}
         className={studentBoard}
       />
-      <Button
-        variant="contained"
-        color="secondary"
-        className={undoBtn}
-        onClick={() => handleSetSessionContent(log)}
-      >
-        Undo
-      </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        className={sendBtn}
-        onClick={() => handleSendFullContentLog(getFullContent(log))}
-      >
-        Send Full Content
-      </Button>
+      <div className={btnContainer}>
+        <Button
+          variant="contained"
+          color="secondary"
+          disableElevation
+          className={undoBtn}
+          onClick={() => handleSetSessionContent(log)}
+        >
+          <UndoIcon className={undoIcon} />
+          Undo
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          disableElevation
+          className={sendBtn}
+          onClick={() => handleSendFullContentLog(getFullContent(log))}
+        >
+          Send Full Content
+          <ArrowForwardRoundedIcon className={sendIcon} />
+        </Button>
+      </div>
     </div>
   );
 };

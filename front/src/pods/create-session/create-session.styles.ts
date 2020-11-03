@@ -51,11 +51,12 @@ export const createSessionBtn = css`
   background-size: 0 100%;
   transition: all 0.4s 0s;
   border: 2px solid rgb(255, 87, 51);
-
-  &:hover {
+  &:hover,
+  &:active {
     cursor: pointer;
     background-size: 100% 100%;
     color: white;
+    outline: none;
   }
 `;
 

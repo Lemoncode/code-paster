@@ -6,7 +6,9 @@ export const newTextContainer = css`
   width: 100%;
   margin-top: ${spacing(80)};
   margin-bottom: 40px;
-  margin-bottom: ${spacing(100)};
+  padding-bottom: ${spacing(80)};
+  border-bottom: 1px solid #ccc;
+  margin-bottom: ${spacing(60)};
 `;
 
 export const labelTextarea = css`
@@ -32,18 +34,18 @@ export const editTextArea = css`
 `;
 
 export const sendBtn = css`
-  background-color: #d9d900;
-  color: ${palette.text.primary};
+  background-color: #11ae64;
+  color: white;
   text-transform: capitalize;
   font-weight: 400;
   border-radius: 0;
-  padding: 0.6rem 0;
+  padding: 10px 0;
   font-size: 19px;
   width: 100%;
   transition: all 0.2s;
   &:hover {
-    background-color: ${palette.text.primary};
-    color: #fff;
+    background-color: #0f834c;
+    color: white;
   }
 `;
 
@@ -52,7 +54,7 @@ export const sendBtnDisabled = css`
   font-weight: 400;
   font-size: 19px;
   border-radius: 0;
-  padding: 0.6rem 0;
+  padding: 10px 0;
   color: ${palette.grey[700]};
   background-color: ${palette.grey[300]};
   cursor: default;
@@ -72,6 +74,6 @@ export const sendBtnDisabled = css`
 `;
 
 export const sendIcon = css`
-  font-size: 19px;
-  margin-left: 0.3rem;
+  font-size: 20px;
+  margin-left: 10px;
 `;
