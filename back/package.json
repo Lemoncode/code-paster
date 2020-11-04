@@ -8,6 +8,9 @@
     "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
     "start:debug": "run-p -l type-check:watch \"start:dev -- --inspect-brk\"",
     "start:prod": "node ./dist/index.js",
+    "start:mock-repository": "cross-env MOCK_RESPOSITORY=true npm run start",
+    "start:local-db": "docker-compose up || echo \"Run docker-compose up manually\"",
+    "stop:local-db": "docker-compose down || echo \"Run docker-compose down manually\"",
     "build": "run-p -l type-check build:prod",
     "build:prod": "npm run clean && babel src -d dist --ignore=\"./src/test-runners\" --extensions \".ts\"",
     "build:dev": "npm run clean && babel src -d dist --ignore=\"./src/test-runners\" --extensions \".ts\" --source-maps",
@@ -38,6 +41,7 @@
     "@types/cors": "^2.8.7",
     "@types/express": "^4.17.7",
     "@types/jest": "^26.0.15",
+    "@types/mongoose": "^5.7.37",
     "@types/socket.io": "^2.1.10",
     "cross-env": "^7.0.2",
     "jest": "^26.6.1",
@@ -53,6 +57,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "immer": "^7.0.9",
+    "mongoose": "^5.10.11",
     "regenerator-runtime": "^0.13.7",
     "socket.io": "^2.3.0"
   }
