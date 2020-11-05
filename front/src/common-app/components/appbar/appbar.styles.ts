@@ -23,9 +23,12 @@ export const logo = css`
   margin-left: 2.4rem;
 `;
 
+export const navContainer = css`
+  margin-left: auto;
+`;
+
 export const navList = css`
   display: flex;
-  margin-left: auto;
   list-style: none;
 `;
 
