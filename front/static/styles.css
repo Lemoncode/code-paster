@@ -12,6 +12,7 @@ html {
   --font-default: 'Roboto', sans-serif;
   --color-bg: #ffffff;
   --color-light: #ffffff;
+  --color-grey-light: #eee;
   --color-dark: #2e2800;
   --color-primary-light: #a791a5;
   --color-primary-main: #d9d900;
@@ -27,6 +28,7 @@ html {
 }
 
 body {
+  position: absolute;
   font-size: 1.6rem;
   background-color: var(--color-bg);
   color: var(--color-dark);
@@ -85,21 +87,29 @@ ul {
   font-size: 17px;
   font-weight: 400;
   border: none;
-  background-color: var(--color-alert);
-  color: var(--color-light);
+  border: 2px solid var(--color-alert);
+  background-color: transparent;
+  color: var(--color-alert);
   transition: all 0.4s 0s;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
 }
 
 .navbar__cta-button:hover,
 .navbar__cta-button:active {
   cursor: pointer;
-  background-color: var(--color-dark);
+  background-color: var(--color-alert);
+  color: var(--color-light);
   outline: none;
 }
 
 .navbar__list__item a {
   font-size: 17px;
   margin-top: 5px;
+  font-weight: 400;
+
   position: relative;
   display: inline-block;
   text-decoration: none;
@@ -119,20 +129,12 @@ ul {
   margin-right: 1.8rem;
 }
 
-/* - - - header - - - */
-.header {
-  margin-top: 8rem;
-  margin-bottom: 8rem;
-  color: var(--color-dark);
-  text-transform: uppercase;
-}
-
-.header h1 {
-  font-weight: 200;
-  width: max-content;
-  margin: 0 auto;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--color-secondary-main);
+/* - - - main - - - */
+.main-container {
+  margin-top: 88px;
+  height: calc(100vh - 88px);
+  display: flex;
+  align-items: center;
 }
 
 /* - - - instructions - - - */
@@ -144,7 +146,6 @@ ul {
   flex-direction: row;
 
   justify-content: center;
-  margin-bottom: 10rem;
 }
 
 @media only screen and (max-width: 1150px) {
@@ -331,45 +332,58 @@ form textarea {
 /* - - - footer - - - */
 .footer {
   display: flex;
-  justify-content: space-between;
-  padding: 4rem 10rem;
-  background-color: var(--color-primary-main);
-}
-
-.footer--list {
-  border-left: 1px solid var(--color-light);
-  display: flex;
-  width: 13.4rem;
   flex-direction: column;
   justify-content: space-between;
+  height: 300px;
+  padding: 20px 100px;
+  background-color: var(--color-dark);
 }
 
-.footer--list--item a {
-  padding: 0.8rem 2rem;
-  border-radius: 0.6rem;
-  color: var(--color-light);
+.footer__top-container {
+  padding: 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  height: 195px;
+  align-items: center;
 }
 
-.footer--list--item a:hover {
-  color: var(--color-secondary-main);
+.footer__logo {
+  height: 100px;
+  margin-right: -95px;
 }
 
-.footer--logo-lemon-container {
-  position: relative;
-  width: 13.4rem;
-  height: 12rem;
-  border: 1px solid var(--color-light);
-  border-radius: 1rem;
+.footer__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.footer__list__item {
+  margin-top: 10px;
 }
 
-.footer--logo-lemon-container:hover {
-  border: 1px solid var(--color-secondary-main);
-  cursor: pointer;
+.footer__list__item a {
+  font-size: 17px;
+  color: var(--color-grey-light);
+  text-decoration: none;
+  font-weight: 300;
 }
 
-.footer--copyright {
+.footer__list__item a:hover {
+  color: var(--color-primary-main);
+}
+
+.footer__bottom-container {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #d9d900;
+  padding-top: 15px;
+}
+
+.footer__copyright {
   align-self: flex-end;
-  color: var(--color-light);
+  color: var(--color-grey-light);
+  font-weight: 300;
+  font-size: 15px;
 }
 
 .footer--logo-lemon-container:hover .footer--logo-lemon {
