@@ -19,6 +19,14 @@ export const topContainer = css`
   align-items: center;
 `;
 
+export const topContainerCenter = css`
+  padding: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: ${spacing(195)};
+`;
+
 export const linkList = css`
   padding: 0;
   margin: 0;

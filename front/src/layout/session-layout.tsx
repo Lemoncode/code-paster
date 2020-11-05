@@ -1,8 +1,8 @@
 import React from 'react';
 import { AppbarComponent, FooterComponent } from 'common-app';
 
-export const AppLayout: React.FC = props => {
-  const [showLinks, setShowLinks] = React.useState<boolean>(true);
+export const SessionLayout: React.FC = props => {
+  const [showLinks, setShowLinks] = React.useState<boolean>(false);
   return (
     <>
       <AppbarComponent showLinks={showLinks} />

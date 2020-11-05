@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AppLayout } from 'layout';
+import { SessionLayout } from 'layout';
 import { PlayerContainer } from 'pods/student';
 
 export const StudentScene = () => {
@@ -8,8 +8,8 @@ export const StudentScene = () => {
   }, []);
 
   return (
-    <AppLayout>
+    <SessionLayout>
       <PlayerContainer />
-    </AppLayout>
+    </SessionLayout>
   );
 };
