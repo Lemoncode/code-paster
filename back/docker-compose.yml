@@ -1,0 +1,7 @@
+version: '3'
+services:
+  mongodb-codepaster:
+    container_name: mongodb-codepaster
+    image: mongo:4.2.10
+    ports:
+      - '27017:27017'

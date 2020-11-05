@@ -11,7 +11,11 @@
     "suppressImplicitAnyIndexErrors": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "core": ["core"],
+      "dals": ["dals"]
+    }
   },
   "include": ["src/**/*"]
 }

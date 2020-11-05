@@ -13,5 +13,17 @@
       }
     ]
   ],
-  "plugins": ["@babel/plugin-proposal-optional-chaining"]
+  "plugins": ["@babel/plugin-proposal-optional-chaining",
+              [
+                  "module-resolver",
+                  {
+                    "root": ["."],
+                    "alias": {
+                      "core": "./src/core",
+                      "dals": "./src/dals",
+                      "pods": "./src/pods"
+                    }
+                  }
+              ]
+             ]
 }
