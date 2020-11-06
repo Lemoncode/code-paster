@@ -104,53 +104,65 @@
           <h2 class="heading">Credits</h2>
           <div class="container">
             <div class="card">
-              <div class="card--img"></div>
-              <div class="card--text">
-                <h3 class="card--text--name">John Doe</h3>
-                <p class="card--text--description">
+              <div class="card__img"></div>
+              <div class="card__text">
+                <h3>John Doe</h3>
+                <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Rerum, amet. Quisquam numquam laudantium, unde optio libero
                   eaque perspiciatis minus doloribus asperiores et consectetur
-                  inventore quos cumque, reiciendis officia esse a?
+                  inventore quos cumque, reiciendis officia esse .Quisquam
+                  numquam laudantium, unde optio libero eaque perspiciatis minus
+                  doloribus asperiores et consectetur inventore quos cumque,
+                  reiciendis officia esse.
                 </p>
               </div>
             </div>
             <hr class="divider" />
             <div class="card">
-              <div class="card--img"></div>
-              <div class="card--text">
-                <h3 class="card--text--name">Jane Smith</h3>
-                <p class="card--text--description">
+              <div class="card__img"></div>
+              <div class="card__text">
+                <h3>Jane Smith</h3>
+                <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Rerum, amet. Quisquam numquam laudantium, unde optio libero
                   eaque perspiciatis minus doloribus asperiores et consectetur
-                  inventore quos cumque, reiciendis officia esse a?
+                  inventore quos cumque, reiciendis officia esse .Quisquam
+                  numquam laudantium, unde optio libero eaque perspiciatis minus
+                  doloribus asperiores et consectetur inventore quos cumque,
+                  reiciendis officia esse.
                 </p>
               </div>
             </div>
             <hr class="divider" />
             <div class="card">
-              <div class="card--img"></div>
-              <div class="card--text">
-                <h3 class="card--text--name">Paul William</h3>
-                <p class="card--text--description">
+              <div class="card__img"></div>
+              <div class="card__text">
+                <h3>Paul William</h3>
+                <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Rerum, amet. Quisquam numquam laudantium, unde optio libero
                   eaque perspiciatis minus doloribus asperiores et consectetur
-                  inventore quos cumque, reiciendis officia esse a?
+                  inventore quos cumque, reiciendis officia esse .Quisquam
+                  numquam laudantium, unde optio libero eaque perspiciatis minus
+                  doloribus asperiores et consectetur inventore quos cumque,
+                  reiciendis officia esse.
                 </p>
               </div>
             </div>
             <hr class="divider" />
             <div class="card">
-              <div class="card--img"></div>
-              <div class="card--text">
-                <h3 class="card--text--name">Alice Hook</h3>
-                <p class="card--text--description">
+              <div class="card__img"></div>
+              <div class="card__text">
+                <h3>Alice Hook</h3>
+                <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Rerum, amet. Quisquam numquam laudantium, unde optio libero
                   eaque perspiciatis minus doloribus asperiores et consectetur
-                  inventore quos cumque, reiciendis officia esse a?
+                  inventore quos cumque, reiciendis officia esse .Quisquam
+                  numquam laudantium, unde optio libero eaque perspiciatis minus
+                  doloribus asperiores et consectetur inventore quos cumque,
+                  reiciendis officia esse.
                 </p>
               </div>
             </div>
@@ -159,26 +171,28 @@
       </div>
       <!-- / contact / -->
       <div class="box-content border-bottom" id="contact">
-        <article>
+        <article class="contact-container">
           <h2 class="heading">Contact</h2>
           <div class="container">
             <form onsubmit="event.preventDefault()">
               <div class="input-field">
                 <label for="name">Name</label>
-                <input id="name" type="text" placeholder="Write your name" />
+                <input id="name" type="text" />
               </div>
               <div class="input-field">
                 <label for="email">Email</label>
-                <input id="email" type="email" placeholder="Write your email" />
+                <input id="email" type="email" />
               </div>
-              <textarea
-                name="message"
-                id="message"
-                cols="30"
-                rows="10"
-                placeholder="Write your message"
-              ></textarea>
-              <input type="submit" class="btn-submit" />
+              <div class="input-field">
+                <label for="message">Your Message</label>
+                <textarea
+                  name="message"
+                  id="message"
+                  cols="30"
+                  rows="10"
+                ></textarea>
+              </div>
+              <input type="submit" class="btn-submit" value="send" />
             </form>
           </div>
         </article>
