@@ -12,15 +12,10 @@ html {
   --font-default: 'Roboto', sans-serif;
   --color-bg: #ffffff;
   --color-light: #ffffff;
+  --color-dark: #2e2800;
   --color-grey-light: #eee;
   --color-grey-medium: #ccc;
-  --color-dark: #2e2800;
-  --color-primary-light: #a791a5;
   --color-primary-main: #d9d900;
-  --color-primary-dark: #423842;
-  --color-secondary-light: #b8e4da;
-  --color-secondary-main: #89beb3;
-  --color-secondary-dark: #658d85;
   --color-alert: rgb(255, 87, 51);
 
   box-sizing: border-box;
