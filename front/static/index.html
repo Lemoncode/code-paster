@@ -11,6 +11,7 @@
     <title>Home Page - Code Paster</title>
   </head>
   <body>
+    <!-- / navbar / -->
     <nav class="navbar">
       <svg class="navbar__logo">
         <use xlink:href="assets/sprite.svg#codepaster-logo"></use>
@@ -19,6 +20,9 @@
         <li class="navbar__list__item">
           <button class="navbar__cta-button" onclick="location.href='app.html'">
             Get Started
+            <svg class="navbar__cta-button__icon">
+              <use xlink:href="assets/sprite.svg#arrow-icon"></use>
+            </svg>
           </button>
         </li>
         <li class="navbar__list__item">
@@ -32,15 +36,25 @@
         </li>
       </ul>
     </nav>
+    <!-- / main / -->
     <main>
+      <!-- / instructions / -->
       <div class="top-container">
         <div class="instructions-container">
+          <div class="cta-button-container">
+            <button class="cta-button" onclick="location.href='app.html'">
+              Get started
+              <svg class="cta-button__icon">
+                <use xlink:href="assets/sprite.svg#arrow-icon"></use>
+              </svg>
+            </button>
+          </div>
           <article class="instructions">
             <h2 class="instructions__title">
               Code paster is a free online app
             </h2>
             <h3 class="instructions__subtitle">What can I use it for?</h3>
-            <p class="instructions--text">
+            <p class="instructions__text">
               You can use Code Paster to share code or any kind of text with
               partners, students, colleagues, etc. The trainer role (who can be
               one or more people) is allowed to write and read text. However,
@@ -49,29 +63,24 @@
               kind of online activity which requires text to be shared.
             </p>
             <h3 class="instructions__subtitle">How does it work?</h3>
-            <ol class="instructions--list">
-              <li class="instructions--text">
+            <ol class="instructions__list">
+              <li class="instructions__text">
                 Press "Get started" button to navigate to the app
               </li>
-              <li class="instructions--text">
+              <li class="instructions__text">
                 Press "Create session" button to start a private room for you
                 and your people
               </li>
-              <li class="instructions--text">
+              <li class="instructions__text">
                 Share the links on the top of the website which other people,
                 taking care of use "student" or "trainer" role as needed
               </li>
-              <li class="instructions--text">
+              <li class="instructions__text">
                 Start typing within the "Trainer Textarea" and the other people
                 in the room will be able to see whatever you have writen in it
               </li>
             </ol>
           </article>
-          <div class="cta-button-container">
-            <button class="cta-button" onclick="location.href='app.html'">
-              Get started
-            </button>
-          </div>
         </div>
       </div>
       <section class="video-container">
@@ -140,7 +149,8 @@
             </div>
           </div>
         </article>
-
+      </div>
+      <div class="bottom-container">
         <article class="container" id="contact">
           <h2 class="container--title">Contact</h2>
           <form onsubmit="event.preventDefault()">
@@ -162,7 +172,8 @@
             <input type="submit" class="btn-submit" />
           </form>
         </article>
-
+      </div>
+      <div class="bottom-container">
         <article class="container" id="license">
           <h2 class="container--title">License</h2>
           <h3>Notice to user:</h3>
