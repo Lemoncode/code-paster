@@ -50,6 +50,7 @@ ul {
 /* - - - navbar - - - */
 .navbar {
   position: fixed;
+  z-index: 1000;
   width: 100%;
   display: flex;
   align-items: center;
@@ -129,23 +130,19 @@ ul {
   margin-right: 1.8rem;
 }
 
-/* - - - main - - - */
-.main-container {
+/* - - - instructions - - - */
+.top-container {
   margin-top: 88px;
   height: calc(100vh - 88px);
   display: flex;
   align-items: center;
 }
 
-/* - - - instructions - - - */
-
-.top-container {
+.instructions-container {
   width: 70%;
   margin: 0 auto;
   display: flex;
-  flex-direction: row;
-
-  justify-content: center;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 1150px) {
@@ -160,10 +157,10 @@ ul {
   }
 }
 .instructions {
+  border: 2px solid #ccc;
   width: 70%;
   margin-right: auto;
   padding: 3rem;
-  border: 1px solid var(--color-secondary-main);
   border-radius: 0.6rem;
 }
 @media only screen and (max-width: 1150px) {
@@ -173,14 +170,13 @@ ul {
   }
 }
 
-.instructions--title {
-  color: var(--color-primary-dark);
+.instructions__title {
+  color: var(--color-dark);
 }
 
-.instructions--subtitle {
+.instructions__subtitle {
   margin-top: 2rem;
   margin-bottom: 1rem;
-  color: var(--color-secondary-main);
 }
 
 .instructions--text {
@@ -191,43 +187,53 @@ ul {
   padding-left: 2rem;
 }
 
-/* - - - button - - - */
-.btn-container {
+/* - - - main button - - - */
+.cta-button-container {
   align-self: center;
   display: flex;
   justify-content: center;
 }
 
-.btn {
-  padding: 2rem 2.5rem;
-  text-transform: uppercase;
-  font-size: 1.6rem;
-  color: var(--color-light);
+.cta-button {
+  padding: 2.5rem 3rem;
+  text-transform: capitalize;
+  font-size: 2rem;
+  color: var(--color-alert);
   letter-spacing: 1px;
-  background-image: linear-gradient(
-    60deg,
-    var(--color-secondary-main),
-    var(--color-primary-main) 40%
-  );
-  background-size: 300% auto;
-  border-radius: 0.6rem;
-  border: none;
+  border: 2px solid var(--color-alert);
   transition: all 0.2s ease-in-out;
+  background-color: transparent;
+  border-radius: 0.6rem;
 }
 
-.btn:hover {
+.cta-button:hover {
   cursor: pointer;
-  background-image: linear-gradient(
-    60deg,
-    var(--color-primary-main),
-    var(--color-secondary-main) 60%
-  );
-  background-size: 200% auto;
+  color: var(--color-light);
+  background-color: var(--color-alert);
+}
+
+/* - - - video - - - */
+.video-container {
+  height: 900px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+}
+
+.video-heading {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 /* - - - about - - - */
+.bottom-container {
+  padding: 20rem 0;
+}
+
 .container {
-  width: 50%;
+  width: 70%;
   padding: 2rem;
   margin: 0 auto 8rem auto;
   background-color: #eee;
@@ -241,7 +247,7 @@ ul {
 .container--title {
   text-align: center;
   text-transform: uppercase;
-  color: var(--color-primary-main);
+  color: var(--color-dark);
   font-weight: 200;
   margin-bottom: 4rem;
 }
@@ -340,7 +346,7 @@ form textarea {
 }
 
 .footer__top-container {
-  padding: 0 1rem;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   height: 195px;
@@ -349,7 +355,8 @@ form textarea {
 
 .footer__logo {
   height: 100px;
-  margin-right: -95px;
+  width: 112px;
+  /* margin-right: -95px; */
 }
 
 .footer__list {
@@ -375,15 +382,15 @@ form textarea {
 .footer__bottom-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   border-top: 1px solid #d9d900;
-  padding-top: 15px;
+  padding-top: 10px;
 }
 
 .footer__copyright {
-  align-self: flex-end;
   color: var(--color-grey-light);
   font-weight: 300;
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .footer--logo-lemon-container:hover .footer--logo-lemon {
@@ -397,4 +404,39 @@ form textarea {
   fill: var(--color-light);
   height: 10rem;
   width: 10rem;
+}
+
+.footer__icon-list {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.footer__icon-list-item {
+  margin-right: 1.2rem;
+}
+
+.footer__icon {
+  height: 24px;
+  width: 24px;
+  fill: var(--color-grey-light);
+}
+
+.footer__icon:hover {
+  fill: var(--color-primary-main);
+}
+
+.footer__icon-twitter {
+  height: 35px;
+  width: 35px;
+  margin-top: 2px;
+  margin-right: -6px;
+  margin-left: -6px;
+  fill: var(--color-grey-light);
+}
+
+.footer__icon-twitter:hover {
+  fill: var(--color-primary-main);
 }
