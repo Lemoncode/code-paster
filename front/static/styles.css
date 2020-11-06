@@ -13,6 +13,7 @@ html {
   --color-bg: #ffffff;
   --color-light: #ffffff;
   --color-grey-light: #eee;
+  --color-grey-medium: #ccc;
   --color-dark: #2e2800;
   --color-primary-light: #a791a5;
   --color-primary-main: #d9d900;
@@ -47,6 +48,28 @@ ul {
   list-style: none;
 }
 
+.box-content {
+  display: flex;
+  justify-content: center;
+  height: max-content;
+  padding: 12rem 0;
+  align-items: center;
+}
+
+.border-bottom {
+  border-bottom: 1px solid var(--color-grey-medium);
+}
+
+.heading {
+  width: max-content;
+  text-align: center;
+  font-weight: 300;
+  font-size: 3rem;
+  margin: 0 auto 3rem auto;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--color-primary-main);
+}
+
 /* - - - - - navbar - - - - - */
 .navbar {
   position: fixed;
@@ -66,7 +89,7 @@ ul {
 
 .navbar__logo {
   height: 6rem;
-  margin-top: 0.5rem;
+  margin-top: 0.6rem;
   margin-left: -2.4rem;
   fill: var(--color-dark);
 }
@@ -145,7 +168,7 @@ ul {
 .top-container {
   display: flex;
   align-items: center;
-  height: calc(100vh - 8.8rem);
+  height: calc(100vh - 8.7rem);
   margin-top: 8.8rem;
 }
 
@@ -161,6 +184,7 @@ ul {
   align-items: center;
   padding: 2.5rem 3.5rem;
   font-size: 2.2rem;
+  font-weight: 200;
   text-transform: capitalize;
   letter-spacing: 1px;
   color: var(--color-alert);
@@ -243,29 +267,7 @@ ul {
   }
 }
 
-/* - - - video - - - */
-.video-container {
-  height: max-content;
-  padding: 14rem 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-top: 2px solid #ccc;
-  border-bottom: 2px solid #ccc;
-}
-
-.video-heading {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-/* - - - about - - - */
-.bottom-container {
-  border-top: 2px solid #ccc;
-  padding: 14rem 0;
-}
-
+/* - - - - - credits - - - - - */
 .container {
   width: 70%;
   padding: 2rem;
