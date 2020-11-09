@@ -50,7 +50,7 @@ module.exports = merge(
     },
     plugins: [
       new HtmlWebpackPlugin({
-        favicon: 'assets/favicon.ico',
+        favicon: 'assets/favicon/favicon.ico',
         template: 'app.html',
         filename: 'app.html',
       }),
