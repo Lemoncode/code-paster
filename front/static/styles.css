@@ -181,20 +181,19 @@ ul {
 }
 
 @media only screen and (max-width: 770px) {
-  .navbar__list__item:first-of-type {
-    display: none;
+  .navbar {
+    background-image: none;
+    background-color: var(--color-light);
   }
 }
 
-@media only screen and (max-width: 578px) {
+@media only screen and (max-width: 728px) {
   .navbar {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     align-content: center;
     height: auto;
-    background-image: none;
-    background-color: var(--color-light);
   }
 
   .navbar__logo {
@@ -254,7 +253,7 @@ ul {
   }
 }
 
-@media only screen and (max-width: 578px) {
+@media only screen and (max-width: 728px) {
   .top-container {
     margin-top: 6rem;
     padding-bottom: 0rem;
@@ -305,7 +304,7 @@ ul {
   fill: var(--color-light);
 }
 
-@media only screen and (max-width: 578px) {
+@media only screen and (max-width: 1250px) {
   .cta-button-container {
     display: none;
   }
@@ -379,9 +378,38 @@ ul {
   }
 }
 
-@media only screen and (max-width: 578px) {
+@media only screen and (max-width: 728px) {
   .instructions {
     border: none;
+  }
+}
+
+/* - - - - - video - - - - - */
+.video-section-container {
+  width: 70%;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe,
+.video-container object,
+.video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@media only screen and (max-width: 770px) {
+  .video-section-container {
+    width: 100%;
   }
 }
 
