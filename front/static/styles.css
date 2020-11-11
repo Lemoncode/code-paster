@@ -73,6 +73,12 @@ ul {
   background-color: var(--color-grey-light);
 }
 
+@media only screen and (max-width: 770px) {
+  .container {
+    width: 100%;
+  }
+}
+
 .container p,
 .container h3 {
   margin-bottom: 1.5rem;
@@ -96,15 +102,17 @@ ul {
 }
 
 .navbar__logo {
-  height: 6rem;
+  min-height: 6rem;
+  max-width: 17.5rem;
   margin-top: 0.6rem;
-  margin-left: -2.4rem;
+  margin-left: 3.8rem;
   fill: var(--color-dark);
 }
 
 .navbar__list {
   display: flex;
   margin-left: auto;
+  margin-right: none;
   justify-content: space-between;
   align-items: center;
 }
@@ -121,7 +129,6 @@ ul {
   font-weight: 300;
   text-transform: capitalize;
   letter-spacing: 1px;
-  border: none;
   color: var(--color-alert);
   background-color: transparent;
   border: 2px solid var(--color-alert);
@@ -181,8 +188,53 @@ ul {
 
 @media only screen and (max-width: 578px) {
   .navbar {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: auto;
     background-image: none;
     background-color: var(--color-light);
+  }
+
+  .navbar__logo {
+    height: 3rem;
+    margin-left: 0;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .navbar__list {
+    margin-right: auto;
+    margin-bottom: 2rem;
+  }
+
+  .navbar__list__item:first-of-type {
+    display: inline-block;
+  }
+
+  .navbar__cta-button {
+    padding: 0.5rem 1.2rem;
+    color: var(--color-light);
+    background-color: var(--color-alert);
+    border: none;
+  }
+
+  .navbar__cta-button:hover,
+  .navbar__cta-button:active {
+    background-color: var(--color-dark);
+  }
+
+  .navbar__cta-button__icon {
+    fill: var(--color-light);
+  }
+
+  .navbar__list__item:last-of-type {
+    margin-right: 0;
+  }
+
+  .navbar__list__item:last-of-type a {
+    margin-right: 0;
   }
 }
 
@@ -190,8 +242,23 @@ ul {
 .top-container {
   display: flex;
   align-items: center;
-  height: calc(100vh - 8.7rem);
+  min-height: calc(100vh - 8.7rem);
   margin-top: 8.8rem;
+}
+
+@media only screen and (max-width: 1250px) {
+  .top-container {
+    height: max-content;
+    margin-top: 14rem;
+    padding-bottom: 12rem;
+  }
+}
+
+@media only screen and (max-width: 578px) {
+  .top-container {
+    margin-top: 6rem;
+    padding-bottom: 0rem;
+  }
 }
 
 /* - - - - - top - main button - - - - -*/
@@ -238,6 +305,15 @@ ul {
   fill: var(--color-light);
 }
 
+@media only screen and (max-width: 578px) {
+  .cta-button-container {
+    display: none;
+  }
+  .cta-button {
+    display: none;
+  }
+}
+
 /* - - - - - top - instructions - - - - - */
 .instructions-container {
   display: flex;
@@ -250,7 +326,7 @@ ul {
   width: 65%;
   margin-left: auto;
   padding: 3rem;
-  border: 2px solid #ccc;
+  border: 2px solid var(--color-grey-medium);
 }
 
 .instructions__title {
@@ -294,6 +370,18 @@ ul {
 @media only screen and (max-width: 770px) {
   .instructions-container {
     width: 100%;
+  }
+
+  .instructions {
+    border: none;
+    border-top: 2px solid var(--color-grey-medium);
+    border-bottom: 2px solid var(--color-grey-medium);
+  }
+}
+
+@media only screen and (max-width: 578px) {
+  .instructions {
+    border: none;
   }
 }
 
@@ -392,23 +480,22 @@ form textarea {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 300px;
-  padding: 20px 100px;
+  height: 30rem;
+  padding: 2rem 10rem;
   background-color: var(--color-dark);
 }
 
 .footer__top-container {
-  padding: 0 20px;
+  padding: 0 2rem;
   display: flex;
   justify-content: space-between;
-  height: 195px;
+  height: 19.5rem;
   align-items: center;
 }
 
 .footer__logo {
-  height: 100px;
-  width: 112px;
-  /* margin-right: -95px; */
+  height: 10rem;
+  width: 11.2rem;
 }
 
 .footer__list {
@@ -417,11 +504,11 @@ form textarea {
   list-style: none;
 }
 .footer__list__item {
-  margin-top: 10px;
+  margin-top: 1rem;
 }
 
 .footer__list__item a {
-  font-size: 17px;
+  font-size: 1.7rem;
   color: var(--color-grey-light);
   text-decoration: none;
   font-weight: 300;
@@ -436,13 +523,13 @@ form textarea {
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid #d9d900;
-  padding-top: 10px;
+  padding-top: 1rem;
 }
 
 .footer__copyright {
   color: var(--color-grey-light);
   font-weight: 300;
-  font-size: 14px;
+  font-size: 1.4rem;
 }
 
 .footer--logo-lemon-container:hover .footer--logo-lemon {
@@ -471,8 +558,8 @@ form textarea {
 }
 
 .footer__icon {
-  height: 24px;
-  width: 24px;
+  height: 2.4rem;
+  width: 2.4rem;
   fill: var(--color-grey-light);
 }
 
@@ -481,14 +568,20 @@ form textarea {
 }
 
 .footer__icon-twitter {
-  height: 35px;
-  width: 35px;
-  margin-top: 2px;
-  margin-right: -6px;
-  margin-left: -6px;
+  height: 3.5rem;
+  width: 3.5rem;
+  margin-top: 0.2rem;
+  margin-right: -0.6rem;
+  margin-left: -0.6rem;
   fill: var(--color-grey-light);
 }
 
 .footer__icon-twitter:hover {
   fill: var(--color-primary-main);
+}
+
+@media only screen and (max-width: 578px) {
+  .footer {
+    padding: 2rem 2rem;
+  }
 }
