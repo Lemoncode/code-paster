@@ -16,7 +16,7 @@ export const StudentComponent: React.FC<Props> = props => {
   return (
     <>
       <main className={mainContainer}>
-        <Typography className={sessionName} variant="body1">
+        <Typography className={sessionName} variant="body1" role="heading">
           Session name: {room}
         </Typography>
         <label className={labelTextarea} htmlFor="session">

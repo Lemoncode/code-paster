@@ -1,4 +1,4 @@
-import * as ioClient from 'socket.io-client';
+import io from 'socket.io-client';
 import { Socket } from 'socket.io';
 import { baseSocketUrl } from './const';
 
@@ -18,5 +18,5 @@ export const createSocket = (connectionSetup: ConnectionSetup): Socket => {
   };
 
   // TODO Add channel (room)
-  return ioClient(socketParams.url, socketParams.options);
+  return io(socketParams.url, socketParams.options);
 };

@@ -5,4 +5,7 @@ module.exports = {
   moduleDirectories: ['<rootDir>/src', 'node_modules'],
   setupFilesAfterEnv: ['<rootDir>/config/test/setup.ts'],
   modulePathIgnorePatterns: ['cypress'],
+  transform: {
+    '^.+\\.svg$': 'jest-svg-transformer',
+  },
 };
