@@ -11,10 +11,9 @@ export const StudentScene = () => {
   React.useEffect(() => {
     document.title = `Student - Code Paster`;
   }, []);
-  const { room } = useParams<Params>();
   return (
     <SessionLayout>
-      <StudentContainer room={room}/>
+      <StudentContainer />
     </SessionLayout>
   );
 };

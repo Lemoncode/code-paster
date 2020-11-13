@@ -17,7 +17,7 @@ export const StudentComponent: React.FC<Props> = props => {
     <>
       <main className={mainContainer}>
         <Typography className={sessionName} variant="body1" role="heading">
-          Session name: {room}
+          Session name: {room ?? ''}
         </Typography>
         <label className={labelTextarea} htmlFor="session">
           Content
@@ -27,7 +27,7 @@ export const StudentComponent: React.FC<Props> = props => {
           rowsMax={30}
           rowsMin={30}
           className={studentBoard}
-          value={log}
+          value={log ?? ''}
         />
       </main>
     </>

@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { StudentComponent } from './student.component';
 
 describe('StudentComponent tests', () => {
-  it('It should show the session name and the text', () => {
+  it('It should show the session name and the text when passing valid parameters', () => {
     // Arrange
     const props = {
       room: 'Room I',
@@ -40,7 +40,7 @@ describe('StudentComponent tests', () => {
     expect(sessionName).toHaveTextContent(expectedSessionNameText);
   });
 
-  it('It should show an empty session name when passing null', () => {
+  it('It should show an empty session name when passing a null room value', () => {
     // Arrange
     const props = {
       room: null,
@@ -58,14 +58,12 @@ describe('StudentComponent tests', () => {
     expect(sessionName).toHaveTextContent(expectedSessionNameText);
   });
 
-  it('It should empty text when passing undefined', () => {
+  it('It should show an empty text when passing an undefined log value', () => {
     // Arrange
     const props = {
       room: 'Room I',
       log: undefined,
     };
-
-    const expectedSessionNameText = `Session name: ${props.room}`;
 
     // Act
     render(<StudentComponent {...props} />);
@@ -75,14 +73,12 @@ describe('StudentComponent tests', () => {
     expect(textArea).toHaveTextContent('');
   });
 
-  it('It should empty text when passing null', () => {
+  it('It should show an empty text when passing a null log value', () => {
     // Arrange
     const props = {
       room: 'Room I',
-      log: undefined,
+      log: null,
     };
-
-    const expectedSessionNameText = `Session name: ${props.room}`;
 
     // Act
     render(<StudentComponent {...props} />);

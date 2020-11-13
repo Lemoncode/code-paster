@@ -9,12 +9,14 @@ import { useLog } from 'core';
 import { StudentComponent } from './student.component';
 import { useWithRef } from 'common';
 import { getPreviousSessionContent } from 'common-app';
+import { useParams } from 'react-router-dom';
 
-interface Props {
+interface Params {
   room: string;
 }
 
-export const StudentContainer: React.FC<Props> = ({ room }) => {
+export const StudentContainer = () => {
+  const { room } = useParams<Params>();
   const { log, appendToLog, setLog } = useLog();
   const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(null);
 
