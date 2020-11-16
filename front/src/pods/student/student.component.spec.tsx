@@ -23,7 +23,7 @@ describe('StudentComponent tests', () => {
     expect(textArea).toHaveValue(props.log);
   });
 
-  it('It should show an empty session name when passing undefined', () => {
+  it('It should show an empty session name when passing an undefined room value', () => {
     // Arrange
     const props = {
       room: undefined,
