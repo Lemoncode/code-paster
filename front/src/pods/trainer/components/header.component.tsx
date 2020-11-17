@@ -18,12 +18,12 @@ export const HeaderComponent: React.FC<Props> = props => {
       <CopyFieldComponent
         labelName="Trainer Link"
         inputId="trainer-link"
-        urlLink={currentTrainerUrl}
+        urlLink={currentTrainerUrl ?? ''}
       />
       <CopyFieldComponent
         labelName="Students Link"
         inputId="student-link"
-        urlLink={currentStudentUrl}
+        urlLink={currentStudentUrl ?? ''}
       />
     </div>
   );
