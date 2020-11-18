@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { useParams } from 'react-router-dom';
 import {
   createSocket,
   SocketOuputMessageLiteral,
@@ -10,12 +9,13 @@ import { useLog } from 'core';
 import { StudentComponent } from './student.component';
 import { useWithRef } from 'common';
 import { getPreviousSessionContent } from 'common-app';
+import { useParams } from 'react-router-dom';
 
 interface Params {
   room: string;
 }
 
-export const PlayerContainer = () => {
+export const StudentContainer = () => {
   const { room } = useParams<Params>();
   const { log, appendToLog, setLog } = useLog();
   const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(null);
@@ -50,7 +50,10 @@ export const PlayerContainer = () => {
 
   React.useEffect(() => {
     handleConnection();
-    getPreviousSessionContent(socketRef, SocketEmitMessageTypes.STUDENT_REQUEST_FULL_CONTENT);
+    getPreviousSessionContent(
+      socketRef,
+      SocketEmitMessageTypes.STUDENT_REQUEST_FULL_CONTENT
+    );
   }, []);
 
   return (
