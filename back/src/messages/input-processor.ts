@@ -1,57 +1,45 @@
-import { InputMessageTypes, OutputMessageTypes } from './consts';
-import {
-  Action,
-  InputEstablishConnectionMaster,
-  InputEstablishConnectionPlayer,
-  SocketInfo,
-} from './model';
-import {
-  isTrainerUser,
-  saveRoomInfo,
-  isExistingConnection,
-  isRoomAvailable,
-  addNewUser,
-  getRoomFromConnectionId,
-} from '../storage';
-import { processOuputMessage } from './output-processor';
+import { InputMessageTypes, OutputMessageTypes } from './messages.consts';
+import { Action, InputEstablishConnectionTrainer, SocketInfo } from './messages.model';
+import {sessionRepository } from 'dals';
+const {addNewUser, getRoomFromConnectionId, isExistingConnection, isRoomAvailable, isTrainerUser, saveRoomInfo} = sessionRepository;
 
-export const processInputMessage = (socketInfo: SocketInfo, action: Action): Action[] => {
+export const processInputMessage = async (socketInfo: SocketInfo, action: Action): Promise<Action[]> => {
   let outputActionCollection: Action[] = [];
   switch (action.type) {
     case InputMessageTypes.ESTABLISH_CONNECTION_TRAINER:
-      const payloadECT: InputEstablishConnectionMaster = action.payload;
-      outputActionCollection = handleEstablishConnectionTrainer(
+      const payloadECT: InputEstablishConnectionTrainer = action.payload;
+      outputActionCollection = await handleEstablishConnectionTrainer(
         socketInfo,
         payloadECT.room,
         payloadECT.trainertoken
       );
       break;
     case InputMessageTypes.ESTABLISH_CONNECTION_STUDENT:
-      const payloadECS: InputEstablishConnectionMaster = action.payload;
-      outputActionCollection = handleEstablishConnectionStudent(
+      const payloadECS: InputEstablishConnectionTrainer = action.payload;
+      outputActionCollection = await handleEstablishConnectionStudent(
         socketInfo,
         payloadECS.room
       );
       break;
     case InputMessageTypes.TRAINER_APPEND_TEXT:
-      outputActionCollection = handleTrainerSendText(
+      outputActionCollection = await handleTrainerSendText(
         socketInfo,
         action.payload,
         InputMessageTypes.TRAINER_APPEND_TEXT
       );
       break;
     case InputMessageTypes.TRAINER_SET_FULL_TEXT:
-      outputActionCollection = handleTrainerSendText(
+      outputActionCollection = await handleTrainerSendText(
         socketInfo,
         action.payload,
         InputMessageTypes.TRAINER_SET_FULL_TEXT
       );
       break;
     case InputMessageTypes.STUDENT_REQUEST_FULL_CONTENT:
-      outputActionCollection = handleRequestGetStudentContent(socketInfo);
+      outputActionCollection = await handleRequestGetStudentContent(socketInfo);
       break;
     case InputMessageTypes.TRAINER_REQUEST_FULL_CONTENT:
-      outputActionCollection = handleRequestGetTrainerContent(socketInfo);
+      outputActionCollection = await handleRequestGetTrainerContent(socketInfo);
       break;
     default:
       break;
@@ -60,19 +48,19 @@ export const processInputMessage = (socketInfo: SocketInfo, action: Action): Act
   return outputActionCollection;
 };
 
-const handleRequestGetStudentContent = (socketInfo: SocketInfo) => {
+const handleRequestGetStudentContent = async (socketInfo: SocketInfo): Promise<Action[]> => {
   return [{ type: OutputMessageTypes.STUDENT_SEND_FULL_CONTENT }];
 };
 
-const handleRequestGetTrainerContent = (socketInfo: SocketInfo) => {
+const handleRequestGetTrainerContent = async (socketInfo: SocketInfo): Promise<Action[]> => {
   return [{ type: OutputMessageTypes.TRAINER_SEND_FULL_CONTENT }];
 };
 
-const handleTrainerSendText = (socketInfo: SocketInfo, text: string, action: string) => {
+const handleTrainerSendText = async (socketInfo: SocketInfo, text: string, action: string): Promise<Action[]> => {
   if (!isTrainerUser(socketInfo.connectionId)) {
     return [];
   }
-  const room = getRoomFromConnectionId(socketInfo.connectionId);
+  const room = await getRoomFromConnectionId(socketInfo.connectionId);
   const roomInfo = { room, content: text };
   saveRoomInfo(roomInfo, action);
   switch(action){
@@ -85,17 +73,14 @@ const handleTrainerSendText = (socketInfo: SocketInfo, text: string, action: str
   };
 };
 
-const handleEstablishConnectionStudent = (
-  socketInfo: SocketInfo,
-  room: string
-) => {
+const handleEstablishConnectionStudent = async (socketInfo: SocketInfo, room: string): Promise<Action[]> => {
   if (!room) {
     // Ignore
     return [];
   }
 
-  if (isRoomAvailable(room) || !isExistingConnection(socketInfo.connectionId)) {
-    addNewUser(socketInfo.connectionId, {
+  if (await isRoomAvailable(room) || !(await isExistingConnection(socketInfo.connectionId))) {
+    await addNewUser(socketInfo.connectionId, {
       room,
       trainerToken: '',
       isTrainer: false,
@@ -105,18 +90,14 @@ const handleEstablishConnectionStudent = (
   return [{ type: OutputMessageTypes.CONNECTION_ESTABLISHED_STUDENT }];
 };
 
-const handleEstablishConnectionTrainer = (
-  socketInfo: SocketInfo,
-  room: string,
-  trainerToken: string
-): Action[] => {
+const handleEstablishConnectionTrainer = async (socketInfo: SocketInfo, room: string, trainerToken: string): Promise<Action[]> => {
   if (!trainerToken || !room) {
     // Ignore
     return [];
   }
 
-  if (isRoomAvailable(room) || !isExistingConnection(socketInfo.connectionId)) {
-    addNewUser(socketInfo.connectionId, {
+  if (await isRoomAvailable(room) || !(await isExistingConnection(socketInfo.connectionId))) {
+    await addNewUser(socketInfo.connectionId, {
       room,
       trainerToken,
       isTrainer: !!trainerToken,

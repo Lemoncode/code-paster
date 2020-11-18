@@ -4,6 +4,6 @@ import * as mockRepository from './session.mock';
 import * as repository from './session.mock';
 import { SessionRepository } from './session.contract';
 
-export const userRepository: SessionRepository = envConstants.isMockRepository
+export const sessionRepository: SessionRepository = envConstants.isMockRepository
   ? mockRepository
   : repository;

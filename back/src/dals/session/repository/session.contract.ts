@@ -1,15 +1,13 @@
-import { UserSession, ConnectSessionInfo } from 'dals/session';
+import { RoomInfo } from 'dals/room';
+import { ConnectSessionInfo } from 'dals/session';
 
 export interface SessionRepository {
-  isRoomAvailable: (room: string) => Promise<boolean>;
-  addNewUser: (connectionId: string, connectSession: ConnectSessionInfo) => Promise<boolean>;
-  saveRoomInfo:
-  getRoomContent:
   isTrainerUser: (connectionId: string) => Promise<boolean>;
-  isExistingConnection:
+  saveRoomInfo: (newRoomInfo: RoomInfo, action: string)  => Promise<void>;
+  isExistingConnection: (connectionId: string) => Promise<boolean>;
+  isRoomAvailable: (room: string) => Promise<boolean>;
+  addNewUser: (connectionId: string, connectSession: ConnectSessionInfo) => Promise<void>;
   getRoomFromConnectionId: (connectionId: string) => Promise<string>;
-  getRoomIndexByName:
-  updateRoomContent:
-  insertRoom:
+  getRoomContent:(room: string) => Promise<string>;
 }
 

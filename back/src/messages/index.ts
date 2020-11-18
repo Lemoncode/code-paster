@@ -1,4 +1,4 @@
-export * from './consts';
+export * from './messages.consts';
 export * from './input-processor';
 export * from './output-processor';
-export * from './model';
+export * from './messages.model';

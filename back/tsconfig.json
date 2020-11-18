@@ -14,7 +14,10 @@
     "baseUrl": "./src",
     "paths": {
       "core": ["core"],
-      "dals": ["dals"]
+      "dals": ["dals"],
+      "messages": ["messages"],
+      "business": ["business"],
+      "pods": ["pods"]
     }
   },
   "include": ["src/**/*"]

@@ -21,7 +21,9 @@
                     "alias": {
                       "core": "./src/core",
                       "dals": "./src/dals",
-                      "pods": "./src/pods"
+                      "pods": "./src/pods",
+                      "messages": "./src/messages",
+                      "business": "./src/business"
                     }
                   }
               ]
