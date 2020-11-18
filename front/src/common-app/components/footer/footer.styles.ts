@@ -9,6 +9,14 @@ export const footerContainer = css`
   height: ${spacing(300)};
   padding: ${spacing(20)} ${spacing(100)};
   background-color: ${palette.text.primary};
+
+  @media (max-width: 728px) {
+    padding: ${spacing(20)} ${spacing(40)} ${spacing(30)} ${spacing(40)};
+  }
+
+  @media (max-width: 380px) {
+    height: ${spacing(350)};
+  }
 `;
 
 export const topContainer = css`
@@ -17,6 +25,13 @@ export const topContainer = css`
   justify-content: space-between;
   height: ${spacing(195)};
   align-items: center;
+
+  @media (max-width: 380px) {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    height: ${spacing(220)};
+  }
 `;
 
 export const topContainerCenter = css`
@@ -31,6 +46,10 @@ export const linkList = css`
   padding: 0;
   margin: 0;
   list-style: none;
+  @media (max-width: 380px) {
+    text-align: center;
+    margin-top: 1.2rem;
+  }
 `;
 
 export const link = css`
@@ -47,6 +66,12 @@ export const bottomContainer = css`
   justify-content: space-between;
   border-top: 1px solid #d9d900;
   padding-top: 1rem;
+
+  @media (max-width: 380px) {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const lemoncodeIcon = css`
@@ -90,4 +115,7 @@ export const githubIcon = css`
 
 export const copyright = css`
   color: #eee;
+  @media (max-width: 380px) {
+    margin-top: 0.4rem;
+  }
 `;
