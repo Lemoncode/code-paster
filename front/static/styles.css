@@ -513,12 +513,33 @@ form textarea {
   background-color: var(--color-dark);
 }
 
+@media only screen and (max-width: 728px) {
+  .footer {
+    padding: 2rem 4rem 3rem 4rem;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .footer {
+    height: 35rem;
+  }
+}
+
 .footer__top-container {
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   height: 19.5rem;
   align-items: center;
+}
+
+@media only screen and (max-width: 380px) {
+  .footer__top-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    height: 22rem;
+  }
 }
 
 .footer__logo {
@@ -531,8 +552,16 @@ form textarea {
   margin: 0;
   list-style: none;
 }
+
+@media only screen and (max-width: 380px) {
+  .footer__list {
+    text-align: center;
+    margin-top: 2.4rem;
+  }
+}
+
 .footer__list__item {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .footer__list__item a {
@@ -554,10 +583,11 @@ form textarea {
   padding-top: 1rem;
 }
 
-.footer__copyright {
-  color: var(--color-grey-light);
-  font-weight: 300;
-  font-size: 1.4rem;
+@media only screen and (max-width: 380px) {
+  .footer__bottom-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .footer--logo-lemon-container:hover .footer--logo-lemon {
@@ -584,6 +614,9 @@ form textarea {
 .footer__icon-list-item {
   margin-right: 1.2rem;
 }
+.footer__icon-list-item:last-of-type {
+  margin-right: 0;
+}
 
 .footer__icon {
   height: 2.4rem;
@@ -608,8 +641,14 @@ form textarea {
   fill: var(--color-primary-main);
 }
 
+.footer__copyright {
+  color: var(--color-grey-light);
+  font-weight: 300;
+  font-size: 1.4rem;
+}
+
 @media only screen and (max-width: 578px) {
-  .footer {
-    padding: 2rem 2rem;
+  .footer__copyright {
+    margin-top: 0.4rem;
   }
 }

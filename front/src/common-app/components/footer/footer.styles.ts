@@ -46,6 +46,7 @@ export const linkList = css`
   padding: 0;
   margin: 0;
   list-style: none;
+
   @media (max-width: 380px) {
     text-align: center;
     margin-top: 1.2rem;
