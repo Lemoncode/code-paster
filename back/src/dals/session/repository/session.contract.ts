@@ -12,3 +12,4 @@ export interface SessionRepository {
   updateRoomContent:
   insertRoom:
 }
+
