@@ -43,12 +43,23 @@ export const sendBtn = css`
   background-color: white;
   border: 2px solid #11ae64;
   color: #11ae64;
-  transition: 1ll 0.2s;
+  transition: all 0.2s;
   &:hover,
   &:active {
     background-color: #11ae64;
     border: 2px solid #11ae64;
     color: white;
+    outline: none;
+  }
+  @media (max-width: 380px) {
+    background-color: #11ae64;
+    color: white;
+    border: none;
+  }
+  &:hover,
+  &:active {
+    background-color: #0f834c;
+    border: none;
   }
 `;
 
@@ -72,12 +83,23 @@ export const undoBtn = css`
   background-color: white;
   border: 2px solid rgb(255, 87, 51);
   color: rgb(255, 87, 51);
-  transition: 1ll 0.2s;
+  transition: all 0.2s;
   &:hover,
   &:active {
     background-color: rgb(255, 87, 51);
     border: 2px solid rgb(255, 87, 51);
     color: white;
+    outline: none;
+  }
+  @media (max-width: 380px) {
+    background-color: rgb(255, 87, 51);
+    color: white;
+    border: none;
+  }
+  &:hover,
+  &:active {
+    background-color: rgb(207, 70, 41);
+    border: none;
   }
 `;
 

@@ -1,7 +1,8 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
 import background from 'assets/bg-create-session.png';
-const { spacing, breakpoints } = theme;
+
+const { spacing, breakpoints, palette } = theme;
 
 export const mainContainer = css`
   position: relative;
@@ -14,8 +15,14 @@ export const mainContainer = css`
   padding: 0;
   width: 100%;
   height: calc(100vh - ${spacing(86)});
-  @media screen and (max-width: ${breakpoints.values.md}px) {
+  @media screen and (max-width: 960px) {
     background-image: none;
+  }
+
+  @media (max-width: 578px) {
+    height: calc(100vh - ${spacing(147)});
+    width: 90%;
+    margin: 0 auto;
   }
 `;
 
@@ -29,12 +36,22 @@ export const buttonContainer = css`
     margin-left: auto;
     margin-right: auto;
   }
+  @media (max-width: 960px) {
+    margin-left: auto;
+  }
 `;
 
 export const descriptionText = css`
   text-align: center;
   font-size: 1.8rem;
   font-weight: 400;
+
+  @media (max-width: 578px) {
+    font-size: 1.6rem;
+  }
+  @media (max-width: 380px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const createSessionBtn = css`
@@ -58,9 +75,27 @@ export const createSessionBtn = css`
     color: white;
     outline: none;
   }
+  @media (max-width: 578px) {
+    color: white;
+    background: none;
+    background-color: rgb(255, 87, 51);
+    border: none;
+    &:hover,
+    &:active {
+      background-color: ${palette.text.primary};
+      outline: none;
+    }
+  }
+  @media (max-width: 380px) {
+    padding: ${spacing(20)} ${spacing(24)};
+    font-size: 1.2rem;
+  }
 `;
 
 export const arrowIcon = css`
   margin-left: 0.8rem;
   font-size: 2rem;
+  @media (max-width: 380px) {
+    font-size: 1.6rem;
+  }
 `;
