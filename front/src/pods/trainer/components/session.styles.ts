@@ -11,6 +11,7 @@ export const studentBoard = css`
   box-sizing: border-box;
   font-size: 16px;
   width: 100%;
+  white-space: nowrap;
   margin-bottom: ${spacing(10)};
   margin-top: ${spacing(10)};
   padding: ${spacing(16)};
@@ -54,6 +55,9 @@ export const sendBtn = css`
 export const sendIcon = css`
   font-size: 20px;
   margin-left: 10px;
+  @media (max-width: 380px) {
+    display: none;
+  }
 `;
 
 export const undoBtn = css`
@@ -80,6 +84,9 @@ export const undoBtn = css`
 export const undoIcon = css`
   font-size: 20px;
   margin-right: 10px;
+  @media (max-width: 380px) {
+    display: none;
+  }
 `;
 
 export const labelTextarea = css`

@@ -17,6 +17,7 @@ export const labelTextarea = css`
 export const editTextArea = css`
   box-sizing: border-box;
   font-size: 16px;
+  white-space: nowrap;
   width: 100%;
   margin-bottom: ${spacing(20)};
   margin-top: ${spacing(10)};

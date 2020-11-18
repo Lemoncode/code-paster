@@ -3,8 +3,12 @@ import { theme } from 'core/theme';
 const { typography, spacing, palette } = theme;
 
 export const mainContainer = css`
-  width: 80%;
+  width: 60%;
   margin: ${spacing(80)} auto;
+
+  @media (max-width: 728px) {
+    width: 80%;
+  }
 `;
 
 export const studentBoard = css`

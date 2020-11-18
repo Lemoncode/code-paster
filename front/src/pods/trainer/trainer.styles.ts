@@ -11,4 +11,8 @@ export const backgroundContainer = css`
 export const content = css`
   width: 60%;
   margin: 0px auto 0 auto;
+
+  @media (max-width: 728px) {
+    width: 80%;
+  }
 `;

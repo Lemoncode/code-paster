@@ -30,7 +30,9 @@ export const inputIconContainer = css`
 
 export const textArea = css`
   font-family: ${typography.fontFamily};
+  min-width: 0;
   color: ${palette.text.primary};
+  margin-right: 0;
   border: 2px solid #ccc;
   border-top-left-radius: 0.4rem;
   border-bottom-left-radius: 0.4rem;
@@ -46,11 +48,18 @@ export const textArea = css`
   &::selection {
     background: #ccc;
   }
-  margin-right: 0%;
+
+  @media (max-width: 380px) {
+    font-size: 14px;
+    padding: 16px;
+  }
 `;
 
 export const copyIcon = css`
   font-size: 30px;
+  @media (max-width: 380px) {
+    font-size: 26px;
+  }
 `;
 
 export const copyBtn = css`
@@ -70,5 +79,10 @@ export const copyBtn = css`
   }
   &:active {
     background-color: #fff;
+  }
+
+  @media (max-width: 380px) {
+    height: 52px;
+    width: 52px;
   }
 `;
