@@ -57,4 +57,21 @@ describe('NewTextComponent unit tests', () => {
     // Assert
     expect(handleAppendTrainerText).not.toHaveBeenCalled();
   });
+
+  it('should not handle any text when there is not entered text and pressing ctrl + enter', async () => {
+    // Arrange
+    const handleAppendTrainerText = jest.fn();
+
+    // Act
+    render(
+      <NewTextComponent handleAppendTrainerText={handleAppendTrainerText} />
+    );
+
+    const inputText = screen.getByRole('textbox');
+
+    await act(async () => userEvent.type(inputText, '{ctrl}{enter}{/ctrl}'));
+
+    // Assert
+    expect(handleAppendTrainerText).not.toHaveBeenCalled();
+  });
 });
