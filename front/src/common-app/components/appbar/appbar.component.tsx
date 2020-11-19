@@ -15,10 +15,10 @@ export const AppbarComponent: React.FC<Props> = ({ showLinks }) => {
     link,
     logo,
   } = classes;
-  console.log(showLinks);
+
   return (
     <div className={appbarContainer}>
-      <CodePasterLogo className={logo} />
+      <CodePasterLogo className={logo(showLinks)} />
       {showLinks && (
         <nav className={navContainer}>
           <ul className={navList}>

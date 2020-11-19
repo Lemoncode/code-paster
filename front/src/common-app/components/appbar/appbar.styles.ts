@@ -14,22 +14,44 @@ export const appbarContainer = css`
     white 90%
   );
   border-bottom: 2px solid ${palette.text.primary};
+
+  @media (max-width: 578px) {
+    height: auto;
+    min-height: ${spacing(86)};
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(60deg, white, white);
+  }
 `;
 
-export const logo = css`
+export const logo = (showLinks: boolean): string => css`
   margin-top: ${spacing(5)};
   height: ${spacing(60)};
   fill: ${palette.text.primary};
   margin-left: 2.4rem;
+
+  @media (max-width: 578px) {
+    margin-left: 0;
+    margin-top: ${showLinks ? '1.5rem' : '0'};
+  }
 `;
 
 export const navContainer = css`
   margin-left: auto;
+
+  @media (max-width: 578px) {
+    margin-left: 0;
+  }
 `;
 
 export const navList = css`
   display: flex;
   list-style: none;
+
+  @media (max-width: 578px) {
+    padding: 0;
+  }
 `;
 
 export const listItem = css`
@@ -38,6 +60,10 @@ export const listItem = css`
 
   &:last-of-type {
     margin-right: 2.4rem;
+
+    @media (max-width: 578px) {
+      margin-right: 0;
+    }
   }
 `;
 

@@ -117,6 +117,11 @@ ul {
   align-items: center;
 }
 
+.navbar__list-container {
+  display: flex;
+  margin-left: auto;
+}
+
 .navbar__list__item {
   margin-right: 2.5rem;
 }
@@ -125,6 +130,7 @@ ul {
   display: flex;
   align-items: center;
   padding: 1rem 1.5rem;
+  margin-right: 3rem;
   font-size: 1.7rem;
   font-weight: 300;
   text-transform: capitalize;
@@ -203,17 +209,21 @@ ul {
     margin-bottom: 2rem;
   }
 
-  .navbar__list {
-    margin-right: auto;
+  .navbar__list-container {
+    margin-left: 0;
     margin-bottom: 2rem;
   }
 
-  .navbar__list__item:first-of-type {
-    display: inline-block;
+  .navbar__list {
+    margin-right: auto;
   }
 
   .navbar__cta-button {
-    padding: 0.5rem 1.2rem;
+    display: inline-block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem 1.2rem;
     color: var(--color-light);
     background-color: var(--color-alert);
     border: none;
@@ -234,6 +244,22 @@ ul {
 
   .navbar__list__item:last-of-type a {
     margin-right: 0;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .navbar__list-container {
+    flex-direction: column-reverse;
+  }
+
+  .navbar__list {
+    margin-bottom: 2rem;
+  }
+
+  .navbar__cta-button {
+    margin-right: 0;
+    width: 17rem;
+    margin: 0 auto;
   }
 }
 
@@ -384,6 +410,18 @@ ul {
   }
 }
 
+@media only screen and (max-width: 578px) {
+  .instructions-container {
+    padding-top: 8rem;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .instructions-container {
+    padding-top: 12rem;
+  }
+}
+
 /* - - - - - video - - - - - */
 .video-section-container {
   width: 70%;
@@ -444,6 +482,24 @@ ul {
   padding: 0;
   border: 0;
   border-top: 1px solid var(--color-dark);
+}
+
+@media only screen and (max-width: 578px) {
+  .card {
+    flex-direction: column;
+  }
+
+  .card__img {
+    margin-bottom: 2rem;
+  }
+
+  .card__text {
+    margin-left: 0;
+  }
+
+  .card__text h3 {
+    text-align: center;
+  }
 }
 
 /* - - - - - contact - - - - - */
@@ -513,12 +569,33 @@ form textarea {
   background-color: var(--color-dark);
 }
 
+@media only screen and (max-width: 728px) {
+  .footer {
+    padding: 2rem 4rem 3rem 4rem;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+  .footer {
+    height: 35rem;
+  }
+}
+
 .footer__top-container {
   padding: 0 2rem;
   display: flex;
   justify-content: space-between;
   height: 19.5rem;
   align-items: center;
+}
+
+@media only screen and (max-width: 380px) {
+  .footer__top-container {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    height: 22rem;
+  }
 }
 
 .footer__logo {
@@ -531,8 +608,16 @@ form textarea {
   margin: 0;
   list-style: none;
 }
+
+@media only screen and (max-width: 380px) {
+  .footer__list {
+    text-align: center;
+    margin-top: 2.4rem;
+  }
+}
+
 .footer__list__item {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .footer__list__item a {
@@ -554,10 +639,11 @@ form textarea {
   padding-top: 1rem;
 }
 
-.footer__copyright {
-  color: var(--color-grey-light);
-  font-weight: 300;
-  font-size: 1.4rem;
+@media only screen and (max-width: 380px) {
+  .footer__bottom-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .footer--logo-lemon-container:hover .footer--logo-lemon {
@@ -584,6 +670,9 @@ form textarea {
 .footer__icon-list-item {
   margin-right: 1.2rem;
 }
+.footer__icon-list-item:last-of-type {
+  margin-right: 0;
+}
 
 .footer__icon {
   height: 2.4rem;
@@ -608,8 +697,14 @@ form textarea {
   fill: var(--color-primary-main);
 }
 
+.footer__copyright {
+  color: var(--color-grey-light);
+  font-weight: 300;
+  font-size: 1.4rem;
+}
+
 @media only screen and (max-width: 578px) {
-  .footer {
-    padding: 2rem 2rem;
+  .footer__copyright {
+    margin-top: 0.4rem;
   }
 }
