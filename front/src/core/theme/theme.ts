@@ -6,6 +6,9 @@ const defaultTheme = createMuiTheme();
 
 export const theme: Theme = merge(defaultTheme, {
   palette: {
+    background: {
+      default: '#fff',
+    },
     customPalette: {
       background: '#fff',
       primary: '#d9d900',
@@ -19,4 +22,12 @@ export const theme: Theme = merge(defaultTheme, {
     },
   },
   spacing: (pixel: number): string => `${pixel / 16}rem`,
+  breakpoints: {
+    values: {
+      xs: 380,
+      sm: 578,
+      md: 728,
+      lg: 1100,
+    },
+  },
 });

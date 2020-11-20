@@ -1,7 +1,7 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
 
-const { palette, spacing, typography } = theme;
+const { palette, spacing, typography, breakpoints } = theme;
 const color = palette.customPalette;
 
 export const sessionContainer = css`
@@ -53,7 +53,7 @@ export const sendBtn = css`
     color: white;
     outline: none;
   }
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     background-color: ${color.successLight};
     color: white;
     border: none;
@@ -68,7 +68,7 @@ export const sendBtn = css`
 export const sendIcon = css`
   font-size: 20px;
   margin-left: 10px;
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     display: none;
   }
 `;
@@ -93,7 +93,7 @@ export const undoBtn = css`
     color: white;
     outline: none;
   }
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     background-color: ${color.alertLight};
     color: white;
     border: none;
@@ -108,7 +108,7 @@ export const undoBtn = css`
 export const undoIcon = css`
   font-size: 20px;
   margin-right: 10px;
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     display: none;
   }
 `;

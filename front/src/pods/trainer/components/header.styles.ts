@@ -1,7 +1,7 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
 
-const { palette, typography, spacing } = theme;
+const { palette, typography, spacing, breakpoints } = theme;
 const color = palette.customPalette;
 
 export const headerContainer = css`
@@ -50,8 +50,7 @@ export const textArea = css`
   &::selection {
     background: ${color.greyMedium};
   }
-
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     font-size: 14px;
     padding: 16px;
   }
@@ -59,7 +58,7 @@ export const textArea = css`
 
 export const copyIcon = css`
   font-size: 30px;
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     font-size: 26px;
   }
 `;
@@ -82,8 +81,7 @@ export const copyBtn = css`
   &:active {
     background-color: ${color.background};
   }
-
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     height: 52px;
     width: 52px;
   }

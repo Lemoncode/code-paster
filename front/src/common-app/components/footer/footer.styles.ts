@@ -1,7 +1,7 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
 
-const { palette, spacing } = theme;
+const { palette, spacing, breakpoints } = theme;
 const color = palette.customPalette;
 
 export const footerContainer = css`
@@ -11,12 +11,10 @@ export const footerContainer = css`
   height: ${spacing(300)};
   padding: ${spacing(20)} ${spacing(100)};
   background-color: ${color.secondary};
-
-  @media (max-width: 728px) {
+  @media (max-width: ${breakpoints.values.md}px) {
     padding: ${spacing(20)} ${spacing(40)} ${spacing(30)} ${spacing(40)};
   }
-
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     height: ${spacing(350)};
   }
 `;
@@ -27,8 +25,7 @@ export const topContainer = css`
   justify-content: space-between;
   height: ${spacing(195)};
   align-items: center;
-
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
@@ -48,8 +45,7 @@ export const linkList = css`
   padding: 0;
   margin: 0;
   list-style: none;
-
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     text-align: center;
     margin-top: 1.2rem;
   }
@@ -69,8 +65,7 @@ export const bottomContainer = css`
   justify-content: space-between;
   border-top: 1px solid ${color.primary};
   padding-top: 1rem;
-
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -118,7 +113,7 @@ export const githubIcon = css`
 
 export const copyright = css`
   color: ${color.greyLight};
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     margin-top: 0.4rem;
   }
 `;
