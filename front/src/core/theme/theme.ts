@@ -21,7 +21,6 @@ export const theme: Theme = merge(defaultTheme, {
       greyMedium: '#ccc',
     },
   },
-  spacing: (pixel: number): string => `${pixel / 16}rem`,
   breakpoints: {
     values: {
       xs: 380,
@@ -30,4 +29,5 @@ export const theme: Theme = merge(defaultTheme, {
       lg: 1100,
     },
   },
+  spacing: (factor: number) => `${0.5 * factor}rem`, // 1 unit = 8px / 0.5rem
 });

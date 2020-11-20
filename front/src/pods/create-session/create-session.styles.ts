@@ -15,19 +15,19 @@ export const mainContainer = css`
   margin: 0;
   padding: 0;
   width: 100%;
-  height: calc(100vh - ${spacing(86)});
+  height: calc(100vh - ${spacing(10.75)});
   @media (max-width: ${breakpoints.values.lg}px) {
     background-image: none;
   }
   @media (max-width: ${breakpoints.values.sm}px) {
-    height: calc(100vh - ${spacing(147)});
+    height: calc(100vh - ${spacing(18.375)});
     width: 90%;
     margin: 0 auto;
   }
 `;
 
 export const buttonContainer = css`
-  width: 25rem;
+  width: ${spacing(50)};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,13 +40,13 @@ export const buttonContainer = css`
 
 export const descriptionText = css`
   text-align: center;
-  font-size: 1.8rem;
+  font-size: ${spacing(3.6)};
   font-weight: 400;
   @media (max-width: ${breakpoints.values.sm}px) {
-    font-size: 1.6rem;
+    font-size: ${spacing(3.2)};
   }
   @media (max-width: ${breakpoints.values.xs}px) {
-    font-size: 1.5rem;
+    font-size: ${spacing(3)};
   }
 `;
 
@@ -54,10 +54,10 @@ export const createSessionBtn = css`
   display: flex;
   align-items: center;
   color: ${color.alertLight};
-  padding: ${spacing(20)} ${spacing(30)};
+  padding: ${spacing(2.5)} ${spacing(3.75)};
   text-transform: capitalize;
-  margin-top: 2rem;
-  font-size: 1.4rem;
+  margin-top: ${spacing(4)};
+  font-size: ${spacing(2.8)};
   font-weight: 400;
   background: linear-gradient(
     to right,
@@ -87,15 +87,15 @@ export const createSessionBtn = css`
     }
   }
   @media (max-width: ${breakpoints.values.xs}px) {
-    padding: ${spacing(20)} ${spacing(24)};
+    padding: ${spacing(2.5)} ${spacing(3)};
     font-size: 1.2rem;
   }
 `;
 
 export const arrowIcon = css`
-  margin-left: 0.8rem;
-  font-size: 2rem;
+  margin-left: ${spacing(1.6)};
+  font-size: ${spacing(4)};
   @media (max-width: ${breakpoints.values.xs}px) {
-    font-size: 1.6rem;
+    font-size: ${spacing(3.2)};
   }
 `;
