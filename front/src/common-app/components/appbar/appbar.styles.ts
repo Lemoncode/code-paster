@@ -36,8 +36,8 @@ export const logo = (showLinks: boolean): string => css`
   fill: ${color.secondary};
   margin-left: ${spacing(4.8)};
   @media (max-width: ${breakpoints.values.sm}px) {
-    margin-left: '0';
-    margin-top: ${showLinks ? spacing(3) : '0'};
+    margin-left: 0;
+    margin-top: ${showLinks ? spacing(3) : 0};
   }
 `;
 
