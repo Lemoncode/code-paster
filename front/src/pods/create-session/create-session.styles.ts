@@ -3,6 +3,7 @@ import { theme } from 'core/theme';
 import background from 'assets/bg-create-session.png';
 
 const { spacing, breakpoints, palette } = theme;
+const color = palette.customPalette;
 
 export const mainContainer = css`
   position: relative;
@@ -57,17 +58,21 @@ export const descriptionText = css`
 export const createSessionBtn = css`
   display: flex;
   align-items: center;
-  color: rgb(255, 87, 51);
+  color: ${color.alertLight};
   padding: ${spacing(20)} ${spacing(30)};
   text-transform: capitalize;
   margin-top: 2rem;
   font-size: 1.4rem;
   font-weight: 400;
-  background: linear-gradient(to right, rgb(255, 87, 51), rgb(255, 87, 51));
+  background: linear-gradient(
+    to right,
+    ${color.alertLight},
+    ${color.alertLight}
+  );
   background-repeat: no-repeat;
   background-size: 0 100%;
   transition: all 0.4s 0s;
-  border: 2px solid rgb(255, 87, 51);
+  border: 2px solid ${color.alertLight};
   &:hover,
   &:active {
     cursor: pointer;
@@ -78,11 +83,11 @@ export const createSessionBtn = css`
   @media (max-width: 578px) {
     color: white;
     background: none;
-    background-color: rgb(255, 87, 51);
+    background-color: ${color.alertLight};
     border: none;
     &:hover,
     &:active {
-      background-color: ${palette.text.primary};
+      background-color: ${color.secondary};
       outline: none;
     }
   }

@@ -1,6 +1,8 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
+
 const { typography, spacing, palette } = theme;
+const color = palette.customPalette;
 
 export const mainContainer = css`
   width: 60%;
@@ -20,9 +22,9 @@ export const studentBoard = css`
   margin-top: ${spacing(10)};
   padding: ${spacing(16)};
   font-family: ${typography.fontFamily};
-  background-color: ${palette.background.paper};
+  background-color: ${color.background};
   resize: none;
-  border: 2px solid ${palette.text.primary};
+  border: 2px solid ${color.secondary};
   &:focus {
     outline: none;
   }
@@ -39,6 +41,6 @@ export const sessionName = css`
   text-align: center;
   margin-bottom: ${spacing(40)};
   padding-bottom: 5px;
-  border-bottom: 2px solid #d9d900;
+  border-bottom: 2px solid ${color.primary};
   display: inline-block;
 `;

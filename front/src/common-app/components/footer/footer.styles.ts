@@ -1,6 +1,8 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
-const { palette, typography, spacing } = theme;
+
+const { palette, spacing } = theme;
+const color = palette.customPalette;
 
 export const footerContainer = css`
   display: flex;
@@ -8,7 +10,7 @@ export const footerContainer = css`
   justify-content: space-between;
   height: ${spacing(300)};
   padding: ${spacing(20)} ${spacing(100)};
-  background-color: ${palette.text.primary};
+  background-color: ${color.secondary};
 
   @media (max-width: 728px) {
     padding: ${spacing(20)} ${spacing(40)} ${spacing(30)} ${spacing(40)};
@@ -58,14 +60,14 @@ export const link = css`
   color: #eee;
   text-decoration: none;
   &:hover {
-    color: #d9d900;
+    color: ${color.primary};
   }
 `;
 
 export const bottomContainer = css`
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid #d9d900;
+  border-top: 1px solid ${color.primary};
   padding-top: 1rem;
 
   @media (max-width: 380px) {
@@ -97,25 +99,25 @@ export const iconListItem = css`
 `;
 
 export const icon = css`
-  color: #eee;
+  color: ${color.greyLight};
   font-size: 1.5rem;
   &:hover {
     cursor: pointer;
-    color: #d9d900;
+    color: ${color.primary};
   }
 `;
 
 export const githubIcon = css`
   height: 22px;
-  fill: #eee;
+  fill: ${color.greyLight};
   &:hover {
     cursor: pointer;
-    fill: #d9d900;
+    fill: ${color.primary};
   }
 `;
 
 export const copyright = css`
-  color: #eee;
+  color: ${color.greyLight};
   @media (max-width: 380px) {
     margin-top: 0.4rem;
   }

@@ -1,6 +1,8 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
+
 const { palette, spacing, typography } = theme;
+const color = palette.customPalette;
 
 export const sessionContainer = css`
   padding-top: ${spacing(60)};
@@ -16,9 +18,9 @@ export const studentBoard = css`
   margin-top: ${spacing(10)};
   padding: ${spacing(16)};
   font-family: ${typography.fontFamily};
-  background-color: ${palette.background.paper};
+  background-color: ${color.background};
   resize: none;
-  border: 2px solid ${palette.text.primary};
+  border: 2px solid ${color.secondary};
   &:focus {
     outline: none;
   }
@@ -28,7 +30,7 @@ export const btnContainer = css`
   margin-top: 10px;
   display: flex;
   padding-bottom: 25px;
-  border-bottom: 2px solid #ccc;
+  border-bottom: 2px solid ${color.greyMedium};
 `;
 
 export const sendBtn = css`
@@ -41,25 +43,25 @@ export const sendBtn = css`
   padding: 10px 15px;
   font-size: 19px;
   background-color: white;
-  border: 2px solid #11ae64;
-  color: #11ae64;
+  border: 2px solid ${color.successLight};
+  color: ${color.successLight};
   transition: all 0.2s;
   &:hover,
   &:active {
-    background-color: #11ae64;
-    border: 2px solid #11ae64;
+    background-color: ${color.successLight};
+    border: 2px solid ${color.successLight};
     color: white;
     outline: none;
   }
   @media (max-width: 380px) {
-    background-color: #11ae64;
+    background-color: ${color.successLight};
     color: white;
     border: none;
-  }
-  &:hover,
-  &:active {
-    background-color: #0f834c;
-    border: none;
+    &:hover,
+    &:active {
+      background-color: ${color.successDark};
+      border: none;
+    }
   }
 `;
 
@@ -81,25 +83,25 @@ export const undoBtn = css`
   padding: 10px 15px;
   margin-right: 10px;
   background-color: white;
-  border: 2px solid rgb(255, 87, 51);
-  color: rgb(255, 87, 51);
+  border: 2px solid ${color.alertLight};
+  color: ${color.alertLight};
   transition: all 0.2s;
   &:hover,
   &:active {
-    background-color: rgb(255, 87, 51);
-    border: 2px solid rgb(255, 87, 51);
+    background-color: ${color.alertLight};
+    border: 2px solid ${color.alertLight};
     color: white;
     outline: none;
   }
   @media (max-width: 380px) {
-    background-color: rgb(255, 87, 51);
+    background-color: ${color.alertLight};
     color: white;
     border: none;
-  }
-  &:hover,
-  &:active {
-    background-color: rgb(207, 70, 41);
-    border: none;
+    &:hover,
+    &:active {
+      background-color: ${color.alertDark};
+      border: none;
+    }
   }
 `;
 

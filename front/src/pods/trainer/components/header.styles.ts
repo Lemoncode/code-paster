@@ -1,6 +1,8 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
+
 const { palette, typography, spacing } = theme;
+const color = palette.customPalette;
 
 export const headerContainer = css`
   width: 100%;
@@ -31,9 +33,9 @@ export const inputIconContainer = css`
 export const textArea = css`
   font-family: ${typography.fontFamily};
   min-width: 0;
-  color: ${palette.text.primary};
+  color: ${color.secondary};
   margin-right: 0;
-  border: 2px solid #ccc;
+  border: 2px solid ${color.greyMedium};
   border-top-left-radius: 0.4rem;
   border-bottom-left-radius: 0.4rem;
   font-size: 16px;
@@ -42,11 +44,11 @@ export const textArea = css`
   &:hover,
   &:active,
   &:focus {
-    border: 2px solid #ccc;
+    border: 2px solid ${color.greyMedium};
     outline: none;
   }
   &::selection {
-    background: #ccc;
+    background: ${color.greyMedium};
   }
 
   @media (max-width: 380px) {
@@ -63,10 +65,10 @@ export const copyIcon = css`
 `;
 
 export const copyBtn = css`
-  background-color: ${palette.background.default};
-  border-right: 2px solid #ccc;
-  border-top: 2px solid #ccc;
-  border-bottom: 2px solid #ccc;
+  background-color: ${color.background};
+  border-right: 2px solid ${color.greyMedium};
+  border-top: 2px solid ${color.greyMedium};
+  border-bottom: 2px solid ${color.greyMedium};
   border-left: none;
   outline: none;
   height: 59px;
@@ -75,10 +77,10 @@ export const copyBtn = css`
   border-bottom-right-radius: 0.4rem;
   &:hover {
     cursor: pointer;
-    background-color: #ccc;
+    background-color: ${color.greyMedium};
   }
   &:active {
-    background-color: #fff;
+    background-color: ${color.background};
   }
 
   @media (max-width: 380px) {

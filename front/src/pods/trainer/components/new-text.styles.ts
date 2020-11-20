@@ -1,6 +1,8 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
+
 const { palette, typography, spacing } = theme;
+const color = palette.customPalette;
 
 export const newTextContainer = css`
   width: 100%;
@@ -23,17 +25,17 @@ export const editTextArea = css`
   margin-top: ${spacing(10)};
   padding: ${spacing(16)};
   font-family: ${typography.fontFamily};
-  background-color: ${palette.background.paper};
+  background-color: ${color.background};
   resize: none;
-  border: 2px solid ${palette.text.primary};
+  border: 2px solid ${color.secondary};
   &:focus {
-    border: 2px solid ${palette.text.primary};
+    border: 2px solid ${color.secondary};
     outline: none;
   }
 `;
 
 export const sendBtn = css`
-  background-color: #11ae64;
+  background-color: ${color.successLight};
   color: white;
   text-transform: capitalize;
   font-weight: 400;
@@ -43,7 +45,7 @@ export const sendBtn = css`
   width: 100%;
   transition: all 0.2s;
   &:hover {
-    background-color: #0f834c;
+    background-color: ${color.successDark};
     color: white;
   }
 `;

@@ -1,6 +1,8 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
-const { palette, typography, spacing } = theme;
+
+const { palette, spacing } = theme;
+const color = palette.customPalette;
 
 export const appbarContainer = css`
   width: 100%;
@@ -10,10 +12,10 @@ export const appbarContainer = css`
   background-image: linear-gradient(
     60deg,
     white 250px,
-    #d9d900 250px,
+    ${color.primary} 250px,
     white 90%
   );
-  border-bottom: 2px solid ${palette.text.primary};
+  border-bottom: 2px solid ${color.secondary};
 
   @media (max-width: 578px) {
     height: auto;
@@ -28,7 +30,7 @@ export const appbarContainer = css`
 export const logo = (showLinks: boolean): string => css`
   margin-top: ${spacing(5)};
   height: ${spacing(60)};
-  fill: ${palette.text.primary};
+  fill: ${color.secondary};
   margin-left: 2.4rem;
 
   @media (max-width: 578px) {
@@ -73,14 +75,14 @@ export const link = css`
   position: relative;
   display: inline-block;
   text-decoration: none;
-  color: ${palette.text.primary};
+  color: ${color.secondary};
   padding-bottom: 0.2rem;
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;
   &:hover {
     padding-bottom: 3px;
-    border-bottom: 2px solid rgb(255, 87, 51);
-    color: rgb(255, 87, 51);
+    border-bottom: 2px solid ${color.alertLight};
+    color: ${color.alertLight};
   }
 `;
