@@ -1,14 +1,13 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
 
-const { typography, spacing, palette } = theme;
+const { typography, spacing, palette, breakpoints } = theme;
 const color = palette.customPalette;
 
 export const mainContainer = css`
   width: 60%;
   margin: ${spacing(80)} auto;
-
-  @media (max-width: 728px) {
+  @media (max-width: ${breakpoints.values.lg}px) {
     width: 80%;
   }
 `;
