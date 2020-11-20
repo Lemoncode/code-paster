@@ -12,7 +12,7 @@ export const footerContainer = css`
   padding: ${spacing(2.5)} ${spacing(12.5)};
   background-color: ${color.secondary};
   @media (max-width: ${breakpoints.values.md}px) {
-    padding: ${spacing(2.5)} ${spacing(5)} ${spacing(6)} ${spacing(5)};
+    padding: ${spacing(2.5)} ${spacing(5)} ${spacing(3.75)} ${spacing(5)};
   }
   @media (max-width: ${breakpoints.values.xs}px) {
     height: ${spacing(43.75)};
