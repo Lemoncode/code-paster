@@ -20,41 +20,41 @@ export const footerContainer = css`
 `;
 
 export const topContainer = css`
-  padding: 0 ${spacing(2)};
   display: flex;
   justify-content: space-between;
   height: ${spacing(24.375)};
+  padding: 0 ${spacing(2)};
   align-items: center;
   @media (max-width: ${breakpoints.values.xs}px) {
     flex-direction: column-reverse;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     height: ${spacing(27.5)};
   }
 `;
 
 export const topContainerCenter = css`
-  padding: 0 ${spacing(2)};
   display: flex;
   justify-content: center;
   align-items: center;
   height: ${spacing(24.375)};
+  padding: 0 ${spacing(2)};
 `;
 
 export const linkList = css`
-  padding: 0;
   margin: 0;
+  padding: 0;
   list-style: none;
   @media (max-width: ${breakpoints.values.xs}px) {
-    text-align: center;
     margin-top: ${spacing(2.4)};
+    text-align: center;
   }
 `;
 
 export const link = css`
-  font-size: ${spacing(2.2)};
-  color: ${color.greyLight};
+  font-size: 1.1rem;
   text-decoration: none;
+  color: ${color.greyLight};
   &:hover {
     color: ${color.primary};
   }
@@ -63,12 +63,12 @@ export const link = css`
 export const bottomContainer = css`
   display: flex;
   justify-content: space-between;
-  border-top: 1px solid ${color.primary};
   padding-top: ${spacing(2)};
+  border-top: 1px solid ${color.primary};
   @media (max-width: ${breakpoints.values.xs}px) {
     flex-direction: column;
-    align-items: center;
     justify-content: center;
+    align-items: center;
   }
 `;
 
@@ -78,8 +78,8 @@ export const lemoncodeIcon = css`
 
 export const iconContainer = css`
   display: flex;
-  padding: 0;
   margin: 0;
+  padding: 0;
   list-style: none;
 `;
 
@@ -94,8 +94,8 @@ export const iconListItem = css`
 `;
 
 export const icon = css`
+  font-size: 1.5rem;
   color: ${color.greyLight};
-  font-size: ${spacing(3)};
   &:hover {
     cursor: pointer;
     color: ${color.primary};

@@ -6,8 +6,8 @@ const color = palette.customPalette;
 
 export const headerContainer = css`
   width: 100%;
-  margin-bottom: ${spacing(10)};
   margin-top: ${spacing(7.5)};
+  margin-bottom: ${spacing(10)};
 `;
 
 export const inputField = css`
@@ -18,29 +18,29 @@ export const inputField = css`
 `;
 
 export const label = css`
-  color: ${palette.text.primary};
-  font-size: 1.125rem;
   font-family: ${typography.fontFamily};
+  font-size: 1.125rem;
+  color: ${palette.text.primary};
 `;
 
 export const inputIconContainer = css`
-  margin-top: ${spacing(1.25)};
   display: flex;
   align-items: center;
   width: 100%;
+  margin-top: ${spacing(1.25)};
 `;
 
 export const textArea = css`
-  font-family: ${typography.fontFamily};
+  flex: 1;
   min-width: 0;
-  color: ${color.secondary};
   margin-right: 0;
+  padding: ${spacing(2.25)};
+  font-family: ${typography.fontFamily};
+  font-size: 1rem;
+  color: ${color.secondary};
   border: 2px solid ${color.greyMedium};
   border-top-left-radius: 0.4rem;
   border-bottom-left-radius: 0.4rem;
-  font-size: 1rem;
-  padding: ${spacing(2.25)};
-  flex: 1;
   &:hover,
   &:active,
   &:focus {
@@ -51,8 +51,8 @@ export const textArea = css`
     background: ${color.greyMedium};
   }
   @media (max-width: ${breakpoints.values.xs}px) {
-    font-size: 0.875rem;
     padding: ${spacing(2)};
+    font-size: 0.875rem;
   }
 `;
 
@@ -64,16 +64,16 @@ export const copyIcon = css`
 `;
 
 export const copyBtn = css`
+  width: ${spacing(7.375)};
+  height: ${spacing(7.375)};
   background-color: ${color.background};
   border-right: 2px solid ${color.greyMedium};
   border-top: 2px solid ${color.greyMedium};
   border-bottom: 2px solid ${color.greyMedium};
   border-left: none;
-  outline: none;
-  height: ${spacing(7.375)};
-  width: ${spacing(7.375)};
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
+  outline: none;
   &:hover {
     cursor: pointer;
     background-color: ${color.greyMedium};
@@ -82,7 +82,7 @@ export const copyBtn = css`
     background-color: ${color.background};
   }
   @media (max-width: ${breakpoints.values.xs}px) {
-    height: ${spacing(6.5)};
     width: ${spacing(6.5)};
+    height: ${spacing(6.5)};
   }
 `;

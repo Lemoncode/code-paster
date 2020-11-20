@@ -5,9 +5,9 @@ const { palette, spacing, breakpoints } = theme;
 const color = palette.customPalette;
 
 export const appbarContainer = css`
-  width: 100%;
   display: flex;
   align-items: center;
+  width: 100%;
   height: ${spacing(10.75)};
   background-image: linear-gradient(
     60deg,
@@ -17,11 +17,11 @@ export const appbarContainer = css`
   );
   border-bottom: 2px solid ${color.secondary};
   @media (max-width: ${breakpoints.values.sm}px) {
-    height: auto;
-    min-height: ${spacing(10.75)};
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: auto;
+    min-height: ${spacing(10.75)};
     background-image: linear-gradient(
       60deg,
       ${color.background},
@@ -31,13 +31,13 @@ export const appbarContainer = css`
 `;
 
 export const logo = (showLinks: boolean): string => css`
-  margin-top: ${spacing(0.625)};
   height: ${spacing(7.5)};
-  fill: ${color.secondary};
+  margin-top: ${spacing(0.625)};
   margin-left: ${spacing(4.8)};
+  fill: ${color.secondary};
   @media (max-width: ${breakpoints.values.sm}px) {
-    margin-left: 0;
     margin-top: ${showLinks ? spacing(3) : 0};
+    margin-left: 0;
   }
 `;
 
@@ -68,13 +68,13 @@ export const listItem = css`
 `;
 
 export const link = css`
-  font-size: ${spacing(2.2)};
-  margin-top: ${spacing(0.4)};
   position: relative;
   display: inline-block;
+  margin-top: ${spacing(0.4)};
+  padding-bottom: ${spacing(0.4)};
+  font-size: 1.1rem;
   text-decoration: none;
   color: ${color.secondary};
-  padding-bottom: ${spacing(0.4)};
   border-bottom: 2px solid transparent;
   transition: all 0.3s ease;
   -webkit-transition: all 0.3s ease;

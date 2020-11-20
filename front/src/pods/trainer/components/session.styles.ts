@@ -11,24 +11,24 @@ export const sessionContainer = css`
 
 export const studentBoard = css`
   box-sizing: border-box;
-  font-size: 1rem;
   width: 100%;
-  white-space: nowrap;
   margin-bottom: ${spacing(1.25)};
   margin-top: ${spacing(1.25)};
   padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
+  font-size: 1rem;
   background-color: ${color.background};
-  resize: none;
   border: 2px solid ${color.secondary};
+  white-space: nowrap;
+  resize: none;
   &:focus {
     outline: none;
   }
 `;
 
 export const btnContainer = css`
-  margin-top: ${spacing(1.25)};
   display: flex;
+  margin-top: ${spacing(1.25)};
   padding-bottom: ${spacing(3.125)};
   border-bottom: 2px solid ${color.greyMedium};
 `;
@@ -36,26 +36,26 @@ export const btnContainer = css`
 export const sendBtn = css`
   display: flex;
   align-items: center;
-  text-transform: capitalize;
-  font-weight: 400;
-  flex: 1;
-  border-radius: 0;
   padding: ${spacing(1.25)} ${spacing(1.875)};
+  flex: 1;
   font-size: 1.188rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  border-radius: 0;
+  color: ${color.successLight};
   background-color: white;
   border: 2px solid ${color.successLight};
-  color: ${color.successLight};
   transition: all 0.2s;
   &:hover,
   &:active {
+    color: white;
     background-color: ${color.successLight};
     border: 2px solid ${color.successLight};
-    color: white;
     outline: none;
   }
   @media (max-width: ${breakpoints.values.xs}px) {
-    background-color: ${color.successLight};
     color: white;
+    background-color: ${color.successLight};
     border: none;
     &:hover,
     &:active {
@@ -66,8 +66,8 @@ export const sendBtn = css`
 `;
 
 export const sendIcon = css`
-  font-size: 1.25rem;
   margin-left: ${spacing(1.25)};
+  font-size: 1.25rem;
   @media (max-width: ${breakpoints.values.xs}px) {
     display: none;
   }
@@ -76,26 +76,26 @@ export const sendIcon = css`
 export const undoBtn = css`
   display: flex;
   align-items: center;
-  text-transform: capitalize;
-  font-weight: 400;
-  font-size: 1.188rem;
-  border-radius: 0;
-  padding: ${spacing(1.25)} ${spacing(1.875)};
   margin-right: ${spacing(1.25)};
-  background-color: white;
-  border: 2px solid ${color.alertLight};
+  padding: ${spacing(1.25)} ${spacing(1.875)};
+  font-size: 1.188rem;
+  font-weight: 400;
+  text-transform: capitalize;
   color: ${color.alertLight};
+  background-color: white;
+  border-radius: 0;
+  border: 2px solid ${color.alertLight};
   transition: all 0.2s;
   &:hover,
   &:active {
+    color: white;
     background-color: ${color.alertLight};
     border: 2px solid ${color.alertLight};
-    color: white;
     outline: none;
   }
   @media (max-width: ${breakpoints.values.xs}px) {
-    background-color: ${color.alertLight};
     color: white;
+    background-color: ${color.alertLight};
     border: none;
     &:hover,
     &:active {
@@ -106,8 +106,8 @@ export const undoBtn = css`
 `;
 
 export const undoIcon = css`
-  font-size: 1.25rem;
   margin-right: ${spacing(1.25)};
+  font-size: 1.25rem;
   @media (max-width: ${breakpoints.values.xs}px) {
     display: none;
   }

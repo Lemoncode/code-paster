@@ -14,15 +14,15 @@ export const mainContainer = css`
 
 export const studentBoard = css`
   box-sizing: border-box;
-  font-size: 1rem;
   width: 100%;
-  white-space: nowrap;
-  margin-bottom: ${spacing(1.25)};
   margin-top: ${spacing(1.25)};
+  margin-bottom: ${spacing(1.25)};
   padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
-  background-color: ${color.background};
+  font-size: 1rem;
+  white-space: nowrap;
   resize: none;
+  background-color: ${color.background};
   border: 2px solid ${color.secondary};
   &:focus {
     outline: none;
@@ -31,15 +31,15 @@ export const studentBoard = css`
 
 export const labelTextarea = css`
   display: block;
-  font-size: 1.125rem;
   font-family: ${typography.fontFamily};
+  font-size: 1.125rem;
 `;
 
 export const sessionName = css`
-  font-size: 1.125rem;
-  text-align: center;
+  display: inline-block;
   margin-bottom: ${spacing(5)};
   padding-bottom: ${spacing(0.625)};
+  font-size: 1.125rem;
+  text-align: center;
   border-bottom: 2px solid ${color.primary};
-  display: inline-block;
 `;

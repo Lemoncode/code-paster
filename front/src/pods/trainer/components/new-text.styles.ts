@@ -12,22 +12,22 @@ export const newTextContainer = css`
 `;
 
 export const labelTextarea = css`
-  font-size: 1.125rem;
   font-family: ${typography.fontFamily};
+  font-size: 1.125rem;
 `;
 
 export const editTextArea = css`
   box-sizing: border-box;
-  font-size: 1rem;
-  white-space: nowrap;
   width: 100%;
-  margin-bottom: ${spacing(2.5)};
   margin-top: ${spacing(1.25)};
+  margin-bottom: ${spacing(2.5)};
   padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
+  font-size: 1rem;
   background-color: ${color.background};
-  resize: none;
   border: 2px solid ${color.secondary};
+  white-space: nowrap;
+  resize: none;
   &:focus {
     border: 2px solid ${color.secondary};
     outline: none;
@@ -35,31 +35,32 @@ export const editTextArea = css`
 `;
 
 export const sendBtn = css`
-  background-color: ${color.successLight};
-  color: #fff;
-  text-transform: capitalize;
-  font-weight: 400;
-  border-radius: 0;
+  width: 100%;
   padding: ${spacing(1.25)} 0;
   font-size: 1.188rem;
-  width: 100%;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: ${color.successLight};
+  border-radius: 0;
   transition: all 0.2s;
+  -webkit-transition: all 0.2s;
   &:hover {
-    background-color: ${color.successDark};
     color: #fff;
+    background-color: ${color.successDark};
   }
 `;
 
 export const sendBtnDisabled = css`
-  text-transform: capitalize;
-  font-weight: 400;
-  font-size: 1.188rem;
-  border-radius: 0;
+  width: 100%;
   padding: ${spacing(1.25)} 0;
+  font-size: 1.188rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  border-radius: 0;
   color: ${palette.grey[700]};
   background-color: ${palette.grey[300]};
   cursor: default;
-  width: 100%;
   opacity: 0.5;
   box-shadow: none;
   &:hover {
@@ -75,6 +76,6 @@ export const sendBtnDisabled = css`
 `;
 
 export const sendIcon = css`
-  font-size: 1.25rem;
   margin-left: ${spacing(1.25)};
+  font-size: 1.25rem;
 `;
