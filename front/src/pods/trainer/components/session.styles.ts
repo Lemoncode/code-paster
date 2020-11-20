@@ -5,18 +5,18 @@ const { palette, spacing, typography, breakpoints } = theme;
 const color = palette.customPalette;
 
 export const sessionContainer = css`
-  padding-top: ${spacing(60)};
-  padding-bottom: ${spacing(80)};
+  padding-top: ${spacing(7.5)};
+  padding-bottom: ${spacing(10)};
 `;
 
 export const studentBoard = css`
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 1rem;
   width: 100%;
   white-space: nowrap;
-  margin-bottom: ${spacing(10)};
-  margin-top: ${spacing(10)};
-  padding: ${spacing(16)};
+  margin-bottom: ${spacing(1.25)};
+  margin-top: ${spacing(1.25)};
+  padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
   background-color: ${color.background};
   resize: none;
@@ -27,9 +27,9 @@ export const studentBoard = css`
 `;
 
 export const btnContainer = css`
-  margin-top: 10px;
+  margin-top: ${spacing(1.25)};
   display: flex;
-  padding-bottom: 25px;
+  padding-bottom: ${spacing(3.125)};
   border-bottom: 2px solid ${color.greyMedium};
 `;
 
@@ -40,8 +40,8 @@ export const sendBtn = css`
   font-weight: 400;
   flex: 1;
   border-radius: 0;
-  padding: 10px 15px;
-  font-size: 19px;
+  padding: ${spacing(1.25)} ${spacing(1.875)};
+  font-size: 1.188rem;
   background-color: white;
   border: 2px solid ${color.successLight};
   color: ${color.successLight};
@@ -66,8 +66,8 @@ export const sendBtn = css`
 `;
 
 export const sendIcon = css`
-  font-size: 20px;
-  margin-left: 10px;
+  font-size: 1.25rem;
+  margin-left: ${spacing(1.25)};
   @media (max-width: ${breakpoints.values.xs}px) {
     display: none;
   }
@@ -78,10 +78,10 @@ export const undoBtn = css`
   align-items: center;
   text-transform: capitalize;
   font-weight: 400;
-  font-size: 19px;
+  font-size: 1.188rem;
   border-radius: 0;
-  padding: 10px 15px;
-  margin-right: 10px;
+  padding: ${spacing(1.25)} ${spacing(1.875)};
+  margin-right: ${spacing(1.25)};
   background-color: white;
   border: 2px solid ${color.alertLight};
   color: ${color.alertLight};
@@ -106,8 +106,8 @@ export const undoBtn = css`
 `;
 
 export const undoIcon = css`
-  font-size: 20px;
-  margin-right: 10px;
+  font-size: 1.25rem;
+  margin-right: ${spacing(1.25)};
   @media (max-width: ${breakpoints.values.xs}px) {
     display: none;
   }
@@ -115,6 +115,6 @@ export const undoIcon = css`
 
 export const labelTextarea = css`
   display: block;
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: ${typography.fontFamily};
 `;

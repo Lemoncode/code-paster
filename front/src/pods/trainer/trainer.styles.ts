@@ -14,7 +14,7 @@ export const backgroundContainer = css`
 
 export const content = css`
   width: 60%;
-  margin: 0px auto 0 auto;
+  margin: 0 auto 0 auto;
   @media (max-width: ${breakpoints.values.lg}px) {
     width: 80%;
   }

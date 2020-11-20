@@ -6,24 +6,24 @@ const color = palette.customPalette;
 
 export const newTextContainer = css`
   width: 100%;
-  margin-top: ${spacing(60)};
-  margin-bottom: 40px;
-  margin-bottom: ${spacing(80)};
+  margin-top: ${spacing(7.5)};
+  margin-bottom: ${spacing(5)};
+  margin-bottom: ${spacing(10)};
 `;
 
 export const labelTextarea = css`
-  font-size: 18px;
+  font-size: 1.125rem;
   font-family: ${typography.fontFamily};
 `;
 
 export const editTextArea = css`
   box-sizing: border-box;
-  font-size: 16px;
+  font-size: 1rem;
   white-space: nowrap;
   width: 100%;
-  margin-bottom: ${spacing(20)};
-  margin-top: ${spacing(10)};
-  padding: ${spacing(16)};
+  margin-bottom: ${spacing(2.5)};
+  margin-top: ${spacing(1.25)};
+  padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
   background-color: ${color.background};
   resize: none;
@@ -36,26 +36,26 @@ export const editTextArea = css`
 
 export const sendBtn = css`
   background-color: ${color.successLight};
-  color: white;
+  color: #fff;
   text-transform: capitalize;
   font-weight: 400;
   border-radius: 0;
-  padding: 10px 0;
-  font-size: 19px;
+  padding: ${spacing(1.25)} 0;
+  font-size: 1.188rem;
   width: 100%;
   transition: all 0.2s;
   &:hover {
     background-color: ${color.successDark};
-    color: white;
+    color: #fff;
   }
 `;
 
 export const sendBtnDisabled = css`
   text-transform: capitalize;
   font-weight: 400;
-  font-size: 19px;
+  font-size: 1.188rem;
   border-radius: 0;
-  padding: 10px 0;
+  padding: ${spacing(1.25)} 0;
   color: ${palette.grey[700]};
   background-color: ${palette.grey[300]};
   cursor: default;
@@ -75,6 +75,6 @@ export const sendBtnDisabled = css`
 `;
 
 export const sendIcon = css`
-  font-size: 20px;
-  margin-left: 10px;
+  font-size: 1.25rem;
+  margin-left: ${spacing(1.25)};
 `;
