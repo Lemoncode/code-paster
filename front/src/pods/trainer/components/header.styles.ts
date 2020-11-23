@@ -1,88 +1,88 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
-const { palette, typography, spacing } = theme;
+
+const { palette, typography, spacing, breakpoints } = theme;
+const color = palette.customPalette;
 
 export const headerContainer = css`
   width: 100%;
-  margin-bottom: ${spacing(80)};
-  margin-top: ${spacing(60)};
+  margin-top: ${spacing(7.5)};
+  margin-bottom: ${spacing(10)};
 `;
 
 export const inputField = css`
-  margin-bottom: ${spacing(30)};
+  margin-bottom: ${spacing(3.75)};
   &:last-of-type {
-    margin-bottom: ${spacing(0)};
+    margin-bottom: 0;
   }
 `;
 
 export const label = css`
-  color: ${palette.text.primary};
-  font-size: 18px;
   font-family: ${typography.fontFamily};
+  font-size: 1.125rem;
+  color: ${palette.text.primary};
 `;
 
 export const inputIconContainer = css`
-  margin-top: 10px;
   display: flex;
   align-items: center;
   width: 100%;
+  margin-top: ${spacing(1.25)};
 `;
 
 export const textArea = css`
-  font-family: ${typography.fontFamily};
+  flex: 1;
   min-width: 0;
-  color: ${palette.text.primary};
   margin-right: 0;
-  border: 2px solid #ccc;
+  padding: ${spacing(2.25)};
+  font-family: ${typography.fontFamily};
+  font-size: 1rem;
+  color: ${color.secondary};
+  border: 2px solid ${color.greyMedium};
   border-top-left-radius: 0.4rem;
   border-bottom-left-radius: 0.4rem;
-  font-size: 16px;
-  padding: 18px;
-  flex: 1;
   &:hover,
   &:active,
   &:focus {
-    border: 2px solid #ccc;
+    border: 2px solid ${color.greyMedium};
     outline: none;
   }
   &::selection {
-    background: #ccc;
+    background: ${color.greyMedium};
   }
-
-  @media (max-width: 380px) {
-    font-size: 14px;
-    padding: 16px;
+  @media (max-width: ${breakpoints.values.xs}px) {
+    padding: ${spacing(2)};
+    font-size: 0.875rem;
   }
 `;
 
 export const copyIcon = css`
-  font-size: 30px;
-  @media (max-width: 380px) {
-    font-size: 26px;
+  font-size: 1.875rem;
+  @media (max-width: ${breakpoints.values.xs}px) {
+    font-size: 1.625rem;
   }
 `;
 
 export const copyBtn = css`
-  background-color: ${palette.background.default};
-  border-right: 2px solid #ccc;
-  border-top: 2px solid #ccc;
-  border-bottom: 2px solid #ccc;
+  width: ${spacing(7.375)};
+  height: ${spacing(7.375)};
+  background-color: ${color.background};
+  border-right: 2px solid ${color.greyMedium};
+  border-top: 2px solid ${color.greyMedium};
+  border-bottom: 2px solid ${color.greyMedium};
   border-left: none;
-  outline: none;
-  height: 59px;
-  width: 59px;
   border-top-right-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
+  outline: none;
   &:hover {
     cursor: pointer;
-    background-color: #ccc;
+    background-color: ${color.greyMedium};
   }
   &:active {
-    background-color: #fff;
+    background-color: ${color.background};
   }
-
-  @media (max-width: 380px) {
-    height: 52px;
-    width: 52px;
+  @media (max-width: ${breakpoints.values.xs}px) {
+    width: ${spacing(6.5)};
+    height: ${spacing(6.5)};
   }
 `;

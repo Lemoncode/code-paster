@@ -3,41 +3,38 @@ import { theme } from 'core/theme';
 import background from 'assets/bg-create-session.png';
 
 const { spacing, breakpoints, palette } = theme;
+const color = palette.customPalette;
 
 export const mainContainer = css`
   position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - ${spacing(10.75)});
+  margin: 0;
+  padding: 0;
   background-image: url(${background});
   background-repeat: no-repeat;
   background-position: right bottom;
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: calc(100vh - ${spacing(86)});
-  @media screen and (max-width: 960px) {
+  @media (max-width: ${breakpoints.values.lg}px) {
     background-image: none;
   }
-
-  @media (max-width: 578px) {
-    height: calc(100vh - ${spacing(147)});
+  @media (max-width: ${breakpoints.values.sm}px) {
     width: 90%;
+    height: calc(100vh - ${spacing(18.375)});
     margin: 0 auto;
   }
 `;
 
 export const buttonContainer = css`
-  width: 25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: ${spacing(50)};
   margin-left: 15%;
-  @media screen and (max-width: ${breakpoints.values.md}px) {
+  @media (max-width: ${breakpoints.values.lg}px) {
     margin-left: auto;
     margin-right: auto;
-  }
-  @media (max-width: 960px) {
-    margin-left: auto;
   }
 `;
 
@@ -45,11 +42,10 @@ export const descriptionText = css`
   text-align: center;
   font-size: 1.8rem;
   font-weight: 400;
-
-  @media (max-width: 578px) {
+  @media (max-width: ${breakpoints.values.sm}px) {
     font-size: 1.6rem;
   }
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     font-size: 1.5rem;
   }
 `;
@@ -57,17 +53,21 @@ export const descriptionText = css`
 export const createSessionBtn = css`
   display: flex;
   align-items: center;
-  color: rgb(255, 87, 51);
-  padding: ${spacing(20)} ${spacing(30)};
+  margin-top: ${spacing(4)};
+  padding: ${spacing(2.5)} ${spacing(3.75)};
   text-transform: capitalize;
-  margin-top: 2rem;
   font-size: 1.4rem;
   font-weight: 400;
-  background: linear-gradient(to right, rgb(255, 87, 51), rgb(255, 87, 51));
+  color: ${color.alertLight};
+  background: linear-gradient(
+    to right,
+    ${color.alertLight},
+    ${color.alertLight}
+  );
   background-repeat: no-repeat;
   background-size: 0 100%;
   transition: all 0.4s 0s;
-  border: 2px solid rgb(255, 87, 51);
+  border: 2px solid ${color.alertLight};
   &:hover,
   &:active {
     cursor: pointer;
@@ -75,27 +75,27 @@ export const createSessionBtn = css`
     color: white;
     outline: none;
   }
-  @media (max-width: 578px) {
+  @media (max-width: ${breakpoints.values.sm}px) {
     color: white;
     background: none;
-    background-color: rgb(255, 87, 51);
+    background-color: ${color.alertLight};
     border: none;
     &:hover,
     &:active {
-      background-color: ${palette.text.primary};
+      background-color: ${color.secondary};
       outline: none;
     }
   }
-  @media (max-width: 380px) {
-    padding: ${spacing(20)} ${spacing(24)};
+  @media (max-width: ${breakpoints.values.xs}px) {
+    padding: ${spacing(2.5)} ${spacing(3)};
     font-size: 1.2rem;
   }
 `;
 
 export const arrowIcon = css`
-  margin-left: 0.8rem;
+  margin-left: ${spacing(1.6)};
   font-size: 2rem;
-  @media (max-width: 380px) {
+  @media (max-width: ${breakpoints.values.xs}px) {
     font-size: 1.6rem;
   }
 `;

@@ -1,28 +1,29 @@
 import { css } from 'emotion';
 import { theme } from 'core/theme';
-const { typography, spacing, palette } = theme;
+
+const { typography, spacing, palette, breakpoints } = theme;
+const color = palette.customPalette;
 
 export const mainContainer = css`
   width: 60%;
-  margin: ${spacing(80)} auto;
-
-  @media (max-width: 728px) {
+  margin: ${spacing(10)} auto;
+  @media (max-width: ${breakpoints.values.lg}px) {
     width: 80%;
   }
 `;
 
 export const studentBoard = css`
   box-sizing: border-box;
-  font-size: 16px;
   width: 100%;
-  white-space: nowrap;
-  margin-bottom: ${spacing(10)};
-  margin-top: ${spacing(10)};
-  padding: ${spacing(16)};
+  margin-top: ${spacing(1.25)};
+  margin-bottom: ${spacing(1.25)};
+  padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
-  background-color: ${palette.background.paper};
+  font-size: 1rem;
+  white-space: nowrap;
   resize: none;
-  border: 2px solid ${palette.text.primary};
+  background-color: ${color.background};
+  border: 2px solid ${color.secondary};
   &:focus {
     outline: none;
   }
@@ -30,15 +31,15 @@ export const studentBoard = css`
 
 export const labelTextarea = css`
   display: block;
-  font-size: 18px;
   font-family: ${typography.fontFamily};
+  font-size: 1.125rem;
 `;
 
 export const sessionName = css`
-  font-size: 18px;
-  text-align: center;
-  margin-bottom: ${spacing(40)};
-  padding-bottom: 5px;
-  border-bottom: 2px solid #d9d900;
   display: inline-block;
+  margin-bottom: ${spacing(5)};
+  padding-bottom: ${spacing(0.625)};
+  font-size: 1.125rem;
+  text-align: center;
+  border-bottom: 2px solid ${color.primary};
 `;
