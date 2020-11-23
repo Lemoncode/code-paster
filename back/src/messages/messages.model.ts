@@ -14,12 +14,7 @@ export interface Action {
   messageType?: MessageType;
 }
 
-export interface InputEstablishConnectionMaster {
+export interface InputEstablishConnectionTrainer {
   room: string;
   trainertoken: string;
-}
-
-export interface InputEstablishConnectionPlayer {
-  nickname: string;
-  room: string;
 }

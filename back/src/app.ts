@@ -43,7 +43,7 @@ app.listen(envConstants.PORT, () => {
 
 // whenever a user connects on port 3000 via
 // a websocket, log that a user has connected
-io.on('connection', function (socket: Socket) {
+io.on('connection', async function (socket: Socket) {
   // WATCH OUT !! Reconnect is not implemented
   // In the connection input processing, we should
   // check if connectionId matches with userId and RoomId
@@ -63,7 +63,7 @@ io.on('connection', function (socket: Socket) {
 
   // TODO encapuslate this to processInputMessage
   if (trainertoken) {
-    outputMessageCollection = processInputMessage(socketInfo, {
+    outputMessageCollection = await processInputMessage(socketInfo, {
       type: InputMessageTypes.ESTABLISH_CONNECTION_TRAINER,
       payload: {
         room,
@@ -71,7 +71,7 @@ io.on('connection', function (socket: Socket) {
       },
     });
   } else {
-    outputMessageCollection = processInputMessage(socketInfo, {
+    outputMessageCollection = await processInputMessage(socketInfo, {
       type: InputMessageTypes.ESTABLISH_CONNECTION_STUDENT,
       payload: {
         room,
@@ -81,15 +81,15 @@ io.on('connection', function (socket: Socket) {
 
   processOutputMessageCollection(socketInfo, outputMessageCollection);
 
-  socket.on('message', function (message: any) {
+  socket.on('message', async function (message: any) {
     console.log(message);
     if (message && message.type) {
-      const outputMessageCollection: Action[] = processInputMessage(
+      const outputMessageCollection: Action[] = await processInputMessage(
         socketInfo,
         message
       );
 
-      processOutputMessageCollection(socketInfo, outputMessageCollection);
+      await processOutputMessageCollection(socketInfo, outputMessageCollection);
     }
   });
 });
