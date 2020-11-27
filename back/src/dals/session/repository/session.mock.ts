@@ -1,20 +1,6 @@
 import produce from 'immer';
 import { InputMessageTypes } from 'messages';
-
-interface ConnectSessionInfo {
-  room: string;
-  trainerToken: string;
-  isTrainer: boolean;
-}
-
-interface RoomInfo {
-  room: string;
-  content: string;
-}
-
-interface UserSession extends ConnectSessionInfo {
-  connectionId: string;
-}
+import {ConnectSessionInfo, RoomInfo, UserSession} from 'dals'
 
 let userCollectionSession: UserSession[] = [];
 let roomCollectionSession: RoomInfo[] = [];
@@ -22,7 +8,8 @@ let roomCollectionSession: RoomInfo[] = [];
 export const isRoomAvailable = async (room: string): Promise<boolean> =>
   !userCollectionSession.find((session) => session.room === room);
 
-export const addNewUser = async (connectionId: string, { room, trainerToken, isTrainer }: ConnectSessionInfo): Promise<void> => {
+export const addNewUser = async (newUser: UserSession): Promise<void> => {
+  const {connectionId, room, trainerToken, isTrainer } = newUser;
   userCollectionSession = [
     ...userCollectionSession,
     {

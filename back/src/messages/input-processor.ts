@@ -79,12 +79,10 @@ const handleEstablishConnectionStudent = async (socketInfo: SocketInfo, room: st
     return [];
   }
 
-  if (await isRoomAvailable(room) || !(await isExistingConnection(socketInfo.connectionId))) {
-    await addNewUser(socketInfo.connectionId, {
-      room,
-      trainerToken: '',
-      isTrainer: false,
-    });
+  const roomAvailable: boolean = await isRoomAvailable(room);
+
+  if (roomAvailable || !(await isExistingConnection(socketInfo.connectionId))) {
+    await addNewUser({connectionId: socketInfo.connectionId, room, trainerToken: '', isTrainer: false});
     socketInfo.socket.join(room);
   }
   return [{ type: OutputMessageTypes.CONNECTION_ESTABLISHED_STUDENT }];
@@ -96,12 +94,14 @@ const handleEstablishConnectionTrainer = async (socketInfo: SocketInfo, room: st
     return [];
   }
 
+  const roomAvailable: boolean = await isRoomAvailable(room);
+
+  if(roomAvailable) {
+    saveRoomInfo({room, content:""}, "");
+  }
+
   if (await isRoomAvailable(room) || !(await isExistingConnection(socketInfo.connectionId))) {
-    await addNewUser(socketInfo.connectionId, {
-      room,
-      trainerToken,
-      isTrainer: !!trainerToken,
-    });
+    await addNewUser({ connectionId: socketInfo.connectionId, room, trainerToken, isTrainer: !!trainerToken });
     socketInfo.socket.join(room);
   }
   return [{ type: OutputMessageTypes.CONNECTION_ESTABLISHED_TRAINER }];
