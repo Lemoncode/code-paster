@@ -100,7 +100,7 @@ const handleEstablishConnectionTrainer = async (socketInfo: SocketInfo, room: st
     saveRoomInfo({room, content:""}, "");
   }
 
-  if (await isRoomAvailable(room) || !(await isExistingConnection(socketInfo.connectionId))) {
+  if (roomAvailable || !(await isExistingConnection(socketInfo.connectionId))) {
     await addNewUser({ connectionId: socketInfo.connectionId, room, trainerToken, isTrainer: !!trainerToken });
     socketInfo.socket.join(room);
   }

@@ -1,16 +1,10 @@
-import { createApp } from './express.server';
-import { envConstants } from 'core';
-import { api } from './api';
 import cors from 'cors';
 import SocketIOClient, { Socket } from 'socket.io';
-import {
-  processInputMessage,
-  InputMessageTypes,
-  processOutputMessageCollection,
-  Action,
-  SocketInfo,
-} from './messages';
-import { connectToDB } from 'core';
+
+import { createApp } from './express.server';
+import { envConstants, connectToDB } from 'core';
+import { api } from './api';
+import { processInputMessage, InputMessageTypes, processOutputMessageCollection, Action, SocketInfo } from './messages';
 
 const app = createApp();
 

@@ -1,5 +1,5 @@
 import { InputMessageTypes } from 'messages';
-import {ConnectSessionInfo, RoomInfo, UserSession, UserSessionContext, RoomContext} from 'dals'
+import {RoomInfo, UserSession, UserSessionContext, RoomContext} from 'dals'
 
 export const isRoomAvailable = async (room: string): Promise<boolean> => {
   const roomAvailable = !(await RoomContext.exists({ room }));
@@ -65,10 +65,9 @@ export const isTrainerUser = async (connectionId: string): Promise<boolean> => {
 
 export const isExistingConnection = async (connectionId: string): Promise<boolean> => {
   const session: UserSession = await getSessionFromConnectionId(connectionId);
-  return session ? true : false;
+  return Boolean(session);
 }
 
 const getSessionFromConnectionId = async (connectionId: string): Promise<UserSession> => {
-  return (await UserSessionContext.findOne({connectionId: connectionId}));
+  return (await UserSessionContext.findOne({connectionId: connectionId}).lean());
 };
-
