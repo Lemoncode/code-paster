@@ -19,7 +19,7 @@ export const studentBoard = css`
   font-size: 1rem;
   background-color: ${color.background};
   border: 2px solid ${color.secondary};
-  white-space: nowrap;
+  white-space: pre-wrap;
   resize: none;
   &:focus {
     outline: none;

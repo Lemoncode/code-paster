@@ -20,7 +20,7 @@ export const studentBoard = css`
   padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
   font-size: 1rem;
-  white-space: nowrap;
+  white-space: pre-wrap;
   resize: none;
   background-color: ${color.background};
   border: 2px solid ${color.secondary};

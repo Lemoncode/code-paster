@@ -6,8 +6,8 @@ export const SocketOuputMessageLiteral = {
 };
 
 export const SocketEmitMessageTypes = {
-  TRAINER_APPEND_TEXT: 'TRAINER_APPEND_TEXT', // Master creates a user story
-  TRAINER_SET_FULL_TEXT: 'TRAINER_SET_FULL_TEXT', // Master updates the whole log
+  TRAINER_APPEND_TEXT: 'TRAINER_APPEND_TEXT', // Trainer add new text
+  TRAINER_SET_FULL_TEXT: 'TRAINER_SET_FULL_TEXT', // Trainer send full session text
   TRAINER_REQUEST_FULL_CONTENT: 'TRAINER_REQUEST_FULL_CONTENT', // Trainer checks if there's previous session content when connecting
   STUDENT_REQUEST_FULL_CONTENT: 'STUDENT_REQUEST_FULL_CONTENT', // Student checks if there's previous session content when connecting
 };
