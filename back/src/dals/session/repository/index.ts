@@ -1,8 +1,8 @@
-import { envConstants } from 'core/constants';
+import { envConstants } from 'core';
 import * as mockRepository from './session.mock';
 import * as repository from './session.repository';
-import { SessionRepository } from './session.contract';
+import { SessionRepositoryContract } from './session.contract';
 
-export const sessionRepository: SessionRepository = envConstants.isMockRepository
+export const sessionRepository: SessionRepositoryContract = envConstants.isMockRepository
   ? mockRepository
   : repository;

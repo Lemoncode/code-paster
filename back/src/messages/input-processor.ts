@@ -1,7 +1,8 @@
 import { InputMessageTypes, OutputMessageTypes } from './messages.consts';
 import { Action, InputEstablishConnectionTrainer, SocketInfo } from './messages.model';
-import {sessionRepository } from 'dals';
-const {addNewUser, getRoomFromConnectionId, isExistingConnection, isRoomAvailable, isTrainerUser, saveRoomInfo} = sessionRepository;
+import {sessionRepository, roomRepository } from 'dals';
+const {addNewUser, getRoomFromConnectionId, isExistingConnection, isTrainerUser } = sessionRepository;
+const { isRoomAvailable, saveRoomInfo} = roomRepository;
 
 export const processInputMessage = async (socketInfo: SocketInfo, action: Action): Promise<Action[]> => {
   let outputActionCollection: Action[] = [];
