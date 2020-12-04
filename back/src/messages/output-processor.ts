@@ -1,7 +1,9 @@
 import {OutputMessageTypes, SocketOuputMessageLiteral} from './messages.consts';
 import { Action, SocketInfo } from './messages.model';
-import { sessionRepository } from 'dals';
-const {isTrainerUser, getRoomFromConnectionId, getRoomContent} = sessionRepository;
+import { sessionRepository, roomRepository } from 'dals';
+const { isTrainerUser, getRoomFromConnectionId } = sessionRepository;
+const { getRoomContent } = roomRepository;
+
 import { ResponseBase, responseType } from './response';
 
 export const processOutputMessageCollection = async (socketInfo: SocketInfo, actionCollection: Action[]): Promise<void> => {

@@ -1,15 +1,10 @@
-import { createApp } from './express.server';
-import { envConstants } from './env.constants';
-import { api } from './api';
 import cors from 'cors';
 import SocketIOClient, { Socket } from 'socket.io';
-import {
-  processInputMessage,
-  InputMessageTypes,
-  processOutputMessageCollection,
-  Action,
-  SocketInfo,
-} from './messages';
+
+import { createApp } from './express.server';
+import { envConstants, connectToDB } from 'core';
+import { api } from './api';
+import { processInputMessage, InputMessageTypes, processOutputMessageCollection, Action, SocketInfo } from './messages';
 
 const app = createApp();
 
@@ -35,10 +30,14 @@ const options: cors.CorsOptions = {
 };
 
 app.use(cors(options));
-app.use('/api', api);
+app.use(envConstants.API_URL, api);
 
-app.listen(envConstants.PORT, () => {
-  console.log(`Server ready at http://localhost:${envConstants.PORT}/api`);
+app.listen(envConstants.PORT, async () => {
+  if(!envConstants.isMockRepository && envConstants.MONGODB_URI) {
+    await connectToDB(envConstants.MONGODB_URI);
+  }
+  console.log(`Using ${envConstants.isMockRepository ? 'Mock' : 'DataBase'} for session storage`)
+  console.log(`Server ready at http://localhost:${envConstants.PORT}${envConstants.API_URL}`);
 });
 
 // whenever a user connects on port 3000 via

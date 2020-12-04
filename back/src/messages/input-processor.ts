@@ -1,7 +1,8 @@
 import { InputMessageTypes, OutputMessageTypes } from './messages.consts';
 import { Action, InputEstablishConnectionTrainer, SocketInfo } from './messages.model';
-import {sessionRepository } from 'dals';
-const {addNewUser, getRoomFromConnectionId, isExistingConnection, isRoomAvailable, isTrainerUser, saveRoomInfo} = sessionRepository;
+import {sessionRepository, roomRepository } from 'dals';
+const {addNewUser, getRoomFromConnectionId, isExistingConnection, isTrainerUser } = sessionRepository;
+const { isRoomAvailable, saveRoomInfo} = roomRepository;
 
 export const processInputMessage = async (socketInfo: SocketInfo, action: Action): Promise<Action[]> => {
   let outputActionCollection: Action[] = [];
@@ -79,12 +80,10 @@ const handleEstablishConnectionStudent = async (socketInfo: SocketInfo, room: st
     return [];
   }
 
-  if (await isRoomAvailable(room) || !(await isExistingConnection(socketInfo.connectionId))) {
-    await addNewUser(socketInfo.connectionId, {
-      room,
-      trainerToken: '',
-      isTrainer: false,
-    });
+  const roomAvailable: boolean = await isRoomAvailable(room);
+
+  if (roomAvailable || !(await isExistingConnection(socketInfo.connectionId))) {
+    await addNewUser({connectionId: socketInfo.connectionId, room, trainerToken: '', isTrainer: false});
     socketInfo.socket.join(room);
   }
   return [{ type: OutputMessageTypes.CONNECTION_ESTABLISHED_STUDENT }];
@@ -96,12 +95,14 @@ const handleEstablishConnectionTrainer = async (socketInfo: SocketInfo, room: st
     return [];
   }
 
-  if (await isRoomAvailable(room) || !(await isExistingConnection(socketInfo.connectionId))) {
-    await addNewUser(socketInfo.connectionId, {
-      room,
-      trainerToken,
-      isTrainer: !!trainerToken,
-    });
+  const roomAvailable: boolean = await isRoomAvailable(room);
+
+  if(roomAvailable) {
+    saveRoomInfo({room, content:""}, "");
+  }
+
+  if (roomAvailable || !(await isExistingConnection(socketInfo.connectionId))) {
+    await addNewUser({ connectionId: socketInfo.connectionId, room, trainerToken, isTrainer: !!trainerToken });
     socketInfo.socket.join(room);
   }
   return [{ type: OutputMessageTypes.CONNECTION_ESTABLISHED_TRAINER }];
