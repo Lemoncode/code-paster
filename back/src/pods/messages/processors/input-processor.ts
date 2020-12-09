@@ -1,5 +1,5 @@
-import { InputMessageTypes, OutputMessageTypes } from './messages.consts';
-import { Action, InputEstablishConnectionTrainer, SocketInfo } from './messages.model';
+import { InputMessageTypes, OutputMessageTypes } from '../messages.consts';
+import { Action, InputEstablishConnectionTrainer, SocketInfo } from '../messages.model';
 import {sessionRepository, roomRepository } from 'dals';
 const {addNewUser, getRoomFromConnectionId, isExistingConnection, isTrainerUser } = sessionRepository;
 const { isRoomAvailable, saveRoomInfo} = roomRepository;

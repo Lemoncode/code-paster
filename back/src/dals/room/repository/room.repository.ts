@@ -1,5 +1,5 @@
 import { RoomInfo, RoomContext } from 'dals'
-import { InputMessageTypes } from 'messages';
+import { InputMessageTypes } from 'pods/messages';
 
 export const isRoomAvailable = async (room: string): Promise<boolean> => {
   const roomAvailable = !(await RoomContext.exists({ room }));

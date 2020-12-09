@@ -1,4 +1,4 @@
-const names = [
+export const baseTrainerTokens = [
   'son_goku',
   'vegeta',
   'bardock',
@@ -323,19 +323,3 @@ const names = [
   'yuuto',
   'yuzuki',
 ];
-
-const formatToUpperCase = (name: string): string => {
-  const match_for_snake_case = /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g;
-  const unused_special_characters = /[^a-z0-1.,?!@() ]/g;
-  return (
-    name
-      .replace(/^\s+|\s+$/g, '')
-      .normalize('NFD')
-      .replace(unused_special_characters, '')
-      .match(match_for_snake_case)
-      .map(char => char.toLowerCase())
-      .join('_')
-  );
-}
-
-export const baseTrainerTokens = names.map(name => formatToUpperCase(name));

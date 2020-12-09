@@ -1,5 +1,5 @@
 import produce from 'immer';
-import { InputMessageTypes } from 'messages';
+import { InputMessageTypes } from 'pods/messages';
 import { RoomInfo, UserSession } from 'dals'
 
 let userCollectionSession: UserSession[] = [];
