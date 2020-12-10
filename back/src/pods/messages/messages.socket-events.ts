@@ -24,7 +24,6 @@ export const messageSocketEvents = async (
     connectionId: socket.conn.id,
   };
 
-  // TODO encapuslate this to processInputMessage
   if (trainertoken) {
     outputMessageCollection = await processInputMessage(socketInfo, {
       type: InputMessageTypes.ESTABLISH_CONNECTION_TRAINER,
