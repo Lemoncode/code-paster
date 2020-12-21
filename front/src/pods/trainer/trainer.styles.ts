@@ -5,7 +5,6 @@ const { breakpoints, palette } = theme;
 const color = palette.customPalette;
 
 export const root = css`
-  width: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-row-gap: 1rem;
@@ -17,10 +16,6 @@ export const root = css`
     padding: 1rem;
   }
 
-  & > :last-child {
-    padding-bottom: 2rem;
-  }
-
   @media (min-width: ${breakpoints.values.md}px) {
     grid-template-columns: 1fr 6fr 1fr;
     & > :nth-child(n) {
@@ -30,7 +25,7 @@ export const root = css`
   }
 
   @media (min-width: ${breakpoints.values.lg}px) {
-    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-columns: 1fr 4fr 1fr;
   }
 `;
 
