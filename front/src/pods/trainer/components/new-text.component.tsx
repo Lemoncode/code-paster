@@ -1,25 +1,18 @@
 import React from 'react';
-import * as classes from './new-text.styles';
-// Material UI ~ components
+import { cx } from 'emotion';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import Button from '@material-ui/core/Button';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import * as innerClasses from './new-text.styles';
 
 interface Props {
   handleAppendTrainerText: (trainerText: string) => void;
+  className?: string;
 }
 
 export const NewTextComponent: React.FC<Props> = props => {
-  const { handleAppendTrainerText } = props;
+  const { handleAppendTrainerText, className } = props;
   const [trainerText, setTrainerText] = React.useState<string>('');
-  const {
-    newTextContainer,
-    labelTextarea,
-    editTextArea,
-    sendBtn,
-    sendBtnDisabled,
-    sendIcon,
-  } = classes;
 
   const trainerTextRef = React.useRef<string>(trainerText);
 
@@ -45,29 +38,31 @@ export const NewTextComponent: React.FC<Props> = props => {
   }, []);
 
   return (
-    <div className={newTextContainer}>
+    <div className={cx(innerClasses.newTextContainer, className)}>
       <form>
-        <label className={labelTextarea} htmlFor="new-text">
+        <label className={innerClasses.labelTextarea} htmlFor="new-text">
           New text
         </label>
         <TextareaAutosize
           rowsMax={10}
           rowsMin={10}
-          className={editTextArea}
+          className={innerClasses.editTextArea}
           onChange={e => handleOnChange(e)}
           value={trainerText}
         />
         <Button
           variant="contained"
           color="primary"
-          className={trainerText ? sendBtn : sendBtnDisabled}
+          className={
+            trainerText ? innerClasses.sendBtn : innerClasses.sendBtnDisabled
+          }
           onClick={() => trainerText && handleAppendTrainerTextInternal()}
           aria-disabled={!trainerText}
           disableRipple={!trainerText}
           disableElevation
         >
           Send
-          <ArrowForwardRoundedIcon className={sendIcon} />
+          <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
         </Button>
       </form>
     </div>

@@ -1,20 +1,19 @@
 import React from 'react';
-import * as classes from './header.styles';
-// Material UI ~ components
-import TextField from '@material-ui/core/TextField';
+import { cx } from 'emotion';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
+import * as innerClasses from './header.styles';
 
 interface Props {
   currentTrainerUrl: string;
   currentStudentUrl: string;
+  className?: string;
 }
 
 export const HeaderComponent: React.FC<Props> = props => {
-  const { currentStudentUrl, currentTrainerUrl } = props;
-  const { headerContainer } = classes;
+  const { currentStudentUrl, currentTrainerUrl, className } = props;
 
   return (
-    <div className={headerContainer}>
+    <div className={cx(innerClasses.root, className)}>
       <CopyFieldComponent
         labelName="Trainer Link"
         inputId="trainer-link"
@@ -39,36 +38,29 @@ interface CopyFieldProps {
 
 export const CopyFieldComponent: React.FC<CopyFieldProps> = props => {
   const { labelName, inputId, urlLink } = props;
-  const {
-    inputField,
-    label,
-    inputIconContainer,
-    textArea,
-    copyIcon,
-    copyBtn,
-  } = classes;
+
   return (
-    <div className={inputField}>
-      <label className={label} htmlFor={inputId}>
+    <>
+      <label className={innerClasses.label} htmlFor={inputId}>
         {labelName}
       </label>
-      <div className={inputIconContainer}>
+      <div className={innerClasses.inputContainer}>
         <input
           id={inputId}
           type="text"
-          className={textArea}
+          className={innerClasses.input}
           value={urlLink}
           readOnly
           aria-readonly
         />
         <button
           aria-label={`copy ${labelName}`}
-          className={copyBtn}
+          className={innerClasses.button}
           onClick={() => navigator.clipboard.writeText(urlLink)}
         >
-          <FileCopyOutlinedIcon className={copyIcon} />
+          <FileCopyOutlinedIcon className={innerClasses.icon} />
         </button>
       </div>
-    </div>
+    </>
   );
 };

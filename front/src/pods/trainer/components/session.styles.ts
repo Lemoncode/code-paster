@@ -30,7 +30,6 @@ export const btnContainer = css`
   display: flex;
   margin-top: ${spacing(1.25)};
   padding-bottom: ${spacing(3.125)};
-  border-bottom: 2px solid ${color.greyMedium};
 `;
 
 export const sendBtn = css`
