@@ -30,6 +30,7 @@ export const root = css`
 
 export const divider = css`
   && {
+    padding: 0;
     @media (min-width: ${breakpoints.values.md}px) {
       grid-column-start: 1;
       grid-column-end: 4;

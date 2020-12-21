@@ -38,33 +38,30 @@ export const NewTextComponent: React.FC<Props> = props => {
   }, []);
 
   return (
-    <div className={cx(innerClasses.newTextContainer, className)}>
-      <form>
-        <label className={innerClasses.labelTextarea} htmlFor="new-text">
-          New text
-        </label>
-        <TextareaAutosize
-          rowsMax={10}
-          rowsMin={10}
-          className={innerClasses.editTextArea}
-          onChange={e => handleOnChange(e)}
-          value={trainerText}
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          className={
-            trainerText ? innerClasses.sendBtn : innerClasses.sendBtnDisabled
-          }
-          onClick={() => trainerText && handleAppendTrainerTextInternal()}
-          aria-disabled={!trainerText}
-          disableRipple={!trainerText}
-          disableElevation
-        >
-          Send
-          <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
-        </Button>
-      </form>
-    </div>
+    <form className={cx(innerClasses.root, className)}>
+      <label className={innerClasses.label} htmlFor="new-text">
+        New text
+      </label>
+      <TextareaAutosize
+        rowsMax={10}
+        rowsMin={10}
+        className={innerClasses.textarea}
+        onChange={e => handleOnChange(e)}
+        value={trainerText}
+      />
+      <Button
+        variant="contained"
+        color="primary"
+        className={innerClasses.button}
+        onClick={() => trainerText && handleAppendTrainerTextInternal()}
+        disabled={!trainerText}
+        aria-disabled={!trainerText}
+        disableRipple={!trainerText}
+        disableElevation
+      >
+        Send
+        <ArrowForwardRoundedIcon className={innerClasses.buttonIcon} />
+      </Button>
+    </form>
   );
 };
