@@ -35,8 +35,8 @@ export const SessionComponent: React.FC<Props> = props => {
   }, [log]);
 
   return (
-    <div className={cx(innerClasses.sessionContainer, className)}>
-      <label className={innerClasses.labelTextarea} htmlFor="session">
+    <form className={cx(innerClasses.root, className)}>
+      <label className={innerClasses.label} htmlFor="session">
         Session
       </label>
 
@@ -44,30 +44,28 @@ export const SessionComponent: React.FC<Props> = props => {
         id="session"
         rowsMax={20}
         rowsMin={20}
-        className={innerClasses.studentBoard}
+        className={innerClasses.textarea}
       />
-      <div className={innerClasses.btnContainer}>
-        <Button
-          variant="contained"
-          color="secondary"
-          disableElevation
-          className={innerClasses.undoBtn}
-          onClick={() => handleSetSessionContent(log)}
-        >
-          <UndoIcon className={innerClasses.undoIcon} />
-          Undo
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          disableElevation
-          className={innerClasses.sendBtn}
-          onClick={() => handleSendFullContentLog(getFullContent(log))}
-        >
-          Send Full Content
-          <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
-        </Button>
-      </div>
-    </div>
+      <Button
+        variant="contained"
+        color="secondary"
+        disableElevation
+        className={innerClasses.undoButton}
+        onClick={() => handleSetSessionContent(log)}
+      >
+        <UndoIcon className={innerClasses.undoIcon} />
+        Undo
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        className={innerClasses.sendButton}
+        onClick={() => handleSendFullContentLog(getFullContent(log))}
+      >
+        Send Full Content
+        <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
+      </Button>
+    </form>
   );
 };

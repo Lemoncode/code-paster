@@ -10,9 +10,15 @@ export const root = css`
   grid-template-columns: 1fr;
   grid-row-gap: 1rem;
   grid-column-gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   & > :nth-child(n) {
     padding: 1rem;
+  }
+
+  & > :last-child {
+    padding-bottom: 2rem;
   }
 
   @media (min-width: ${breakpoints.values.md}px) {
