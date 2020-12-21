@@ -4,17 +4,27 @@ import { theme } from 'core/theme';
 const { palette, spacing, typography, breakpoints } = theme;
 const color = palette.customPalette;
 
-export const sessionContainer = css`
-  padding-top: ${spacing(7.5)};
-  padding-bottom: ${spacing(10)};
+export const root = css`
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'label label'
+    'textarea textarea'
+    'undo send';
 `;
 
-export const studentBoard = css`
+export const label = css`
+  grid-area: label;
+  display: block;
+  font-size: 1.125rem;
+  font-family: ${typography.fontFamily};
+`;
+
+export const textarea = css`
+  grid-area: textarea;
   box-sizing: border-box;
-  width: 100%;
-  margin-bottom: ${spacing(1.25)};
-  margin-top: ${spacing(1.25)};
-  padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
   font-size: 1rem;
   background-color: ${color.background};
@@ -26,14 +36,8 @@ export const studentBoard = css`
   }
 `;
 
-export const btnContainer = css`
-  display: flex;
-  margin-top: ${spacing(1.25)};
-  padding-bottom: ${spacing(3.125)};
-  border-bottom: 2px solid ${color.greyMedium};
-`;
-
-export const sendBtn = css`
+export const sendButton = css`
+  grid-area: send;
   display: flex;
   align-items: center;
   padding: ${spacing(1.25)} ${spacing(1.875)};
@@ -68,15 +72,16 @@ export const sendBtn = css`
 export const sendIcon = css`
   margin-left: ${spacing(1.25)};
   font-size: 1.25rem;
-  @media (max-width: ${breakpoints.values.xs}px) {
-    display: none;
+  display: none;
+  @media (min-width: ${breakpoints.values.xs}px) {
+    display: initial;
   }
 `;
 
-export const undoBtn = css`
+export const undoButton = css`
+  grid-area: undo;
   display: flex;
   align-items: center;
-  margin-right: ${spacing(1.25)};
   padding: ${spacing(1.25)} ${spacing(1.875)};
   font-size: 1.188rem;
   font-weight: 400;
@@ -108,13 +113,8 @@ export const undoBtn = css`
 export const undoIcon = css`
   margin-right: ${spacing(1.25)};
   font-size: 1.25rem;
-  @media (max-width: ${breakpoints.values.xs}px) {
-    display: none;
+  display: none;
+  @media (min-width: ${breakpoints.values.xs}px) {
+    display: initial;
   }
-`;
-
-export const labelTextarea = css`
-  display: block;
-  font-size: 1.125rem;
-  font-family: ${typography.fontFamily};
 `;

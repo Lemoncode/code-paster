@@ -2,12 +2,11 @@ import React from 'react';
 import { AppbarComponent, FooterComponent } from 'common-app';
 
 export const AppLayout: React.FC = props => {
-  const [showLinks, setShowLinks] = React.useState<boolean>(true);
   return (
     <>
-      <AppbarComponent showLinks={showLinks} />
+      <AppbarComponent showLinks={true} />
       {props.children}
-      <FooterComponent showLinks={showLinks} />
+      <FooterComponent showLinks={true} />
     </>
   );
 };

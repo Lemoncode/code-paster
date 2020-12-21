@@ -4,17 +4,10 @@ import { theme } from 'core/theme';
 const { palette, typography, spacing, breakpoints } = theme;
 const color = palette.customPalette;
 
-export const headerContainer = css`
-  width: 100%;
-  margin-top: ${spacing(7.5)};
-  margin-bottom: ${spacing(10)};
-`;
-
-export const inputField = css`
-  margin-bottom: ${spacing(3.75)};
-  &:last-of-type {
-    margin-bottom: 0;
-  }
+export const root = css`
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
 `;
 
 export const label = css`
@@ -23,17 +16,13 @@ export const label = css`
   color: ${palette.text.primary};
 `;
 
-export const inputIconContainer = css`
+export const inputContainer = css`
   display: flex;
-  align-items: center;
-  width: 100%;
-  margin-top: ${spacing(1.25)};
+  flex-direction: row;
 `;
 
-export const textArea = css`
+export const input = css`
   flex: 1;
-  min-width: 0;
-  margin-right: 0;
   padding: ${spacing(2.25)};
   font-family: ${typography.fontFamily};
   font-size: 1rem;
@@ -50,20 +39,13 @@ export const textArea = css`
   &::selection {
     background: ${color.greyMedium};
   }
-  @media (max-width: ${breakpoints.values.xs}px) {
-    padding: ${spacing(2)};
-    font-size: 0.875rem;
-  }
 `;
 
-export const copyIcon = css`
+export const icon = css`
   font-size: 1.875rem;
-  @media (max-width: ${breakpoints.values.xs}px) {
-    font-size: 1.625rem;
-  }
 `;
 
-export const copyBtn = css`
+export const button = css`
   width: ${spacing(7.375)};
   height: ${spacing(7.375)};
   background-color: ${color.background};

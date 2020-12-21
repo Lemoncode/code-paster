@@ -4,19 +4,44 @@ import { theme } from 'core/theme';
 const { typography, spacing, palette, breakpoints } = theme;
 const color = palette.customPalette;
 
-export const mainContainer = css`
-  width: 60%;
-  margin: ${spacing(10)} auto;
-  @media (max-width: ${breakpoints.values.lg}px) {
-    width: 80%;
+export const root = css`
+  display: grid;
+  grid-template-columns: auto;
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
+  padding: 1rem;
+
+  @media (min-width: ${breakpoints.values.md}px) {
+    padding: 2rem;
+    grid-template-columns: 1fr 6fr 1fr;
+    & > :nth-child(n) {
+      grid-column-start: 2;
+      grid-column-end: 3;
+    }
+  }
+
+  @media (min-width: ${breakpoints.values.lg}px) {
+    grid-template-columns: 1fr 4fr 1fr;
   }
 `;
 
-export const studentBoard = css`
+export const sessionName = css`
+  @media (min-width: ${breakpoints.values.md}px) {
+    justify-self: start;
+  }
+  font-size: 1.125rem;
+  text-align: center;
+  border-bottom: 2px solid ${color.primary};
+`;
+
+export const label = css`
+  display: block;
+  font-family: ${typography.fontFamily};
+  font-size: 1.125rem;
+`;
+
+export const textarea = css`
   box-sizing: border-box;
-  width: 100%;
-  margin-top: ${spacing(1.25)};
-  margin-bottom: ${spacing(1.25)};
   padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
   font-size: 1rem;
@@ -27,19 +52,4 @@ export const studentBoard = css`
   &:focus {
     outline: none;
   }
-`;
-
-export const labelTextarea = css`
-  display: block;
-  font-family: ${typography.fontFamily};
-  font-size: 1.125rem;
-`;
-
-export const sessionName = css`
-  display: inline-block;
-  margin-bottom: ${spacing(5)};
-  padding-bottom: ${spacing(0.625)};
-  font-size: 1.125rem;
-  text-align: center;
-  border-bottom: 2px solid ${color.primary};
 `;

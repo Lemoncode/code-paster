@@ -1,15 +1,15 @@
 import React from 'react';
-import * as classes from './session.styles';
-// Material UI ~ components
+import { cx } from 'emotion';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
-
 import UndoIcon from '@material-ui/icons/Undo';
 import Button from '@material-ui/core/Button';
+import * as innerClasses from './session.styles';
 
 interface Props {
   log: string;
   handleSendFullContentLog: (fullContent: string) => void;
+  className?: string;
 }
 
 const getTextArea = (elementId: string): HTMLInputElement =>
@@ -28,25 +28,15 @@ const getFullContent = (currenSessionContent: string) => {
 };
 
 export const SessionComponent: React.FC<Props> = props => {
-  const { log, handleSendFullContentLog } = props;
-  const {
-    sessionContainer,
-    btnContainer,
-    sendIcon,
-    undoIcon,
-    labelTextarea,
-    studentBoard,
-    sendBtn,
-    undoBtn,
-  } = classes;
+  const { log, handleSendFullContentLog, className } = props;
 
   React.useEffect(() => {
     handleSetSessionContent(log);
   }, [log]);
 
   return (
-    <div className={sessionContainer}>
-      <label className={labelTextarea} htmlFor="session">
+    <form className={cx(innerClasses.root, className)}>
+      <label className={innerClasses.label} htmlFor="session">
         Session
       </label>
 
@@ -54,30 +44,28 @@ export const SessionComponent: React.FC<Props> = props => {
         id="session"
         rowsMax={20}
         rowsMin={20}
-        className={studentBoard}
+        className={innerClasses.textarea}
       />
-      <div className={btnContainer}>
-        <Button
-          variant="contained"
-          color="secondary"
-          disableElevation
-          className={undoBtn}
-          onClick={() => handleSetSessionContent(log)}
-        >
-          <UndoIcon className={undoIcon} />
-          Undo
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          disableElevation
-          className={sendBtn}
-          onClick={() => handleSendFullContentLog(getFullContent(log))}
-        >
-          Send Full Content
-          <ArrowForwardRoundedIcon className={sendIcon} />
-        </Button>
-      </div>
-    </div>
+      <Button
+        variant="contained"
+        color="secondary"
+        disableElevation
+        className={innerClasses.undoButton}
+        onClick={() => handleSetSessionContent(log)}
+      >
+        <UndoIcon className={innerClasses.undoIcon} />
+        Undo
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        className={innerClasses.sendButton}
+        onClick={() => handleSendFullContentLog(getFullContent(log))}
+      >
+        Send Full Content
+        <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
+      </Button>
+    </form>
   );
 };

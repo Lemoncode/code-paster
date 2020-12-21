@@ -1,8 +1,8 @@
 import * as React from 'react';
-import * as classes from './trainer.styles';
 import { HeaderComponent } from './components/header.component';
 import { NewTextComponent } from './components/new-text.component';
 import { SessionComponent } from './components/session.component';
+import * as innerClasses from './trainer.styles';
 
 interface Props {
   handleAppendTrainerText: (trainerText: string) => void;
@@ -21,32 +21,20 @@ export const TrainerComponent: React.FC<Props> = props => {
     log,
   } = props;
 
-  const { mainContainer, content, backgroundContainer } = classes;
-
   return (
     <>
-      <main className={mainContainer}>
-        <div className={backgroundContainer}>
-          <div className={content}>
-            <HeaderComponent
-              currentTrainerUrl={currentTrainerUrl}
-              currentStudentUrl={currentStudentUrl}
-            />
-          </div>
-        </div>
-        <div className={backgroundContainer}>
-          <div className={content}>
-            <NewTextComponent
-              handleAppendTrainerText={handleAppendTrainerText}
-            />
-          </div>
-        </div>
-        <div className={content}>
-          <SessionComponent
-            log={log}
-            handleSendFullContentLog={handleSendFullContentLog}
-          />
-        </div>
+      <main className={innerClasses.root}>
+        <HeaderComponent
+          currentTrainerUrl={currentTrainerUrl}
+          currentStudentUrl={currentStudentUrl}
+        />
+        <div className={innerClasses.divider} />
+        <NewTextComponent handleAppendTrainerText={handleAppendTrainerText} />
+        <div className={innerClasses.divider} />
+        <SessionComponent
+          log={log}
+          handleSendFullContentLog={handleSendFullContentLog}
+        />
       </main>
     </>
   );

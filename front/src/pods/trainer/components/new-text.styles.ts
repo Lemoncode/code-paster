@@ -4,23 +4,19 @@ import { theme } from 'core/theme';
 const { palette, typography, spacing } = theme;
 const color = palette.customPalette;
 
-export const newTextContainer = css`
-  width: 100%;
-  margin-top: ${spacing(7.5)};
-  margin-bottom: ${spacing(5)};
-  margin-bottom: ${spacing(10)};
+export const root = css`
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-column-gap: 1rem;
 `;
 
-export const labelTextarea = css`
+export const label = css`
   font-family: ${typography.fontFamily};
   font-size: 1.125rem;
 `;
 
-export const editTextArea = css`
+export const textarea = css`
   box-sizing: border-box;
-  width: 100%;
-  margin-top: ${spacing(1.25)};
-  margin-bottom: ${spacing(2.5)};
   padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
   font-size: 1rem;
@@ -34,8 +30,7 @@ export const editTextArea = css`
   }
 `;
 
-export const sendBtn = css`
-  width: 100%;
+export const button = css`
   padding: ${spacing(1.25)} 0;
   font-size: 1.188rem;
   font-weight: 400;
@@ -51,31 +46,7 @@ export const sendBtn = css`
   }
 `;
 
-export const sendBtnDisabled = css`
-  width: 100%;
-  padding: ${spacing(1.25)} 0;
-  font-size: 1.188rem;
-  font-weight: 400;
-  text-transform: capitalize;
-  border-radius: 0;
-  color: ${palette.grey[700]};
-  background-color: ${palette.grey[300]};
-  cursor: default;
-  opacity: 0.5;
-  box-shadow: none;
-  &:hover {
-    color: ${palette.grey[700]};
-    background-color: ${palette.grey[300]};
-    box-shadow: none;
-  }
-  &:active {
-    color: ${palette.grey[700]};
-    background-color: ${palette.grey[300]};
-    box-shadow: none;
-  }
-`;
-
-export const sendIcon = css`
+export const buttonIcon = css`
   margin-left: ${spacing(1.25)};
   font-size: 1.25rem;
 `;
