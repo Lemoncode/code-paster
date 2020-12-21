@@ -1,5 +1,5 @@
-import { InputMessageTypes, OutputMessageTypes } from './messages.consts';
-import { Action, InputEstablishConnectionTrainer, SocketInfo } from './messages.model';
+import { InputMessageTypes, OutputMessageTypes } from '../messages.consts';
+import { Action, InputEstablishConnectionTrainer, SocketInfo } from '../messages.model';
 import {sessionRepository, roomRepository } from 'dals';
 const {addNewUser, getRoomFromConnectionId, isExistingConnection, isTrainerUser } = sessionRepository;
 const { isRoomAvailable, saveRoomInfo} = roomRepository;
@@ -63,11 +63,13 @@ const handleTrainerSendText = async (socketInfo: SocketInfo, text: string, actio
   }
   const room = await getRoomFromConnectionId(socketInfo.connectionId);
   const roomInfo = { room, content: text };
-  saveRoomInfo(roomInfo, action);
+  
   switch(action){
     case InputMessageTypes.TRAINER_APPEND_TEXT:
+      saveRoomInfo(roomInfo, false);
       return [{ type: OutputMessageTypes.APPEND_TEXT, payload: text }];
     case InputMessageTypes.TRAINER_SET_FULL_TEXT:
+      saveRoomInfo(roomInfo, true);
       return [{ type: OutputMessageTypes.UPDATE_FULL_CONTENT}];
     default:
       return [];
@@ -98,7 +100,7 @@ const handleEstablishConnectionTrainer = async (socketInfo: SocketInfo, room: st
   const roomAvailable: boolean = await isRoomAvailable(room);
 
   if(roomAvailable) {
-    saveRoomInfo({room, content:""}, "");
+    saveRoomInfo({room, content:""}, false);
   }
 
   if (roomAvailable || !(await isExistingConnection(socketInfo.connectionId))) {

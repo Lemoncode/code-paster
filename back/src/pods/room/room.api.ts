@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { generateNewRoomName, generateNewTrainerToken } from './business';
+import { generateNewRoomName, generateNewTrainerToken } from './room-name-generator.business';
 
 export const api = Router();
 

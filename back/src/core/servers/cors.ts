@@ -1,4 +1,4 @@
-import { envConstants } from 'core';
+import { envConstants } from 'core/constants';
 import cors from 'cors';
 
 const options: cors.CorsOptions = {

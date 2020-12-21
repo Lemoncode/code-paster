@@ -1,5 +1,5 @@
-import {OutputMessageTypes, SocketOuputMessageLiteral} from './messages.consts';
-import { Action, SocketInfo } from './messages.model';
+import {OutputMessageTypes, SocketOuputMessageLiteral} from '../messages.consts';
+import { Action, SocketInfo } from '../messages.model';
 import { sessionRepository, roomRepository } from 'dals';
 const { isTrainerUser, getRoomFromConnectionId } = sessionRepository;
 const { getRoomContent } = roomRepository;
