@@ -4,6 +4,10 @@ WORKDIR /usr/app
 
 # Build front
 FROM base AS build-frontend
+ARG BASE_API_URL
+ENV BASE_API_URL=$BASE_API_URL
+ARG BASE_SOCKET_URL
+ENV BASE_SOCKET_URL=$BASE_SOCKET_URL
 COPY ./front ./
 RUN npm install
 RUN npm run build

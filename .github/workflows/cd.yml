@@ -7,8 +7,6 @@ on:
 
 env:
   HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-  BASE_API_URL: ${{ secrets.BASE_API_URL }}
-  BASE_SOCKET_URL: ${{ secrets.BASE_SOCKET_URL }}
 
 jobs:
   cd:
@@ -22,7 +20,7 @@ jobs:
           curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
           heroku container:login
       - name: Build docker image
-        run: docker build -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
+        run: docker build --build-arg BASE_API_URL=${{ secrets.BASE_API_URL }} --build-arg BASE_SOCKET_URL=${{ secrets.BASE_SOCKET_URL }} -t registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web .
       - name: Deploy docker image
         run: docker push registry.heroku.com/${{ secrets.HEROKU_APP_NAME }}/web
       - name: Release
