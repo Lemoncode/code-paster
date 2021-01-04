@@ -50,18 +50,20 @@ export const CopyFieldComponent: React.FC<CopyFieldProps> = props => {
 
   return (
     <>
-      <label
-        className={innerClasses.label}
-        htmlFor={inputId}
-        onClick={handleClick}
-      >
-        {labelName}
-        {open ? (
-          <ExpandLessIcon className={innerClasses.collapseIcon} />
-        ) : (
-          <ExpandMoreIcon className={innerClasses.collapseIcon} />
-        )}
-      </label>
+      <div className={innerClasses.labelContainer}>
+        <label
+          className={innerClasses.label}
+          htmlFor={inputId}
+          onClick={handleClick}
+        >
+          {labelName}
+          {open ? (
+            <ExpandLessIcon className={innerClasses.collapseIcon} />
+          ) : (
+            <ExpandMoreIcon className={innerClasses.collapseIcon} />
+          )}
+        </label>
+      </div>
       <Collapse in={open} timeout="auto" unmountOnExit>
         <div className={innerClasses.inputContainer}>
           <input

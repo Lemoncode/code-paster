@@ -9,16 +9,27 @@ export const root = css`
   grid-row-gap: 1rem;
   grid-column-gap: 1rem;
 `;
+export const labelContainer = css`
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+`;
 
 export const label = css`
   font-family: ${typography.fontFamily};
   font-size: 1.125rem;
   color: ${palette.text.primary};
   display: flex;
+  justify-content: space-between;
+  width: 50%;
   cursor: pointer;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   & :hover {
     background-color: rgba(0, 0, 0, 0.12);
+  }
+
+  @media (min-width: ${theme.breakpoints.values.sm}px) {
+    width: 30%;
+  }
+  @media (min-width: ${theme.breakpoints.values.lg}px) {
+    width: 25%;
   }
 `;
 
