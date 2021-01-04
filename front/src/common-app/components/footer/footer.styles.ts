@@ -41,25 +41,6 @@ export const topContainerCenter = css`
   padding: 0 ${spacing(2)};
 `;
 
-export const linkList = css`
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  @media (max-width: ${breakpoints.values.xs}px) {
-    margin-top: ${spacing(2.4)};
-    text-align: center;
-  }
-`;
-
-export const link = css`
-  font-size: 1.1rem;
-  text-decoration: none;
-  color: ${color.greyLight};
-  &:hover {
-    color: ${color.primary};
-  }
-`;
-
 export const bottomContainer = css`
   display: flex;
   justify-content: space-between;
