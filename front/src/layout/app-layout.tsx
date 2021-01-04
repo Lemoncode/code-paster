@@ -4,9 +4,9 @@ import { AppbarComponent, FooterComponent } from 'common-app';
 export const AppLayout: React.FC = props => {
   return (
     <>
-      <AppbarComponent showLinks={true} />
+      <AppbarComponent />
       {props.children}
-      <FooterComponent showLinks={true} />
+      <FooterComponent />
     </>
   );
 };

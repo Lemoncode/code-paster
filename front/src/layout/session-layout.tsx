@@ -4,9 +4,9 @@ import { AppbarComponent, FooterComponent } from 'common-app';
 export const SessionLayout: React.FC = props => {
   return (
     <>
-      <AppbarComponent showLinks={false} />
+      <AppbarComponent />
       {props.children}
-      <FooterComponent showLinks={false} />
+      <FooterComponent />
     </>
   );
 };
