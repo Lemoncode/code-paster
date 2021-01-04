@@ -14,6 +14,17 @@ export const label = css`
   font-family: ${typography.fontFamily};
   font-size: 1.125rem;
   color: ${palette.text.primary};
+  display: flex;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  & :hover {
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+`;
+
+export const collapseIcon = css`
+  font-size: 1.7rem;
+  margin: 0 1%;
 `;
 
 export const inputContainer = css`
