@@ -345,6 +345,14 @@ ul {
   justify-content: space-between;
   width: 70%;
   margin: 0 auto;
+  border: 1px solid red;
+}
+
+.video {
+  width: 90%;
+  margin: 2% auto;
+  max-height: 220px;
+  background-color: #151611;
 }
 
 .instructions {
