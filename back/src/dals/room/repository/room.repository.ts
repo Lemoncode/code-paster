@@ -1,8 +1,7 @@
 import { RoomInfo, RoomContext } from 'dals';
 
 export const isRoomAvailable = async (room: string): Promise<boolean> => {
-  const roomAvailable = !(await RoomContext.exists({ room }));
-  return roomAvailable;
+  return (await RoomContext.countDocuments({ room: room })) === 0;
 };
 
 export const saveRoomInfo = async (
