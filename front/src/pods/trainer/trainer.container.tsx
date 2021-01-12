@@ -21,13 +21,14 @@ interface Params {
 export const TrainerContainer = () => {
   const { token, room } = useParams<Params>();
   const { log, appendToLog, setLog } = useLog();
-  const socketDetails = { room: room, trainertoken: token };
-  const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(createSocket(socketDetails));
+  const [_, setSocket, socketRef] = useWithRef<SocketIO.Socket>(null);
 
   const [currentTrainerUrl, setCurrentTrainerUrl] = React.useState<string>('');
   const [currentStudentUrl, setCurrentStudentUrl] = React.useState<string>('');
 
   const handleConnection = () => {
+    const socket = createSocket({ room: room, trainertoken: token });
+    setSocket(socket);
     socket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
       if (msg.type) {
         const { type, payload } = msg;
@@ -45,19 +46,22 @@ export const TrainerContainer = () => {
         }
       }
     });
+    getPreviousSessionContent(
+      socket,
+      SocketEmitMessageTypes.TRAINER_REQUEST_FULL_CONTENT
+    );
   };
 
   React.useEffect(() => {
     setCurrentTrainerUrl(`${getHostBaseUrl()}#${routes.trainer(room, token)}`);
     setCurrentStudentUrl(`${getHostBaseUrl()}#${routes.student(room)}`);
     handleConnection();
-    getPreviousSessionContent(socketRef, SocketEmitMessageTypes.TRAINER_REQUEST_FULL_CONTENT);
   }, []);
 
   const appendLineSeparator = (text: string): string =>
     `${text}${lineSeparator}`;
 
-  const sendTrainerTextToServer = (text: string, action:string): void => {
+  const sendTrainerTextToServer = (text: string, action: string): void => {
     socketRef.current.emit(SocketOuputMessageLiteral.MESSAGE, {
       type: action,
       payload: text,
@@ -66,11 +70,18 @@ export const TrainerContainer = () => {
 
   const handleAppendTrainerText = (trainerText: string): void => {
     const finalText = appendLineSeparator(trainerText);
-    sendTrainerTextToServer(finalText, SocketEmitMessageTypes.TRAINER_APPEND_TEXT);
+    sendTrainerTextToServer(
+      finalText,
+      SocketEmitMessageTypes.TRAINER_APPEND_TEXT
+    );
   };
 
   const handleSendFullContentLog = (fullContent: string): void => {
-    fullContent && sendTrainerTextToServer(fullContent, SocketEmitMessageTypes.TRAINER_SET_FULL_TEXT);
+    fullContent &&
+      sendTrainerTextToServer(
+        fullContent,
+        SocketEmitMessageTypes.TRAINER_SET_FULL_TEXT
+      );
   };
 
   return (
