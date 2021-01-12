@@ -41,12 +41,6 @@ export const processInputMessage = async (
         InputMessageTypes.TRAINER_SET_FULL_TEXT
       );
       break;
-    case InputMessageTypes.STUDENT_REQUEST_FULL_CONTENT:
-      outputActionCollection = await handleRequestGetStudentContent();
-      break;
-    case InputMessageTypes.TRAINER_REQUEST_FULL_CONTENT:
-      outputActionCollection = await handleRequestGetTrainerContent();
-      break;
     default:
       break;
   }
@@ -134,12 +128,4 @@ const handleTrainerSendText = async (
     default:
       return [];
   }
-};
-
-const handleRequestGetStudentContent = async (): Promise<Action[]> => {
-  return [{ type: OutputMessageTypes.STUDENT_SEND_FULL_CONTENT }];
-};
-
-const handleRequestGetTrainerContent = async (): Promise<Action[]> => {
-  return [{ type: OutputMessageTypes.TRAINER_SEND_FULL_CONTENT }];
 };

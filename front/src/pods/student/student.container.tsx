@@ -7,7 +7,6 @@ import {
 } from 'core';
 import { useLog } from 'core';
 import { StudentComponent } from './student.component';
-import { getPreviousSessionContent } from 'common-app';
 import { useParams } from 'react-router-dom';
 
 interface Params {
@@ -42,10 +41,6 @@ export const StudentContainer = () => {
         }
       }
     });
-    getPreviousSessionContent(
-      socket,
-      SocketEmitMessageTypes.STUDENT_REQUEST_FULL_CONTENT
-    );
   };
 
   React.useEffect(() => {
