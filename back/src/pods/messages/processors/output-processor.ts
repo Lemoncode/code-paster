@@ -1,31 +1,33 @@
-import {OutputMessageTypes, SocketOuputMessageLiteral} from '../messages.consts';
-import { Action, SocketInfo } from '../messages.model';
 import { sessionRepository, roomRepository } from 'dals';
-const { isTrainerUser, getRoomFromConnectionId } = sessionRepository;
-const { getRoomContent } = roomRepository;
-
+import {
+  OutputMessageTypes,
+  SocketOuputMessageLiteral,
+} from '../messages.consts';
+import { Action, SocketInfo } from '../messages.model';
 import { ResponseBase, responseType } from './response';
 
-export const processOutputMessageCollection = async (socketInfo: SocketInfo, actionCollection: Action[]): Promise<void> => {
+export const processOutputMessageCollection = async (
+  socketInfo: SocketInfo,
+  actionCollection: Action[]
+): Promise<void> => {
   if (actionCollection) {
     // TODO: Error handling
-    await actionCollection.forEach((action) =>
-       processOuputMessage(socketInfo, action)
-    );
+    for (const action of actionCollection) {
+      await processOuputMessage(socketInfo, action);
+    }
   }
 };
 
-export const processOuputMessage = async (socketInfo: SocketInfo, action: Action) => {
-  const { connectionId, io, socket } = socketInfo;
-  const isMaster = await isTrainerUser(connectionId);
-  const room = await getRoomFromConnectionId(connectionId);
-
+export const processOuputMessage = async (
+  socketInfo: SocketInfo,
+  action: Action
+) => {
   switch (action.type) {
     case OutputMessageTypes.CONNECTION_ESTABLISHED_TRAINER:
-      await handleNotifyConnectionEstablishedTrainer(socketInfo, connectionId);
+      await handleNotifyConnectionEstablishedTrainer(socketInfo);
       break;
     case OutputMessageTypes.CONNECTION_ESTABLISHED_STUDENT:
-      await handleNotifyConnectionEstablishedStudent(socketInfo, connectionId);
+      await handleNotifyConnectionEstablishedStudent(socketInfo);
       break;
     case OutputMessageTypes.APPEND_TEXT:
       await handleAppendText(socketInfo, action.payload);
@@ -44,44 +46,73 @@ export const processOuputMessage = async (socketInfo: SocketInfo, action: Action
   }
 };
 
-const handleSingleStudentSendFullContent = async (socketInfo: SocketInfo) => {
-  await handleSendFullContent(socketInfo, responseType.STUDENT_GET_FULL_CONTENT, false);
-}
+const handleNotifyConnectionEstablishedTrainer = async (
+  socketInfo: SocketInfo
+) => {
+  const room = await sessionRepository.getRoomFromConnectionId(
+    socketInfo.connectionId
+  );
+  const response: ResponseBase = { type: responseType.CONNECTION_ACK };
+  socketInfo.socket.in(room).emit(SocketOuputMessageLiteral.MESSAGE, response);
+};
 
-const handleTrainerSendFullContent = async (socketInfo: SocketInfo) => {
-  await handleSendFullContent(socketInfo, responseType.TRAINER_GET_FULL_CONTENT, false);
-}
-
-const handleUpdateFullContent = async (socketInfo: SocketInfo) => {
-  await handleSendFullContent(socketInfo, responseType.UPDATE_FULL_CONTENT, true);
-}
-
-const handleSendFullContent = async (socketInfo: SocketInfo, responseType: string, sendToAll: boolean) => {
-  const room = await getRoomFromConnectionId(socketInfo.connectionId);
-  const content = await getRoomContent(room);
-  const msg = {type: responseType, payload: content};
-  sendToAll ? socketInfo.io.in(room).emit(SocketOuputMessageLiteral.MESSAGE, msg) : 
-              socketInfo.socket.emit(SocketOuputMessageLiteral.MESSAGE, msg);
+const handleNotifyConnectionEstablishedStudent = async (
+  socketInfo: SocketInfo
+) => {
+  const room = await sessionRepository.getRoomFromConnectionId(
+    socketInfo.connectionId
+  );
+  const response: ResponseBase = {
+    type: responseType.CONNECTION_ACK,
+  };
+  socketInfo.socket.in(room).emit(SocketOuputMessageLiteral.MESSAGE, response);
 };
 
 const handleAppendText = async (socketInfo: SocketInfo, text: string) => {
-  const room = await getRoomFromConnectionId(socketInfo.connectionId);
+  const room = await sessionRepository.getRoomFromConnectionId(
+    socketInfo.connectionId
+  );
   socketInfo.io.in(room).emit(SocketOuputMessageLiteral.MESSAGE, {
     type: responseType.APPEND_TEXT,
     payload: text,
   });
 };
 
-const handleNotifyConnectionEstablishedTrainer = async (socketInfo: SocketInfo, connectionId: string) => {
-  const room = await getRoomFromConnectionId(socketInfo.connectionId);
-  const response: ResponseBase = { type: responseType.CONNECTION_ACK };
-  socketInfo.socket.in(room).emit(SocketOuputMessageLiteral.MESSAGE, response);
+const handleUpdateFullContent = async (socketInfo: SocketInfo) => {
+  await handleSendFullContent(
+    socketInfo,
+    responseType.UPDATE_FULL_CONTENT,
+    true
+  );
 };
 
-const handleNotifyConnectionEstablishedStudent = async (socketInfo: SocketInfo, connectionId: string) => {
-  const room = await getRoomFromConnectionId(socketInfo.connectionId);
-  const response: ResponseBase = {
-    type: responseType.CONNECTION_ACK,
-  };
-  socketInfo.socket.in(room).emit(SocketOuputMessageLiteral.MESSAGE, response);
+const handleSingleStudentSendFullContent = async (socketInfo: SocketInfo) => {
+  await handleSendFullContent(
+    socketInfo,
+    responseType.STUDENT_GET_FULL_CONTENT,
+    false
+  );
+};
+
+const handleTrainerSendFullContent = async (socketInfo: SocketInfo) => {
+  await handleSendFullContent(
+    socketInfo,
+    responseType.TRAINER_GET_FULL_CONTENT,
+    false
+  );
+};
+
+const handleSendFullContent = async (
+  socketInfo: SocketInfo,
+  responseType: string,
+  sendToAll: boolean
+) => {
+  const room = await sessionRepository.getRoomFromConnectionId(
+    socketInfo.connectionId
+  );
+  const content = await roomRepository.getRoomContent(room);
+  const msg = { type: responseType, payload: content };
+  sendToAll
+    ? socketInfo.io.in(room).emit(SocketOuputMessageLiteral.MESSAGE, msg)
+    : socketInfo.socket.emit(SocketOuputMessageLiteral.MESSAGE, msg);
 };
