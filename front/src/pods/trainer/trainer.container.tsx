@@ -11,7 +11,6 @@ import {
 import { useLog } from 'core';
 import { TrainerComponent } from './trainer.component';
 import { useWithRef, getHostBaseUrl } from 'common';
-import { getPreviousSessionContent } from 'common-app';
 
 interface Params {
   token: string;
@@ -46,10 +45,6 @@ export const TrainerContainer = () => {
         }
       }
     });
-    getPreviousSessionContent(
-      socket,
-      SocketEmitMessageTypes.TRAINER_REQUEST_FULL_CONTENT
-    );
   };
 
   React.useEffect(() => {
