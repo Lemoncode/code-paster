@@ -7,7 +7,6 @@ import {
 } from 'core';
 import { useLog } from 'core';
 import { StudentComponent } from './student.component';
-import { useWithRef } from 'common';
 import { getPreviousSessionContent } from 'common-app';
 import { useParams } from 'react-router-dom';
 
@@ -18,18 +17,15 @@ interface Params {
 export const StudentContainer = () => {
   const { room } = useParams<Params>();
   const { log, appendToLog, setLog } = useLog();
-  const [socket, setSocket, socketRef] = useWithRef<SocketIO.Socket>(null);
 
   const handleConnection = () => {
     // Connect to socket
-    const localSocket = createSocket({
+    const socket = createSocket({
       room: room,
       trainertoken: '',
     });
 
-    setSocket(localSocket);
-
-    localSocket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
+    socket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
       if (msg.type) {
         const { type, payload } = msg;
 
@@ -46,14 +42,14 @@ export const StudentContainer = () => {
         }
       }
     });
+    getPreviousSessionContent(
+      socket,
+      SocketEmitMessageTypes.STUDENT_REQUEST_FULL_CONTENT
+    );
   };
 
   React.useEffect(() => {
     handleConnection();
-    getPreviousSessionContent(
-      socketRef,
-      SocketEmitMessageTypes.STUDENT_REQUEST_FULL_CONTENT
-    );
   }, []);
 
   return (
