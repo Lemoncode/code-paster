@@ -44,7 +44,7 @@ export const messageSocketEvents = async (
     });
   }
 
-  processOutputMessageCollection(socketInfo, outputMessageCollection);
+  await processOutputMessageCollection(socketInfo, outputMessageCollection);
 
   socket.on('message', async function (message: any) {
     console.log(`socket.on 'message': ${JSON.stringify(message)}`);
