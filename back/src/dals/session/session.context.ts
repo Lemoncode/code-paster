@@ -1,5 +1,6 @@
 import { Document, model, Schema } from 'mongoose';
 import { UserSession } from 'dals/session';
+import { envConstants } from 'core/constants';
 
 const userSessionSchema = new Schema({
   room: Schema.Types.String,
@@ -10,7 +11,7 @@ const userSessionSchema = new Schema({
     type: Schema.Types.Date,
     default: Date.now,
     index: {
-      expires: '2d',
+      expires: envConstants.MONGO_EXPIRATION_TIME,
     },
   },
 });

@@ -1,5 +1,6 @@
 import { Document, model, Schema } from 'mongoose';
 import { RoomInfo } from 'dals';
+import { envConstants } from 'core';
 
 const roomSchema = new Schema({
   room: Schema.Types.String,
@@ -8,7 +9,7 @@ const roomSchema = new Schema({
     type: Schema.Types.Date,
     default: Date.now,
     index: {
-      expires: '2d',
+      expires: envConstants.MONGO_EXPIRATION_TIME,
     },
   },
 });
