@@ -1,6 +1,9 @@
 import SocketIOClient, { Socket } from 'socket.io';
 import { Action, SocketInfo } from './messages.model';
-import { processInputMessage, processOutputMessageCollection } from './processors';
+import {
+  processInputMessage,
+  processOutputMessageCollection,
+} from './processors';
 import { InputMessageTypes } from './messages.consts';
 
 export const messageSocketEvents = async (
@@ -41,10 +44,10 @@ export const messageSocketEvents = async (
     });
   }
 
-  processOutputMessageCollection(socketInfo, outputMessageCollection);
+  await processOutputMessageCollection(socketInfo, outputMessageCollection);
 
   socket.on('message', async function (message: any) {
-    console.log("socket.on 'message':: " + message);
+    console.log(`socket.on 'message': ${JSON.stringify(message)}`);
     if (message && message.type) {
       const outputMessageCollection: Action[] = await processInputMessage(
         socketInfo,
@@ -54,5 +57,4 @@ export const messageSocketEvents = async (
       await processOutputMessageCollection(socketInfo, outputMessageCollection);
     }
   });
-
 };

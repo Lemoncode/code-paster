@@ -6,17 +6,10 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
 import LanguageIcon from '@material-ui/icons/Language';
 
-interface Props {
-  showLinks: boolean;
-}
-
-export const FooterComponent: React.FC<Props> = ({ showLinks }) => {
+export const FooterComponent: React.FC = () => {
   const {
     footerContainer,
-    topContainer,
     topContainerCenter,
-    linkList,
-    link,
     lemoncodeIcon,
     bottomContainer,
     iconContainer,
@@ -27,28 +20,7 @@ export const FooterComponent: React.FC<Props> = ({ showLinks }) => {
   } = classes;
   return (
     <footer className={footerContainer}>
-      <div className={showLinks ? topContainer : topContainerCenter}>
-        {showLinks && (
-          <nav>
-            <ul className={linkList}>
-              <li>
-                <a className={link} href="#">
-                  About
-                </a>
-              </li>
-              <li>
-                <a className={link} href="#">
-                  Credits
-                </a>
-              </li>
-              <li>
-                <a className={link} href="#">
-                  License
-                </a>
-              </li>
-            </ul>
-          </nav>
-        )}
+      <div className={topContainerCenter}>
         <LemoncodeLogo className={lemoncodeIcon} />
       </div>
       <div className={bottomContainer}>
