@@ -8,8 +8,8 @@ export const footerContainer = css`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: ${spacing(37.5)};
-  padding: ${spacing(2.5)} ${spacing(12.5)};
+  height: ${spacing(20.5)};
+  padding: ${spacing(2)} ${spacing(12.5)};
   background-color: ${color.secondary};
   @media (max-width: ${breakpoints.values.md}px) {
     padding: ${spacing(2.5)} ${spacing(5)} ${spacing(3.75)} ${spacing(5)};
@@ -54,7 +54,8 @@ export const bottomContainer = css`
 `;
 
 export const lemoncodeIcon = css`
-  height: ${spacing(12.5)};
+  height: ${spacing(12)};
+  padding-bottom: ${spacing(1)}
 `;
 
 export const iconContainer = css`
