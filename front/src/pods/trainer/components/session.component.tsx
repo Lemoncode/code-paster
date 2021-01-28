@@ -10,7 +10,6 @@ import Checkbox from '@material-ui/core/Checkbox';
 
 import * as innerClasses from './session.styles';
 
-
 interface Props {
   log: string;
   handleSendFullContentLog: (fullContent: string) => void;
@@ -68,28 +67,26 @@ export const SessionComponent: React.FC<Props> = props => {
           />
         }
       />
-      <div className={btnContainer}>
-        <Button
-          variant="contained"
-          color="secondary"
-          disableElevation
-          className={innerClasses.undoButton}
-          onClick={() => handleSetSessionContent(log)}
-        >
-          <UndoIcon className={innerClasses.undoIcon} />
-          Undo
-        </Button>
-        <Button
-          variant="contained"
-          color="primary"
-          disableElevation
-          className={innerClasses.sendButton}
-          onClick={() => handleSendFullContentLog(getFullContent(log))}
-        >
-          Send Full Content
-          <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
-        </Button>
-      </div>
-    </div>
+      <Button
+        variant="contained"
+        color="secondary"
+        disableElevation
+        className={innerClasses.undoButton}
+        onClick={() => handleSetSessionContent(log)}
+      >
+        <UndoIcon className={innerClasses.undoIcon} />
+        Undo
+      </Button>
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        className={innerClasses.sendButton}
+        onClick={() => handleSendFullContentLog(getFullContent(log))}
+      >
+        Send Full Content
+        <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
+      </Button>
+    </form>
   );
 };
