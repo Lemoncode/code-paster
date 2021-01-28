@@ -6,6 +6,8 @@ import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 
 import UndoIcon from '@material-ui/icons/Undo';
 import Button from '@material-ui/core/Button';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
 
 interface Props {
   log: string;
@@ -40,8 +42,14 @@ export const SessionComponent: React.FC<Props> = props => {
     undoBtn,
   } = classes;
 
+  const [autoScroll, setAutoScroll] = React.useState(false);
+
+  const textAreaRef = React.useRef(null);
+
   React.useEffect(() => {
     handleSetSessionContent(log);
+    if (!autoScroll)
+      textAreaRef.current.scrollTop = textAreaRef.current.scrollHeight;
   }, [log]);
 
   return (
@@ -51,10 +59,21 @@ export const SessionComponent: React.FC<Props> = props => {
       </label>
 
       <TextareaAutosize
+        ref={textAreaRef}
         id="session"
         rowsMax={20}
         rowsMin={20}
         className={studentBoard}
+      />
+      <FormControlLabel
+        label="Disable AutoScroll"
+        control={
+          <Checkbox
+            checked={autoScroll}
+            onChange={e => setAutoScroll(e.target.checked)}
+            color="primary"
+          />
+        }
       />
       <div className={btnContainer}>
         <Button
