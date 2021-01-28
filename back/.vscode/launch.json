@@ -10,7 +10,8 @@
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy"],
       "env": {
-        "NODE_ENV": "development"
+        "NODE_ENV": "development",
+        "MOCK_REPOSITORY": "true"
       },
       "console": "internalConsole",
       "sourceMaps": true,

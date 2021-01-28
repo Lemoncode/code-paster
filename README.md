@@ -22,6 +22,9 @@
   <p align="center">
     Code Paster is a Teacher-to-Student communication tool for online programming lessons. Create a new session and easily share your code with all students connected so they can follow along with your examples.
   </p>
+  <p>
+  Click here to navigate to <a href="https://www.codepaster.net/">Codepaster</a>
+  </p>
 </p>
 <br />
 

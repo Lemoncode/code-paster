@@ -1,20 +1,22 @@
 import React from 'react';
-import * as classes from './header.styles';
-// Material UI ~ components
-import TextField from '@material-ui/core/TextField';
+import { cx } from 'emotion';
+import Collapse from '@material-ui/core/Collapse';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import * as innerClasses from './header.styles';
 
 interface Props {
   currentTrainerUrl: string;
   currentStudentUrl: string;
+  className?: string;
 }
 
 export const HeaderComponent: React.FC<Props> = props => {
-  const { currentStudentUrl, currentTrainerUrl } = props;
-  const { headerContainer } = classes;
+  const { currentStudentUrl, currentTrainerUrl, className } = props;
 
   return (
-    <div className={headerContainer}>
+    <div className={cx(innerClasses.root, className)}>
       <CopyFieldComponent
         labelName="Trainer Link"
         inputId="trainer-link"
@@ -39,36 +41,48 @@ interface CopyFieldProps {
 
 export const CopyFieldComponent: React.FC<CopyFieldProps> = props => {
   const { labelName, inputId, urlLink } = props;
-  const {
-    inputField,
-    label,
-    inputIconContainer,
-    textArea,
-    copyIcon,
-    copyBtn,
-  } = classes;
+
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
+
   return (
-    <div className={inputField}>
-      <label className={label} htmlFor={inputId}>
-        {labelName}
-      </label>
-      <div className={inputIconContainer}>
-        <input
-          id={inputId}
-          type="text"
-          className={textArea}
-          value={urlLink}
-          readOnly
-          aria-readonly
-        />
-        <button
-          aria-label={`copy ${labelName}`}
-          className={copyBtn}
-          onClick={() => navigator.clipboard.writeText(urlLink)}
+    <>
+      <div className={innerClasses.labelContainer}>
+        <label
+          className={innerClasses.label}
+          htmlFor={inputId}
+          onClick={handleClick}
         >
-          <FileCopyOutlinedIcon className={copyIcon} />
-        </button>
+          {labelName}
+          {open ? (
+            <ExpandLessIcon className={innerClasses.collapseIcon} />
+          ) : (
+            <ExpandMoreIcon className={innerClasses.collapseIcon} />
+          )}
+        </label>
       </div>
-    </div>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        <div className={innerClasses.inputContainer}>
+          <input
+            id={inputId}
+            type="text"
+            className={innerClasses.input}
+            value={urlLink}
+            readOnly
+            aria-readonly
+          />
+          <button
+            aria-label={`copy ${labelName}`}
+            className={innerClasses.button}
+            onClick={() => navigator.clipboard.writeText(urlLink)}
+          >
+            <FileCopyOutlinedIcon className={innerClasses.icon} />
+          </button>
+        </div>
+      </Collapse>
+    </>
   );
 };

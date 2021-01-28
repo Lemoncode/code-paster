@@ -1,10 +1,12 @@
 import React from 'react';
-import * as classes from './student.styles';
-// Material UI ~ components
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Typography from '@material-ui/core/Typography';
+
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+
+import * as innerClasses from './student.styles';
+
 
 interface Props {
   room: string;
@@ -13,7 +15,6 @@ interface Props {
 
 export const StudentComponent: React.FC<Props> = props => {
   const { room, log } = props;
-  const { mainContainer, sessionName, studentBoard, labelTextarea } = classes;
 
   const [autoScroll, setAutoScroll] = React.useState(false);
 
@@ -25,12 +26,13 @@ export const StudentComponent: React.FC<Props> = props => {
   }, [log]);
 
   return (
+
     <>
-      <main className={mainContainer}>
-        <Typography className={sessionName} variant="body1" role="heading">
+      <main className={innerClasses.root}>
+        <Typography className={innerClasses.sessionName} variant="body1" role="heading">
           Session name: {room ?? ''}
         </Typography>
-        <label className={labelTextarea} htmlFor="session">
+        <label className={innerClasses.label} htmlFor="session">
           Content
         </label>
         <TextareaAutosize
@@ -38,7 +40,7 @@ export const StudentComponent: React.FC<Props> = props => {
           id="session"
           rowsMax={30}
           rowsMin={30}
-          className={studentBoard}
+          className={innerClasses.textarea}
           value={log ?? ''}
         />
         <FormControlLabel

@@ -15,8 +15,6 @@
     "paths": {
       "core": ["core"],
       "dals": ["dals"],
-      "messages": ["messages"],
-      "business": ["business"],
       "pods": ["pods"]
     }
   },
