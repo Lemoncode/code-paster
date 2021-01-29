@@ -34,14 +34,15 @@ const getFullContent = (currenSessionContent: string) => {
 export const SessionComponent: React.FC<Props> = props => {
   const { log, handleSendFullContentLog, className } = props;
 
-  const [autoScroll, setAutoScroll] = React.useState(false);
+  const [isAutoScrollEnabled, setAutoScrollEnabled] = React.useState(true);
 
   const textAreaRef = React.useRef(null);
 
   React.useEffect(() => {
     handleSetSessionContent(log);
-    if (!autoScroll)
+    if (isAutoScrollEnabled && textAreaRef.current) {
       textAreaRef.current.scrollTop = textAreaRef.current.scrollHeight;
+    }
   }, [log]);
 
   return (
@@ -61,8 +62,8 @@ export const SessionComponent: React.FC<Props> = props => {
         label="Disable AutoScroll"
         control={
           <Checkbox
-            checked={autoScroll}
-            onChange={e => setAutoScroll(e.target.checked)}
+            checked={isAutoScrollEnabled}
+            onChange={e => setAutoScrollEnabled(e.target.checked)}
             color="primary"
           />
         }
