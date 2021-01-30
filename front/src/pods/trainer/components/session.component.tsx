@@ -9,7 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import * as innerClasses from './session.styles';
-
+import { useAutoScroll } from '../../../common/hooks/use-Auto-Scroll';
 interface Props {
   log: string;
   handleSendFullContentLog: (fullContent: string) => void;
@@ -34,15 +34,11 @@ const getFullContent = (currenSessionContent: string) => {
 export const SessionComponent: React.FC<Props> = props => {
   const { log, handleSendFullContentLog, className } = props;
 
-  const [isAutoScrollEnabled, setAutoScrollEnabled] = React.useState(true);
-
-  const textAreaRef = React.useRef(null);
+  const {isAutoScrollEnabled, setIsAutoScrollEnabled, textAreaRef, doAutoScroll} = useAutoScroll();
 
   React.useEffect(() => {
     handleSetSessionContent(log);
-    if (isAutoScrollEnabled && textAreaRef.current) {
-      textAreaRef.current.scrollTop = textAreaRef.current.scrollHeight;
-    }
+    doAutoScroll();
   }, [log]);
 
   return (
@@ -63,7 +59,7 @@ export const SessionComponent: React.FC<Props> = props => {
         control={
           <Checkbox
             checked={isAutoScrollEnabled}
-            onChange={e => setAutoScrollEnabled(e.target.checked)}
+            onChange={e => setIsAutoScrollEnabled(e.target.checked)}
             color="primary"
           />
         }

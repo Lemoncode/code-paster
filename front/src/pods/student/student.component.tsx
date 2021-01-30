@@ -6,6 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import * as innerClasses from './student.styles';
+import { useAutoScroll } from '../../common/hooks/use-Auto-Scroll';
 
 interface Props {
   room: string;
@@ -15,24 +16,17 @@ interface Props {
 export const StudentComponent: React.FC<Props> = props => {
   const { room, log } = props;
 
-  const [isAutoScrollEnabled, setAutoScrollEnabled] = React.useState(true);
-
-  const textAreaRef = React.useRef(null);
+  const {isAutoScrollEnabled, setIsAutoScrollEnabled, textAreaRef, doAutoScroll} = useAutoScroll();
 
   React.useEffect(() => {
-    if (isAutoScrollEnabled && textAreaRef.current) {
-      textAreaRef.current.scrollTop = textAreaRef.current.scrollHeight;
-    }
+    doAutoScroll();
   }, [log]);
 
   return (
+
     <>
       <main className={innerClasses.root}>
-        <Typography
-          className={innerClasses.sessionName}
-          variant="body1"
-          role="heading"
-        >
+        <Typography className={innerClasses.sessionName} variant="body1" role="heading">
           Session name: {room ?? ''}
         </Typography>
         <label className={innerClasses.label} htmlFor="session">
@@ -51,7 +45,7 @@ export const StudentComponent: React.FC<Props> = props => {
           control={
             <Checkbox
               checked={isAutoScrollEnabled}
-              onChange={e => setAutoScrollEnabled(e.target.checked)}
+              onChange={e => setIsAutoScrollEnabled(e.target.checked)}
               color="primary"
             />
           }
