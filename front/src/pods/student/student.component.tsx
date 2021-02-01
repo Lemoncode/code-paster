@@ -2,6 +2,7 @@ import React from 'react';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Typography from '@material-ui/core/Typography';
 import * as innerClasses from './student.styles';
+import { DownloadTxtFile } from 'common-app';
 
 interface Props {
   room: string;
@@ -30,6 +31,7 @@ export const StudentComponent: React.FC<Props> = props => {
         className={innerClasses.textarea}
         value={log ?? ''}
       />
+      <DownloadTxtFile />
     </main>
   );
 };
