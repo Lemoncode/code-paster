@@ -2,7 +2,6 @@ import React from 'react';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import Typography from '@material-ui/core/Typography';
 import * as innerClasses from './student.styles';
-
 interface Props {
   room: string;
   log: string;
