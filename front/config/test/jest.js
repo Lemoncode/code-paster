@@ -7,5 +7,6 @@ module.exports = {
   modulePathIgnorePatterns: ['cypress'],
   moduleNameMapper: {
     '^.+\\.png$': '<rootDir>/pngTransform.js',
+    "^.+\\.svg$": "<rootDir>/svgTransform.js",
   }
 };
