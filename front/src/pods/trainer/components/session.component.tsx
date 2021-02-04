@@ -5,6 +5,7 @@ import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import UndoIcon from '@material-ui/icons/Undo';
 import Button from '@material-ui/core/Button';
 import * as innerClasses from './session.styles';
+import { DownloadTxtFile } from 'common-app';
 
 interface Props {
   log: string;
@@ -66,6 +67,8 @@ export const SessionComponent: React.FC<Props> = props => {
         Send Full Content
         <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
       </Button>
+
+      <DownloadTxtFile />
     </form>
   );
 };
