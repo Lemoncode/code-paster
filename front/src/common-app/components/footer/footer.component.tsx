@@ -9,38 +9,37 @@ import LanguageIcon from '@material-ui/icons/Language';
 export const FooterComponent: React.FC = () => {
   const {
     footerContainer,
-    topContainerCenter,
+    logoContainer,
     lemoncodeIcon,
     bottomContainer,
     iconContainer,
-    iconListItem,
     icon,
     githubIcon,
     copyright,
   } = classes;
   return (
     <footer className={footerContainer}>
-      <div className={topContainerCenter}>
+      <div className={logoContainer}>
         <LemoncodeLogo className={lemoncodeIcon} />
       </div>
       <div className={bottomContainer}>
         <ul className={iconContainer}>
-          <li className={iconListItem}>
+          <li>
             <a href="https://github.com/Lemoncode" target="_blank">
               <GithubIcon className={githubIcon} />
             </a>
           </li>
-          <li className={iconListItem}>
+          <li>
             <a href="https://twitter.com/lemoncoders" target="_blank">
               <TwitterIcon className={icon} />
             </a>
           </li>
-          <li className={iconListItem}>
+          <li>
             <a href="https://lemoncode.net/" target="_blank">
               <LanguageIcon className={icon} />
             </a>
           </li>
-          <li className={iconListItem}>
+          <li>
             <a href="mailto:formacion@lemoncode.net" target="_blank">
               <EmailRoundedIcon className={icon} />
             </a>

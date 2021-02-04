@@ -8,43 +8,19 @@ export const footerContainer = css`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: ${spacing(37.5)};
-  padding: ${spacing(2.5)} ${spacing(12.5)};
   background-color: ${color.secondary};
-  @media (max-width: ${breakpoints.values.md}px) {
-    padding: ${spacing(2.5)} ${spacing(5)} ${spacing(3.75)} ${spacing(5)};
-  }
-  @media (max-width: ${breakpoints.values.xs}px) {
-    height: ${spacing(43.75)};
-  }
 `;
 
-export const topContainer = css`
-  display: flex;
-  justify-content: space-between;
-  height: ${spacing(24.375)};
-  padding: 0 ${spacing(2)};
-  align-items: center;
-  @media (max-width: ${breakpoints.values.xs}px) {
-    flex-direction: column-reverse;
-    justify-content: center;
-    align-items: center;
-    height: ${spacing(27.5)};
-  }
-`;
-
-export const topContainerCenter = css`
+export const logoContainer = css`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: ${spacing(24.375)};
-  padding: 0 ${spacing(2)};
 `;
 
 export const bottomContainer = css`
   display: flex;
   justify-content: space-between;
-  padding-top: ${spacing(2)};
+  padding: ${spacing(3)};
   border-top: 1px solid ${color.primary};
   @media (max-width: ${breakpoints.values.xs}px) {
     flex-direction: column;
@@ -54,23 +30,22 @@ export const bottomContainer = css`
 `;
 
 export const lemoncodeIcon = css`
-  height: ${spacing(12.5)};
+  max-width: 100px;
+  padding: ${spacing(3)} 0;
 `;
 
 export const iconContainer = css`
   display: flex;
+  justify-content: space-between;
+  width: 50%;
   margin: 0;
-  padding: 0;
+  padding: 0 0 ${spacing(1)};
   list-style: none;
-`;
-
-export const iconListItem = css`
-  margin-right: ${spacing(1)};
-  &:first-of-type {
-    margin-right: ${spacing(1.4)};
+  @media (min-width: ${breakpoints.values.sm}px) {
+    width: 20%;
   }
-  &:last-of-type {
-    margin-right: 0;
+  @media (min-width: ${breakpoints.values.lg}px) {
+    width: 10%;
   }
 `;
 

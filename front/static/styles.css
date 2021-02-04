@@ -568,61 +568,32 @@ form textarea {
 .footer {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 30rem;
-  padding: 2rem 10rem;
+  justify-content: space-around;
   background-color: var(--color-dark);
 }
 
-@media only screen and (max-width: 728px) {
-  .footer {
-    padding: 2rem 4rem 3rem 4rem;
-  }
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 10rem;
 }
 
-@media only screen and (max-width: 380px) {
-  .footer {
-    height: 35rem;
-  }
-}
-
-.footer__top-container {
-  padding: 0 2rem;
+.footer__bottom-container {
   display: flex;
   justify-content: space-between;
-  height: 19.5rem;
-  align-items: center;
-}
-
-@media only screen and (max-width: 380px) {
-  .footer__top-container {
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: center;
-    height: 22rem;
-  }
-}
-
-.footer__logo {
-  height: 10rem;
-  width: 11.2rem;
+  border-top: 1px solid #d9d900;
+  padding: 1.5rem 0 3.5rem 0;
 }
 
 .footer__list {
-  padding: 0;
-  margin: 0;
+  font-size: 1.5rem;
   list-style: none;
-}
-
-@media only screen and (max-width: 380px) {
-  .footer__list {
-    text-align: center;
-    margin-top: 2.4rem;
-  }
+  padding-top: 4rem;
 }
 
 .footer__list__item {
-  margin-top: 0.5rem;
+  margin-top: 1.5rem;
 }
 
 .footer__list__item a {
@@ -636,47 +607,26 @@ form textarea {
   color: var(--color-primary-main);
 }
 
-.footer__bottom-container {
+.footer__logo {
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   align-items: center;
-  border-top: 1px solid #d9d900;
-  padding-top: 1rem;
-}
-
-@media only screen and (max-width: 380px) {
-  .footer__bottom-container {
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-.footer--logo-lemon-container:hover .footer--logo-lemon {
-  fill: var(--color-secondary-main);
-}
-
-.footer--logo-lemon {
-  position: absolute;
-  top: 0.8rem;
-  right: 1.6rem;
-  fill: var(--color-light);
-  height: 10rem;
-  width: 10rem;
+  max-width: 100px;
+  padding: 0.5rem 0;
 }
 
 .footer__icon-list {
   display: flex;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  list-style: none;
+  padding: 0 5rem;
 }
 
 .footer__icon-list-item {
-  margin-right: 1.2rem;
+  margin-right: 1.5rem;
+  fill: var(--color-grey-light);
 }
-.footer__icon-list-item:last-of-type {
-  margin-right: 0;
+
+.footer__list__item a:hover {
+  color: var(--color-primary-main);
 }
 
 .footer__icon {
@@ -687,29 +637,12 @@ form textarea {
 
 .footer__icon:hover {
   fill: var(--color-primary-main);
-}
-
-.footer__icon-twitter {
-  height: 3.5rem;
-  width: 3.5rem;
-  margin-top: 0.2rem;
-  margin-right: -0.6rem;
-  margin-left: -0.6rem;
-  fill: var(--color-grey-light);
-}
-
-.footer__icon-twitter:hover {
-  fill: var(--color-primary-main);
+  cursor: pointer;
 }
 
 .footer__copyright {
+  font-weight: 400;
+  font-size: 1.5rem;
+  padding: 0 5rem;
   color: var(--color-grey-light);
-  font-weight: 300;
-  font-size: 1.4rem;
-}
-
-@media only screen and (max-width: 578px) {
-  .footer__copyright {
-    margin-top: 0.4rem;
-  }
 }
