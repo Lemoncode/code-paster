@@ -6,7 +6,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 import * as innerClasses from './student.styles';
-import { useAutoScroll } from 'common/hooks/use-auto-scroll';
+import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
 
 interface Props {
   room: string;
