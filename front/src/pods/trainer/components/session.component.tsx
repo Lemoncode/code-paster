@@ -9,7 +9,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 
 import * as innerClasses from './session.styles';
-import { useAutoScroll } from '../../../common/hooks/use-Auto-Scroll';
+import { useAutoScroll } from 'common/hooks/use-auto-scroll';
 interface Props {
   log: string;
   handleSendFullContentLog: (fullContent: string) => void;
