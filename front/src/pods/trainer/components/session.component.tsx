@@ -4,8 +4,12 @@ import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import UndoIcon from '@material-ui/icons/Undo';
 import Button from '@material-ui/core/Button';
-import * as innerClasses from './session.styles';
 
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+
+import * as innerClasses from './session.styles';
+import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
 interface Props {
   log: string;
   handleSendFullContentLog: (fullContent: string) => void;
@@ -30,8 +34,11 @@ const getFullContent = (currenSessionContent: string) => {
 export const SessionComponent: React.FC<Props> = props => {
   const { log, handleSendFullContentLog, className } = props;
 
+  const {isAutoScrollEnabled, setIsAutoScrollEnabled, textAreaRef, doAutoScroll} = useAutoScroll();
+
   React.useEffect(() => {
     handleSetSessionContent(log);
+    doAutoScroll();
   }, [log]);
 
   return (
@@ -41,10 +48,21 @@ export const SessionComponent: React.FC<Props> = props => {
       </label>
 
       <TextareaAutosize
+        ref={textAreaRef}
         id="session"
         rowsMax={20}
         rowsMin={20}
         className={innerClasses.textarea}
+      />
+      <FormControlLabel
+        label="Disable AutoScroll"
+        control={
+          <Checkbox
+            checked={isAutoScrollEnabled}
+            onChange={e => setIsAutoScrollEnabled(e.target.checked)}
+            color="primary"
+          />
+        }
       />
       <Button
         variant="contained"
