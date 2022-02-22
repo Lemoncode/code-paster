@@ -24,6 +24,17 @@ const handleSetSessionContent = (sessionContent: string) => {
   sessionTextArea ? (sessionTextArea.value = sessionContent) : undefined;
 };
 
+const handleDownSessionContent = (sessionContent: string) => {
+  const element = document.createElement('a');
+  const file = new Blob([sessionContent], {
+    type: 'text/plain;charset=utf-8',
+  });
+  const dateNow = new Date(Date.now()).toString().slice(4, 21);
+  element.href = URL.createObjectURL(file);
+  element.download = `Codepaster_Session_${dateNow}.txt`;
+  element.click();
+};
+
 const getFullContent = (currenSessionContent: string) => {
   const sessionTextArea: HTMLInputElement = getTextArea('session');
   return sessionTextArea && sessionTextArea.value != currenSessionContent
@@ -34,7 +45,12 @@ const getFullContent = (currenSessionContent: string) => {
 export const SessionComponent: React.FC<Props> = props => {
   const { log, handleSendFullContentLog, className } = props;
 
-  const {isAutoScrollEnabled, setIsAutoScrollEnabled, textAreaRef, doAutoScroll} = useAutoScroll();
+  const {
+    isAutoScrollEnabled,
+    setIsAutoScrollEnabled,
+    textAreaRef,
+    doAutoScroll,
+  } = useAutoScroll();
 
   React.useEffect(() => {
     handleSetSessionContent(log);
@@ -46,7 +62,15 @@ export const SessionComponent: React.FC<Props> = props => {
       <label className={innerClasses.label} htmlFor="session">
         Session
       </label>
-
+      <Button
+        variant="contained"
+        color="secondary"
+        disableElevation
+        className={innerClasses.downIcon}
+        onClick={() => handleDownSessionContent(log)}
+      >
+        Download Txt
+      </Button>
       <TextareaAutosize
         ref={textAreaRef}
         id="session"
