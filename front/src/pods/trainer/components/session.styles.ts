@@ -70,8 +70,8 @@ export const sendButton = css`
 `;
 
 export const downIcon = css`
-  margin-left: ${spacing(1.25)};
-  font-size: 1.25rem;
+  text-transform: inherit;
+  font-size: 1rem;
   display: none;
   @media (min-width: ${breakpoints.values.xs}px) {
     display: initial;

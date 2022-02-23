@@ -29,7 +29,7 @@ const handleDownSessionContent = (sessionContent: string) => {
   const file = new Blob([sessionContent], {
     type: 'text/plain;charset=utf-8',
   });
-  const dateNow = new Date(Date.now()).toString().slice(4, 21);
+  const dateNow = new Date(Date.now()).toLocaleDateString();
   element.href = URL.createObjectURL(file);
   element.download = `Codepaster_Session_${dateNow}.txt`;
   element.click();
@@ -64,7 +64,7 @@ export const SessionComponent: React.FC<Props> = props => {
       </label>
       <Button
         variant="contained"
-        color="secondary"
+        color="primary"
         disableElevation
         className={innerClasses.downIcon}
         onClick={() => handleDownSessionContent(log)}
