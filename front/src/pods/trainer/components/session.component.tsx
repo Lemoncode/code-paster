@@ -3,6 +3,7 @@ import { cx } from 'emotion';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import UndoIcon from '@material-ui/icons/Undo';
+import GetAppIcon from '@material-ui/icons/GetApp';
 import Button from '@material-ui/core/Button';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -66,10 +67,11 @@ export const SessionComponent: React.FC<Props> = props => {
         variant="contained"
         color="primary"
         disableElevation
-        className={innerClasses.downIcon}
+        className={innerClasses.downButton}
         onClick={() => handleDownSessionContent(log)}
       >
-        Download Txt
+        <GetAppIcon className={innerClasses.downIcon} />
+        Download
       </Button>
       <TextareaAutosize
         ref={textAreaRef}
@@ -79,7 +81,7 @@ export const SessionComponent: React.FC<Props> = props => {
         className={innerClasses.textarea}
       />
       <FormControlLabel
-        label="Disable AutoScroll"
+        label="Enable AutoScroll"
         control={
           <Checkbox
             checked={isAutoScrollEnabled}

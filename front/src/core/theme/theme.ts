@@ -17,6 +17,8 @@ export const theme: Theme = merge(defaultTheme, {
       successDark: '#0f834c',
       alertLight: 'rgb(255, 87, 51)',
       alertDark: 'rgb(207, 70, 41)',
+      blueLight: '#2196f3',
+      blueDark: '#1565c0',
       greyLight: '#eee',
       greyMedium: '#ccc',
     },

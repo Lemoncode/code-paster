@@ -10,6 +10,8 @@ interface Palette extends DefaultPalette {
     successDark: string;
     alertLight: string;
     alertDark: string;
+    blueLight: string;
+    blueDark: string;
     greyLight: string;
     greyMedium: string;
   };
