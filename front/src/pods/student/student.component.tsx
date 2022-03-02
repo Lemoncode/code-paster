@@ -8,6 +8,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import * as innerClasses from './student.styles';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
 
+import { handleDownSessionContent } from 'common';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import Button from '@material-ui/core/Button';
+
 interface Props {
   room: string;
   log: string;
@@ -16,17 +20,25 @@ interface Props {
 export const StudentComponent: React.FC<Props> = props => {
   const { room, log } = props;
 
-  const {isAutoScrollEnabled, setIsAutoScrollEnabled, textAreaRef, doAutoScroll} = useAutoScroll();
+  const {
+    isAutoScrollEnabled,
+    setIsAutoScrollEnabled,
+    textAreaRef,
+    doAutoScroll,
+  } = useAutoScroll();
 
   React.useEffect(() => {
     doAutoScroll();
   }, [log]);
 
   return (
-
     <>
       <main className={innerClasses.root}>
-        <Typography className={innerClasses.sessionName} variant="body1" role="heading">
+        <Typography
+          className={innerClasses.sessionName}
+          variant="body1"
+          role="heading"
+        >
           Session name: {room ?? ''}
         </Typography>
         <label className={innerClasses.label} htmlFor="session">
@@ -40,16 +52,29 @@ export const StudentComponent: React.FC<Props> = props => {
           className={innerClasses.textarea}
           value={log ?? ''}
         />
-        <FormControlLabel
-          label="Disable AutoScroll"
-          control={
-            <Checkbox
-              checked={isAutoScrollEnabled}
-              onChange={e => setIsAutoScrollEnabled(e.target.checked)}
-              color="primary"
-            />
-          }
-        />
+        <div className={innerClasses.downScroll}>
+          <Button
+            variant="contained"
+            color="primary"
+            disableElevation
+            className={innerClasses.downButton}
+            onClick={() => handleDownSessionContent(log)}
+          >
+            <GetAppIcon className={innerClasses.downIcon} />
+            Download
+          </Button>
+          <FormControlLabel
+            label="Enable AutoScroll"
+            className="scroll"
+            control={
+              <Checkbox
+                checked={isAutoScrollEnabled}
+                onChange={e => setIsAutoScrollEnabled(e.target.checked)}
+                color="primary"
+              />
+            }
+          />
+        </div>
       </main>
     </>
   );

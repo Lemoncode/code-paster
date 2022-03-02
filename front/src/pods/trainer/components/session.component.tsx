@@ -5,6 +5,7 @@ import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import UndoIcon from '@material-ui/icons/Undo';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import Button from '@material-ui/core/Button';
+import { handleDownSessionContent } from 'common';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -23,17 +24,6 @@ const getTextArea = (elementId: string): HTMLInputElement =>
 const handleSetSessionContent = (sessionContent: string) => {
   const sessionTextArea: HTMLInputElement = getTextArea('session');
   sessionTextArea ? (sessionTextArea.value = sessionContent) : undefined;
-};
-
-const handleDownSessionContent = (sessionContent: string) => {
-  const element = document.createElement('a');
-  const file = new Blob([sessionContent], {
-    type: 'text/plain;charset=utf-8',
-  });
-  const dateNow = new Date(Date.now()).toLocaleDateString();
-  element.href = URL.createObjectURL(file);
-  element.download = `Codepaster_Session_${dateNow}.txt`;
-  element.click();
 };
 
 const getFullContent = (currenSessionContent: string) => {
