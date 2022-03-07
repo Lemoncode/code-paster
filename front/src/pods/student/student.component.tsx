@@ -8,7 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import * as innerClasses from './student.styles';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
 
-import { handleDownSessionContent } from 'common';
+import { handleDownloadSessionContent } from 'common';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import Button from '@material-ui/core/Button';
 
@@ -52,15 +52,15 @@ export const StudentComponent: React.FC<Props> = props => {
           className={innerClasses.textarea}
           value={log ?? ''}
         />
-        <div className={innerClasses.downScroll}>
+        <div className={innerClasses.buttonScroll}>
           <Button
             variant="contained"
             color="primary"
             disableElevation
-            className={innerClasses.downButton}
-            onClick={() => handleDownSessionContent(log)}
+            className={innerClasses.downloadButton}
+            onClick={() => handleDownloadSessionContent(log)}
           >
-            <GetAppIcon className={innerClasses.downIcon} />
+            <GetAppIcon className={innerClasses.downloadIcon} />
             Download
           </Button>
           <FormControlLabel

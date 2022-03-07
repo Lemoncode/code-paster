@@ -11,7 +11,6 @@ export const root = css`
   grid-column-gap: 1rem;
   padding: 1rem;
 
-
   @media (min-width: ${breakpoints.values.md}px) {
     padding: 2rem;
     grid-template-columns: 1fr 6fr 1fr;
@@ -36,12 +35,10 @@ export const sessionName = css`
 `;
 
 export const label = css`
-
   display: block;
   font-family: ${typography.fontFamily};
   font-size: 1.125rem;
 `;
-
 
 export const textarea = css`
   box-sizing: border-box;
@@ -57,7 +54,7 @@ export const textarea = css`
   }
 `;
 
-export const downButton = css`
+export const downloadButton = css`
   display: flex;
   align-items: left;
   width: 100%;
@@ -79,13 +76,11 @@ export const downButton = css`
     outline: none;
   }
   @media (min-width: ${breakpoints.values.xs}px) {
-   
-    max-width:50%;
- 
+    max-width: ${spacing(20)}
   }
 `;
 
-export const downIcon = css`
+export const downloadIcon = css`
   margin-right: ${spacing(1.25)};
   font-size: 1.25rem;
   display: none;
@@ -94,7 +89,7 @@ export const downIcon = css`
   }
 `;
 
-export const downScroll = css`
+export const buttonScroll = css`
   @media (min-width: ${breakpoints.values.xs}px) {
     display: flex;
     justify-content: space-between;

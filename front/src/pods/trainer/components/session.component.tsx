@@ -5,7 +5,7 @@ import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import UndoIcon from '@material-ui/icons/Undo';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import Button from '@material-ui/core/Button';
-import { handleDownSessionContent } from 'common';
+import { handleDownloadSessionContent } from 'common';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -57,10 +57,10 @@ export const SessionComponent: React.FC<Props> = props => {
         variant="contained"
         color="primary"
         disableElevation
-        className={innerClasses.downButton}
-        onClick={() => handleDownSessionContent(log)}
+        className={innerClasses.downloadButton}
+        onClick={() => handleDownloadSessionContent(log)}
       >
-        <GetAppIcon className={innerClasses.downIcon} />
+        <GetAppIcon className={innerClasses.downloadIcon} />
         Download
       </Button>
       <TextareaAutosize

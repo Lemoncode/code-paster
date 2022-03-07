@@ -119,7 +119,7 @@ export const undoIcon = css`
   }
 `;
 
-export const downButton = css`
+export const downloadButton = css`
   
   display: flex;
   align-items: center;
@@ -152,7 +152,7 @@ export const downButton = css`
   }
 `;
 
-export const downIcon = css`
+export const downloadIcon = css`
   margin-right: ${spacing(1.25)};
   font-size: 1.25rem;
   display: none;

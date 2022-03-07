@@ -1,10 +1,17 @@
-export const handleDownSessionContent = (sessionContent: string) => {
-  const element = document.createElement('a');
-  const file = new Blob([sessionContent], {
+
+export const handleDownloadSessionContent = (sessionContent: string): void => generateFile(sessionContent);
+
+const generateFile = (txt: string): void => {
+  const file: Blob = new Blob([txt], {
     type: 'text/plain;charset=utf-8',
   });
-  const dateNow = new Date(Date.now()).toLocaleDateString();
+  const element: HTMLAnchorElement = document.createElement('a');
   element.href = URL.createObjectURL(file);
-  element.download = `Codepaster_Session_${dateNow}.txt`;
+  element.download = generateCodePasterFileName()
   element.click();
-};
+}
+
+const generateCodePasterFileName = (): string => {
+  const dateToday = new Date(Date.now()).toLocaleDateString();
+  return `Codepaster_Session_${dateToday}.txt`;
+}
