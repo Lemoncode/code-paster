@@ -3,10 +3,7 @@
   "scripts": {
     "install": "run-p -l backend:install frontend:install",
     "backend:install": "cd back && npm install",
-    "frontend:install": "cd front && npm install",
-    "test": "run-p -l backend:test frontend:test",
-    "backend:test": "cd back && npm run test",
-    "frontend:test": "cd front && npm run test",
+    "frontend:install": "cd front && npm install"
   },
   "devDependencies": {
     "husky": "^7.0.0",
