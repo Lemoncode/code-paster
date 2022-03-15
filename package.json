@@ -7,7 +7,6 @@
     "test": "run-p -l backend:test frontend:test",
     "backend:test": "cd back && npm run test",
     "frontend:test": "cd front && npm run test",
-    "prepare": "husky install"
   },
   "devDependencies": {
     "husky": "^7.0.0",
