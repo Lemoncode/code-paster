@@ -1,2 +1,2 @@
 export const getHostBaseUrl = () =>
-  `${window.location.origin}${window.location.pathname}`
+  `${window.location.origin}${window.location.pathname}`;
