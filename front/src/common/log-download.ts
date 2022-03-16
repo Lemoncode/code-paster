@@ -1,5 +1,5 @@
-
-export const handleDownloadSessionContent = (sessionContent: string): void => generateFile(sessionContent);
+export const handleDownloadSessionContent = (sessionContent: string): void =>
+  generateFile(sessionContent);
 
 const generateFile = (txt: string): void => {
   const file: Blob = new Blob([txt], {
@@ -7,11 +7,11 @@ const generateFile = (txt: string): void => {
   });
   const element: HTMLAnchorElement = document.createElement('a');
   element.href = URL.createObjectURL(file);
-  element.download = generateCodePasterFileName()
+  element.download = generateCodePasterFileName();
   element.click();
-}
+};
 
 const generateCodePasterFileName = (): string => {
   const dateToday = new Date(Date.now()).toLocaleDateString();
   return `Codepaster_Session_${dateToday}.txt`;
-}
+};

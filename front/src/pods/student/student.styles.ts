@@ -76,7 +76,7 @@ export const downloadButton = css`
     outline: none;
   }
   @media (min-width: ${breakpoints.values.xs}px) {
-    max-width: ${spacing(20)}
+    max-width: ${spacing(20)};
   }
 `;
 
@@ -94,4 +94,4 @@ export const buttonScroll = css`
     display: flex;
     justify-content: space-between;
   }
-`
+`;

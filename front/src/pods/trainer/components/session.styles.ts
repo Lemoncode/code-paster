@@ -120,7 +120,6 @@ export const undoIcon = css`
 `;
 
 export const downloadButton = css`
-  
   display: flex;
   align-items: center;
   padding: ${spacing(1.25)} ${spacing(1.875)};
