@@ -16,29 +16,39 @@ interface Props {
 export const StudentComponent: React.FC<Props> = props => {
   const { room, log } = props;
 
-  const {isAutoScrollEnabled, setIsAutoScrollEnabled, textAreaRef, doAutoScroll} = useAutoScroll();
+  const {
+    isAutoScrollEnabled,
+    setIsAutoScrollEnabled,
+    textAreaRef,
+    doAutoScroll,
+  } = useAutoScroll();
 
   React.useEffect(() => {
     doAutoScroll();
   }, [log]);
 
   return (
-
     <>
       <main className={innerClasses.root}>
-        <Typography className={innerClasses.sessionName} variant="body1" role="heading">
+        <Typography
+          className={innerClasses.sessionName}
+          variant="body1"
+          role="heading"
+        >
           Session name: {room ?? ''}
         </Typography>
         <label className={innerClasses.label} htmlFor="session">
           Content
         </label>
         <TextareaAutosize
+          role="log"
           ref={textAreaRef}
           id="session"
           rowsMax={30}
           rowsMin={30}
           className={innerClasses.textarea}
           value={log ?? ''}
+          readOnly={true}
         />
         <FormControlLabel
           label="Disable AutoScroll"
