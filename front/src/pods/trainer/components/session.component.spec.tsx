@@ -16,7 +16,7 @@ describe('SessionComponent unit tests', () => {
 
     render(<SessionComponent {...props} />);
 
-    const textArea = screen.getByRole('textbox');
+    const textArea = screen.getByRole('log');
     const sendFullContentButton = screen.getAllByRole('button')[1];
 
     userEvent.type(textArea, 'How are you doing?');
@@ -40,7 +40,7 @@ describe('SessionComponent unit tests', () => {
 
     render(<SessionComponent {...props} />);
 
-    const textArea = screen.getByRole('textbox');
+    const textArea = screen.getByRole('log');
     const sendFullContentButton = screen.getAllByRole('button')[1];
 
     userEvent.type(textArea, 'How are you doing?');
@@ -64,7 +64,7 @@ describe('SessionComponent unit tests', () => {
 
     render(<SessionComponent {...props} />);
 
-    const textArea = screen.getByRole('textbox');
+    const textArea = screen.getByRole('log');
     const undoButton = screen.getAllByRole('button')[0];
 
     userEvent.type(textArea, 'How are you doing?');

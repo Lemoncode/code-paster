@@ -48,6 +48,7 @@ export const SessionComponent: React.FC<Props> = props => {
       </label>
 
       <TextareaAutosize
+        role="log"
         ref={textAreaRef}
         id="session"
         rowsMax={20}
