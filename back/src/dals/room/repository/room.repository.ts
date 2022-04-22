@@ -34,11 +34,12 @@ const appendRoomContent = async (newRoomInfo: RoomInfo): Promise<void> => {
   }
 };
 
-const replaceRoomContent = async (newRoomInfo: RoomInfo): Promise<void> =>
+const replaceRoomContent = async (newRoomInfo: RoomInfo): Promise<void> => {
   await RoomContext.updateOne(
     { room: newRoomInfo.room },
     { content: newRoomInfo.content }
   );
+};
 
 const updateRoomContent = async (
   newRoomInfo: RoomInfo,
