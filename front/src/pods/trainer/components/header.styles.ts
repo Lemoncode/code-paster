@@ -67,6 +67,16 @@ export const icon = css`
   font-size: 1.875rem;
 `;
 
+export const studentBackgroundColor = css`
+  background-color: #EB5353;
+  color: white;
+`;
+
+export const trainerBackgroundColor = css`
+  background-color: #006E60;
+  color: white;
+`;
+
 export const button = css`
   width: ${spacing(7.375)};
   height: ${spacing(7.375)};

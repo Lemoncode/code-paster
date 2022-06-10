@@ -20,11 +20,13 @@ export const HeaderComponent: React.FC<Props> = props => {
       <CopyFieldComponent
         labelName="Trainer Link"
         inputId="trainer-link"
+        className={innerClasses.trainerBackgroundColor}
         urlLink={currentTrainerUrl ?? ''}
       />
       <CopyFieldComponent
         labelName="Students Link"
         inputId="student-link"
+        className={innerClasses.studentBackgroundColor}
         urlLink={currentStudentUrl ?? ''}
       />
     </div>
@@ -37,10 +39,11 @@ interface CopyFieldProps {
   labelName: string;
   inputId: string;
   urlLink: string;
+  className?: string;
 }
 
 export const CopyFieldComponent: React.FC<CopyFieldProps> = props => {
-  const { labelName, inputId, urlLink } = props;
+  const { labelName, inputId, urlLink, className } = props;
 
   const [open, setOpen] = React.useState(true);
 
@@ -69,7 +72,7 @@ export const CopyFieldComponent: React.FC<CopyFieldProps> = props => {
           <input
             id={inputId}
             type="text"
-            className={innerClasses.input}
+            className={cx(innerClasses.input, className)}
             value={urlLink}
             readOnly
             aria-readonly
