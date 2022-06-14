@@ -67,14 +67,12 @@ export const icon = css`
   font-size: 1.875rem;
 `;
 
-export const studentBackgroundColor = css`
-  background-color: #EB5353;
-  color: white;
+export const trainerBackgroundColor = css`
+  background-color: #F0A0A0;
 `;
 
-export const trainerBackgroundColor = css`
-  background-color: #006E60;
-  color: white;
+export const studentBackgroundColor = css`
+  background-color: #62A39B;
 `;
 
 export const button = css`
