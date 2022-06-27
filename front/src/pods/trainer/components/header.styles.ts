@@ -68,11 +68,11 @@ export const icon = css`
 `;
 
 export const trainerBackgroundColor = css`
-  background-color: #F0A0A0;
+  background-color: #FBBFAE;
 `;
 
 export const studentBackgroundColor = css`
-  background-color: #62A39B;
+  background-color: #B9E5B9;
 `;
 
 export const button = css`
