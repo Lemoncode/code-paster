@@ -26,4 +26,14 @@ COPY ./back/package.json ./
 COPY ./back/package-lock.json ./
 RUN npm ci --only=production
 
-ENTRYPOINT [ "node", "index" ]
+EXPOSE 3000
+ENV PORT=3000
+ENV NODE_ENV=production
+ENV STATIC_FILES_PATH=./public
+ENV MOCK_REPOSITORY=false
+ENV CORS_ORIGIN=false
+ENV API_URL=/api
+
+RUN npm i pm2 -g
+
+CMD pm2 start ./index.js --name "app" --env production --no-daemon
