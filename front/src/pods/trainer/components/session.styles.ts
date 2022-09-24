@@ -118,3 +118,44 @@ export const undoIcon = css`
     display: initial;
   }
 `;
+
+export const downloadButton = css`
+  display: flex;
+  align-items: center;
+  padding: ${spacing(1.25)} ${spacing(1.875)};
+  flex: 1;
+  font-size: 1.188rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  border-radius: 0;
+  color: ${color.blueDark};
+  background-color: white;
+  border: 2px solid ${color.blueDark};
+  transition: all 0.2s;
+  &:hover,
+  &:active {
+    color: white;
+    background-color: ${color.blueDark};
+    border: 2px solid ${color.blueDark};
+    outline: none;
+  }
+  @media (max-width: ${breakpoints.values.xs}px) {
+    color: white;
+    background-color: ${color.blueDark};
+    border: none;
+    &:hover,
+    &:active {
+      background-color: ${color.blueDark};
+      border: none;
+    }
+  }
+`;
+
+export const downloadIcon = css`
+  margin-right: ${spacing(1.25)};
+  font-size: 1.25rem;
+  display: none;
+  @media (min-width: ${breakpoints.values.xs}px) {
+    display: initial;
+  }
+`;

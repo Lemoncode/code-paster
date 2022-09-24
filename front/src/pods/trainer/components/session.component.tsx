@@ -3,7 +3,9 @@ import { cx } from 'emotion';
 import TextareaAutosize from '@material-ui/core/TextareaAutosize';
 import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
 import UndoIcon from '@material-ui/icons/Undo';
+import GetAppIcon from '@material-ui/icons/GetApp';
 import Button from '@material-ui/core/Button';
+import { handleDownloadSessionContent } from 'common';
 
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -34,7 +36,12 @@ const getFullContent = (currenSessionContent: string) => {
 export const SessionComponent: React.FC<Props> = props => {
   const { log, handleSendFullContentLog, className } = props;
 
-  const {isAutoScrollEnabled, setIsAutoScrollEnabled, textAreaRef, doAutoScroll} = useAutoScroll();
+  const {
+    isAutoScrollEnabled,
+    setIsAutoScrollEnabled,
+    textAreaRef,
+    doAutoScroll,
+  } = useAutoScroll();
 
   React.useEffect(() => {
     handleSetSessionContent(log);
@@ -46,7 +53,16 @@ export const SessionComponent: React.FC<Props> = props => {
       <label className={innerClasses.label} htmlFor="session">
         Session
       </label>
-
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        className={innerClasses.downloadButton}
+        onClick={() => handleDownloadSessionContent(log)}
+      >
+        <GetAppIcon className={innerClasses.downloadIcon} />
+        Download
+      </Button>
       <TextareaAutosize
         role="log"
         ref={textAreaRef}
@@ -56,7 +72,7 @@ export const SessionComponent: React.FC<Props> = props => {
         className={innerClasses.textarea}
       />
       <FormControlLabel
-        label="Disable AutoScroll"
+        label="Enable AutoScroll"
         control={
           <Checkbox
             checked={isAutoScrollEnabled}

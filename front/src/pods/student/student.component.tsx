@@ -8,6 +8,10 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import * as innerClasses from './student.styles';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
 
+import { handleDownloadSessionContent } from 'common';
+import GetAppIcon from '@material-ui/icons/GetApp';
+import Button from '@material-ui/core/Button';
+
 interface Props {
   room: string;
   log: string;
@@ -50,16 +54,29 @@ export const StudentComponent: React.FC<Props> = props => {
           value={log ?? ''}
           readOnly={true}
         />
-        <FormControlLabel
-          label="Disable AutoScroll"
-          control={
-            <Checkbox
-              checked={isAutoScrollEnabled}
-              onChange={e => setIsAutoScrollEnabled(e.target.checked)}
-              color="primary"
-            />
-          }
-        />
+        <div className={innerClasses.buttonScroll}>
+          <Button
+            variant="contained"
+            color="primary"
+            disableElevation
+            className={innerClasses.downloadButton}
+            onClick={() => handleDownloadSessionContent(log)}
+          >
+            <GetAppIcon className={innerClasses.downloadIcon} />
+            Download
+          </Button>
+          <FormControlLabel
+            label="Enable AutoScroll"
+            className="scroll"
+            control={
+              <Checkbox
+                checked={isAutoScrollEnabled}
+                onChange={e => setIsAutoScrollEnabled(e.target.checked)}
+                color="primary"
+              />
+            }
+          />
+        </div>
       </main>
     </>
   );
