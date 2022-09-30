@@ -17,7 +17,7 @@ describe('StudentComponent tests', () => {
 
     // Assert
     const sessionName = screen.getByRole('heading');
-    const textArea = screen.getByRole('log');
+    const textArea = screen.getByTestId('session');
 
     expect(sessionName).toHaveTextContent(expectedSessionNameText);
     expect(textArea).toHaveValue(props.log);
@@ -69,7 +69,7 @@ describe('StudentComponent tests', () => {
     render(<StudentComponent {...props} />);
 
     // Assert
-    const textArea = screen.getByRole('log');
+    const textArea = screen.getByTestId('session');
     expect(textArea).toHaveTextContent('');
   });
 

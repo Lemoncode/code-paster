@@ -40,16 +40,18 @@ export const StudentComponent: React.FC<Props> = props => {
         <label className={innerClasses.label} htmlFor="session">
           Content
         </label>
-        <TextareaAutosize
-          role="log"
-          ref={textAreaRef}
-          id="session"
-          rowsMax={30}
-          rowsMin={30}
-          className={innerClasses.textarea}
-          value={log ?? ''}
-          readOnly={true}
-        />
+        <div role="log">
+          <TextareaAutosize
+            ref={textAreaRef}
+            data-testid="session"
+            id="session"
+            rowsMax={30}
+            rowsMin={30}
+            className={innerClasses.textarea}
+            value={log ?? ''}
+            readOnly={true}
+          />
+        </div>
         <FormControlLabel
           label="Disable AutoScroll"
           control={
