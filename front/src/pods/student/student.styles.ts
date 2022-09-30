@@ -41,6 +41,7 @@ export const label = css`
 `;
 
 export const textarea = css`
+  width: 100%;
   box-sizing: border-box;
   padding: ${spacing(2)};
   font-family: ${typography.fontFamily};
