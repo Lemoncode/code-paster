@@ -5,18 +5,41 @@ on:
   push:
     branches:
       - develop
+env:
+  IMAGE_NAME: ghcr.io/lemoncode/code-paster:dev-${{github.sha}}-${{github.run_attempt}}
+
+permissions:
+  contents: 'read'
+  packages: 'write'
       
 jobs:
-  dev-cd:
-    uses: lemoncode/actions/.github/workflows/aws-ebs.yml@main
-    with:
-      files-to-zip: "back/** back/.babelrc front/** front/.babelrc Dockerfile .dockerignore"
-      dockerArgs: "BASE_API_URL=https://dev.codepaster.net \
-        BASE_SOCKET_URL=https://dev.codepaster.net"
-    secrets:
-      AWS_EB_APP_NAME: ${{secrets.DEV_AWS_EB_APP_NAME}}
-      AWS_EB_ENV_NAME: ${{secrets.DEV_AWS_EB_ENV_NAME}}
-      AWS_DEPLOY_ACCESS_KEY_ID: ${{secrets.DEV_AWS_DEPLOY_ACCESS_KEY_ID}}
-      AWS_DEPLOY_SECRET_ACCESS_KEY: ${{secrets.DEV_AWS_DEPLOY_SECRET_ACCESS_KEY}}
-      AWS_REGION: ${{secrets.DEV_AWS_REGION}}
-      AWS_DEPLOY_S3_BUCKET: ${{secrets.DEV_AWS_DEPLOY_S3_BUCKET}}
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: 'Development'
+      url: https://dev-codepaster.azurewebsites.net
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Log in to GitHub container registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push docker image
+        run: |
+          docker build \
+          --build-arg BASE_API_URL=https://dev-codepaster.azurewebsites.net \
+          --build-arg BASE_SOCKET_URL=https://dev-codepaster.azurewebsites.net \
+          -t ${{env.IMAGE_NAME}} -f azure.Dockerfile .
+          docker push ${{env.IMAGE_NAME}}
+
+      - name: Deploy to Azure
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ secrets.DEV_AZURE_APP_NAME }}
+          publish-profile: ${{ secrets.DEV_AZURE_PUBLISH_PROFILE }}
+          images: ${{env.IMAGE_NAME}}
