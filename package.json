@@ -1,0 +1,14 @@
+{
+  "name": "code-paster",
+  "scripts": {
+    "install": "run-p -l backend:install frontend:install",
+    "backend:install": "cd back && npm install",
+    "frontend:install": "cd front && npm install"
+  },
+  "devDependencies": {
+    "husky": "^7.0.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.5.1",
+    "pretty-quick": "^3.1.3"
+  }
+}
