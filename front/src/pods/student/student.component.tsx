@@ -1,9 +1,9 @@
 import React from 'react';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import Typography from '@material-ui/core/Typography';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import Typography from '@mui/material/Typography';
 
-import Checkbox from '@material-ui/core/Checkbox';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 import * as innerClasses from './student.styles';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
@@ -45,8 +45,8 @@ export const StudentComponent: React.FC<Props> = props => {
             ref={textAreaRef}
             data-testid="session"
             id="session"
-            rowsMax={30}
-            rowsMin={30}
+            maxRows={30}
+            minRows={30}
             className={innerClasses.textarea}
             value={log ?? ''}
             readOnly={true}

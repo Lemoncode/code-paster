@@ -1,8 +1,8 @@
 import React from 'react';
-import { cx } from 'emotion';
-import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
-import Button from '@material-ui/core/Button';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
+import { cx } from '@emotion/css';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import Button from '@mui/material/Button';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
 import * as innerClasses from './new-text.styles';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
   className?: string;
 }
 
-export const NewTextComponent: React.FC<Props> = props => {
+export const NewTextComponent: React.FC<Props> = (props) => {
   const { handleAppendTrainerText, className } = props;
   const [trainerText, setTrainerText] = React.useState<string>('');
 
@@ -43,10 +43,10 @@ export const NewTextComponent: React.FC<Props> = props => {
         New text
       </label>
       <TextareaAutosize
-        rowsMax={10}
-        rowsMin={10}
+        maxRows={10}
+        minRows={10}
         className={innerClasses.textarea}
-        onChange={e => handleOnChange(e)}
+        onChange={(e) => handleOnChange(e)}
         value={trainerText}
       />
       <Button

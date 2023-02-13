@@ -1,9 +1,9 @@
 import React from 'react';
-import { cx } from 'emotion';
-import Collapse from '@material-ui/core/Collapse';
-import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import { cx } from '@emotion/css';
+import Collapse from '@mui/material/Collapse';
+import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import * as innerClasses from './header.styles';
 
 interface Props {

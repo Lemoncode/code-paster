@@ -1,5 +1,5 @@
 import merge from 'lodash.merge';
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@mui/material/styles';
 import { Theme } from './theme.vm';
 
 const defaultTheme = createMuiTheme();

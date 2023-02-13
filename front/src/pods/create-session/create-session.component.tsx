@@ -1,8 +1,8 @@
 import React from 'react';
 import * as classes from './create-session.styles';
 // Material UI ~ components
-import Typography from '@material-ui/core/Typography';
-import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+import Typography from '@mui/material/Typography';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 interface Props {
   handleCreateSession: () => void;
