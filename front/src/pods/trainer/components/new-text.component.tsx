@@ -25,16 +25,6 @@ export const NewTextComponent: React.FC<Props> = (props) => {
     setTrainerText(e.target.value);
   };
 
-  // React.useEffect(() => {
-  //   const listener = (e: KeyboardEvent) => {
-  //     if (e.key === 'Enter' && e.ctrlKey && Boolean(trainerTextRef.current)) {
-  //       handleAppendTrainerTextInternal();
-  //     }
-  //   };
-  //   window.addEventListener('keypress', listener);
-  //   return () => window.removeEventListener('keypress', listener);
-  // }, []);
-
   return (
     <form className={cx(innerClasses.root, className)}>
       <label className={innerClasses.label} htmlFor="new-text">
