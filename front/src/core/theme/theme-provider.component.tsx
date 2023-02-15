@@ -1,7 +1,9 @@
 import * as React from 'react';
-import ThemeProvider from '@mui/material/styles/ThemeProvider';
-import StyledEngineProvider from '@mui/material/StyledEngineProvider';
-import CssBaseline from '@mui/material/CssBaseline';
+import {
+  StyledEngineProvider,
+  ThemeProvider,
+  CssBaseline,
+} from '@mui/material';
 import { theme } from './theme';
 
 export const ThemeProviderComponent = (props) => {
