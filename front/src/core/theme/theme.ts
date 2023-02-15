@@ -1,8 +1,8 @@
 import merge from 'lodash.merge';
-import { createMuiTheme } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
 import { Theme } from './theme.vm';
 
-const defaultTheme = createMuiTheme();
+const defaultTheme = createTheme();
 
 export const theme: Theme = merge(defaultTheme, {
   palette: {

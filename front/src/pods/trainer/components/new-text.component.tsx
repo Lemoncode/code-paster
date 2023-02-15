@@ -14,28 +14,26 @@ export const NewTextComponent: React.FC<Props> = (props) => {
   const { handleAppendTrainerText, className } = props;
   const [trainerText, setTrainerText] = React.useState<string>('');
 
-  const trainerTextRef = React.useRef<string>(trainerText);
-
   const handleAppendTrainerTextInternal = (): void => {
-    handleAppendTrainerText(trainerTextRef.current);
-    setTrainerText('');
-    trainerTextRef.current = '';
+    if (trainerText) {
+      handleAppendTrainerText(trainerText);
+      setTrainerText('');
+    }
   };
 
   const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    trainerTextRef.current = e.target.value;
     setTrainerText(e.target.value);
   };
 
-  React.useEffect(() => {
-    const listener = (e: KeyboardEvent) => {
-      if (e.key === 'Enter' && e.ctrlKey && Boolean(trainerTextRef.current)) {
-        handleAppendTrainerTextInternal();
-      }
-    };
-    window.addEventListener('keypress', listener);
-    return () => window.removeEventListener('keypress', listener);
-  }, []);
+  // React.useEffect(() => {
+  //   const listener = (e: KeyboardEvent) => {
+  //     if (e.key === 'Enter' && e.ctrlKey && Boolean(trainerTextRef.current)) {
+  //       handleAppendTrainerTextInternal();
+  //     }
+  //   };
+  //   window.addEventListener('keypress', listener);
+  //   return () => window.removeEventListener('keypress', listener);
+  // }, []);
 
   return (
     <form className={cx(innerClasses.root, className)}>
@@ -47,13 +45,18 @@ export const NewTextComponent: React.FC<Props> = (props) => {
         minRows={10}
         className={innerClasses.textarea}
         onChange={(e) => handleOnChange(e)}
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' && event.ctrlKey) {
+            handleAppendTrainerTextInternal();
+          }
+        }}
         value={trainerText}
       />
       <Button
         variant="contained"
         color="primary"
         className={innerClasses.button}
-        onClick={() => trainerText && handleAppendTrainerTextInternal()}
+        onClick={handleAppendTrainerTextInternal}
         disabled={!trainerText}
         aria-disabled={!trainerText}
         disableRipple={!trainerText}
