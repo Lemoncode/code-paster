@@ -1,4 +1,4 @@
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const Dotenv = require('dotenv-webpack');
 const base = require('./base');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
