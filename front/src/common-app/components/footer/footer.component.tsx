@@ -1,10 +1,10 @@
 import React from 'react';
-import { ReactComponent as LemoncodeLogo } from 'assets/lemoncode-logo.svg';
-import { ReactComponent as GithubIcon } from 'assets/github-logo.svg';
+import LemoncodeLogo from 'assets/lemoncode-logo.svg';
+import GithubIcon from 'assets/github-logo.svg';
 import * as classes from './footer.styles';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import EmailRoundedIcon from '@material-ui/icons/EmailRounded';
-import LanguageIcon from '@material-ui/icons/Language';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import EmailRoundedIcon from '@mui/icons-material/EmailRounded';
+import LanguageIcon from '@mui/icons-material/Language';
 
 export const FooterComponent: React.FC = () => {
   const {

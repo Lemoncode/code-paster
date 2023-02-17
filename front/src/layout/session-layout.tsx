@@ -1,7 +1,11 @@
 import React from 'react';
 import { AppbarComponent, FooterComponent } from 'common-app';
 
-export const SessionLayout: React.FC = props => {
+interface Props {
+  children: React.ReactNode;
+}
+
+export const SessionLayout: React.FC<Props> = (props) => {
   return (
     <>
       <AppbarComponent />

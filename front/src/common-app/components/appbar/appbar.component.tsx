@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as CodePasterLogo } from 'assets/logo.svg';
+import CodePasterLogo from 'assets/logo.svg';
 import * as classes from './appbar.styles';
 
 export const AppbarComponent: React.FC = () => {

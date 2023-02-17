@@ -1,4 +1,4 @@
-import { css } from 'emotion';
+import { css } from '@emotion/css';
 import { theme } from 'core/theme';
 import background from 'assets/bg-create-session.png';
 

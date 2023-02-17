@@ -1,5 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const merge = require('webpack-merge');
+const {merge} = require('webpack-merge');
 const helpers = require('./helpers');
 const CopyPlugin = require('copy-webpack-plugin');
 
@@ -22,31 +22,22 @@ module.exports = merge(
     entry: {
       app: ['regenerator-runtime/runtime', './index.tsx'],
     },
+    output: {
+      path: helpers.resolveFromRootPath('dist'),
+      publicPath: '/',
+    },
     module: {
       rules: [
-        {
-          test: /\.tsx?$/,
-          exclude: /node_modules/,
-          loader: 'babel-loader',
-        },
         {
           test: /\.svg$/,
           use: ['@svgr/webpack'],
         },
-      ],
-    },
-    optimization: {
-      runtimeChunk: 'single',
-      splitChunks: {
-        cacheGroups: {
-          vendor: {
-            chunks: 'all',
-            name: 'vendor',
-            test: /[\\/]node_modules[\\/]/,
-            enforce: true,
-          },
+        {
+          test: /\.(png|jpg|gif)$/,
+          exclude: /node_modules/,
+          type: 'asset/resource',
         },
-      },
+      ],
     },
     plugins: [
       new HtmlWebpackPlugin({

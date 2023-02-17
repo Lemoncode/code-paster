@@ -12,7 +12,7 @@ import { useLog } from 'core';
 import { TrainerComponent } from './trainer.component';
 import { useWithRef, getHostBaseUrl } from 'common';
 
-interface Params {
+interface Params extends Record<string, string | undefined> {
   token: string;
   room: string;
 }
@@ -28,7 +28,7 @@ export const TrainerContainer = () => {
   const handleConnection = () => {
     const socket = createSocket({ room: room, trainertoken: token });
     setSocket(socket);
-    socket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
+    socket.on(SocketOuputMessageLiteral.MESSAGE, (msg) => {
       if (msg.type) {
         const { type, payload } = msg;
 
