@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { cx } from '@emotion/css';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import Button from '@mui/material/Button';
 import TextareaAutosize from '@mui/material/TextareaAutosize';
 import * as innerClasses from './new-text.styles';
+import { SelectComponent } from './select.component';
+import { EditorState } from '@codemirror/state';
+import { MarkdownEditor } from 'common/markdowneditor/markdownEditor';
 
 interface Props {
   handleAppendTrainerText: (trainerText: string) => void;
@@ -30,6 +33,7 @@ export const NewTextComponent: React.FC<Props> = (props) => {
       <label className={innerClasses.label} htmlFor="new-text">
         New text
       </label>
+      <SelectComponent />
       <TextareaAutosize
         maxRows={10}
         minRows={10}
