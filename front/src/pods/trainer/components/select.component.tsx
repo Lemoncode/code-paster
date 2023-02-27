@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { MenuItem } from '@mui/material';
 
 export const SelectComponent = () => {
   const [lang, setLang] = useState('');
@@ -18,19 +19,19 @@ export const SelectComponent = () => {
         value={lang}
         onChange={handleSelectChange}
       >
-        <option aria-label="None" value="" />
-        <option value="HTML">HTML</option>
-        <option value="CSS">CSS</option>
-        <option value="JS">JS</option>
-        <option value="JSX">JSX</option>
-        <option value="TS">TS</option>
-        <option value="TSX">TSX</option>
-        <option value="JSON">JSON</option>
-        <option value="Bash">Bash</option>
-        <option value="Markdown">Markdown</option>
-        <option value="YAML">YAML</option>
-        <option value="Diff">Diff</option>
-        <option value="C#">C#</option>
+        <MenuItem aria-label="None" value="" />
+        <MenuItem value="HTML">HTML</MenuItem>
+        <MenuItem value="CSS">CSS</MenuItem>
+        <MenuItem value="JS">JS</MenuItem>
+        <MenuItem value="JSX">JSX</MenuItem>
+        <MenuItem value="TS">TS</MenuItem>
+        <MenuItem value="TSX">TSX</MenuItem>
+        <MenuItem value="JSON">JSON</MenuItem>
+        <MenuItem value="Bash">Bash</MenuItem>
+        <MenuItem value="Markdown">Markdown</MenuItem>
+        <MenuItem value="YAML">YAML</MenuItem>
+        <MenuItem value="Diff">Diff</MenuItem>
+        <MenuItem value="C#">C#</MenuItem>
       </Select>
     </FormControl>
   );
