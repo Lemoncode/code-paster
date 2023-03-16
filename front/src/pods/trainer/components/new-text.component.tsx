@@ -14,6 +14,9 @@ interface Props {
 
 export const NewTextComponent: React.FC<Props> = (props) => {
   const [language, setLanguage] = React.useState('');
+
+  const languageModify = (language: string): string => language === "" ? "" : `\`\`\`${language}\n\n\`\`\``;
+
   const { handleAppendTrainerText, className } = props;
   const [trainerText, setTrainerText] = React.useState<string>('');
 
@@ -32,13 +35,9 @@ export const NewTextComponent: React.FC<Props> = (props) => {
     <form className={cx(innerClasses.root, className)}>
       <label className={innerClasses.label} htmlFor="new-text">
         New text
-        <br />
-        {language}
-        <br />
-        {trainerText}
       </label>
       <SelectComponent value={language} onChange={setLanguage}/>
-      <MarkdownEditor value={trainerText} onChange={setTrainerText}/>
+      <MarkdownEditor value={languageModify(language)} onChange={setTrainerText}/>
       <TextareaAutosize
         maxRows={10}
         minRows={10}
