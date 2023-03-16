@@ -63,11 +63,6 @@ export const MarkdownEditor: React.FC<Props> = (props) => {
         });
         editorView.current?.update([update])
       }
-      EditorView.theme({
-        '&':{
-          border: '1px solid red'
-        },
-      })
     }, [props.value]);
 
   return <div ref={refContainer} className={classes.textContainer} />
