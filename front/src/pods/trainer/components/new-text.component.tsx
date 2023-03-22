@@ -2,7 +2,6 @@ import React from 'react';
 import { cx } from '@emotion/css';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import Button from '@mui/material/Button';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import * as innerClasses from './new-text.styles';
 import { SelectComponent } from './select.component';
 import { MarkdownEditor } from 'common/markdowneditor/markdowneditor.component';
@@ -32,12 +31,7 @@ export const NewTextComponent: React.FC<Props> = (props) => {
     if (language) {
       setTrainerText(languageModify(language));
     }
-
-  },[language])
-
-  // const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-  //   setTrainerText(e.target.value);
-  // };
+  },[language]);
 
   return (
     <form className={cx(innerClasses.root, className)}>
@@ -46,18 +40,6 @@ export const NewTextComponent: React.FC<Props> = (props) => {
       </label>
       <SelectComponent value={language} onChange={setLanguage} />
       <MarkdownEditor value={trainerText} onChange={setTrainerText} />
-      {/* <TextareaAutosize
-        maxRows={10}
-        minRows={10}
-        className={innerClasses.textarea}
-        onChange={(e) => handleOnChange(e)}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter' && event.ctrlKey) {
-            handleAppendTrainerTextInternal();
-          }
-        }}
-        value={trainerText}
-      /> */}
       <Button
         variant="contained"
         color="primary"
