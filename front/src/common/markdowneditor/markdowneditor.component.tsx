@@ -6,19 +6,12 @@ import { markdown } from '@codemirror/lang-markdown'
 import { languages } from '@codemirror/language-data'
 import { tags } from '@lezer/highlight'
 import { syntaxHighlighting, HighlightStyle} from '@codemirror/language'
-// import * as classes from './markdowneditor.styles';
-import classes from './styles.module.css';
-
-// const stylesEditor = HighlightStyle.define([
-//   { tag: tags.heading1, class: classes.headerH1},
-//   { tag: tags.heading2, class: classes.headerH2},
-//   { tag: tags.heading3, class: classes.headerH3},
-// ]);
+import * as classes from './markdowneditor.styles';
 
 const stylesEditor = HighlightStyle.define([
-  { tag: tags.heading1, class: classes.h1},
-  { tag: tags.heading2, class: classes.h2},
-  { tag: tags.heading3, class: classes.h3},
+  { tag: tags.heading1, class: classes.headerH1},
+  { tag: tags.heading2, class: classes.headerH2},
+  { tag: tags.heading3, class: classes.headerH3},
 ]);
 
 interface Props {
