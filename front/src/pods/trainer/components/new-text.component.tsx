@@ -14,31 +14,39 @@ interface Props {
 
 export const NewTextComponent: React.FC<Props> = (props) => {
   const [language, setLanguage] = React.useState('');
+  const [trainerText, setTrainerText] = React.useState<string>('');
 
   const languageModify = (language: string): string => language === "" ? "" : `\`\`\`${language}\n\n\`\`\``;
 
   const { handleAppendTrainerText, className } = props;
-  const [trainerText, setTrainerText] = React.useState<string>('');
 
   const handleAppendTrainerTextInternal = (): void => {
     if (trainerText) {
       handleAppendTrainerText(trainerText);
-      setTrainerText('');
+      setTrainerText(languageModify(language));
+      setLanguage(language);
     }
   };
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    setTrainerText(e.target.value);
-  };
+  React.useEffect(() => {
+    if (language) {
+      setTrainerText(languageModify(language));
+    }
+
+  },[language])
+
+  // const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
+  //   setTrainerText(e.target.value);
+  // };
 
   return (
     <form className={cx(innerClasses.root, className)}>
       <label className={innerClasses.label} htmlFor="new-text">
         New text
       </label>
-      <SelectComponent value={language} onChange={setLanguage}/>
-      <MarkdownEditor value={languageModify(language)} onChange={setTrainerText}/>
-      <TextareaAutosize
+      <SelectComponent value={language} onChange={setLanguage} />
+      <MarkdownEditor value={trainerText} onChange={setTrainerText} />
+      {/* <TextareaAutosize
         maxRows={10}
         minRows={10}
         className={innerClasses.textarea}
@@ -49,7 +57,7 @@ export const NewTextComponent: React.FC<Props> = (props) => {
           }
         }}
         value={trainerText}
-      />
+      /> */}
       <Button
         variant="contained"
         color="primary"

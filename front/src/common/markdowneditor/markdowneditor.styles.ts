@@ -11,7 +11,3 @@ export const headerH2 = `
 export const headerH3 = `
   font-size: 0.5rem;
 `;
-
-export const textContainer = `
-  height: 200px;
-`;
