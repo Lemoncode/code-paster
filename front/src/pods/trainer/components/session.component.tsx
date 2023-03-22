@@ -4,12 +4,12 @@ import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import UndoIcon from '@mui/icons-material/Undo';
 import Button from '@mui/material/Button';
-
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
 import * as innerClasses from './session.styles';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
+import { MarkdownEditor } from 'common/markdowneditor/markdowneditor.component';
+
 interface Props {
   log: string;
   handleSendFullContentLog: (fullContent: string) => void;
@@ -51,7 +51,7 @@ export const SessionComponent: React.FC<Props> = (props) => {
       <label className={innerClasses.label} htmlFor="session">
         Session
       </label>
-
+      <MarkdownEditor value={log} onChange={handleSendFullContentLog} />
       <TextareaAutosize
         role="log"
         ref={textAreaRef}
