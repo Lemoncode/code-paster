@@ -4,37 +4,29 @@ import { theme } from 'core/theme';
 const { palette, spacing, typography, breakpoints } = theme;
 const color = palette.customPalette;
 
-// export const root = css`
-//   display: grid;
-//   grid-row-gap: 1rem;
-//   grid-column-gap: 1rem;
-//   grid-template-columns: auto 1fr;
-//   grid-template-areas:
-//     'label label'
-//     'textarea textarea'
-//     'undo send';
-// `;
-
 export const root = css`
-  display: flex;
-  flex-direction: column;
-  
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: auto 1fr;
+  grid-template-areas:
+    'label label'
+    'textEditor textEditor'
+    'undo send'
+    'autoScroll autoScroll';
 `;
 
 export const label = css`
   grid-area: label;
-  display: block;
   font-size: 1.125rem;
   font-family: ${typography.fontFamily};
 `;
 
-export const textarea = css`
-  grid-area: textarea;
+export const textEditor = css`
+  grid-area: textEditor;
   box-sizing: border-box;
   font-family: ${typography.fontFamily};
   font-size: 1rem;
   background-color: ${color.background};
-  border: 2px solid ${color.secondary};
   white-space: pre-wrap;
   resize: none;
   &:focus {
@@ -46,12 +38,11 @@ export const sendButton = css`
   grid-area: send;
   display: flex;
   align-items: center;
-  padding: ${spacing(1.25)} ${spacing(1.875)};
-  margin: 10px;
   flex: 1;
   font-size: 1.188rem;
   font-weight: 400;
   text-transform: capitalize;
+  padding: ${spacing(1.25)} ${spacing(1.875)};
   border-radius: 0;
   color: ${color.successLight};
   background-color: white;
@@ -90,7 +81,6 @@ export const undoButton = css`
   display: flex;
   align-items: center;
   padding: ${spacing(1.25)} ${spacing(1.875)};
-  margin: 10px;
   font-size: 1.188rem;
   font-weight: 400;
   text-transform: capitalize;
@@ -125,4 +115,8 @@ export const undoIcon = css`
   @media (min-width: ${breakpoints.values.xs}px) {
     display: initial;
   }
+`;
+
+export const autoScroll = css`
+  grid-area: autoScroll;
 `;
