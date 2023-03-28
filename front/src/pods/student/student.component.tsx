@@ -1,18 +1,15 @@
 import React from 'react';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import Typography from '@mui/material/Typography';
-
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
-
-import * as innerClasses from './student.styles';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
-
 import { MarkdownView } from 'common/markdownview/markdownView';
+import * as innerClasses from './student.styles';
 
 interface Props {
   room: string;
   log: string;
+  className?: string;
 }
 
 export const StudentComponent: React.FC<Props> = props => {
@@ -21,7 +18,6 @@ export const StudentComponent: React.FC<Props> = props => {
   const {
     isAutoScrollEnabled,
     setIsAutoScrollEnabled,
-    textAreaRef,
     doAutoScroll,
   } = useAutoScroll();
 
@@ -42,21 +38,9 @@ export const StudentComponent: React.FC<Props> = props => {
         <label className={innerClasses.label} htmlFor="session">
           Content
         </label>
-        <div role="log" className={innerClasses.textarea} >
-          <MarkdownView value={log ?? ''} />
-          {/* <TextareaAutosize
-            ref={textAreaRef}
-            data-testid="session"
-            id="session"
-            maxRows={30}
-            minRows={30}
-            className={innerClasses.textarea}
-            value={log ?? ''}
-            readOnly={true}
-          /> */}
-        </div>
+        <MarkdownView value={log ?? ''} className={innerClasses.textView} />
         <FormControlLabel
-          label="Disable AutoScroll"
+          label="Enable AutoScroll"
           control={
             <Checkbox
               checked={isAutoScrollEnabled}

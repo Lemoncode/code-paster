@@ -17,6 +17,7 @@ const stylesEditor = HighlightStyle.define([
 interface Props {
   value: string
   onChange?: (value: string) => void
+  className?: string
 }
 
 export const MarkdownEditor: React.FC<Props> = (props) => {
@@ -65,5 +66,5 @@ export const MarkdownEditor: React.FC<Props> = (props) => {
       }
     }, [props.value]);
 
-  return <div ref={refContainer} />
+  return <div ref={refContainer} className={ props.className } />
 };

@@ -1,14 +1,13 @@
 import React from 'react';
 import { cx } from '@emotion/css';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import UndoIcon from '@mui/icons-material/Undo';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import * as innerClasses from './session.styles';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
 import { MarkdownEditor } from 'common/markdowneditor/markdowneditor.component';
+import * as innerClasses from './session.styles';
 
 interface Props {
   log: string;
@@ -37,7 +36,6 @@ export const SessionComponent: React.FC<Props> = (props) => {
   const {
     isAutoScrollEnabled,
     setIsAutoScrollEnabled,
-    textAreaRef,
     doAutoScroll,
   } = useAutoScroll();
 
@@ -51,15 +49,7 @@ export const SessionComponent: React.FC<Props> = (props) => {
       <label className={innerClasses.label} htmlFor="session">
         Session
       </label>
-      <MarkdownEditor value={log} onChange={handleSendFullContentLog} />
-      {/* <TextareaAutosize
-        role="log"
-        ref={textAreaRef}
-        id="session"
-        maxRows={20}
-        minRows={20}
-        className={innerClasses.textarea}
-      /> */}
+      <MarkdownEditor value={log} onChange={handleSendFullContentLog} className={innerClasses.textEditor} />   
       <Button
         variant="contained"
         color="primary"
@@ -81,7 +71,8 @@ export const SessionComponent: React.FC<Props> = (props) => {
         Undo
       </Button>
       <FormControlLabel
-        label="Disable AutoScroll"
+        className={innerClasses.autoScroll}
+        label="Enable AutoScroll"
         control={
           <Checkbox
             checked={isAutoScrollEnabled}
