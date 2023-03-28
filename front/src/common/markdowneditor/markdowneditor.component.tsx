@@ -54,6 +54,14 @@ export const MarkdownEditor: React.FC<Props> = (props) => {
       
     return () => editorView.current?.destroy()
     }, []);
+    
+    const scrollToEnd = () => {
+      if (!refContainer.current) return;
+
+      const scrollHeight = refContainer.current.scrollHeight;
+      const clientHeight = refContainer.current.clientHeight;
+      editorView.current.scrollDOM.scrollTop = scrollHeight - clientHeight;
+    }
 
     useEffect(() => {
       const state = editorView.current?.state
@@ -62,7 +70,8 @@ export const MarkdownEditor: React.FC<Props> = (props) => {
         const update = state.update({
           changes: { from: 0, to: state.doc.length, insert: props.value }
         });
-        editorView.current?.update([update])
+        editorView.current?.update([update]);
+        scrollToEnd();
       }
     }, [props.value]);
 
