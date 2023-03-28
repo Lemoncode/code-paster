@@ -8,6 +8,8 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import * as innerClasses from './student.styles';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
 
+import { MarkdownView } from 'common/markdownview/markdownView';
+
 interface Props {
   room: string;
   log: string;
@@ -40,8 +42,9 @@ export const StudentComponent: React.FC<Props> = props => {
         <label className={innerClasses.label} htmlFor="session">
           Content
         </label>
-        <div role="log">
-          <TextareaAutosize
+        <div role="log" className={innerClasses.textarea} >
+          <MarkdownView value={log ?? ''} />
+          {/* <TextareaAutosize
             ref={textAreaRef}
             data-testid="session"
             id="session"
@@ -50,7 +53,7 @@ export const StudentComponent: React.FC<Props> = props => {
             className={innerClasses.textarea}
             value={log ?? ''}
             readOnly={true}
-          />
+          /> */}
         </div>
         <FormControlLabel
           label="Disable AutoScroll"

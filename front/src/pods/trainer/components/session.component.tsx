@@ -52,34 +52,14 @@ export const SessionComponent: React.FC<Props> = (props) => {
         Session
       </label>
       <MarkdownEditor value={log} onChange={handleSendFullContentLog} />
-      <TextareaAutosize
+      {/* <TextareaAutosize
         role="log"
         ref={textAreaRef}
         id="session"
         maxRows={20}
         minRows={20}
         className={innerClasses.textarea}
-      />
-      <FormControlLabel
-        label="Disable AutoScroll"
-        control={
-          <Checkbox
-            checked={isAutoScrollEnabled}
-            onChange={(e) => setIsAutoScrollEnabled(e.target.checked)}
-            color="primary"
-          />
-        }
-      />
-      <Button
-        variant="contained"
-        color="secondary"
-        disableElevation
-        className={innerClasses.undoButton}
-        onClick={() => handleSetSessionContent(log)}
-      >
-        <UndoIcon className={innerClasses.undoIcon} />
-        Undo
-      </Button>
+      /> */}
       <Button
         variant="contained"
         color="primary"
@@ -90,6 +70,26 @@ export const SessionComponent: React.FC<Props> = (props) => {
         Send Full Content
         <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
       </Button>
+      <Button
+        variant="contained"
+        color="secondary"
+        disableElevation
+        className={innerClasses.undoButton}
+        onClick={() => handleSetSessionContent(log)}
+      >
+        <UndoIcon className={innerClasses.undoIcon} />
+        Undo
+      </Button>
+      <FormControlLabel
+        label="Disable AutoScroll"
+        control={
+          <Checkbox
+            checked={isAutoScrollEnabled}
+            onChange={(e) => setIsAutoScrollEnabled(e.target.checked)}
+            color="primary"
+          />
+        }
+      />
     </form>
   );
 };

@@ -4,15 +4,21 @@ import { theme } from 'core/theme';
 const { palette, spacing, typography, breakpoints } = theme;
 const color = palette.customPalette;
 
+// export const root = css`
+//   display: grid;
+//   grid-row-gap: 1rem;
+//   grid-column-gap: 1rem;
+//   grid-template-columns: auto 1fr;
+//   grid-template-areas:
+//     'label label'
+//     'textarea textarea'
+//     'undo send';
+// `;
+
 export const root = css`
-  display: grid;
-  grid-row-gap: 1rem;
-  grid-column-gap: 1rem;
-  grid-template-columns: auto 1fr;
-  grid-template-areas:
-    'label label'
-    'textarea textarea'
-    'undo send';
+  display: flex;
+  flex-direction: column;
+  
 `;
 
 export const label = css`
@@ -41,6 +47,7 @@ export const sendButton = css`
   display: flex;
   align-items: center;
   padding: ${spacing(1.25)} ${spacing(1.875)};
+  margin: 10px;
   flex: 1;
   font-size: 1.188rem;
   font-weight: 400;
@@ -83,6 +90,7 @@ export const undoButton = css`
   display: flex;
   align-items: center;
   padding: ${spacing(1.25)} ${spacing(1.875)};
+  margin: 10px;
   font-size: 1.188rem;
   font-weight: 400;
   text-transform: capitalize;
