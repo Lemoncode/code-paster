@@ -3,7 +3,7 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
-import { MarkdownView } from 'common/markdownview/markdownView';
+import { MarkdownViewer } from 'common/markdown-view/markdown-view';
 import * as innerClasses from './student.styles';
 
 interface Props {
@@ -12,14 +12,11 @@ interface Props {
   className?: string;
 }
 
-export const StudentComponent: React.FC<Props> = props => {
+export const StudentComponent: React.FC<Props> = (props) => {
   const { room, log } = props;
 
-  const {
-    isAutoScrollEnabled,
-    setIsAutoScrollEnabled,
-    doAutoScroll,
-  } = useAutoScroll();
+  const { isAutoScrollEnabled, setIsAutoScrollEnabled, doAutoScroll } =
+    useAutoScroll();
 
   React.useEffect(() => {
     doAutoScroll();
@@ -38,13 +35,15 @@ export const StudentComponent: React.FC<Props> = props => {
         <label className={innerClasses.label} htmlFor="session">
           Content
         </label>
-        <MarkdownView value={log ?? ''} className={innerClasses.textView} />
+        <div role="log">
+          <MarkdownViewer value={log ?? ''} className={innerClasses.textView} />
+        </div>
         <FormControlLabel
           label="Enable AutoScroll"
           control={
             <Checkbox
               checked={isAutoScrollEnabled}
-              onChange={e => setIsAutoScrollEnabled(e.target.checked)}
+              onChange={(e) => setIsAutoScrollEnabled(e.target.checked)}
               color="primary"
             />
           }

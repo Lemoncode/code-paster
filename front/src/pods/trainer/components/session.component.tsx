@@ -6,7 +6,7 @@ import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
-import { MarkdownEditor } from 'common/markdowneditor/markdowneditor.component';
+import { MarkdownEditor } from 'common/markdown-editor/markdown-editor.component';
 import * as innerClasses from './session.styles';
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
   handleSendFullContentLog: (fullContent: string) => void;
   className?: string;
 }
-
+// TODO dont work undo button
 const getTextArea = (elementId: string): HTMLInputElement =>
   document.getElementById('session') as HTMLInputElement;
 
@@ -23,21 +23,11 @@ const handleSetSessionContent = (sessionContent: string) => {
   sessionTextArea ? (sessionTextArea.value = sessionContent) : undefined;
 };
 
-const getFullContent = (currenSessionContent: string) => {
-  const sessionTextArea: HTMLInputElement = getTextArea('session');
-  return sessionTextArea && sessionTextArea.value != currenSessionContent
-    ? sessionTextArea.value
-    : undefined;
-};
-
 export const SessionComponent: React.FC<Props> = (props) => {
   const { log, handleSendFullContentLog, className } = props;
 
-  const {
-    isAutoScrollEnabled,
-    setIsAutoScrollEnabled,
-    doAutoScroll,
-  } = useAutoScroll();
+  const { isAutoScrollEnabled, setIsAutoScrollEnabled, doAutoScroll } =
+    useAutoScroll();
 
   React.useEffect(() => {
     handleSetSessionContent(log);
@@ -49,13 +39,17 @@ export const SessionComponent: React.FC<Props> = (props) => {
       <label className={innerClasses.label} htmlFor="session">
         Session
       </label>
-      <MarkdownEditor value={log} onChange={handleSendFullContentLog} className={innerClasses.textEditor} />   
+      <MarkdownEditor
+        value={log}
+        onChange={handleSendFullContentLog}
+        className={innerClasses.textEditor}
+      />
       <Button
         variant="contained"
         color="primary"
         disableElevation
         className={innerClasses.sendButton}
-        onClick={() => handleSendFullContentLog(getFullContent(log))}
+        onClick={() => handleSendFullContentLog(log)}
       >
         Send Full Content
         <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />

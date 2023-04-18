@@ -4,7 +4,7 @@ import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import Button from '@mui/material/Button';
 import * as innerClasses from './new-text.styles';
 import { SelectComponent } from './select.component';
-import { MarkdownEditor } from 'common/markdowneditor/markdowneditor.component';
+import { MarkdownEditor } from 'common/markdown-editor/markdown-editor.component';
 
 interface Props {
   handleAppendTrainerText: (trainerText: string) => void;
@@ -15,23 +15,24 @@ export const NewTextComponent: React.FC<Props> = (props) => {
   const [language, setLanguage] = React.useState('');
   const [trainerText, setTrainerText] = React.useState<string>('');
 
-  const languageModify = (language: string): string => language === "" ? "" : `\`\`\`${language}\n\n\`\`\``;
+  const applyLanguageSelected = (language: string): string =>
+    language === '' ? '' : `\`\`\`${language}\n\n\`\`\``;
 
   const { handleAppendTrainerText, className } = props;
 
   const handleAppendTrainerTextInternal = (): void => {
     if (trainerText) {
       handleAppendTrainerText(trainerText);
-      setTrainerText(languageModify(language));
+      setTrainerText(applyLanguageSelected(language));
       setLanguage(language);
     }
   };
 
   React.useEffect(() => {
     if (language) {
-      setTrainerText(languageModify(language));
+      setTrainerText(applyLanguageSelected(language));
     }
-  },[language]);
+  }, [language]);
 
   return (
     <form className={cx(innerClasses.root, className)}>
@@ -39,7 +40,11 @@ export const NewTextComponent: React.FC<Props> = (props) => {
         New text
       </label>
       <SelectComponent value={language} onChange={setLanguage} />
-      <MarkdownEditor value={trainerText} onChange={setTrainerText} />
+      <MarkdownEditor
+        value={trainerText}
+        onChange={setTrainerText}
+        onAppendTrainerTextInternal={handleAppendTrainerTextInternal}
+      />
       <Button
         variant="contained"
         color="primary"
