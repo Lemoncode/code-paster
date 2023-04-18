@@ -2,8 +2,9 @@ import React from 'react';
 import { cx } from '@emotion/css';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import Button from '@mui/material/Button';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import * as innerClasses from './new-text.styles';
+import { SelectComponent } from './select.component';
+import { MarkdownEditor } from 'common/markdown-editor/markdown-editor.component';
 
 interface Props {
   handleAppendTrainerText: (trainerText: string) => void;
@@ -11,36 +12,38 @@ interface Props {
 }
 
 export const NewTextComponent: React.FC<Props> = (props) => {
-  const { handleAppendTrainerText, className } = props;
+  const [language, setLanguage] = React.useState('');
   const [trainerText, setTrainerText] = React.useState<string>('');
+
+  const applyLanguageSelected = (language: string): string =>
+    language === '' ? '' : `\`\`\`${language}\n\n\`\`\``;
+
+  const { handleAppendTrainerText, className } = props;
 
   const handleAppendTrainerTextInternal = (): void => {
     if (trainerText) {
       handleAppendTrainerText(trainerText);
-      setTrainerText('');
+      setTrainerText(applyLanguageSelected(language));
+      setLanguage(language);
     }
   };
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>): void => {
-    setTrainerText(e.target.value);
-  };
+  React.useEffect(() => {
+    if (language) {
+      setTrainerText(applyLanguageSelected(language));
+    }
+  }, [language]);
 
   return (
     <form className={cx(innerClasses.root, className)}>
       <label className={innerClasses.label} htmlFor="new-text">
         New text
       </label>
-      <TextareaAutosize
-        maxRows={10}
-        minRows={10}
-        className={innerClasses.textarea}
-        onChange={(e) => handleOnChange(e)}
-        onKeyDown={(event) => {
-          if (event.key === 'Enter' && event.ctrlKey) {
-            handleAppendTrainerTextInternal();
-          }
-        }}
+      <SelectComponent value={language} onChange={setLanguage} />
+      <MarkdownEditor
         value={trainerText}
+        onChange={setTrainerText}
+        onAppendTrainerTextInternal={handleAppendTrainerTextInternal}
       />
       <Button
         variant="contained"
