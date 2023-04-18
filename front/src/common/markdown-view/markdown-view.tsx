@@ -9,7 +9,7 @@ interface Props {
 
 export const MarkdownViewer: React.FC<Props> = (props) => {
   return (
-    <div className={props.className}>
+    <div role="log" className={props.className}>
       <ReactMarkdown children={props.value} remarkPlugins={[remarkGfm]} />
     </div>
   );

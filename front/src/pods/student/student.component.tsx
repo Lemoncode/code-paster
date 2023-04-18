@@ -35,9 +35,7 @@ export const StudentComponent: React.FC<Props> = (props) => {
         <label className={innerClasses.label} htmlFor="session">
           Content
         </label>
-        <div role="log">
-          <MarkdownViewer value={log ?? ''} className={innerClasses.textView} />
-        </div>
+        <MarkdownViewer value={log ?? ''} className={innerClasses.textView} />
         <FormControlLabel
           label="Enable AutoScroll"
           control={
