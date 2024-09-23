@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import useEvent from '@testing-library/user-event';
+import userEvent from '@testing-library/user-event';
 import { CreateSessionComponent } from './create-session.component';
 
 describe('CreateSessionComponent unit tests', () => {
@@ -17,7 +17,9 @@ describe('CreateSessionComponent unit tests', () => {
 
     const main = screen.getByRole('main');
     const button = screen.getByRole('button');
-    const description = screen.getByText('The best tool for sharing code with your students!');
+    const description = screen.getByText(
+      'The best tool for sharing code with your students!'
+    );
 
     // Assert
 
@@ -27,7 +29,7 @@ describe('CreateSessionComponent unit tests', () => {
     expect(description).toBeInTheDocument();
   });
 
-  it('should create a new session when clicking the create session button', () => {
+  it('should create a new session when clicking the create session button', async () => {
     // Arrange
 
     const props = {
@@ -39,7 +41,7 @@ describe('CreateSessionComponent unit tests', () => {
     render(<CreateSessionComponent {...props} />);
 
     const createSessionButton = screen.getByRole('button');
-    useEvent.click(createSessionButton);
+    await userEvent.click(createSessionButton);
 
     // Assert
 

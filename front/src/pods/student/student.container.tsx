@@ -3,13 +3,12 @@ import {
   createSocket,
   SocketOuputMessageLiteral,
   SocketReceiveMessageTypes,
-  SocketEmitMessageTypes,
 } from 'core';
 import { useLog } from 'core';
 import { StudentComponent } from './student.component';
 import { useParams } from 'react-router-dom';
 
-interface Params {
+interface Params extends Record<string, string | undefined> {
   room: string;
 }
 
@@ -24,7 +23,7 @@ export const StudentContainer = () => {
       trainertoken: '',
     });
 
-    socket.on(SocketOuputMessageLiteral.MESSAGE, msg => {
+    socket.on(SocketOuputMessageLiteral.MESSAGE, (msg) => {
       if (msg.type) {
         const { type, payload } = msg;
 

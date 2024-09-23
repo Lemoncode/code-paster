@@ -1,4 +1,4 @@
-FROM node:12-alpine AS base
+FROM node:20-alpine AS base
 RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
@@ -20,20 +20,28 @@ RUN npm run build
 
 # Release
 FROM base AS release
+ENV NODE_ENV=production
+ENV STATIC_FILES_PATH=./public
 COPY --from=build-backend /usr/app/dist ./
-COPY --from=build-frontend /usr/app/dist ./public
+COPY --from=build-frontend /usr/app/dist $STATIC_FILES_PATH
 COPY ./back/package.json ./
 COPY ./back/package-lock.json ./
 RUN npm ci --only=production
 
-EXPOSE 3000
-ENV PORT=3000
+FROM nasdan/azure-pm2-nginx:nodejs-20-nginx-1.24
 ENV NODE_ENV=production
 ENV STATIC_FILES_PATH=./public
 ENV MOCK_REPOSITORY=false
 ENV CORS_ORIGIN=false
 ENV API_URL=/api
+COPY --from=release /usr/app ./
 
-RUN npm i pm2 -g
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-CMD pm2 start ./index.js --name "app" --env production --no-daemon
+ENV INTERNAL_PORT=3000
+RUN sed -i -e 's|INTERNAL_PORT|'"$INTERNAL_PORT"'|g' /etc/nginx/conf.d/default.conf
+
+CMD sh docker-entrypoint.sh && \
+  sed -i -e 's|PORT|80|g' /etc/nginx/conf.d/default.conf && \
+  pm2 start ./index.js --name "app" --env production && \
+  nginx -g 'daemon off;'

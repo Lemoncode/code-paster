@@ -1,12 +1,12 @@
 import React from 'react';
-import { cx } from 'emotion';
-import TextareaAutosize from '@material-ui/core/TextareaAutosize';
-import ArrowForwardRoundedIcon from '@material-ui/icons/ArrowForwardRounded';
-import UndoIcon from '@material-ui/icons/Undo';
-import Button from '@material-ui/core/Button';
+import { cx } from '@emotion/css';
+import TextareaAutosize from '@mui/material/TextareaAutosize';
+import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
+import UndoIcon from '@mui/icons-material/Undo';
+import Button from '@mui/material/Button';
 
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
 
 import * as innerClasses from './session.styles';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
@@ -31,10 +31,15 @@ const getFullContent = (currenSessionContent: string) => {
     : undefined;
 };
 
-export const SessionComponent: React.FC<Props> = props => {
+export const SessionComponent: React.FC<Props> = (props) => {
   const { log, handleSendFullContentLog, className } = props;
 
-  const {isAutoScrollEnabled, setIsAutoScrollEnabled, textAreaRef, doAutoScroll} = useAutoScroll();
+  const {
+    isAutoScrollEnabled,
+    setIsAutoScrollEnabled,
+    textAreaRef,
+    doAutoScroll,
+  } = useAutoScroll();
 
   React.useEffect(() => {
     handleSetSessionContent(log);
@@ -51,8 +56,8 @@ export const SessionComponent: React.FC<Props> = props => {
         role="log"
         ref={textAreaRef}
         id="session"
-        rowsMax={20}
-        rowsMin={20}
+        maxRows={20}
+        minRows={20}
         className={innerClasses.textarea}
       />
       <FormControlLabel
@@ -60,7 +65,7 @@ export const SessionComponent: React.FC<Props> = props => {
         control={
           <Checkbox
             checked={isAutoScrollEnabled}
-            onChange={e => setIsAutoScrollEnabled(e.target.checked)}
+            onChange={(e) => setIsAutoScrollEnabled(e.target.checked)}
             color="primary"
           />
         }

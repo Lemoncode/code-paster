@@ -1,46 +1,36 @@
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const Dotenv = require('dotenv-webpack');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const base = require('./base');
-const helpers = require('./helpers');
 
-const hotReloadingEntries = ['react-hot-loader/patch'];
-
-module.exports = merge.strategy({
-  entry: 'prepend',
-})(base, {
+module.exports = merge(base, {
   mode: 'development',
-  devtool: 'inline-source-map',
-  resolve: {
-    alias: {
-      'react-dom': '@hot-loader/react-dom',
-    },
-  },
-  entry: {
-    app: hotReloadingEntries,
-  },
+  devtool: 'eval-source-map',
   output: {
-    path: helpers.resolveFromRootPath('dist'),
     filename: '[name].js',
   },
   devServer: {
-    inline: true,
     host: 'localhost',
     port: 8080,
-    stats: 'minimal',
     hot: true,
+    historyApiFallback: true,
+    proxy: {
+      '/api': 'http://localhost:3001',
+    },
+    devMiddleware: {
+      stats: 'errors-warnings',
+    },
   },
-  plugins: [
-    new Dotenv({
-      path: 'dev.env',
-    }),
-  ],
   module: {
     rules: [
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: 'img/[name].[ext]',
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [require.resolve('react-refresh/babel')],
+          },
         },
       },
       {
@@ -49,4 +39,10 @@ module.exports = merge.strategy({
       },
     ],
   },
+  plugins: [
+    new ReactRefreshWebpackPlugin(),
+    new Dotenv({
+      path: 'dev.env',
+    }),
+  ],
 });

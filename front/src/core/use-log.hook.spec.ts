@@ -1,4 +1,4 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react';
 import { useLog } from './use-log.hook';
 
 describe('use-log hook spec', () => {
@@ -129,13 +129,13 @@ describe('use-log hook spec', () => {
     const sessionLog: string = `first line
 
     *********************************
-     
+
     second line
-    
+
     *********************************
-     
+
     third line
-    
+
     *********************************`;
 
     // Act
