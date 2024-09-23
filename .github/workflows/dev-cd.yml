@@ -20,10 +20,10 @@ jobs:
       url: https://dev-codepaster.azurewebsites.net
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Log in to GitHub container registry
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
@@ -34,11 +34,11 @@ jobs:
           docker build \
           --build-arg BASE_API_URL=https://dev-codepaster.azurewebsites.net \
           --build-arg BASE_SOCKET_URL=https://dev-codepaster.azurewebsites.net \
-          -t ${{env.IMAGE_NAME}} -f azure.Dockerfile .
+          -t ${{env.IMAGE_NAME}} .
           docker push ${{env.IMAGE_NAME}}
 
       - name: Deploy to Azure
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ secrets.DEV_AZURE_APP_NAME }}
           publish-profile: ${{ secrets.DEV_AZURE_PUBLISH_PROFILE }}
