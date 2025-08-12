@@ -40,8 +40,10 @@ export const label = css`
   font-size: 1.125rem;
 `;
 
-export const textarea = css`
+export const textView = css`
   width: 100%;
+  height: 600px;
+  overflow: auto;
   box-sizing: border-box;
   padding: ${spacing(2)};
   font-family: ${typography.fontFamily};

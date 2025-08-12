@@ -1,21 +1,20 @@
 import React from 'react';
 import { cx } from '@emotion/css';
-import TextareaAutosize from '@mui/material/TextareaAutosize';
 import ArrowForwardRoundedIcon from '@mui/icons-material/ArrowForwardRounded';
 import UndoIcon from '@mui/icons-material/Undo';
 import Button from '@mui/material/Button';
-
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-
-import * as innerClasses from './session.styles';
 import { useAutoScroll } from 'common/hooks/auto-scroll.hook';
+import { MarkdownEditor } from 'common/markdown-editor/markdown-editor.component';
+import * as innerClasses from './session.styles';
+
 interface Props {
   log: string;
   handleSendFullContentLog: (fullContent: string) => void;
   className?: string;
 }
-
+// TODO dont work undo button
 const getTextArea = (elementId: string): HTMLInputElement =>
   document.getElementById('session') as HTMLInputElement;
 
@@ -24,22 +23,11 @@ const handleSetSessionContent = (sessionContent: string) => {
   sessionTextArea ? (sessionTextArea.value = sessionContent) : undefined;
 };
 
-const getFullContent = (currenSessionContent: string) => {
-  const sessionTextArea: HTMLInputElement = getTextArea('session');
-  return sessionTextArea && sessionTextArea.value != currenSessionContent
-    ? sessionTextArea.value
-    : undefined;
-};
-
 export const SessionComponent: React.FC<Props> = (props) => {
   const { log, handleSendFullContentLog, className } = props;
 
-  const {
-    isAutoScrollEnabled,
-    setIsAutoScrollEnabled,
-    textAreaRef,
-    doAutoScroll,
-  } = useAutoScroll();
+  const { isAutoScrollEnabled, setIsAutoScrollEnabled, doAutoScroll } =
+    useAutoScroll();
 
   React.useEffect(() => {
     handleSetSessionContent(log);
@@ -51,25 +39,21 @@ export const SessionComponent: React.FC<Props> = (props) => {
       <label className={innerClasses.label} htmlFor="session">
         Session
       </label>
-
-      <TextareaAutosize
-        role="log"
-        ref={textAreaRef}
-        id="session"
-        maxRows={20}
-        minRows={20}
-        className={innerClasses.textarea}
+      <MarkdownEditor
+        value={log}
+        onChange={handleSendFullContentLog}
+        className={innerClasses.textEditor}
       />
-      <FormControlLabel
-        label="Disable AutoScroll"
-        control={
-          <Checkbox
-            checked={isAutoScrollEnabled}
-            onChange={(e) => setIsAutoScrollEnabled(e.target.checked)}
-            color="primary"
-          />
-        }
-      />
+      <Button
+        variant="contained"
+        color="primary"
+        disableElevation
+        className={innerClasses.sendButton}
+        onClick={() => handleSendFullContentLog(log)}
+      >
+        Send Full Content
+        <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
+      </Button>
       <Button
         variant="contained"
         color="secondary"
@@ -80,16 +64,17 @@ export const SessionComponent: React.FC<Props> = (props) => {
         <UndoIcon className={innerClasses.undoIcon} />
         Undo
       </Button>
-      <Button
-        variant="contained"
-        color="primary"
-        disableElevation
-        className={innerClasses.sendButton}
-        onClick={() => handleSendFullContentLog(getFullContent(log))}
-      >
-        Send Full Content
-        <ArrowForwardRoundedIcon className={innerClasses.sendIcon} />
-      </Button>
+      <FormControlLabel
+        className={innerClasses.autoScroll}
+        label="Enable AutoScroll"
+        control={
+          <Checkbox
+            checked={isAutoScrollEnabled}
+            onChange={(e) => setIsAutoScrollEnabled(e.target.checked)}
+            color="primary"
+          />
+        }
+      />
     </form>
   );
 };
