@@ -12,7 +12,21 @@ const options: cors.CorsOptions = {
   credentials: true,
   methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
   // IMPORTANT LIMIT HERE YOUR CLIENT APPS DOMAINS
-  origin: envConstants.CORS_ORIGIN,
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      'http://localhost:8080',
+      'http://localhost:8081',
+      'https://codepaster.net',
+      'https://www.codepaster.net',
+    ];
+    // Permitir peticiones sin origin (como Postman o curl)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
   preflightContinue: false,
 };
 
