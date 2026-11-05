@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:26-alpine3.24 AS base
 RUN mkdir -p /usr/app
 WORKDIR /usr/app
 
@@ -26,9 +26,9 @@ COPY --from=build-backend /usr/app/dist ./
 COPY --from=build-frontend /usr/app/dist $STATIC_FILES_PATH
 COPY ./back/package.json ./
 COPY ./back/package-lock.json ./
-RUN npm ci --only=production
+RUN npm ci --omit=dev
 
-FROM nasdan/azure-pm2-nginx:nodejs-20-nginx-1.24
+FROM nasdan/azure-pm2-nginx:nodejs-26-nginx-1.30
 ENV NODE_ENV=production
 ENV STATIC_FILES_PATH=./public
 ENV MOCK_REPOSITORY=false
